@@ -1,0 +1,17 @@
+{
+    "name": "@alethio/explorer-plugin-eth-extended",
+    "publisher": "aleth.io",
+    "pluginName": "eth-extended",
+    "version": "1.0.3",
+    "description": "Alethio Explorer core plugin with content from the Alethio data pipeline",
+    "author": "Alexandru Ciuca <alexandru.ciuca@consensys.net>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Alethio/explorer-core-plugins"
+    },
+    "main": "dist/index.js",
+    "publishConfig": {
+        "access": "public"
+    }
+}

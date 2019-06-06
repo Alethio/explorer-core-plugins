@@ -1,0 +1,133 @@
+{
+    "status": 200,
+    "data": {
+        "tokenInfo": {
+            "1f573d6fb3f13d689ff844b4ce37794d79a7ff1c": {
+                "address": "1f573d6fb3f13d689ff844b4ce37794d79a7ff1c",
+                "tokenMeta": {
+                    "decimals": 18,
+                    "name": "BancorTokenContract",
+                    "symbol": "BNT",
+                    "total_supply": "74362467.340901166990871503"
+                },
+                "tokenTypes": null
+            },
+            "d26114cd6ee289accf82350c8d8487fedb8a0c07": {
+                "address": "d26114cd6ee289accf82350c8d8487fedb8a0c07",
+                "tokenMeta": {
+                    "decimals": 18,
+                    "name": "OmiseGoToken",
+                    "symbol": "OMG",
+                    "total_supply": "140245398.245132780789239631"
+                },
+                "tokenTypes": null
+            }
+        },
+        "tokenTransfers": [
+            {
+                "blockCreationTime": 1521493313,
+                "gasPrice": "4000000000",
+                "gasUsed": "29328",
+                "includedInBlock": 5285359,
+                "logIndex": 1,
+                "loggedBy": "c0829421c1d260bd3cb3e0f06cfe2d52db2ce315",
+                "transferFrom": "c0829421c1d260bd3cb3e0f06cfe2d52db2ce315",
+                "transferTo": "f87a7ec94884f44d9de33d36b73f42c7c0dd38b1",
+                "transferValue": "2000000000000000000",
+                "txHash": "6eff7bc14777bbae4568c84ec5834008a6fd68d02e783c34a75fbbe30d889caa",
+                "txMsgValidationIndex": 3
+            },
+            {
+                "blockCreationTime": 1521493313,
+                "gasPrice": "4000000000",
+                "gasUsed": "19478",
+                "includedInBlock": 5285359,
+                "logIndex": 3,
+                "loggedBy": "c0829421c1d260bd3cb3e0f06cfe2d52db2ce315",
+                "transferFrom": "f87a7ec94884f44d9de33d36b73f42c7c0dd38b1",
+                "transferTo": "b626a5facc4de1c813f5293ec3be31979f1d1c78",
+                "transferValue": "2000000000000000000",
+                "txHash": "6eff7bc14777bbae4568c84ec5834008a6fd68d02e783c34a75fbbe30d889caa",
+                "txMsgValidationIndex": 15
+            },
+            {
+                "blockCreationTime": 1521493313,
+                "gasPrice": "4000000000",
+                "gasUsed": "30012",
+                "includedInBlock": 5285359,
+                "logIndex": 5,
+                "loggedBy": "1f573d6fb3f13d689ff844b4ce37794d79a7ff1c",
+                "transferFrom": "1f573d6fb3f13d689ff844b4ce37794d79a7ff1c",
+                "transferTo": "f87a7ec94884f44d9de33d36b73f42c7c0dd38b1",
+                "transferValue": "369223793433216469926",
+                "txHash": "6eff7bc14777bbae4568c84ec5834008a6fd68d02e783c34a75fbbe30d889caa",
+                "txMsgValidationIndex": 16
+            },
+            {
+                "blockCreationTime": 1521493313,
+                "gasPrice": "4000000000",
+                "gasUsed": "19705",
+                "includedInBlock": 5285359,
+                "logIndex": 8,
+                "loggedBy": "1f573d6fb3f13d689ff844b4ce37794d79a7ff1c",
+                "transferFrom": "f87a7ec94884f44d9de33d36b73f42c7c0dd38b1",
+                "transferTo": "a3a89db39f4cbfb8753259456332ce8373ff5bad",
+                "transferValue": "369223793433216469926",
+                "txHash": "6eff7bc14777bbae4568c84ec5834008a6fd68d02e783c34a75fbbe30d889caa",
+                "txMsgValidationIndex": 30
+            },
+            {
+                "blockCreationTime": 1521493313,
+                "gasPrice": "4000000000",
+                "gasUsed": "29993",
+                "includedInBlock": 5285359,
+                "logIndex": 10,
+                "loggedBy": "99ebd396ce7aa095412a4cd1a0c959d6fd67b340",
+                "transferFrom": "99ebd396ce7aa095412a4cd1a0c959d6fd67b340",
+                "transferTo": "f87a7ec94884f44d9de33d36b73f42c7c0dd38b1",
+                "transferValue": "369039969545253223729",
+                "txHash": "6eff7bc14777bbae4568c84ec5834008a6fd68d02e783c34a75fbbe30d889caa",
+                "txMsgValidationIndex": 31
+            },
+            {
+                "blockCreationTime": 1521493313,
+                "gasPrice": "4000000000",
+                "gasUsed": "14853",
+                "includedInBlock": 5285359,
+                "logIndex": 12,
+                "loggedBy": "99ebd396ce7aa095412a4cd1a0c959d6fd67b340",
+                "transferFrom": "f87a7ec94884f44d9de33d36b73f42c7c0dd38b1",
+                "transferTo": "99ebd396ce7aa095412a4cd1a0c959d6fd67b340",
+                "transferValue": "369039969545253223729",
+                "txHash": "6eff7bc14777bbae4568c84ec5834008a6fd68d02e783c34a75fbbe30d889caa",
+                "txMsgValidationIndex": 46
+            },
+            {
+                "blockCreationTime": 1521493313,
+                "gasPrice": "4000000000",
+                "gasUsed": "28902",
+                "includedInBlock": 5285359,
+                "logIndex": 14,
+                "loggedBy": "d26114cd6ee289accf82350c8d8487fedb8a0c07",
+                "transferFrom": "a3a89db39f4cbfb8753259456332ce8373ff5bad",
+                "transferTo": "f87a7ec94884f44d9de33d36b73f42c7c0dd38b1",
+                "transferValue": "100509283088149955895",
+                "txHash": "6eff7bc14777bbae4568c84ec5834008a6fd68d02e783c34a75fbbe30d889caa",
+                "txMsgValidationIndex": 47
+            },
+            {
+                "blockCreationTime": 1521493313,
+                "gasPrice": "4000000000",
+                "gasUsed": "28902",
+                "includedInBlock": 5285359,
+                "logIndex": 16,
+                "loggedBy": "d26114cd6ee289accf82350c8d8487fedb8a0c07",
+                "transferFrom": "f87a7ec94884f44d9de33d36b73f42c7c0dd38b1",
+                "transferTo": "8ef0d65bd229dab35c09fea7d628048b0be6bad8",
+                "transferValue": "100509283088149955895",
+                "txHash": "6eff7bc14777bbae4568c84ec5834008a6fd68d02e783c34a75fbbe30d889caa",
+                "txMsgValidationIndex": 50
+            }
+        ]
+    }
+}

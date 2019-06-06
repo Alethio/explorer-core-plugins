@@ -1,0 +1,46 @@
+{
+    "status": 200,
+    "data": {
+        "accountMeta": null,
+        "address": "8400d94a5cb0fa0d041a3788e395285d61c9ee5e",
+        "aliases": [
+            {
+                "label": "UniBrightToken",
+                "source": "gether"
+            }
+        ],
+        "compilerVersion": "v0.4.15+commit.bbb8e64f",
+        "constructorArgs": null,
+        "contractCodeHash": "150aabd87ecc1cd5c024cad6d96ddf98b53930401b6190bb1852e5aa933d0118",
+        "contractId": 11463,
+        "contractLanguage": "solidity",
+        "contractMsgsCreate": 0,
+        "contractMsgsIn": 58504,
+        "contractMsgsOut": 48501,
+        "contractName": "UniBrightToken",
+        "createdAtBlock": null,
+        "createdAtTimestamp": null,
+        "createdByAccount": null,
+        "hasContractAbi": true,
+        "hasContractAccountCode": true,
+        "hasContractSourceCode": true,
+        "logEntries": 21823,
+        "minedBlocks": 0,
+        "minedUncles": 0,
+        "nonce": 1,
+        "optimizationEnabled": true,
+        "optimizerRuns": 10000,
+        "swarmSource": "1b3565aca8ba7bf32fcc7d4cee78cd9e0f699da21898253f0acefb787aebb47e",
+        "tokenMeta": {
+            "decimals": 8,
+            "name": "UniBrightToken",
+            "symbol": "UBT",
+            "total_supply": "150000000"
+        },
+        "tokenTransfers": 11,
+        "tokenTypes": null,
+        "txsIn": 12115,
+        "txsOut": 0,
+        "type": "ContractAccount"
+    }
+}

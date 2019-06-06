@@ -1,0 +1,49 @@
+{
+    "code": 200,
+    "result": {
+        "0x5ca9a71b1d01849c0a95490cc00559717fcf0d1d": {
+            "currency": {
+                "coinId": 10,
+                "id": "aeternity",
+                "name": "Aeternity",
+                "symbol": "AE",
+                "address": "0x5ca9a71b1d01849c0a95490cc00559717fcf0d1d",
+                "decimals": 0
+            },
+            "prices": {
+                "4000000": {
+                    "block": 4000000,
+                    "price_usd": 0.506264,
+                    "price_btc": 0.0002
+                },
+                "5891670": {
+                    "block": 5891670,
+                    "price_usd": 1.91478,
+                    "price_btc": 0.00030292
+                }
+            }
+        },
+        "ETH": {
+            "currency": {
+                "coinId": 2,
+                "id": "ethereum",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "address": "",
+                "decimals": 18
+            },
+            "prices": {
+                "4000000": {
+                    "block": 4000000,
+                    "price_usd": 246.029,
+                    "price_btc": 0.097194
+                },
+                "5891670": {
+                    "block": 5891670,
+                    "price_usd": 451.191,
+                    "price_btc": 0.0713785
+                }
+            }
+        }
+    }
+}

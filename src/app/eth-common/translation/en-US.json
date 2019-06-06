@@ -1,0 +1,54 @@
+{
+    "general.relativeTime.future": "in %s",
+    "general.relativeTime.past": "%s ago",
+    "general.relativeTime.s": "1 second",
+    "general.relativeTime.ss": "%d seconds",
+    "general.relativeTime.m": "1 minute",
+    "general.relativeTime.mm": "%d minutes",
+    "general.relativeTime.h": "1 hour",
+    "general.relativeTime.hh": "%d hours",
+    "general.relativeTime.d": "1 day",
+    "general.relativeTime.dd": "%d days",
+    "general.relativeTime.M": "1 month",
+    "general.relativeTime.MM": "%d months",
+    "general.relativeTime.y": "1 year",
+    "general.relativeTime.yy": "%d years",
+
+    "general.loading": "Loading",
+    "general.error": "An error has occurred",
+    "general.loadingText": "Data is being loaded.<br />Please be patient, it won't be long now ;)",
+
+    "general.hotjarError": "There was an error loading the Hotjar feedback widget. If you are using an ad blocker, please disable it and try again.",
+
+    "toolbar.search.label": "Search",
+    "toolbar.feedback.label": "Submit feedback",
+
+    "search.button.label": "Search",
+    "search.box.placeholder": "Type in a transaction hash, block hash, block number or account hash...",
+    "search.noResults.text": "Sorry, your query didn't return any results",
+
+    "dashboardView.lastBlocksChart.title.label": "Last blocks transactions",
+    "dashboardView.content.latestBlock.label": "Latest block",
+
+    "blockView.sidebar.logo": "Bk",
+    "blockView.sidebar.title": "Blocks by tx count",
+
+    "blockView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different block.",
+    "blockView.content.blockSummary.txs.label": "%d TXs",
+    "blockView.content.blockCreationTime.label": "Time",
+    "blockView.content.uncles.label": "Uncles",
+    "blockView.content.transactions.label": "Transactions",
+    "blockView.content.dataNotLoaded.text": "Data is still being processed. Please be patient",
+    "blockView.content.blockConfirmations.text": "%d confirmations",
+    "blockView.content.blockConfirmations.confirmed": "Confirmed",
+
+    "txView.sidebar.logo": "Tx",
+    "txView.sidebar.title": "Transactions by value",
+    "txView.sidebar.txNotAvailable.label": "Transaction data not available",
+
+    "txView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different transaction.",
+
+    "uncleView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different uncle.",
+
+    "accountView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different account."
+}

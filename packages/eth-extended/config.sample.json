@@ -1,0 +1,40 @@
+{
+    "ACCOUNT_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/account/%s",
+    "ACCOUNT_CM_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/account/%s/contract-msgs",
+    "ACCOUNT_CONTRACT_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/contract/%d/%s",
+    "ACCOUNT_TX_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/account/%s/txs",
+
+    "BALANCE_LATEST_API_URL": "https://balance.ethstats.io/v2/balance/block",
+    "BALANCE_HISTORICAL_API_URL": "https://balance.ethstats.io/v2/balance",
+
+    "BLOCK_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/block/%d",
+    "BLOCK_VALUE_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/block-range/%d/%d",
+
+    "CM_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/tx/%s/contract-msgs/%d",
+    "CM_CM_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/tx/%s/contract-msgs/%d/contract-msgs",
+    "CM_TOKENS_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/tx/%s/contract-msgs/%d/token-transfers",
+    "CM_LOG_EVENTS_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/tx/%s/contract-msgs/%d/log-entries",
+
+    "DS_PASS": "<password>",
+    "DS_URL": "wss://ds.ethstats.io",
+    "DS_USER": "frontend",
+
+    "INFURA_API_URL": "https://mainnet.infura.io/",
+
+    "PRICES_API_URL": "https://rabbit.ethstats.io/api/v1/prices",
+
+    "SEARCH_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/search/%s",
+
+    "TX_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/tx/%s",
+    "TX_CM_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/tx/%s/contract-msgs",
+    "TX_GRAPHS_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/tx/%s/graph/%s",
+    "TX_TOKENS_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/tx/%s/token-transfers",
+    "TX_LOG_EVENTS_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/tx/%s/log-entries",
+
+    "UNCLE_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/uncle/%s",
+
+    "alethioApiUrl": "https://api.aleth.io/docs",
+    "alethioMonitoringUrl": "https://monitoring.aleth.io",
+    "alethioReportsUrl": "https://reports.aleth.io",
+    "ethstatsUrl": "https://ethstats.io"
+}

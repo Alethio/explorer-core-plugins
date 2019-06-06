@@ -1,0 +1,131 @@
+{
+    "status": 200,
+    "data": {
+        "0x3209f98bebf0149b769ce26d71f7aea8e435efea": {
+            "token": "0x3209f98bebf0149b769ce26d71f7aea8e435efea",
+            "currency": {
+                "coinId": 725,
+                "id": "traxia",
+                "name": "TRAXIA",
+                "symbol": "TMT",
+                "address": "0x3209f98bebf0149b769ce26d71f7aea8e435efea",
+                "decimals": 18,
+                "totalSupply": 1000000000,
+                "circulatingSupply": 0
+            },
+            "chart": [
+                {
+                    "block": "6353640",
+                    "price_USD": 0.0086714498,
+                    "balance": "48400000000000000000000",
+                    "balance_USD": "419.70"
+                }
+            ]
+        },
+        "0x6059f55751603ead7dc6d280ad83a7b33d837c90": {
+            "token": "0x6059f55751603ead7dc6d280ad83a7b33d837c90",
+            "currency": {
+                "coinId": 1073,
+                "id": "hybrid-block",
+                "name": "Hybrid Block",
+                "symbol": "HYB",
+                "address": "0x6059f55751603ead7dc6d280ad83a7b33d837c90",
+                "decimals": 18,
+                "totalSupply": 1000000000,
+                "circulatingSupply": 0
+            },
+            "chart": [
+                {
+                    "block": "6353640",
+                    "price_USD": 0.0194323869,
+                    "balance": "13020000000000000000000",
+                    "balance_USD": "253.01"
+                }
+            ]
+        },
+        "0x9e46a38f5daabe8683e10793b06749eef7d733d1": {
+            "token": "0x9e46a38f5daabe8683e10793b06749eef7d733d1",
+            "currency": {
+                "coinId": 262,
+                "id": "polyswarm",
+                "name": "PolySwarm",
+                "symbol": "NCT",
+                "address": "0x9e46a38f5daabe8683e10793b06749eef7d733d1",
+                "decimals": 18,
+                "totalSupply": 1885913075,
+                "circulatingSupply": 0
+            },
+            "chart": [
+                {
+                    "block": "6353640",
+                    "price_USD": 0.0036077864,
+                    "balance": "119145000000000000000000",
+                    "balance_USD": "429.85"
+                }
+            ]
+        },
+        "0xa4e8c3ec456107ea67d3075bf9e3df3a75823db0": {
+            "token": "0xa4e8c3ec456107ea67d3075bf9e3df3a75823db0",
+            "currency": {
+                "coinId": 30,
+                "id": "loom-network",
+                "name": "Loom Network",
+                "symbol": "LOOM",
+                "address": "0xa4e8c3ec456107ea67d3075bf9e3df3a75823db0",
+                "decimals": 18,
+                "totalSupply": 1000000000,
+                "circulatingSupply": 0
+            },
+            "chart": [
+                {
+                    "block": "6353640",
+                    "price_USD": 0.077218123,
+                    "balance": "0",
+                    "balance_USD": "0.00"
+                }
+            ]
+        },
+        "0xc27c95350ecd634c80df89db0f10cd5c24b7b11f": {
+            "token": "0xc27c95350ecd634c80df89db0f10cd5c24b7b11f",
+            "currency": {
+                "coinId": 593,
+                "id": "pixie-coin",
+                "name": "Pixie Coin",
+                "symbol": "PXC",
+                "address": "0xc27c95350ecd634c80df89db0f10cd5c24b7b11f",
+                "decimals": 2,
+                "totalSupply": 10000000000,
+                "circulatingSupply": 0
+            },
+            "chart": [
+                {
+                    "block": "6353640",
+                    "price_USD": 0.000861211,
+                    "balance": "0",
+                    "balance_USD": "0.00"
+                }
+            ]
+        },
+        "ETH": {
+            "token": "ETH",
+            "currency": {
+                "coinId": 2,
+                "id": "ethereum",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "address": "",
+                "decimals": 18,
+                "totalSupply": 0,
+                "circulatingSupply": 0
+            },
+            "chart": [
+                {
+                    "block": "6353640",
+                    "price_USD": 198.252916273,
+                    "balance": "35327892301860348000",
+                    "balance_USD": "7003.86"
+                }
+            ]
+        }
+    }
+}

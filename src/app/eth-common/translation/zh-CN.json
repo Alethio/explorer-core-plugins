@@ -1,0 +1,54 @@
+{
+    "general.relativeTime.future": "于%s内",
+    "general.relativeTime.past": "%s前",
+    "general.relativeTime.s": "1秒",
+    "general.relativeTime.ss": "%d秒",
+    "general.relativeTime.m": "1分钟",
+    "general.relativeTime.mm": "%d分钟",
+    "general.relativeTime.h": "1小时",
+    "general.relativeTime.hh": "%d小时",
+    "general.relativeTime.d": "1天",
+    "general.relativeTime.dd": "%d天",
+    "general.relativeTime.M": "1个月",
+    "general.relativeTime.MM": "%d个月",
+    "general.relativeTime.y": "1年",
+    "general.relativeTime.yy": "%d年",
+
+    "general.loading": "加载中",
+    "general.error": "出错了！",
+    "general.loadingText": "正在加载数据…<br />请耐心等待，马上就好喔！^^",
+
+    "general.hotjarError": "加载Hotjar反馈部件出错。若您正在使用广告拦截插件，请禁用插件并再次尝试。",
+
+    "toolbar.search.label": "搜索",
+    "toolbar.feedback.label": "提交您的反馈",
+
+    "search.button.label": "搜索",
+    "search.box.placeholder": "输入交易哈希值、区块哈希值、区块高度或账号地址",
+    "search.noResults.text": "对不起，未查找到返回结果",
+
+    "dashboardView.lastBlocksChart.title.label": "最新区块交易",
+    "dashboardView.content.latestBlock.label": "最新区块",
+
+    "blockView.sidebar.logo": "区块",
+    "blockView.sidebar.title": "区块图标长度按交易数呈现",
+
+    "blockView.content.noData.text": "无数据 <br /> 试一下其他区块吧！",
+    "blockView.content.blockSummary.txs.label": "%d个交易",
+    "blockView.content.blockCreationTime.label": "时间戳",
+    "blockView.content.uncles.label": "叔块数量",
+    "blockView.content.transactions.label": "交易数",
+    "blockView.content.dataNotLoaded.text": "数据正在处理中，请耐心等待",
+    "blockView.content.blockConfirmations.text": "已有%d个区块确认",
+    "blockView.content.blockConfirmations.confirmed": "已确认",
+
+    "uncleView.content.noData.text": "无数据。 <br /> 试一下其他叔块吧！",
+
+    "txView.sidebar.logo": "交易",
+    "txView.sidebar.title": "交易图标大小按金额呈现",
+    "txView.sidebar.txNotAvailable.label": "没有该交易的数据",
+
+    "txView.content.noData.text": "无数据 <br /> 试一下其他交易吧！",
+
+    "accountView.content.noData.text": "无数据。 <br /> 试一下其他账户吧！"
+}

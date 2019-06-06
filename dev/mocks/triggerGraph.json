@@ -1,0 +1,166 @@
+{
+  "status": 200,
+  "data": {
+    "nodes": [
+      {
+        "id": "Tx_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655",
+        "type": "CallTx"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_1",
+        "type": "CallContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_2",
+        "type": "CallContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_3",
+        "type": "CallContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_4",
+        "type": "CallContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_5",
+        "type": "CallContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_6",
+        "type": "CreateContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_7",
+        "type": "CallContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_8",
+        "type": "CallContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_9",
+        "type": "CallContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_10",
+        "type": "CallContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_11",
+        "type": "CallContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_12",
+        "type": "CallContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_13",
+        "type": "ValueContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_14",
+        "type": "ValueContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_15",
+        "type": "CallContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_16",
+        "type": "ValueContractMsg"
+      },
+      {
+        "id": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_17",
+        "type": "SelfdestructContractMsg"
+      }
+    ],
+    "edges": [
+      {
+        "from": "Tx_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_1",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_1",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_2",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_1",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_3",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_1",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_4",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_1",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_5",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_4",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_6",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_5",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_7",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_6",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_8",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_6",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_9",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_7",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_10",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_7",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_11",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_7",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_12",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_7",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_13",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_7",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_14",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_6",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_15",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_7",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_16",
+        "type": "triggersMsg"
+      },
+      {
+        "from": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_5",
+        "to": "ContractMsg_0xf73f4ac2246af13fe312d9cb9ba7cb481e94a409004d2e883d080d47b9ca8655_17",
+        "type": "triggersMsg"
+      }
+    ]
+  }
+}

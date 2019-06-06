@@ -1,0 +1,20 @@
+{
+    "status": 200,
+    "data": {
+        "blockCreationTime": 1536576836,
+        "blockDifficulty": "3157119344029205",
+        "blockExtraData": "65746865726d696e652d657534",
+        "blockGasLimit": "8000029",
+        "blockGasUsed": "7984753",
+        "blockHash": "caa1fb53924999c20581a26958070779e6e12925e68b5f7dc9d94006611117cf",
+        "blockMixHash": "356be11b586b84905ca057818c1839f91738d3d5b88eb7201d6850e036861e28",
+        "blockNonce": "a056fcf40a35fe3a",
+        "hasBeneficiary": "ea674fdde714fd979de3edf0f56aa9716b898ec8",
+        "hasBeneficiaryAlias": "Ethermine",
+        "includedInBlock": 6305592,
+        "number": 6305589,
+        "sha3Uncles": "1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+        "uncleBeneficiaryReward": "1875000000000000000",
+        "uncleIndex": 0
+    }
+}

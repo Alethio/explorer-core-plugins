@@ -1,0 +1,166 @@
+{
+    "pages": [{
+        "def": "page://aleth.io/block",
+        "children": {
+            "sidebar": [{
+                "def": "context://aleth.io/block/list",
+                "children": [
+                    { "def": "module://aleth.io/block/list" }
+                ]
+            }],
+            "content": [{
+                "def": "module://aleth.io/block/details",
+                "pageCritical": true,
+                "children": {
+                    "confirmations": [
+                        { "def": "module://aleth.io/block/confirmations" }
+                    ],
+                    "txs": [
+                        { "def": "module://aleth.io/block/txs" }
+                    ]
+                }
+            }]
+        }
+    }, {
+        "def": "page://aleth.io/uncle",
+        "children": {
+            "content": [{
+                "def": "module://aleth.io/uncle/details",
+                "pageCritical": true
+            }]
+        }
+    }, {
+        "def": "page://aleth.io/tx",
+        "children": {
+            "sidebar": [{
+                "def": "context://aleth.io/extended/tx/parentBlock?optional",
+                "children": [{
+                    "def": "module://aleth.io/tx/list"
+                }]
+            }],
+            "content": [{
+                "def": "context://aleth.io/extended/tx/parentBlock?optional",
+                "pageCritical": true,
+                "children": [{
+                    "def": "module://aleth.io/tx/details",
+                    "children": {
+                        "blockConfirmations": [{
+                            "def": "context://aleth.io/extended/tx/parentBlock",
+                            "children": [{
+                                 "def": "module://aleth.io/block/confirmations"
+                            }]
+                        }]
+                    }
+                }, {
+                    "def": "module://aleth.io/tx/summary"
+                }, {
+                    "def": "module://aleth.io/tx/payload"
+                }]
+            }]
+        }
+    }, {
+        "def": "page://aleth.io/cm",
+        "children": {
+            "sidebar": [{
+                "def": "context://aleth.io/cm/parent",
+                "children": [{
+                    "def": "module://aleth.io/cm/list"
+                }]
+            }],
+            "content": [{
+                "def": "module://aleth.io/cm/details",
+                "pageCritical": true,
+                "children": {
+                    "modules": [{
+                        "def": "module://aleth.io/cm/summary"
+                    }, {
+                        "def": "module://aleth.io/cm/payload"
+                    }]
+                }
+            }]
+        }
+    }, {
+        "def": "page://aleth.io/account",
+        "children": {
+            "identicon": [{
+                "def": "module://aleth.io/account/identicon"
+            }],
+            "top": [{
+                "def": "module://aleth.io/account/details", "pageCritical": true
+            }],
+            "balance": [{
+                "def": "module://aleth.io/account/balance"
+            }],
+            "bottom": [{
+                "def": "module://aleth.io/account/summary"
+            }, {
+                "def": "module://aleth.io/account/contract"
+            }]
+        }
+    }, {
+        "def": "page://aleth.io/dashboard",
+        "children": {
+            "content": [
+                { "def": "module://aleth.io/search" },
+                {
+                    "def": "context://aleth.io/dashboard/latestBlockRange",
+                    "children": [
+                        {
+                            "def": "module://aleth.io/dashboard/charts",
+                            "children": {
+                                "content": [{
+                                    "def": "module://aleth.io/dashboard/blocksChart",
+                                    "children": {
+                                        "children": [
+                                            {
+                                                "def": "context://aleth.io/block/latest",
+                                                "children": [
+                                                    { "def": "module://aleth.io/dashboard/latestBlockInfo" }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }, {
+                                    "def": "module://aleth.io/dashboard/avgTimeInPoolChart"
+                                }, {
+                                    "def": "module://aleth.io/dashboard/propagationChart"
+                                }]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }, {
+        "def": "page://aleth.io/privacy-policy",
+        "children": {}
+    }],
+
+    "rootModules": {
+        "toolbarTop": [{
+            "def": "module://aleth.io/toolbar/search"
+        }, {
+            "def": "module://aleth.io/toolbar/ethstats"
+        }, {
+            "def": "module://aleth.io/toolbar/alethioApi"
+        }, {
+            "def": "module://aleth.io/toolbar/alethioMonitoring"
+        }, {
+            "def": "module://aleth.io/toolbar/alethioReports"
+        }],
+        "toolbarBottom": [{
+            "def": "module://aleth.io/toolbar/feedback"
+        }],
+        "topbar": [{
+            "def": "module://aleth.io/topbar/search"
+        }, {
+            "def": "module://aleth.io/topbar/alethioApi"
+        }, {
+            "def": "module://aleth.io/topbar/alethioMonitoring"
+        }, {
+            "def": "module://aleth.io/topbar/alethioReports"
+        }, {
+            "def": "module://aleth.io/topbar/feedback"
+        }]
+    }
+}

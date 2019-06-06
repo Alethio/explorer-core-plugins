@@ -1,0 +1,17 @@
+{
+    "name": "@alethio/explorer-plugin-eth-common",
+    "publisher": "aleth.io",
+    "pluginName": "eth-common",
+    "version": "1.0.1",
+    "description": "Explorer plugin with common ETH modules and pages",
+    "author": "Alexandru Ciuca <alexandru.ciuca@consensys.net>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Alethio/explorer-core-plugins"
+    },
+    "main": "dist/index.js",
+    "publishConfig": {
+        "access": "public"
+    }
+}
