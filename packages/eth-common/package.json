@@ -2,7 +2,7 @@
     "name": "@alethio/explorer-plugin-eth-common",
     "publisher": "aleth.io",
     "pluginName": "eth-common",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Explorer plugin with common ETH modules and pages",
     "author": "Alexandru Ciuca <alexandru.ciuca@consensys.net>",
     "license": "MIT",
