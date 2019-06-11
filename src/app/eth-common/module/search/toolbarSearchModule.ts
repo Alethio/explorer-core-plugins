@@ -16,13 +16,14 @@ export const toolbarSearchModule: (searchInlineStore: SearchInlineStore) => IMod
     },
 
     getContentProps(data) {
-        let { translation, asyncData } = data;
+        let { translation, asyncData, logger } = data;
 
         let search = asyncData.get(AlethioAdapterType.Search)!.data as ISearch;
         let props: IToolbarSearchProps = {
             translation,
             search,
-            searchInlineStore
+            searchInlineStore,
+            logger
         };
         return props;
     }

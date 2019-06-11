@@ -16,13 +16,14 @@ export const topbarSearchModule: (searchInlineStore: SearchInlineStore) => IModu
     },
 
     getContentProps(data) {
-        let { translation, asyncData } = data;
+        let { translation, asyncData, logger } = data;
 
         let search = asyncData.get(AlethioAdapterType.Search)!.data as ISearch;
         let props: ISearchMenuProps = {
             translation,
             search,
-            searchInlineStore
+            searchInlineStore,
+            logger
         };
         return props;
     }

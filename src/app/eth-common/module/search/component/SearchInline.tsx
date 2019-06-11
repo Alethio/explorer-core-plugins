@@ -15,7 +15,7 @@ import { SearchState } from "app/eth-common/module/search/component/SearchState"
 import { ResultsList } from "app/eth-common/module/search/component/ResultsList";
 import { IResult } from "app/shared/data/search/IResult";
 import { SearchStatus } from "app/eth-common/module/search/component/SearchStatus";
-import { observable } from "mobx";
+import { ILogger } from "plugin-api/ILogger";
 
 const InlineSearchContent = styled.div`
     display: inline-block;
@@ -59,25 +59,23 @@ const SearchBoxContainer = styled.div`
 `;
 
 export interface ISearchInlineProps {
-    internalNav: IInternalNav;
+    internalNav?: IInternalNav;
     translation: ITranslation;
     search: ISearch;
     searchInlineStore: SearchInlineStore;
+    logger: ILogger;
     onRequestClose?(): void;
 }
 
 @observer
 class $SearchInline extends React.Component<ISearchInlineProps> {
-    @observable
-    private isActive = false;
-    private blurTimeout: number | undefined;
     private searchBox: HTMLInputElement;
     private searchState: SearchState;
 
     constructor(props: ISearchInlineProps) {
         super(props);
 
-        this.searchState = new SearchState(this.props.search, this.props.internalNav);
+        this.searchState = new SearchState(this.props.search, this.props.internalNav!, this.props.logger);
     }
 
     render() {
@@ -96,16 +94,16 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
                     <form onSubmit={this.handleSubmit}>
                         <SearchBox
                             innerRef={ref => this.searchBox = ref!}
-                            readOnly={this.searchState.status === SearchStatus.InProgress}
                             type="text" autoComplete="off" autoCorrect="off" spellCheck={false}
                             placeholder={tr.get("search.box.placeholder")}
-                            onFocus={this.handleFocus}
-                            onBlur={this.handleBlur}
+                            onFocus={this.searchState.handleFocus}
+                            onBlur={this.searchState.handleBlur}
+                            onKeyUp={this.searchState.handleKeyPress}
                         />
                     </form>
                     </SearchBoxContainer>
                 </Content>
-                { this.isActive && this.searchState.status === SearchStatus.Finished ?
+                { this.searchState.isActive && this.searchState.status === SearchStatus.Finished ?
                 <ResultsLayer>
                 { !this.searchState.results.length ?
                     <NoResults>
@@ -128,11 +126,13 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
 
     componentWillUnmount() {
         this.props.searchInlineStore.instancesCount--;
+        this.searchState.deactivate();
     }
 
     private handlePaste = (hash: string) => {
         setTimeout(() => {
             this.searchBox.value = hash;
+            this.searchState.triggerSearch(hash, false);
             this.focusSearchBox();
         });
     }
@@ -147,8 +147,6 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
         if (e) {
             e.preventDefault();
         }
-
-        await this.searchState.submit(this.searchBox.value);
     }
 
     private handleResultClick = (r: IResult) => {
@@ -156,18 +154,6 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
         if (this.props.onRequestClose) {
             this.props.onRequestClose();
         }
-    }
-
-    private handleFocus = () => {
-        this.isActive = true;
-        clearTimeout(this.blurTimeout);
-    }
-
-    private handleBlur = (e: any) => {
-        // setTimeout to prevent the results layer from disappearing when clicking on a result
-        this.blurTimeout = setTimeout(() => {
-            this.isActive = false;
-        }, 100);
     }
 }
 

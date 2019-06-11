@@ -8,11 +8,13 @@ import { ISearch } from "app/shared/data/search/ISearch";
 import { ToolbarItem } from "@alethio/ui/lib/layout/toolbar/ToolbarItem";
 import { ToolbarIconButton } from "@alethio/ui/lib/layout/toolbar/ToolbarIconButton";
 import { SearchIcon } from "@alethio/ui/lib/icon/SearchIcon";
+import { ILogger } from "plugin-api/ILogger";
 
 export interface IToolbarSearchProps {
     translation: ITranslation;
     search: ISearch;
     searchInlineStore: SearchInlineStore;
+    logger: ILogger;
 }
 
 @observer
@@ -35,6 +37,7 @@ export class ToolbarSearch extends React.Component<IToolbarSearchProps> {
                     translation={tr}
                     search={this.props.search}
                     searchInlineStore={this.props.searchInlineStore}
+                    logger={this.props.logger}
                 />
             </>
         );

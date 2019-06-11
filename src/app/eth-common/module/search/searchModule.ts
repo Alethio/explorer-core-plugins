@@ -1,17 +1,10 @@
 import { IModuleDef } from "plugin-api/IModuleDef";
 import { AlethioAdapterType } from "../../../shared/adapter/AlethioAdapterType";
 import { ISearch } from "app/shared/data/search/ISearch";
-import { SearchInline } from "./component/SearchInline";
-import { ITranslation } from "plugin-api/ITranslation";
+import { SearchInline, ISearchInlineProps } from "./component/SearchInline";
 import { SearchInlineStore } from "./SearchInlineStore";
 
-interface ISearchProps {
-    translation: ITranslation;
-    search: ISearch;
-    searchInlineStore: SearchInlineStore;
-}
-
-export const searchModule: (searchInlineStore: SearchInlineStore) => IModuleDef<ISearchProps, {}, void> =
+export const searchModule: (searchInlineStore: SearchInlineStore) => IModuleDef<ISearchInlineProps, {}, void> =
 (searchInlineStore) => ({
     contextType: {},
     dataAdapters: [{
@@ -23,13 +16,14 @@ export const searchModule: (searchInlineStore: SearchInlineStore) => IModuleDef<
     },
 
     getContentProps(data) {
-        let { translation, asyncData } = data;
+        let { translation, asyncData, logger } = data;
 
         let search = asyncData.get(AlethioAdapterType.Search)!.data as ISearch;
-        let props: ISearchProps = {
+        let props: ISearchInlineProps = {
             translation,
             search,
-            searchInlineStore
+            searchInlineStore,
+            logger
         };
         return props;
     }

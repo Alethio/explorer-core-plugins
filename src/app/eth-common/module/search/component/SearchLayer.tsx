@@ -21,6 +21,7 @@ import { SearchState } from "app/eth-common/module/search/component/SearchState"
 import { IResult } from "app/shared/data/search/IResult";
 import { ResultsList } from "app/eth-common/module/search/component/ResultsList";
 import { SearchStatus } from "app/eth-common/module/search/component/SearchStatus";
+import { ILogger } from "plugin-api/ILogger";
 
 const Content = styled.div`
     display: flex;
@@ -59,6 +60,7 @@ export interface ISearchLayerProps {
     translation: ITranslation;
     search: ISearch;
     searchInlineStore: SearchInlineStore;
+    logger: ILogger;
     onRequestOpen(): void;
     onRequestClose(): void;
 }
@@ -71,7 +73,7 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
     constructor(props: ISearchLayerProps) {
         super(props);
 
-        this.searchState = new SearchState(this.props.search, this.props.internalNav);
+        this.searchState = new SearchState(this.props.search, this.props.internalNav, this.props.logger);
     }
     render() {
         let { open, translation: tr } = this.props;
@@ -91,9 +93,12 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
                         <form onSubmit={this.handleSubmit}>
                             <SearchBox
                                 innerRef={ref => this.searchBox = ref!}
-                                readOnly={this.searchState.status === SearchStatus.InProgress}
                                 type="text" autoComplete="off" autoCorrect="off" spellCheck={false}
-                                placeholder={tr.get("search.box.placeholder")} />
+                                placeholder={tr.get("search.box.placeholder")}
+                                onFocus={this.searchState.handleFocus}
+                                onBlur={this.searchState.handleBlur}
+                                onKeyUp={this.searchState.handleKeyPress}
+                            />
                         </form>
                         </SearchBoxContainer>
                         <CloseIconContainer>
@@ -132,6 +137,7 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
 
     componentDidUpdate(prevProps: ISearchLayerProps) {
         if (this.props.open !== prevProps.open && this.props.open) {
+            this.searchState.deactivate();
             this.searchState.reset();
             this.focusSearchBox();
         }
@@ -145,7 +151,10 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
         if (!this.props.open) {
             this.props.onRequestOpen();
         }
-        setTimeout(() => this.searchBox.value = hash);
+        setTimeout(() => {
+            this.searchBox.value = hash;
+            this.searchState.triggerSearch(hash, false);
+        });
     }
 
     private focusSearchBox() {
@@ -158,8 +167,6 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
         if (e) {
             e.preventDefault();
         }
-
-        await this.searchState.submit(this.searchBox.value);
     }
 
     private handleResultClick = (r: IResult) => {
