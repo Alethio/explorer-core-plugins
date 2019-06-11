@@ -4,18 +4,21 @@ import { ResultType } from "app/shared/data/search/ResultType";
 import { IAccountResultData } from "app/shared/data/search/result/IAccountResultData";
 import { IBlockResultData } from "app/shared/data/search/result/IBlockResultData";
 import { IInternalNav } from "plugin-api/withInternalNav";
+import { IResult } from "app/shared/data/search/IResult";
 
 export class SearchState {
     @observable
-    noResults = false;
+    results: IResult[] = [];
     @observable
     inProgress = false;
+    // Last/current query
+    private query: string;
 
     constructor(
         private search: ISearch,
         private internalNav: IInternalNav,
-        private onResults: () => void,
-        private onNoResults: () => void
+        private onResults?: () => void,
+        private onNoResults?: () => void
     ) {
 
     }
@@ -26,50 +29,67 @@ export class SearchState {
             return;
         }
 
-        this.noResults = false;
+        this.results = [];
         this.inProgress = true;
 
         query = query.trim().toLowerCase();
-        let result = (await this.search.search(query))[0];
-        if (result) {
-            let url: string;
+        let results = await this.search.search(query);
 
-            if (result.type === ResultType.Account) {
-                url = `page://aleth.io/account?accountHash=${(result.data as IAccountResultData).address}`;
-            } else if (result.type === ResultType.Block) {
-                url = `page://aleth.io/block?blockNumber=${(result.data as IBlockResultData).blockNumber}`;
-            } else if (result.type === ResultType.Tx) {
-                url = `page://aleth.io/tx?txHash=${query}`;
-            } else if (result.type === ResultType.Uncle) {
-                url = `page://aleth.io/uncle?uncleHash=${query}`;
-            } else {
-                throw new Error(`Unhandled result type "${result.type}"`);
-            }
+        // Filter out unknown results
+        results = results.filter(result => {
+            let uri = this.buildResultUri(result, query);
+            return uri ? this.internalNav.resolve(uri) : false;
+        });
+        this.query = query;
 
-            runInAction(() => {
-                this.inProgress = false;
-            });
-            if (!this.internalNav.goTo(url)) {
-                this.handleNoResults();
-                return;
+        runInAction(() => {
+            this.inProgress = false;
+            this.results = results;
+        });
+
+        if (results.length) {
+            if (this.onResults) {
+                this.onResults();
             }
-            this.onResults();
         } else {
-            this.handleNoResults();
+            if (this.onNoResults) {
+                this.onNoResults();
+            }
         }
     }
 
-    private handleNoResults() {
-        runInAction(() => {
-            this.noResults = true;
-            this.inProgress = false;
-        });
-        this.onNoResults();
+    activateResult(result: IResult) {
+        let uri = this.buildResultUri(result, this.query);
+        if (!uri) {
+            throw new Error(`Unknown resultType "${result.type}"`);
+        }
+        this.internalNav.goTo(uri);
+    }
+
+    /**
+     * TODO: include tx/uncle hash in result so we don't have to pass query
+     */
+    private buildResultUri(result: IResult, query: string) {
+        let uri: string;
+
+        if (result.type === ResultType.Account) {
+            uri = `page://aleth.io/account?accountHash=${(result.data as IAccountResultData).address}`;
+        } else if (result.type === ResultType.Block) {
+            uri = `page://aleth.io/block?blockNumber=${(result.data as IBlockResultData).blockNumber}`;
+        } else if (result.type === ResultType.Tx) {
+            uri = `page://aleth.io/tx?txHash=${query}`;
+        } else if (result.type === ResultType.Uncle) {
+            uri = `page://aleth.io/uncle?uncleHash=${query}`;
+        } else {
+            return void 0;
+        }
+
+        return uri;
     }
 
     @action
     reset() {
-        this.noResults = false;
+        this.results = [];
         this.inProgress = false;
     }
 }

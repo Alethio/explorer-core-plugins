@@ -19,6 +19,8 @@ import { ISearch } from "app/shared/data/search/ISearch";
 import { ResultsLayer } from "app/eth-common/module/search/component/ResultsLayer";
 import { HashPasteHandler } from "app/eth-common/module/search/component/HashPasteHandler";
 import { SearchState } from "app/eth-common/module/search/component/SearchState";
+import { IResult } from "app/shared/data/search/IResult";
+import { ResultsList } from "app/eth-common/module/search/component/ResultsList";
 
 const Content = styled.div`
     display: flex;
@@ -73,15 +75,7 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
     constructor(props: ISearchLayerProps) {
         super(props);
 
-        this.searchState = new SearchState(
-            this.props.search,
-            this.props.internalNav,
-            this.props.onRequestClose,
-            () => {
-                this.searchBox.value = "";
-                this.focusSearchBox();
-            }
-        );
+        this.searchState = new SearchState(this.props.search, this.props.internalNav);
     }
     render() {
         let { open, translation: tr } = this.props;
@@ -116,13 +110,15 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
                             <ToolbarIconButton onClick={this.props.onRequestClose} Icon={CloseIcon} />
                         </CloseIconContainer>
                     </Content>
-                    { this.searchState.noResults ?
                     <ResultsLayer>
+                    { !this.searchState.results.length ?
                         <NoResults>
                             {tr.get("search.noResults.text")}
                         </NoResults>
+                        :
+                        <ResultsList results={this.searchState.results} onActivateResult={this.handleResultClick} />
+                    }
                     </ResultsLayer>
-                    : null }
                     <HashPasteHandler onPaste={this.handlePaste} />
                 </Layer>
             </Fade>, document.body) :
@@ -172,6 +168,11 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
         }
 
         await this.searchState.submit(this.searchBox.value);
+    }
+
+    private handleResultClick = (r: IResult) => {
+        this.searchState.activateResult(r);
+        this.props.onRequestClose();
     }
 }
 

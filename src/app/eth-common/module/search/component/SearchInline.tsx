@@ -15,6 +15,8 @@ import { ISearch } from "app/shared/data/search/ISearch";
 import { ResultsLayer } from "app/eth-common/module/search/component/ResultsLayer";
 import { HashPasteHandler } from "app/eth-common/module/search/component/HashPasteHandler";
 import { SearchState } from "app/eth-common/module/search/component/SearchState";
+import { ResultsList } from "app/eth-common/module/search/component/ResultsList";
+import { IResult } from "app/shared/data/search/IResult";
 
 const InlineSearchContent = styled.div`
     display: inline-block;
@@ -73,19 +75,7 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
     constructor(props: ISearchInlineProps) {
         super(props);
 
-        this.searchState = new SearchState(
-            this.props.search,
-            this.props.internalNav,
-            () => {
-                if (this.props.onRequestClose) {
-                    this.props.onRequestClose();
-                }
-            },
-            () => {
-                this.searchBox.value = "";
-                this.focusSearchBox();
-            }
-        );
+        this.searchState = new SearchState(this.props.search, this.props.internalNav);
     }
 
     render() {
@@ -123,13 +113,15 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
                         />
                     </ResponsiveContainer>
                 </Content>
-                { this.searchState.noResults ?
                 <ResultsLayer>
+                { !this.searchState.results.length ?
                     <NoResults>
                         {tr.get("search.noResults.text")}
                     </NoResults>
+                    :
+                    <ResultsList results={this.searchState.results} onActivateResult={this.handleResultClick} />
+                }
                 </ResultsLayer>
-                : null }
             </InlineSearchContent>
             <HashPasteHandler onPaste={this.handlePaste} />
             </>
@@ -163,6 +155,13 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
         }
 
         await this.searchState.submit(this.searchBox.value);
+    }
+
+    private handleResultClick = (r: IResult) => {
+        this.searchState.activateResult(r);
+        if (this.props.onRequestClose) {
+            this.props.onRequestClose();
+        }
     }
 }
 
