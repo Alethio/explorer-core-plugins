@@ -5,21 +5,23 @@ import { IAccountResultData as IAccountResultDataBasic } from "app/shared/data/s
 import { ValueBox } from "@alethio/ui/lib/layout/content/box/ValueBox";
 import { ResultDescription } from "./ResultDescription";
 import { ResultTypes } from "./ResultTypes";
+import { ITranslation } from "plugin-api/ITranslation";
 
 export interface IAccountResultProps {
     result: IResult<IAccountResultDataExtended | IAccountResultDataBasic>;
+    translation: ITranslation;
 }
 
 export class AccountResult extends React.Component<IAccountResultProps> {
     render() {
-        let { result } = this.props;
+        let { result, translation: tr } = this.props;
 
         return (
             <>
                 <div style={{ display: "flex", flexWrap: "wrap" }}>
-                    { (result.data! as IAccountResultDataExtended).label ?
-                    <ValueBox>{(result.data! as IAccountResultDataExtended).label}</ValueBox>
-                    : null }
+                    <ValueBox>{
+                        (result.data! as IAccountResultDataExtended).label || tr.get("search.result.address.label")
+                    }</ValueBox>
                     { (result.data! as IAccountResultDataExtended).symbol ?
                     <ValueBox colors="secondaryInvert">{(result.data! as IAccountResultDataExtended).symbol}</ValueBox>
                     : null }

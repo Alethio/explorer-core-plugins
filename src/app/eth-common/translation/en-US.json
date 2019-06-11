@@ -29,6 +29,7 @@
     "search.result.blockNumber.label": "Block",
     "search.result.transaction.label": "Transaction",
     "search.result.uncle.label": "Uncle",
+    "search.result.address.label": "Address",
 
     "dashboardView.lastBlocksChart.title.label": "Last blocks transactions",
     "dashboardView.content.latestBlock.label": "Latest block",

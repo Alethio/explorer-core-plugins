@@ -29,6 +29,7 @@
     "search.result.blockNumber.label": "区块",
     "search.result.transaction.label": "交易",
     "search.result.uncle.label": "叔块",
+    "search.result.address.label": "地址",
 
     "dashboardView.lastBlocksChart.title.label": "最新区块交易",
     "dashboardView.content.latestBlock.label": "最新区块",
