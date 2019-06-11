@@ -7,7 +7,6 @@ import { ITranslation } from "plugin-api/ITranslation";
 import { SearchIcon } from "@alethio/ui/lib/icon/SearchIcon";
 import { Fade } from "@alethio/ui/lib/fx/Fade";
 import { SpinnerLite } from "@alethio/ui/lib/fx/SpinnerLite";
-import { Layer } from "@alethio/ui/lib/overlay/Layer";
 import { Mask } from "@alethio/ui/lib/overlay/Mask";
 import { CloseIcon } from "@alethio/ui/lib/icon/CloseIcon";
 import { ToolbarIconButton } from "@alethio/ui/lib/layout/toolbar/ToolbarIconButton";
@@ -23,7 +22,20 @@ import { ResultsList } from "app/eth-common/module/search/component/ResultsList"
 import { SearchStatus } from "app/eth-common/module/search/component/SearchStatus";
 import { ILogger } from "plugin-api/ILogger";
 
+const Layer = styled.div`
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+`;
+
 const Content = styled.div`
+    position: relative; /* For positioning the results */
+    background: ${props => props.theme.colors.overlayBg};
+    border: 1px solid ${props => props.theme.colors.overlayBorder};
+    box-sizing: border-box;
+    color: ${props => props.theme.colors.overlayText};
+    box-shadow: 0 24px 56px 0 rgba(39, 54, 86, 0.16);
     display: flex;
     align-items: center;
     padding: 16px 22px;
@@ -52,6 +64,10 @@ const SearchBoxContainer = styled.div`
 
 const CloseIconContainer = styled.div`
     margin-left: 20px;
+`;
+
+const ResultsPlaceholder = styled.div`
+    min-height: 50vh;
 `;
 
 export interface ISearchLayerProps {
@@ -106,18 +122,19 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
                         <CloseIconContainer>
                             <ToolbarIconButton onClick={this.props.onRequestClose} Icon={CloseIcon} />
                         </CloseIconContainer>
+                        { this.searchState.status === SearchStatus.Finished ?
+                        <ResultsLayer>
+                        { !this.searchState.results.length ?
+                            <NoResults>
+                                {tr.get("search.noResults.text")}
+                            </NoResults>
+                            :
+                            <ResultsList results={this.searchState.results} onActivateResult={this.handleResultClick} />
+                        }
+                        </ResultsLayer>
+                        : null }
                     </Content>
-                    { this.searchState.status === SearchStatus.Finished ?
-                    <ResultsLayer>
-                    { !this.searchState.results.length ?
-                        <NoResults>
-                            {tr.get("search.noResults.text")}
-                        </NoResults>
-                        :
-                        <ResultsList results={this.searchState.results} onActivateResult={this.handleResultClick} />
-                    }
-                    </ResultsLayer>
-                    : null }
+                    <ResultsPlaceholder />
                 </Layer>
             </Fade>, document.body) :
             null }
