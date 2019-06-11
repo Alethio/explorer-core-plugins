@@ -5,8 +5,10 @@ import { IResult } from "app/shared/data/search/IResult";
 import { ResultType } from "app/shared/data/search/ResultType";
 import { SearchDsRpcApi } from "app/eth-extended/data/search/SearchDsRpcApi";
 import { ILogger } from "plugin-api/ILogger";
+import { ISearch } from "app/shared/data/search/ISearch";
+import { IBlockResultData } from "app/shared/data/search/result/IBlockResultData";
 
-export class Search {
+export class Search implements ISearch {
     constructor(
         private searchHttpApi: SearchHttpApi,
         private searchDsRpcApi: SearchDsRpcApi,
@@ -21,39 +23,28 @@ export class Search {
         if (query.match(/^[0-9]+$/)) {
             let blockNo = parseInt(query, 10);
             let latestBlockNo = this.blockStateStore.getLatest();
-            let result: IResult = {
+            let result: IResult<IBlockResultData> = {
                 type: ResultType.Block,
-                blockNumber: blockNo
+                data: {
+                    blockNumber: blockNo
+                }
             };
-            return isBetween(blockNo, 0, latestBlockNo) ? result : void 0;
+            return isBetween(blockNo, 0, latestBlockNo) ? [result] : [];
         }
 
-        // If it looks like an account address, return immediately
-        let accountMatch = query.match(/^(0x)?([0-9a-f]{40})$/i);
-        if (accountMatch) {
-            let result: IResult = {
-                type: ResultType.Account
-            };
-            return result;
-        }
-
-        // If it looks like a regular tx / block / uncle hash, call the backend
+        // If it looks like a regular tx / block / uncle hash, search also in Deepstream
         let hashMatch = query.match(/^(0x)?([0-9a-f]{64})$/i);
-        if (hashMatch) {
-            let searchPromises = [
-                this.searchHttpApi.search(hashMatch[2]),
-                this.searchDsRpcApi.search(hashMatch[2])
-            ];
 
-            let [result1, result2] = await Promise.all(searchPromises.map((p, idx) => p.catch(e => {
-                this.logger.error("Search source failed", e, { sourceIdx: idx });
-                return void 0;
-            })));
+        let searchPromises = [
+            this.searchHttpApi.search(query),
+            hashMatch ? this.searchDsRpcApi.search(hashMatch[2]) : Promise.resolve([])
+        ];
 
-            return result1 || result2;
-        }
+        let [apiResults, dsResults] = await Promise.all<IResult[]>(searchPromises.map((p, idx) => p.catch(e => {
+            this.logger.error("Search source failed", e, { sourceIdx: idx });
+            return [];
+        })));
 
-        // Otherwise, no results
-        return void 0;
+        return [...apiResults, ...dsResults];
     }
 }

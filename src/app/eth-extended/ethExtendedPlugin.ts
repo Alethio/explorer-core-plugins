@@ -102,7 +102,7 @@ const ethExtendedPlugin: IPlugin = {
         api.addModuleDef("module://aleth.io/cm/summary", cmSummaryModule(dataSource));
         api.addModuleDef("module://aleth.io/cm/payload", cmPayloadModule);
 
-        api.addDataAdapter("adapter://aleth.io/search", new SearchAdapter(dataSource.stores.search));
+        api.addDataAdapter("adapter://aleth.io/search/v2", new SearchAdapter(dataSource.stores.search));
         api.addDataAdapter("adapter://aleth.io/avgTxTimeInPool", new BlockAvgTxTimeInPoolAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/pendingPoolInfo", new PendingPoolInfoAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/propagationInfo", new PropagationInfoAdapter(dataSource));

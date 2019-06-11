@@ -32,7 +32,7 @@ const ethLitePlugin: IPlugin = {
         api.addDataSource("source://aleth.io/web3", dataSource);
 
         api.addPageDef("page://aleth.io/dashboard", dashboardPage);
-        api.addDataAdapter("adapter://aleth.io/search", new SearchAdapter(dataSource.stores.search));
+        api.addDataAdapter("adapter://aleth.io/search/v2", new SearchAdapter(dataSource.stores.search));
 
         api.addDataAdapter("adapter://aleth.io/block/latestNo",
             new LatestBlockNumberAdapter(dataSource.stores.blockStateStore));

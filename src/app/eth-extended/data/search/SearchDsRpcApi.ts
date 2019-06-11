@@ -21,11 +21,11 @@ export class SearchDsRpcApi {
             });
         } catch (e) {
             if (e instanceof NotFoundError) {
-                return void 0;
+                return [];
             }
             throw e;
         }
 
-        return this.resultReader.read(data);
+        return [this.resultReader.read(data)];
     }
 }

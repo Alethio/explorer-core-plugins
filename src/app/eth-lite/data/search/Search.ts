@@ -3,8 +3,11 @@ import { Web3EthApi } from "app/eth-lite/data/Web3EthApi";
 import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { IResult } from "app/shared/data/search/IResult";
 import { ResultType } from "app/shared/data/search/ResultType";
+import { ISearch } from "app/shared/data/search/ISearch";
+import { IBlockResultData } from "app/shared/data/search/result/IBlockResultData";
+import { IAccountResultData } from "app/shared/data/search/result/IAccountResultData";
 
-export class Search {
+export class Search implements ISearch {
     constructor(
         private web3EthApi: Web3EthApi,
         private blockStateStore: BlockStateStore
@@ -20,20 +23,25 @@ export class Search {
             if (!latestBlockNo) {
                 throw new Error(`Latest block should be set by now`);
             }
-            let result: IResult = {
+            let result: IResult<IBlockResultData> = {
                 type: ResultType.Block,
-                blockNumber: blockNo
+                data: {
+                    blockNumber: blockNo
+                }
             };
-            return isBetween(blockNo, 0, latestBlockNo) ? result : void 0;
+            return isBetween(blockNo, 0, latestBlockNo) ? [result] : [];
         }
 
         // If it looks like an account address, return immediately
         let accountMatch = query.match(/^(0x)?([0-9a-f]{40})$/i);
         if (accountMatch) {
-            let result: IResult = {
-                type: ResultType.Account
+            let result: IResult<IAccountResultData> = {
+                type: ResultType.Account,
+                data: {
+                    address: "0x" + accountMatch[1]
+                }
             };
-            return result;
+            return [result];
         }
 
         // If it looks like a regular tx / block
@@ -45,20 +53,21 @@ export class Search {
                 let result: IResult = {
                     type: ResultType.Tx
                 };
-                return result;
+                return [result];
             } else {
-                let blockResult = await
-                this.web3EthApi.getBlockByHash(`0x${hashMatch[2].replace(/^0x/, "")}`);
+                let blockResult = await this.web3EthApi.getBlockByHash(`0x${hashMatch[2].replace(/^0x/, "")}`);
                 if (blockResult) {
-                    let result: IResult = {
+                    let result: IResult<IBlockResultData> = {
                         type: ResultType.Block,
-                        blockNumber: blockResult.number
+                        data: {
+                            blockNumber: blockResult.number
+                        }
                     };
-                    return result;
+                    return [result];
                 }
             }
         }
         // Otherwise, no results
-        return void 0;
+        return [];
     }
 }
