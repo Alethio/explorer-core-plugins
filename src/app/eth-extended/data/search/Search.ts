@@ -19,17 +19,21 @@ export class Search implements ISearch {
     }
 
     async search(query: string) {
-        // If it's a block number, return immediately
+        let localResults: IResult[] = [];
+
+        // If it's a block number
         if (query.match(/^[0-9]+$/)) {
             let blockNo = parseInt(query, 10);
             let latestBlockNo = this.blockStateStore.getLatest();
-            let result: IResult<IBlockResultData> = {
-                type: ResultType.Block,
-                data: {
-                    blockNumber: blockNo
-                }
-            };
-            return isBetween(blockNo, 0, latestBlockNo) ? [result] : [];
+            if (isBetween(blockNo, 0, latestBlockNo)) {
+                let result: IResult<IBlockResultData> = {
+                    type: ResultType.Block,
+                    data: {
+                        blockNumber: blockNo
+                    }
+                };
+                localResults.push(result);
+            }
         }
 
         // If it looks like a regular tx / block / uncle hash, search also in Deepstream
@@ -45,6 +49,6 @@ export class Search implements ISearch {
             return [];
         })));
 
-        return [...apiResults, ...dsResults];
+        return [...localResults, ...apiResults, ...dsResults];
     }
 }
