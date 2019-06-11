@@ -15,6 +15,7 @@ import { SearchState } from "app/eth-common/module/search/component/SearchState"
 import { ResultsList } from "app/eth-common/module/search/component/ResultsList";
 import { IResult } from "app/shared/data/search/IResult";
 import { SearchStatus } from "app/eth-common/module/search/component/SearchStatus";
+import { observable } from "mobx";
 
 const InlineSearchContent = styled.div`
     display: inline-block;
@@ -67,6 +68,9 @@ export interface ISearchInlineProps {
 
 @observer
 class $SearchInline extends React.Component<ISearchInlineProps> {
+    @observable
+    private isActive = false;
+    private blurTimeout: number | undefined;
     private searchBox: HTMLInputElement;
     private searchState: SearchState;
 
@@ -94,11 +98,14 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
                             innerRef={ref => this.searchBox = ref!}
                             readOnly={this.searchState.status === SearchStatus.InProgress}
                             type="text" autoComplete="off" autoCorrect="off" spellCheck={false}
-                            placeholder={tr.get("search.box.placeholder")} />
+                            placeholder={tr.get("search.box.placeholder")}
+                            onFocus={this.handleFocus}
+                            onBlur={this.handleBlur}
+                        />
                     </form>
                     </SearchBoxContainer>
                 </Content>
-                { this.searchState.status === SearchStatus.Finished ?
+                { this.isActive && this.searchState.status === SearchStatus.Finished ?
                 <ResultsLayer>
                 { !this.searchState.results.length ?
                     <NoResults>
@@ -149,6 +156,18 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
         if (this.props.onRequestClose) {
             this.props.onRequestClose();
         }
+    }
+
+    private handleFocus = () => {
+        this.isActive = true;
+        clearTimeout(this.blurTimeout);
+    }
+
+    private handleBlur = (e: any) => {
+        // setTimeout to prevent the results layer from disappearing when clicking on a result
+        this.blurTimeout = setTimeout(() => {
+            this.isActive = false;
+        }, 100);
     }
 }
 
