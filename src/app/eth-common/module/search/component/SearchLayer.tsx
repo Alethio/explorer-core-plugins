@@ -20,6 +20,7 @@ import { SearchInlineStore } from "../SearchInlineStore";
 import { ISearch } from "app/shared/data/search/ISearch";
 import { IBlockResultData } from "app/shared/data/search/result/IBlockResultData";
 import { IAccountResultData } from "app/shared/data/search/result/IAccountResultData";
+import { ResultsLayer } from "app/eth-common/module/search/component/ResultsLayer";
 
 const Content = styled.div`
     display: flex;
@@ -107,9 +108,11 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
                         </CloseIconContainer>
                     </Content>
                     { this.noResults ?
-                    <NoResults>
-                        {tr.get("search.noResults.text")}
-                    </NoResults>
+                    <ResultsLayer>
+                        <NoResults>
+                            {tr.get("search.noResults.text")}
+                        </NoResults>
+                    </ResultsLayer>
                     : null }
                 </Layer>
             </Fade>, document.body) :

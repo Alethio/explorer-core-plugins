@@ -16,6 +16,7 @@ import { IconButton } from "@alethio/ui/lib/control/IconButton";
 import { ISearch } from "app/shared/data/search/ISearch";
 import { IBlockResultData } from "app/shared/data/search/result/IBlockResultData";
 import { IAccountResultData } from "app/shared/data/search/result/IAccountResultData";
+import { ResultsLayer } from "app/eth-common/module/search/component/ResultsLayer";
 
 const InlineSearchContent = styled.div`
     display: inline-block;
@@ -29,6 +30,9 @@ const InlineSearchContent = styled.div`
     width: 828px;
     max-width: 100%;
     box-sizing: border-box;
+
+    /** For results layer positioning */
+    position: relative;
 `;
 
 const Content = styled.div`
@@ -106,12 +110,14 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
                         />
                     </ResponsiveContainer>
                 </Content>
+                { this.noResults ?
+                <ResultsLayer>
+                    <NoResults>
+                        {tr.get("search.noResults.text")}
+                    </NoResults>
+                </ResultsLayer>
+                : null }
             </InlineSearchContent>
-            { this.noResults ?
-            <NoResults inline>
-                {tr.get("search.noResults.text")}
-            </NoResults>
-            : null }
             </>
         );
     }
