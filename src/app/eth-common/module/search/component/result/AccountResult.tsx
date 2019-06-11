@@ -16,7 +16,7 @@ export class AccountResult extends React.Component<IAccountResultProps> {
 
         return (
             <>
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex", flexWrap: "wrap" }}>
                     { (result.data! as IAccountResultDataExtended).label ?
                     <ValueBox>{(result.data! as IAccountResultDataExtended).label}</ValueBox>
                     : null }

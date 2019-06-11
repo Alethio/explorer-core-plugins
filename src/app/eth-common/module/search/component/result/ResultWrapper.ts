@@ -4,6 +4,8 @@ export const ResultWrapper = styled.div`
     text-align: left;
     padding: 16px 24px;
     cursor: pointer;
+    max-width: 100%;
+    overflow: hidden;
 
     :not(:first-child) {
         border-top: 1px solid ${props => props.theme.colors.overlayBorder};
