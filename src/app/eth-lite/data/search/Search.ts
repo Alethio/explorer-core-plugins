@@ -6,6 +6,7 @@ import { ResultType } from "app/shared/data/search/ResultType";
 import { ISearch } from "app/shared/data/search/ISearch";
 import { IBlockResultData } from "app/shared/data/search/result/IBlockResultData";
 import { IAccountResultData } from "app/shared/data/search/result/IAccountResultData";
+import { ITxResultData } from "app/shared/data/search/result/ITxResultData";
 
 export class Search implements ISearch {
     constructor(
@@ -47,11 +48,15 @@ export class Search implements ISearch {
         // If it looks like a regular tx / block
         let hashMatch = query.match(/^(0x)?([0-9a-f]{64})$/i);
         if (hashMatch) {
-            let txResult = await this.web3EthApi.getTransaction(`0x${hashMatch[2].replace(/^0x/, "")}`);
+            let txHash = `0x${hashMatch[2].replace(/^0x/, "")}`;
+            let txResult = await this.web3EthApi.getTransaction(txHash);
 
             if (txResult) {
-                let result: IResult = {
-                    type: ResultType.Tx
+                let result: IResult<ITxResultData> = {
+                    type: ResultType.Tx,
+                    data: {
+                        hash: txHash
+                    }
                 };
                 return [result];
             } else {

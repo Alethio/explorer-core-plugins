@@ -15,6 +15,6 @@ export class SearchHttpApi {
      */
     async search(query: string) {
         let data = await this.httpApi.fetch(this.endpointUrl.replace("%s", query));
-        return (data as any[]).map(resultRaw => this.resultReader.read(resultRaw));
+        return (data as any[]).map(resultRaw => this.resultReader.read(resultRaw, query));
     }
 }

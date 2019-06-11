@@ -27,6 +27,8 @@
     "search.box.placeholder": "Type in a transaction hash, block hash, block number or account hash...",
     "search.noResults.text": "Sorry, your query didn't return any results",
     "search.result.blockNumber.label": "Block",
+    "search.result.transaction.label": "Transaction",
+    "search.result.uncle.label": "Uncle",
 
     "dashboardView.lastBlocksChart.title.label": "Last blocks transactions",
     "dashboardView.content.latestBlock.label": "Latest block",

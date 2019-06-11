@@ -27,6 +27,8 @@
     "search.box.placeholder": "输入交易哈希值、区块哈希值、区块高度或账号地址",
     "search.noResults.text": "对不起，未查找到返回结果",
     "search.result.blockNumber.label": "区块",
+    "search.result.transaction.label": "交易",
+    "search.result.uncle.label": "叔块",
 
     "dashboardView.lastBlocksChart.title.label": "最新区块交易",
     "dashboardView.content.latestBlock.label": "最新区块",

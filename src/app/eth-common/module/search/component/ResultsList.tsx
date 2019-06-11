@@ -5,6 +5,8 @@ import { AccountResult } from "./result/AccountResult";
 import { ResultWrapper } from "./result/ResultWrapper";
 import { BlockResult } from "app/eth-common/module/search/component/result/BlockResult";
 import { ITranslation } from "plugin-api/ITranslation";
+import { UncleResult } from "app/eth-common/module/search/component/result/UncleResult";
+import { TxResult } from "app/eth-common/module/search/component/result/TxResult";
 
 interface IResultComponentProps {
     result: IResult;
@@ -37,9 +39,9 @@ export class ResultsList extends React.Component<IResultsListProps> {
         } else if (r.type === ResultType.Block) {
             return BlockResult;
         } else if (r.type === ResultType.Uncle) {
-            return () => <div>Uncle</div>;
+            return UncleResult;
         } else if (r.type === ResultType.Tx) {
-            return () => <div>Tx</div>;
+            return TxResult;
         } else {
             throw new Error(`Unknown resultType "${r.type}"`);
         }
