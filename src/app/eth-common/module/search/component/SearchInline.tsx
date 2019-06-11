@@ -2,8 +2,6 @@ import * as React from "react";
 import styled from "@alethio/explorer-ui/lib/styled-components";
 import { withInternalNav, IInternalNav } from "plugin-api/withInternalNav";
 import { observer } from "mobx-react";
-import { observable, action, runInAction } from "mobx";
-import { ResultType } from "app/shared/data/search/ResultType";
 import { ITranslation } from "plugin-api/ITranslation";
 import { SearchIcon } from "@alethio/ui/lib/icon/SearchIcon";
 import { Button } from "@alethio/ui/lib/control/Button";
@@ -14,10 +12,9 @@ import { SearchInlineStore } from "../SearchInlineStore";
 import { ResponsiveContainer, MinimumWidth } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
 import { IconButton } from "@alethio/ui/lib/control/IconButton";
 import { ISearch } from "app/shared/data/search/ISearch";
-import { IBlockResultData } from "app/shared/data/search/result/IBlockResultData";
-import { IAccountResultData } from "app/shared/data/search/result/IAccountResultData";
 import { ResultsLayer } from "app/eth-common/module/search/component/ResultsLayer";
 import { HashPasteHandler } from "app/eth-common/module/search/component/HashPasteHandler";
+import { SearchState } from "app/eth-common/module/search/component/SearchState";
 
 const InlineSearchContent = styled.div`
     display: inline-block;
@@ -71,10 +68,25 @@ export interface ISearchInlineProps {
 @observer
 class $SearchInline extends React.Component<ISearchInlineProps> {
     private searchBox: HTMLInputElement;
-    @observable
-    private noResults = false;
-    @observable
-    private inProgress = false;
+    private searchState: SearchState;
+
+    constructor(props: ISearchInlineProps) {
+        super(props);
+
+        this.searchState = new SearchState(
+            this.props.search,
+            this.props.internalNav,
+            () => {
+                if (this.props.onRequestClose) {
+                    this.props.onRequestClose();
+                }
+            },
+            () => {
+                this.searchBox.value = "";
+                this.focusSearchBox();
+            }
+        );
+    }
 
     render() {
         let { translation: tr } = this.props;
@@ -89,7 +101,7 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
                     <form onSubmit={this.handleSubmit}>
                         <SearchBox
                             innerRef={ref => this.searchBox = ref!}
-                            readOnly={this.inProgress}
+                            readOnly={this.searchState.inProgress}
                             type="text" autoComplete="off" autoCorrect="off" spellCheck={false}
                             placeholder={tr.get("search.box.placeholder")} />
                     </form>
@@ -97,7 +109,7 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
                     <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForStandardView}}>
                         <Button
                             colors="primary"
-                            Icon={!this.inProgress ? SearchIcon : SpinnerLite}
+                            Icon={!this.searchState.inProgress ? SearchIcon : SpinnerLite}
                             onClick={this.handleSubmit}
                         >
                             {tr.get("search.button.label")}
@@ -106,12 +118,12 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
                     <ResponsiveContainer behavior="show" forScreenWidth={{lowerThan: MinimumWidth.ForStandardView}}>
                         <IconButton
                             color={(theme) => theme.colors.copyIcon}
-                            Icon={!this.inProgress ? SearchIcon : SpinnerLite}
+                            Icon={!this.searchState.inProgress ? SearchIcon : SpinnerLite}
                             onClick={this.handleSubmit}
                         />
                     </ResponsiveContainer>
                 </Content>
-                { this.noResults ?
+                { this.searchState.noResults ?
                 <ResultsLayer>
                     <NoResults>
                         {tr.get("search.noResults.text")}
@@ -145,59 +157,12 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
         });
     }
 
-    @action
     private handleSubmit = async (e?: React.FormEvent<{}>) => {
         if (e) {
             e.preventDefault();
         }
 
-        // TODO: button disabled state
-        if (this.inProgress) {
-            return;
-        }
-
-        this.noResults = false;
-        this.inProgress = true;
-
-        let query = this.searchBox.value.trim().toLowerCase();
-        let result = (await this.props.search.search(query))[0];
-        if (result) {
-            let url: string;
-
-            if (result.type === ResultType.Account) {
-                url = `page://aleth.io/account?accountHash=${(result.data as IAccountResultData).address}`;
-            } else if (result.type === ResultType.Block) {
-                url = `page://aleth.io/block?blockNumber=${(result.data as IBlockResultData).blockNumber}`;
-            } else if (result.type === ResultType.Tx) {
-                url = `page://aleth.io/tx?txHash=${query}`;
-            } else if (result.type === ResultType.Uncle) {
-                url = `page://aleth.io/uncle?uncleHash=${query}`;
-            } else {
-                throw new Error(`Unhandled result type "${result.type}"`);
-            }
-
-            runInAction(() => {
-                this.inProgress = false;
-            });
-            if (!this.props.internalNav.goTo(url)) {
-                this.handleNoResults();
-                return;
-            }
-            if (this.props.onRequestClose) {
-                this.props.onRequestClose();
-            }
-        } else {
-            this.handleNoResults();
-        }
-    }
-
-    private handleNoResults() {
-        runInAction(() => {
-            this.noResults = true;
-            this.inProgress = false;
-        });
-        this.searchBox.value = "";
-        this.focusSearchBox();
+        await this.searchState.submit(this.searchBox.value);
     }
 }
 
