@@ -129,7 +129,11 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
                                 {tr.get("search.noResults.text")}
                             </NoResults>
                             :
-                            <ResultsList results={this.searchState.results} onActivateResult={this.handleResultClick} />
+                            <ResultsList
+                                results={this.searchState.results}
+                                onActivateResult={this.handleResultClick}
+                                translation={this.props.translation}
+                            />
                         }
                         </ResultsLayer>
                         : null }
