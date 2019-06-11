@@ -5,7 +5,6 @@ import { withInternalNav, IInternalNav } from "plugin-api/withInternalNav";
 import { observer } from "mobx-react";
 import { ITranslation } from "plugin-api/ITranslation";
 import { SearchIcon } from "@alethio/ui/lib/icon/SearchIcon";
-import { Button } from "@alethio/ui/lib/control/Button";
 import { Fade } from "@alethio/ui/lib/fx/Fade";
 import { SpinnerLite } from "@alethio/ui/lib/fx/SpinnerLite";
 import { Layer } from "@alethio/ui/lib/overlay/Layer";
@@ -30,10 +29,6 @@ const Content = styled.div`
     width: 848px;
     max-width: 100vw;
     box-sizing: border-box;
-`;
-
-const ButtonWrapper = styled.div`
-    white-space: nowrap;
 `;
 
 const SearchIconContainer = styled.div`
@@ -87,7 +82,10 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
                 <Layer>
                     <Content>
                         <SearchIconContainer>
-                            <SearchIcon />
+                            { this.searchState.status !== SearchStatus.InProgress ?
+                            <SearchIcon /> :
+                            <SpinnerLite />
+                            }
                         </SearchIconContainer>
                         <SearchBoxContainer>
                         <form onSubmit={this.handleSubmit}>
@@ -98,15 +96,6 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
                                 placeholder={tr.get("search.box.placeholder")} />
                         </form>
                         </SearchBoxContainer>
-                        <ButtonWrapper>
-                            <Button
-                                colors="primary"
-                                Icon={this.searchState.status !== SearchStatus.InProgress ? SearchIcon : SpinnerLite}
-                                onClick={this.handleSubmit}
-                            >
-                                {tr.get("search.button.label")}
-                            </Button>
-                        </ButtonWrapper>
                         <CloseIconContainer>
                             <ToolbarIconButton onClick={this.props.onRequestClose} Icon={CloseIcon} />
                         </CloseIconContainer>

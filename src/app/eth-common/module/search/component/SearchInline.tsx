@@ -4,13 +4,10 @@ import { withInternalNav, IInternalNav } from "plugin-api/withInternalNav";
 import { observer } from "mobx-react";
 import { ITranslation } from "plugin-api/ITranslation";
 import { SearchIcon } from "@alethio/ui/lib/icon/SearchIcon";
-import { Button } from "@alethio/ui/lib/control/Button";
 import { NoResults } from "./NoResults";
 import { SearchBox } from "./SearchBox";
 import { SpinnerLite } from "@alethio/ui/lib/fx/SpinnerLite";
 import { SearchInlineStore } from "../SearchInlineStore";
-import { ResponsiveContainer, MinimumWidth } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
-import { IconButton } from "@alethio/ui/lib/control/IconButton";
 import { ISearch } from "app/shared/data/search/ISearch";
 import { ResultsLayer } from "app/eth-common/module/search/component/ResultsLayer";
 import { HashPasteHandler } from "app/eth-common/module/search/component/HashPasteHandler";
@@ -86,7 +83,10 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
             <InlineSearchContent>
                 <Content>
                     <SearchIconContainer>
-                        <SearchIcon />
+                        { this.searchState.status !== SearchStatus.InProgress ?
+                        <SearchIcon /> :
+                        <SpinnerLite />
+                        }
                     </SearchIconContainer>
                     <SearchBoxContainer>
                     <form onSubmit={this.handleSubmit}>
@@ -97,22 +97,6 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
                             placeholder={tr.get("search.box.placeholder")} />
                     </form>
                     </SearchBoxContainer>
-                    <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForStandardView}}>
-                        <Button
-                            colors="primary"
-                            Icon={this.searchState.status !== SearchStatus.InProgress ? SearchIcon : SpinnerLite}
-                            onClick={this.handleSubmit}
-                        >
-                            {tr.get("search.button.label")}
-                        </Button>
-                    </ResponsiveContainer>
-                    <ResponsiveContainer behavior="show" forScreenWidth={{lowerThan: MinimumWidth.ForStandardView}}>
-                        <IconButton
-                            color={(theme) => theme.colors.copyIcon}
-                            Icon={this.searchState.status !== SearchStatus.InProgress ? SearchIcon : SpinnerLite}
-                            onClick={this.handleSubmit}
-                        />
-                    </ResponsiveContainer>
                 </Content>
                 { this.searchState.status === SearchStatus.Finished ?
                 <ResultsLayer>
