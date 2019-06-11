@@ -1,7 +1,6 @@
 import { ResultType } from "./ResultType";
 
-export interface IResult {
+export interface IResult<T = unknown> {
     type: ResultType;
-    /** If result is a block, we need the block number to build the redirect URL */
-    blockNumber?: number;
+    data?: T;
 }

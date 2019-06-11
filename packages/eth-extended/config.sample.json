@@ -23,7 +23,7 @@
 
     "PRICES_API_URL": "https://rabbit.ethstats.io/api/v1/prices",
 
-    "SEARCH_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/search/%s",
+    "SEARCH_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/suggest/%s",
 
     "TX_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/tx/%s",
     "TX_CM_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/tx/%s/contract-msgs",

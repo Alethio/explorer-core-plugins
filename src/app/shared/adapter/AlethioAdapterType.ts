@@ -21,5 +21,5 @@ export enum AlethioAdapterType {
     AccountBalanceExtendedLatest = "adapter://aleth.io/extended/account/balance?latest",
     AccountBalanceExtendedHist = "adapter://aleth.io/extended/account/balance?historical",
 
-    Search = "adapter://aleth.io/search"
+    Search = "adapter://aleth.io/search/v2"
 }

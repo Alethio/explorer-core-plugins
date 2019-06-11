@@ -6,7 +6,7 @@ export class ResultReader {
     read(data: any) {
         let result: IResult = {
             type: readResultType(data["entity"]),
-            blockNumber: data["data"] ? Number(data["data"]["number"]) : void 0
+            data: data["data"]
         };
 
         return result;

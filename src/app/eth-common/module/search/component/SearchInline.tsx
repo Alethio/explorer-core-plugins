@@ -14,6 +14,8 @@ import { SearchInlineStore } from "../SearchInlineStore";
 import { ResponsiveContainer, MinimumWidth } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
 import { IconButton } from "@alethio/ui/lib/control/IconButton";
 import { ISearch } from "app/shared/data/search/ISearch";
+import { IBlockResultData } from "app/shared/data/search/result/IBlockResultData";
+import { IAccountResultData } from "app/shared/data/search/result/IAccountResultData";
 
 const InlineSearchContent = styled.div`
     display: inline-block;
@@ -162,14 +164,14 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
         this.inProgress = true;
 
         let query = this.searchBox.value.trim().toLowerCase();
-        let result = await this.props.search.search(query);
+        let result = (await this.props.search.search(query))[0];
         if (result) {
             let url: string;
 
             if (result.type === ResultType.Account) {
-                url = `page://aleth.io/account?accountHash=${query}`;
+                url = `page://aleth.io/account?accountHash=${(result.data as IAccountResultData).address}`;
             } else if (result.type === ResultType.Block) {
-                url = `page://aleth.io/block?blockNumber=${result.blockNumber}`;
+                url = `page://aleth.io/block?blockNumber=${(result.data as IBlockResultData).blockNumber}`;
             } else if (result.type === ResultType.Tx) {
                 url = `page://aleth.io/tx?txHash=${query}`;
             } else if (result.type === ResultType.Uncle) {

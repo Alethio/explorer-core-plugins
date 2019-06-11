@@ -1,6 +1,5 @@
 import { ResultReader } from "app/eth-extended/data/search/ResultReader";
 import { HttpApi } from "app/eth-extended/data/HttpApi";
-import { NotFoundError } from "app/eth-extended/data/NotFoundError";
 
 export class SearchHttpApi {
     constructor(
@@ -12,19 +11,10 @@ export class SearchHttpApi {
     }
 
     /**
-     * Search for a tx / block / uncle hash
+     * Search for a hash or token name
      */
-    async search(hash: string) {
-        let data: any;
-        try {
-            data = await this.httpApi.fetch(this.endpointUrl.replace("%s", "0x" + hash.replace(/^0x/, "")));
-        } catch (e) {
-            if (e instanceof NotFoundError) {
-                return void 0;
-            }
-            throw e;
-        }
-
-        return this.resultReader.read(data);
+    async search(query: string) {
+        let data = await this.httpApi.fetch(this.endpointUrl.replace("%s", query));
+        return (data as any[]).map(resultRaw => this.resultReader.read(resultRaw));
     }
 }
