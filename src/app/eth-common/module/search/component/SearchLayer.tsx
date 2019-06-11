@@ -167,6 +167,10 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
         if (e) {
             e.preventDefault();
         }
+
+        if (this.searchState.status === SearchStatus.Finished && this.searchState.results.length) {
+            this.handleResultClick(this.searchState.results[0]);
+        }
     }
 
     private handleResultClick = (r: IResult) => {
