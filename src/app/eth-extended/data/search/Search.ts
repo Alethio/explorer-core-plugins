@@ -49,6 +49,7 @@ export class Search implements ISearch {
             return [];
         })));
 
-        return [...localResults, ...apiResults, ...dsResults];
+        // Only append DS results if we didn't find anything in API. Otherwise we would show duplicates
+        return [...localResults, ...apiResults, ...(apiResults.length ? [] : dsResults)];
     }
 }
