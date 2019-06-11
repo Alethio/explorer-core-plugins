@@ -17,6 +17,7 @@ import { ISearch } from "app/shared/data/search/ISearch";
 import { IBlockResultData } from "app/shared/data/search/result/IBlockResultData";
 import { IAccountResultData } from "app/shared/data/search/result/IAccountResultData";
 import { ResultsLayer } from "app/eth-common/module/search/component/ResultsLayer";
+import { HashPasteHandler } from "app/eth-common/module/search/component/HashPasteHandler";
 
 const InlineSearchContent = styled.div`
     display: inline-block;
@@ -118,35 +119,24 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
                 </ResultsLayer>
                 : null }
             </InlineSearchContent>
+            <HashPasteHandler onPaste={this.handlePaste} />
             </>
         );
     }
 
     componentDidMount() {
         this.props.searchInlineStore.instancesCount++;
-        document.addEventListener("paste", this.handlePaste);
     }
 
     componentWillUnmount() {
         this.props.searchInlineStore.instancesCount--;
-        document.removeEventListener("paste", this.handlePaste);
     }
 
-    private handlePaste = (e: ClipboardEvent) => {
-        let activeEl = document.activeElement;
-        if ((activeEl as HTMLInputElement).value !== void 0 || (activeEl as HTMLElement).isContentEditable) {
-            // We ignore paste event on form or editable elements
-            return;
-        }
-
-        let text = e.clipboardData!.getData("text/plain").trim();
-        // Should be non-empty string and it should look like a hash or block number
-        if (text && text.match(/^(0x)?[a-fA-F0-9]+$/)) {
-            setTimeout(() => {
-                this.searchBox.value = text;
-                this.focusSearchBox();
-            });
-        }
+    private handlePaste = (hash: string) => {
+        setTimeout(() => {
+            this.searchBox.value = hash;
+            this.focusSearchBox();
+        });
     }
 
     private focusSearchBox() {

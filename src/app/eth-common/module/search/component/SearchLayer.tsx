@@ -21,6 +21,7 @@ import { ISearch } from "app/shared/data/search/ISearch";
 import { IBlockResultData } from "app/shared/data/search/result/IBlockResultData";
 import { IAccountResultData } from "app/shared/data/search/result/IAccountResultData";
 import { ResultsLayer } from "app/eth-common/module/search/component/ResultsLayer";
+import { HashPasteHandler } from "app/eth-common/module/search/component/HashPasteHandler";
 
 const Content = styled.div`
     display: flex;
@@ -114,6 +115,7 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
                         </NoResults>
                     </ResultsLayer>
                     : null }
+                    <HashPasteHandler onPaste={this.handlePaste} />
                 </Layer>
             </Fade>, document.body) :
             null
@@ -127,7 +129,6 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
     }
 
     componentDidMount() {
-        document.addEventListener("paste", this.handlePaste);
         if (this.props.open) {
             this.focusSearchBox();
         }
@@ -143,28 +144,15 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
         }
     }
 
-    componentWillUnmount() {
-        document.removeEventListener("paste", this.handlePaste);
-    }
-
-    private handlePaste = (e: ClipboardEvent) => {
-        let activeEl = document.activeElement;
-        if ((activeEl as HTMLInputElement).value !== void 0 || (activeEl as HTMLElement).isContentEditable) {
-            // We ignore paste event on form or editable elements
-            return;
-        }
+    private handlePaste = (hash: string) => {
         if (this.props.searchInlineStore.instancesCount > 0) {
             return;
         }
 
-        let text = e.clipboardData!.getData("text/plain").trim();
-        // Should be non-empty string and it should look like a hash or block number
-        if (text && text.match(/^(0x)?[a-fA-F0-9]+$/)) {
-            if (!this.props.open) {
-                this.props.onRequestOpen();
-            }
-            setTimeout(() => this.searchBox.value = text);
+        if (!this.props.open) {
+            this.props.onRequestOpen();
         }
+        setTimeout(() => this.searchBox.value = hash);
     }
 
     private focusSearchBox() {
