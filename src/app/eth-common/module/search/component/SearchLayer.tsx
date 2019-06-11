@@ -78,7 +78,9 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
     render() {
         let { open, translation: tr } = this.props;
 
-        return ( open ?
+        return <>
+            <HashPasteHandler onPaste={this.handlePaste} />
+            { open ?
             ReactDOM.createPortal(<Fade duration={.2}>
                 <Mask onClick={this.handleRootClick} />
                 <Layer>
@@ -116,11 +118,10 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
                     }
                     </ResultsLayer>
                     : null }
-                    <HashPasteHandler onPaste={this.handlePaste} />
                 </Layer>
             </Fade>, document.body) :
-            null
-        );
+            null }
+        </>;
     }
 
     private handleRootClick = (e: React.MouseEvent<{}>) => {
