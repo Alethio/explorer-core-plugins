@@ -17,6 +17,7 @@ import { HashPasteHandler } from "app/eth-common/module/search/component/HashPas
 import { SearchState } from "app/eth-common/module/search/component/SearchState";
 import { ResultsList } from "app/eth-common/module/search/component/ResultsList";
 import { IResult } from "app/shared/data/search/IResult";
+import { SearchStatus } from "app/eth-common/module/search/component/SearchStatus";
 
 const InlineSearchContent = styled.div`
     display: inline-block;
@@ -91,7 +92,7 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
                     <form onSubmit={this.handleSubmit}>
                         <SearchBox
                             innerRef={ref => this.searchBox = ref!}
-                            readOnly={this.searchState.inProgress}
+                            readOnly={this.searchState.status === SearchStatus.InProgress}
                             type="text" autoComplete="off" autoCorrect="off" spellCheck={false}
                             placeholder={tr.get("search.box.placeholder")} />
                     </form>
@@ -99,7 +100,7 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
                     <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForStandardView}}>
                         <Button
                             colors="primary"
-                            Icon={!this.searchState.inProgress ? SearchIcon : SpinnerLite}
+                            Icon={this.searchState.status !== SearchStatus.InProgress ? SearchIcon : SpinnerLite}
                             onClick={this.handleSubmit}
                         >
                             {tr.get("search.button.label")}
@@ -108,11 +109,12 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
                     <ResponsiveContainer behavior="show" forScreenWidth={{lowerThan: MinimumWidth.ForStandardView}}>
                         <IconButton
                             color={(theme) => theme.colors.copyIcon}
-                            Icon={!this.searchState.inProgress ? SearchIcon : SpinnerLite}
+                            Icon={this.searchState.status !== SearchStatus.InProgress ? SearchIcon : SpinnerLite}
                             onClick={this.handleSubmit}
                         />
                     </ResponsiveContainer>
                 </Content>
+                { this.searchState.status === SearchStatus.Finished ?
                 <ResultsLayer>
                 { !this.searchState.results.length ?
                     <NoResults>
@@ -122,6 +124,7 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
                     <ResultsList results={this.searchState.results} onActivateResult={this.handleResultClick} />
                 }
                 </ResultsLayer>
+                : null }
             </InlineSearchContent>
             <HashPasteHandler onPaste={this.handlePaste} />
             </>

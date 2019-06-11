@@ -21,6 +21,7 @@ import { HashPasteHandler } from "app/eth-common/module/search/component/HashPas
 import { SearchState } from "app/eth-common/module/search/component/SearchState";
 import { IResult } from "app/shared/data/search/IResult";
 import { ResultsList } from "app/eth-common/module/search/component/ResultsList";
+import { SearchStatus } from "app/eth-common/module/search/component/SearchStatus";
 
 const Content = styled.div`
     display: flex;
@@ -92,7 +93,7 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
                         <form onSubmit={this.handleSubmit}>
                             <SearchBox
                                 innerRef={ref => this.searchBox = ref!}
-                                readOnly={this.searchState.inProgress}
+                                readOnly={this.searchState.status === SearchStatus.InProgress}
                                 type="text" autoComplete="off" autoCorrect="off" spellCheck={false}
                                 placeholder={tr.get("search.box.placeholder")} />
                         </form>
@@ -100,7 +101,7 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
                         <ButtonWrapper>
                             <Button
                                 colors="primary"
-                                Icon={!this.searchState.inProgress ? SearchIcon : SpinnerLite}
+                                Icon={this.searchState.status !== SearchStatus.InProgress ? SearchIcon : SpinnerLite}
                                 onClick={this.handleSubmit}
                             >
                                 {tr.get("search.button.label")}
@@ -110,6 +111,7 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
                             <ToolbarIconButton onClick={this.props.onRequestClose} Icon={CloseIcon} />
                         </CloseIconContainer>
                     </Content>
+                    { this.searchState.status === SearchStatus.Finished ?
                     <ResultsLayer>
                     { !this.searchState.results.length ?
                         <NoResults>
@@ -119,6 +121,7 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
                         <ResultsList results={this.searchState.results} onActivateResult={this.handleResultClick} />
                     }
                     </ResultsLayer>
+                    : null }
                     <HashPasteHandler onPaste={this.handlePaste} />
                 </Layer>
             </Fade>, document.body) :

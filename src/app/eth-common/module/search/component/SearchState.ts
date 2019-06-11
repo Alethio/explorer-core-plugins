@@ -5,13 +5,14 @@ import { IAccountResultData } from "app/shared/data/search/result/IAccountResult
 import { IBlockResultData } from "app/shared/data/search/result/IBlockResultData";
 import { IInternalNav } from "plugin-api/withInternalNav";
 import { IResult } from "app/shared/data/search/IResult";
+import { SearchStatus } from "app/eth-common/module/search/component/SearchStatus";
 
 export class SearchState {
     @observable
     results: IResult[] = [];
     @observable
-    inProgress = false;
-    // Last/current query
+    status = SearchStatus.Initial;
+    /** Last/current query */
     private query: string;
 
     constructor(
@@ -25,12 +26,12 @@ export class SearchState {
 
     @action
     async submit(query: string) {
-        if (this.inProgress) {
+        if (this.status === SearchStatus.InProgress) {
             return;
         }
 
         this.results = [];
-        this.inProgress = true;
+        this.status = SearchStatus.InProgress;
 
         query = query.trim().toLowerCase();
         let results = await this.search.search(query);
@@ -43,7 +44,7 @@ export class SearchState {
         this.query = query;
 
         runInAction(() => {
-            this.inProgress = false;
+            this.status = SearchStatus.Finished;
             this.results = results;
         });
 
@@ -90,6 +91,6 @@ export class SearchState {
     @action
     reset() {
         this.results = [];
-        this.inProgress = false;
+        this.status = SearchStatus.Initial;
     }
 }
