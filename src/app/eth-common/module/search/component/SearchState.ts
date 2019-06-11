@@ -10,6 +10,8 @@ import { Task } from "@puzzl/core/lib/async/Task";
 import { sleep } from "@puzzl/core/lib/async/sleep";
 import { ILogger } from "plugin-api/ILogger";
 import { OperationCanceledError, CancellationToken } from "@puzzl/core/lib/async/cancellation";
+import { ITxResultData } from "app/shared/data/search/result/ITxResultData";
+import { IUncleResultData } from "app/shared/data/search/result/IUncleResultData";
 
 export class SearchState {
     @observable
@@ -56,7 +58,7 @@ export class SearchState {
 
         // Filter out unknown results
         results = results.filter(result => {
-            let uri = this.buildResultUri(result, query);
+            let uri = this.buildResultUri(result);
             return uri ? this.internalNav.resolve(uri) : false;
         });
 
@@ -77,7 +79,7 @@ export class SearchState {
     }
 
     activateResult(result: IResult) {
-        let uri = this.buildResultUri(result, this.query);
+        let uri = this.buildResultUri(result);
         if (!uri) {
             throw new Error(`Unknown resultType "${result.type}"`);
         }
@@ -85,10 +87,7 @@ export class SearchState {
         this.internalNav.goTo(uri);
     }
 
-    /**
-     * TODO: include tx/uncle hash in result so we don't have to pass query
-     */
-    private buildResultUri(result: IResult, query: string) {
+    private buildResultUri(result: IResult) {
         let uri: string;
 
         if (result.type === ResultType.Account) {
@@ -96,9 +95,9 @@ export class SearchState {
         } else if (result.type === ResultType.Block) {
             uri = `page://aleth.io/block?blockNumber=${(result.data as IBlockResultData).blockNumber}`;
         } else if (result.type === ResultType.Tx) {
-            uri = `page://aleth.io/tx?txHash=${query}`;
+            uri = `page://aleth.io/tx?txHash=${(result.data as ITxResultData).hash}`;
         } else if (result.type === ResultType.Uncle) {
-            uri = `page://aleth.io/uncle?uncleHash=${query}`;
+            uri = `page://aleth.io/uncle?uncleHash=${(result.data as IUncleResultData).hash}`;
         } else {
             return void 0;
         }
