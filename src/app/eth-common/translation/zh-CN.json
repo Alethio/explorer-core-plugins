@@ -24,7 +24,7 @@
     "toolbar.feedback.label": "提交您的反馈",
 
     "search.button.label": "搜索",
-    "search.box.placeholder": "输入交易哈希值、区块哈希值、区块高度或账号地址",
+    "search.box.placeholder": "搜索…",
     "search.noResults.text": "对不起，未查找到返回结果",
     "search.result.blockNumber.label": "区块",
     "search.result.transaction.label": "交易",

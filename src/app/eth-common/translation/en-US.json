@@ -24,7 +24,7 @@
     "toolbar.feedback.label": "Submit feedback",
 
     "search.button.label": "Search",
-    "search.box.placeholder": "Type in a transaction hash, block hash, block number or account hash...",
+    "search.box.placeholder": "Search...",
     "search.noResults.text": "Sorry, your query didn't return any results",
     "search.result.blockNumber.label": "Block",
     "search.result.transaction.label": "Transaction",
