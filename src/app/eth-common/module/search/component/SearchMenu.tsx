@@ -9,11 +9,13 @@ import { SearchIcon } from "@alethio/ui/lib/icon/SearchIcon";
 import { MenuItem } from "plugin-api/component/topbar/MenuItem";
 import { SearchInlineWrapper } from "./SearchInlineWrapper";
 import { ISearch } from "app/shared/data/search/ISearch";
+import { ILogger } from "plugin-api/ILogger";
 
 export interface ISearchMenuProps {
     translation: ITranslation;
     search: ISearch;
     searchInlineStore: SearchInlineStore;
+    logger: ILogger;
 }
 
 @observer
@@ -43,6 +45,7 @@ export class SearchMenu extends React.Component<ISearchMenuProps> {
                 <SearchInline
                     translation={tr} search={this.props.search}
                     searchInlineStore={this.props.searchInlineStore}
+                    logger={this.props.logger}
                     onRequestClose={() => {
                         this.searchOpen = false;
                         this.requestClose();

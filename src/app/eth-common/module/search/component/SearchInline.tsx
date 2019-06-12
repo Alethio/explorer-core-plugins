@@ -2,20 +2,20 @@ import * as React from "react";
 import styled from "@alethio/explorer-ui/lib/styled-components";
 import { withInternalNav, IInternalNav } from "plugin-api/withInternalNav";
 import { observer } from "mobx-react";
-import { observable, action, runInAction } from "mobx";
-import { ResultType } from "app/shared/data/search/ResultType";
 import { ITranslation } from "plugin-api/ITranslation";
 import { SearchIcon } from "@alethio/ui/lib/icon/SearchIcon";
-import { Button } from "@alethio/ui/lib/control/Button";
 import { NoResults } from "./NoResults";
 import { SearchBox } from "./SearchBox";
 import { SpinnerLite } from "@alethio/ui/lib/fx/SpinnerLite";
 import { SearchInlineStore } from "../SearchInlineStore";
-import { ResponsiveContainer, MinimumWidth } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
-import { IconButton } from "@alethio/ui/lib/control/IconButton";
 import { ISearch } from "app/shared/data/search/ISearch";
-import { IBlockResultData } from "app/shared/data/search/result/IBlockResultData";
-import { IAccountResultData } from "app/shared/data/search/result/IAccountResultData";
+import { ResultsLayer } from "app/eth-common/module/search/component/ResultsLayer";
+import { HashPasteHandler } from "app/eth-common/module/search/component/HashPasteHandler";
+import { SearchState } from "app/eth-common/module/search/component/SearchState";
+import { ResultsList } from "app/eth-common/module/search/component/ResultsList";
+import { IResult } from "app/shared/data/search/IResult";
+import { SearchStatus } from "app/eth-common/module/search/component/SearchStatus";
+import { ILogger } from "plugin-api/ILogger";
 
 const InlineSearchContent = styled.div`
     display: inline-block;
@@ -29,6 +29,9 @@ const InlineSearchContent = styled.div`
     width: 828px;
     max-width: 100%;
     box-sizing: border-box;
+
+    /** For results layer positioning */
+    position: relative;
 `;
 
 const Content = styled.div`
@@ -56,20 +59,24 @@ const SearchBoxContainer = styled.div`
 `;
 
 export interface ISearchInlineProps {
-    internalNav: IInternalNav;
+    internalNav?: IInternalNav;
     translation: ITranslation;
     search: ISearch;
     searchInlineStore: SearchInlineStore;
+    logger: ILogger;
     onRequestClose?(): void;
 }
 
 @observer
 class $SearchInline extends React.Component<ISearchInlineProps> {
     private searchBox: HTMLInputElement;
-    @observable
-    private noResults = false;
-    @observable
-    private inProgress = false;
+    private searchState: SearchState;
+
+    constructor(props: ISearchInlineProps) {
+        super(props);
+
+        this.searchState = new SearchState(this.props.search, this.props.internalNav!, this.props.logger);
+    }
 
     render() {
         let { translation: tr } = this.props;
@@ -78,69 +85,60 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
             <InlineSearchContent>
                 <Content>
                     <SearchIconContainer>
-                        <SearchIcon />
+                        { this.searchState.status !== SearchStatus.InProgress ?
+                        <SearchIcon /> :
+                        <SpinnerLite />
+                        }
                     </SearchIconContainer>
                     <SearchBoxContainer>
                     <form onSubmit={this.handleSubmit}>
                         <SearchBox
                             innerRef={ref => this.searchBox = ref!}
-                            readOnly={this.inProgress}
                             type="text" autoComplete="off" autoCorrect="off" spellCheck={false}
-                            placeholder={tr.get("search.box.placeholder")} />
+                            placeholder={tr.get("search.box.placeholder")}
+                            onFocus={this.searchState.handleFocus}
+                            onBlur={this.searchState.handleBlur}
+                            onKeyUp={this.searchState.handleKeyPress}
+                        />
                     </form>
                     </SearchBoxContainer>
-                    <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForStandardView}}>
-                        <Button
-                            colors="primary"
-                            Icon={!this.inProgress ? SearchIcon : SpinnerLite}
-                            onClick={this.handleSubmit}
-                        >
-                            {tr.get("search.button.label")}
-                        </Button>
-                    </ResponsiveContainer>
-                    <ResponsiveContainer behavior="show" forScreenWidth={{lowerThan: MinimumWidth.ForStandardView}}>
-                        <IconButton
-                            color={(theme) => theme.colors.copyIcon}
-                            Icon={!this.inProgress ? SearchIcon : SpinnerLite}
-                            onClick={this.handleSubmit}
-                        />
-                    </ResponsiveContainer>
                 </Content>
+                { this.searchState.isActive && this.searchState.status === SearchStatus.Finished ?
+                <ResultsLayer>
+                { !this.searchState.results.length ?
+                    <NoResults>
+                        {tr.get("search.noResults.text")}
+                    </NoResults>
+                    :
+                    <ResultsList
+                        results={this.searchState.results}
+                        onActivateResult={this.handleResultClick}
+                        translation={this.props.translation}
+                    />
+                }
+                </ResultsLayer>
+                : null }
             </InlineSearchContent>
-            { this.noResults ?
-            <NoResults inline>
-                {tr.get("search.noResults.text")}
-            </NoResults>
-            : null }
+            <HashPasteHandler onPaste={this.handlePaste} />
             </>
         );
     }
 
     componentDidMount() {
         this.props.searchInlineStore.instancesCount++;
-        document.addEventListener("paste", this.handlePaste);
     }
 
     componentWillUnmount() {
         this.props.searchInlineStore.instancesCount--;
-        document.removeEventListener("paste", this.handlePaste);
+        this.searchState.deactivate();
     }
 
-    private handlePaste = (e: ClipboardEvent) => {
-        let activeEl = document.activeElement;
-        if ((activeEl as HTMLInputElement).value !== void 0 || (activeEl as HTMLElement).isContentEditable) {
-            // We ignore paste event on form or editable elements
-            return;
-        }
-
-        let text = e.clipboardData!.getData("text/plain").trim();
-        // Should be non-empty string and it should look like a hash or block number
-        if (text && text.match(/^(0x)?[a-fA-F0-9]+$/)) {
-            setTimeout(() => {
-                this.searchBox.value = text;
-                this.focusSearchBox();
-            });
-        }
+    private handlePaste = (hash: string) => {
+        setTimeout(() => {
+            this.searchBox.value = hash;
+            this.searchState.triggerSearch(hash, false);
+            this.focusSearchBox();
+        });
     }
 
     private focusSearchBox() {
@@ -149,59 +147,21 @@ class $SearchInline extends React.Component<ISearchInlineProps> {
         });
     }
 
-    @action
     private handleSubmit = async (e?: React.FormEvent<{}>) => {
         if (e) {
             e.preventDefault();
         }
 
-        // TODO: button disabled state
-        if (this.inProgress) {
-            return;
-        }
-
-        this.noResults = false;
-        this.inProgress = true;
-
-        let query = this.searchBox.value.trim().toLowerCase();
-        let result = (await this.props.search.search(query))[0];
-        if (result) {
-            let url: string;
-
-            if (result.type === ResultType.Account) {
-                url = `page://aleth.io/account?accountHash=${(result.data as IAccountResultData).address}`;
-            } else if (result.type === ResultType.Block) {
-                url = `page://aleth.io/block?blockNumber=${(result.data as IBlockResultData).blockNumber}`;
-            } else if (result.type === ResultType.Tx) {
-                url = `page://aleth.io/tx?txHash=${query}`;
-            } else if (result.type === ResultType.Uncle) {
-                url = `page://aleth.io/uncle?uncleHash=${query}`;
-            } else {
-                throw new Error(`Unhandled result type "${result.type}"`);
-            }
-
-            runInAction(() => {
-                this.inProgress = false;
-            });
-            if (!this.props.internalNav.goTo(url)) {
-                this.handleNoResults();
-                return;
-            }
-            if (this.props.onRequestClose) {
-                this.props.onRequestClose();
-            }
-        } else {
-            this.handleNoResults();
+        if (this.searchState.status === SearchStatus.Finished && this.searchState.results.length) {
+            this.handleResultClick(this.searchState.results[0]);
         }
     }
 
-    private handleNoResults() {
-        runInAction(() => {
-            this.noResults = true;
-            this.inProgress = false;
-        });
-        this.searchBox.value = "";
-        this.focusSearchBox();
+    private handleResultClick = (r: IResult) => {
+        this.searchState.activateResult(r);
+        if (this.props.onRequestClose) {
+            this.props.onRequestClose();
+        }
     }
 }
 

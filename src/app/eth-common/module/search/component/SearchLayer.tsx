@@ -5,12 +5,8 @@ import { withInternalNav, IInternalNav } from "plugin-api/withInternalNav";
 import { observer } from "mobx-react";
 import { ITranslation } from "plugin-api/ITranslation";
 import { SearchIcon } from "@alethio/ui/lib/icon/SearchIcon";
-import { Button } from "@alethio/ui/lib/control/Button";
 import { Fade } from "@alethio/ui/lib/fx/Fade";
-import { ResultType } from "app/shared/data/search/ResultType";
-import { observable, action, runInAction } from "mobx";
 import { SpinnerLite } from "@alethio/ui/lib/fx/SpinnerLite";
-import { Layer } from "@alethio/ui/lib/overlay/Layer";
 import { Mask } from "@alethio/ui/lib/overlay/Mask";
 import { CloseIcon } from "@alethio/ui/lib/icon/CloseIcon";
 import { ToolbarIconButton } from "@alethio/ui/lib/layout/toolbar/ToolbarIconButton";
@@ -18,20 +14,34 @@ import { NoResults } from "./NoResults";
 import { SearchBox } from "./SearchBox";
 import { SearchInlineStore } from "../SearchInlineStore";
 import { ISearch } from "app/shared/data/search/ISearch";
-import { IBlockResultData } from "app/shared/data/search/result/IBlockResultData";
-import { IAccountResultData } from "app/shared/data/search/result/IAccountResultData";
+import { ResultsLayer } from "app/eth-common/module/search/component/ResultsLayer";
+import { HashPasteHandler } from "app/eth-common/module/search/component/HashPasteHandler";
+import { SearchState } from "app/eth-common/module/search/component/SearchState";
+import { IResult } from "app/shared/data/search/IResult";
+import { ResultsList } from "app/eth-common/module/search/component/ResultsList";
+import { SearchStatus } from "app/eth-common/module/search/component/SearchStatus";
+import { ILogger } from "plugin-api/ILogger";
+
+const Layer = styled.div`
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+`;
 
 const Content = styled.div`
+    position: relative; /* For positioning the results */
+    background: ${props => props.theme.colors.overlayBg};
+    border: 1px solid ${props => props.theme.colors.overlayBorder};
+    box-sizing: border-box;
+    color: ${props => props.theme.colors.overlayText};
+    box-shadow: 0 24px 56px 0 rgba(39, 54, 86, 0.16);
     display: flex;
     align-items: center;
     padding: 16px 22px;
     width: 848px;
     max-width: 100vw;
     box-sizing: border-box;
-`;
-
-const ButtonWrapper = styled.div`
-    white-space: nowrap;
 `;
 
 const SearchIconContainer = styled.div`
@@ -56,65 +66,83 @@ const CloseIconContainer = styled.div`
     margin-left: 20px;
 `;
 
+const ResultsPlaceholder = styled.div`
+    min-height: 50vh;
+`;
+
 export interface ISearchLayerProps {
     internalNav: IInternalNav;
     open: boolean;
     translation: ITranslation;
     search: ISearch;
     searchInlineStore: SearchInlineStore;
+    logger: ILogger;
     onRequestOpen(): void;
     onRequestClose(): void;
 }
+
 @observer
 class $SearchLayer extends React.Component<ISearchLayerProps> {
     private searchBox: HTMLInputElement;
-    @observable
-    private noResults = false;
-    @observable
-    private inProgress = false;
+    private searchState: SearchState;
 
+    constructor(props: ISearchLayerProps) {
+        super(props);
+
+        this.searchState = new SearchState(this.props.search, this.props.internalNav, this.props.logger);
+    }
     render() {
         let { open, translation: tr } = this.props;
 
-        return ( open ?
+        return <>
+            <HashPasteHandler onPaste={this.handlePaste} />
+            { open ?
             ReactDOM.createPortal(<Fade duration={.2}>
                 <Mask onClick={this.handleRootClick} />
                 <Layer>
                     <Content>
                         <SearchIconContainer>
-                            <SearchIcon />
+                            { this.searchState.status !== SearchStatus.InProgress ?
+                            <SearchIcon /> :
+                            <SpinnerLite />
+                            }
                         </SearchIconContainer>
                         <SearchBoxContainer>
                         <form onSubmit={this.handleSubmit}>
                             <SearchBox
                                 innerRef={ref => this.searchBox = ref!}
-                                readOnly={this.inProgress}
                                 type="text" autoComplete="off" autoCorrect="off" spellCheck={false}
-                                placeholder={tr.get("search.box.placeholder")} />
+                                placeholder={tr.get("search.box.placeholder")}
+                                onFocus={this.searchState.handleFocus}
+                                onBlur={this.searchState.handleBlur}
+                                onKeyUp={this.searchState.handleKeyPress}
+                            />
                         </form>
                         </SearchBoxContainer>
-                        <ButtonWrapper>
-                            <Button
-                                colors="primary"
-                                Icon={!this.inProgress ? SearchIcon : SpinnerLite}
-                                onClick={this.handleSubmit}
-                            >
-                                {tr.get("search.button.label")}
-                            </Button>
-                        </ButtonWrapper>
                         <CloseIconContainer>
                             <ToolbarIconButton onClick={this.props.onRequestClose} Icon={CloseIcon} />
                         </CloseIconContainer>
+                        { this.searchState.status === SearchStatus.Finished ?
+                        <ResultsLayer>
+                        { !this.searchState.results.length ?
+                            <NoResults>
+                                {tr.get("search.noResults.text")}
+                            </NoResults>
+                            :
+                            <ResultsList
+                                results={this.searchState.results}
+                                onActivateResult={this.handleResultClick}
+                                translation={this.props.translation}
+                            />
+                        }
+                        </ResultsLayer>
+                        : null }
                     </Content>
-                    { this.noResults ?
-                    <NoResults>
-                        {tr.get("search.noResults.text")}
-                    </NoResults>
-                    : null }
+                    <ResultsPlaceholder />
                 </Layer>
             </Fade>, document.body) :
-            null
-        );
+            null }
+        </>;
     }
 
     private handleRootClick = (e: React.MouseEvent<{}>) => {
@@ -124,7 +152,6 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
     }
 
     componentDidMount() {
-        document.addEventListener("paste", this.handlePaste);
         if (this.props.open) {
             this.focusSearchBox();
         }
@@ -132,36 +159,24 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
 
     componentDidUpdate(prevProps: ISearchLayerProps) {
         if (this.props.open !== prevProps.open && this.props.open) {
-            runInAction(() => {
-                this.noResults = false;
-                this.inProgress = false;
-            });
+            this.searchState.deactivate();
+            this.searchState.reset();
             this.focusSearchBox();
         }
     }
 
-    componentWillUnmount() {
-        document.removeEventListener("paste", this.handlePaste);
-    }
-
-    private handlePaste = (e: ClipboardEvent) => {
-        let activeEl = document.activeElement;
-        if ((activeEl as HTMLInputElement).value !== void 0 || (activeEl as HTMLElement).isContentEditable) {
-            // We ignore paste event on form or editable elements
-            return;
-        }
+    private handlePaste = (hash: string) => {
         if (this.props.searchInlineStore.instancesCount > 0) {
             return;
         }
 
-        let text = e.clipboardData!.getData("text/plain").trim();
-        // Should be non-empty string and it should look like a hash or block number
-        if (text && text.match(/^(0x)?[a-fA-F0-9]+$/)) {
-            if (!this.props.open) {
-                this.props.onRequestOpen();
-            }
-            setTimeout(() => this.searchBox.value = text);
+        if (!this.props.open) {
+            this.props.onRequestOpen();
         }
+        setTimeout(() => {
+            this.searchBox.value = hash;
+            this.searchState.triggerSearch(hash, false);
+        });
     }
 
     private focusSearchBox() {
@@ -170,55 +185,19 @@ class $SearchLayer extends React.Component<ISearchLayerProps> {
         });
     }
 
-    @action
     private handleSubmit = async (e?: React.FormEvent<{}>) => {
         if (e) {
             e.preventDefault();
         }
 
-        // TODO: button disabled state
-        if (this.inProgress) {
-            return;
-        }
-
-        this.noResults = false;
-        this.inProgress = true;
-
-        let query = this.searchBox.value.trim().toLowerCase();
-        let result = (await this.props.search.search(query))[0];
-        if (result) {
-            let url: string;
-
-            if (result.type === ResultType.Account) {
-                url = `page://aleth.io/account?accountHash=${(result.data as IAccountResultData).address}`;
-            } else if (result.type === ResultType.Block) {
-                url = `page://aleth.io/block?blockNumber=${(result.data as IBlockResultData).blockNumber}`;
-            } else if (result.type === ResultType.Tx) {
-                url = `page://aleth.io/tx?txHash=${query}`;
-            } else if (result.type === ResultType.Uncle) {
-                url = `page://aleth.io/uncle?uncleHash=${query}`;
-            } else {
-                throw new Error(`Unhandled result type "${result.type}"`);
-            }
-
-            // We don't reset inProgress because we're closing the layer
-            if (!this.props.internalNav.goTo(url)) {
-                this.handleNoResults();
-                return;
-            }
-            this.props.onRequestClose();
-        } else {
-            this.handleNoResults();
+        if (this.searchState.status === SearchStatus.Finished && this.searchState.results.length) {
+            this.handleResultClick(this.searchState.results[0]);
         }
     }
 
-    private handleNoResults() {
-        runInAction(() => {
-            this.noResults = true;
-            this.inProgress = false;
-        });
-        this.searchBox.value = "";
-        this.focusSearchBox();
+    private handleResultClick = (r: IResult) => {
+        this.searchState.activateResult(r);
+        this.props.onRequestClose();
     }
 }
 

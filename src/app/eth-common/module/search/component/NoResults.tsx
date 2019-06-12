@@ -1,18 +1,8 @@
-import styled, { css } from "@alethio/explorer-ui/lib/styled-components";
+import styled from "@alethio/explorer-ui/lib/styled-components";
 
-interface INoResultsProps {
-    inline?: boolean;
-}
-
-export const NoResults = styled<INoResultsProps, "div">("div")`
-    ${({inline}) => inline ? null : css`
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        padding-top: 24px;
-        transform: translateY(100%);
-    `}
-    width: 100%;
+export const NoResults = styled.div`
+    padding-top: 24px;
+    padding-bottom: 24px;
     text-align: center;
     text-transform: uppercase;
     color: ${props => props.theme.colors.searchNoResultsText};

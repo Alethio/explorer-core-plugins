@@ -26,6 +26,6 @@ export class SearchDsRpcApi {
             throw e;
         }
 
-        return [this.resultReader.read(data)];
+        return [this.resultReader.read(data, hash)];
     }
 }
