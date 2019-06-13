@@ -40,3 +40,13 @@ $ acp link ../explorer-core-plugins/packages/eth-common \
 `npm test` (or `npm run test-coverage` to generate code coverage as well).
 
 Test coverage is written to `./coverage` in HTML and LCOV formats.
+
+## Publish process
+
+This repo uses [lerna](https://github.com/lerna/lerna). Because the source code is shared between packages, lerna will not automatically detect which packages were changed. The following commands need to be executed:
+
+1. `npx lerna version --force-publish=<explicitly_changed_package_names>`
+
+e.g. `npx lerna version --force-publish=@alethio/explorer-plugin-eth-common,@alethio/explorer-plugin-eth-lite`
+
+2. `npx lerna publish from-git`
