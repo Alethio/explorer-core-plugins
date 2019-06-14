@@ -53,6 +53,7 @@
     "toolbar.api.label": "Alethio API",
     "toolbar.monitoring.label": "Alethio Monitoring",
     "toolbar.reports.label": "Alethio Reports",
+    "toolbar.company.label": "About us",
 
     "dashboardView.title": "Welcome to Alethio",
     "dashboardView.subTitle": "The Ethereum Data Analytics Platform",

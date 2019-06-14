@@ -53,6 +53,7 @@
     "toolbar.api.label": "Alethio 数据接口",
     "toolbar.monitoring.label": "Alethio 数据监测",
     "toolbar.reports.label": "Alethio 数据报告",
+    "toolbar.company.label": "关于我们",
 
     "dashboardView.title": "欢迎来到Alethio",
     "dashboardView.subTitle": "基于以太坊区块链的数据分析平台",
