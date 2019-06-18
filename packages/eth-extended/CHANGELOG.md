@@ -1,3 +1,7 @@
+# v2.1.1
+
+- Fix contract accordion console errors related to monaco-editor
+
 # v2.1.0
 
 - Add company link module (toolbar, topbar)
