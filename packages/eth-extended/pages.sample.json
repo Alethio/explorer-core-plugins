@@ -150,6 +150,8 @@
         }],
         "toolbarBottom": [{
             "def": "module://aleth.io/toolbar/feedback"
+        }, {
+            "def": "module://aleth.io/toolbar/company"
         }],
         "topbar": [{
             "def": "module://aleth.io/topbar/search"
@@ -161,6 +163,8 @@
             "def": "module://aleth.io/topbar/alethioReports"
         }, {
             "def": "module://aleth.io/topbar/feedback"
+        }, {
+            "def": "module://aleth.io/topbar/company"
         }]
     }
 }

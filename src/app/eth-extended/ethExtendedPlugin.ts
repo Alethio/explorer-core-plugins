@@ -51,6 +51,12 @@ import {
 } from "app/eth-extended/module/topbar/alethioMonitoringModule";
 import { alethioReportsModule as topbarReportsModule } from "app/eth-extended/module/topbar/alethioReportsModule";
 import { uncleByHashContextType } from "app/eth-extended/context/uncleByHashContextType";
+import {
+    alethioCompanyModule as toolbarAlethioCompanyModule
+} from "app/eth-extended/module/toolbar/alethioCompanyModule";
+import {
+    alethioCompanyModule as topbarAlethioCompanyModule
+} from "app/eth-extended/module/topbar/alethioCompanyModule";
 
 const ethExtendedPlugin: IPlugin = {
     init(config, api, logger, publicPath) {
@@ -109,15 +115,20 @@ const ethExtendedPlugin: IPlugin = {
         api.addDataAdapter("adapter://aleth.io/ethNodesInfo", new EthNodesInfoAdapter(dataSource));
 
         api.addModuleDef("module://aleth.io/toolbar/ethstats", ethstatsModule(config.ethstatsUrl));
+
         api.addModuleDef("module://aleth.io/toolbar/alethioApi", toolbarApiModule(config.alethioApiUrl));
+        api.addModuleDef("module://aleth.io/topbar/alethioApi", topbarApiModule(config.alethioApiUrl));
+
         api.addModuleDef("module://aleth.io/toolbar/alethioMonitoring",
             toolbarMonitoringModule(config.alethioMonitoringUrl));
-        api.addModuleDef("module://aleth.io/toolbar/alethioReports", toolbarReportsModule(config.alethioReportsUrl));
-
-        api.addModuleDef("module://aleth.io/topbar/alethioApi", topbarApiModule(config.alethioApiUrl));
         api.addModuleDef("module://aleth.io/topbar/alethioMonitoring",
             topbarMonitoringModule(config.alethioMonitoringUrl));
+
+        api.addModuleDef("module://aleth.io/toolbar/alethioReports", toolbarReportsModule(config.alethioReportsUrl));
         api.addModuleDef("module://aleth.io/topbar/alethioReports", topbarReportsModule(config.alethioReportsUrl));
+
+        api.addModuleDef("module://aleth.io/toolbar/company", toolbarAlethioCompanyModule(config.companyUrl));
+        api.addModuleDef("module://aleth.io/topbar/company", topbarAlethioCompanyModule(config.companyUrl));
 
         api.addPageDef("page://aleth.io/dashboard", dashboardPage);
         api.addModuleDef("module://aleth.io/dashboard/avgTimeInPoolChart", avgTimeInPoolChartModule);
