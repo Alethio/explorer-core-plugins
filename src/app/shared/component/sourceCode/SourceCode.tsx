@@ -24,15 +24,13 @@ export class SourceCode extends React.Component<ISourceCodeProps> {
                 // Monkey patch the getWorkerUrl method defined by monaco-editor-webpack-plugin
                 // to allow cross-origin worker loading
                 let oldGetWorkerUrl = (self as any).MonacoEnvironment.getWorkerUrl;
-                (self as any).MonacoEnvironment = {
-                    getWorkerUrl(moduleId: string, label: string) {
-                        let workerUrl = oldGetWorkerUrl(moduleId, label).replace("\\", "/");
-                        return "data:text/javascript;charset=utf-8," + encodeURIComponent(
-                            `importScripts('${
-                                workerUrl.match(/^https?:/) ? workerUrl : location.origin + "/" + workerUrl
-                            }');`
-                        );
-                    }
+                (self as any).MonacoEnvironment.getWorkerUrl = (moduleId: string, label: string) => {
+                    let workerUrl = oldGetWorkerUrl(moduleId, label).replace("\\", "/");
+                    return "data:text/javascript;charset=utf-8," + encodeURIComponent(
+                        `importScripts('${
+                            workerUrl.match(/^https?:/) ? workerUrl : location.origin + "/" + workerUrl
+                        }');`
+                    );
                 };
             }
 
