@@ -1,3 +1,8 @@
+# v2.1.2
+
+- Fix clipboard copy confirmation icon in several components
+- Show ellipsis for long block extra data tooltips
+
 # v2.1.1
 
 - Fix contract accordion console errors related to monaco-editor
