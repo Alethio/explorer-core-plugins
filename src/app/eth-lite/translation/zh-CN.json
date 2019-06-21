@@ -63,6 +63,8 @@
 
     "txView.content.noData.text": "无数据 <br /> 试一下其他交易吧！",
     "txView.content.txValue.label": "金额",
+    "txView.content.txStatus.ok": "消息发送成功",
+    "txView.content.txStatus.error": "出错了！",
     "txView.content.txIndex.label": "位置",
     "txView.content.gasUsed.label": "该交易使用燃料数额",
     "txView.content.cumulativeGasUsed.label": "累计使用燃料数额",

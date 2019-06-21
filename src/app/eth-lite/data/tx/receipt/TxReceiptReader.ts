@@ -10,7 +10,7 @@ export class TxReceiptReader {
             cumulativeGasUsed: new BigNumber(receipt["cumulativeGasUsed"]),
             gasUsed: new BigNumber(receipt["gasUsed"]),
             logsBloom: receipt["logsBloom"],
-            status: receipt["status"] || true
+            status: receipt["status"] !== void 0 ? receipt["status"] : true
         };
         return tx;
     }
