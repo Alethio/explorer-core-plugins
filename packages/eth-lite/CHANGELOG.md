@@ -1,3 +1,7 @@
+# v2.0.4
+
+- Fix search results for account hashes in eth-lite plugin
+
 # v2.0.3
 
 - Fix tx receipt status not being properly displayed on the tx page
