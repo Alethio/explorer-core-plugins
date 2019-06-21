@@ -23,7 +23,7 @@ import { BlockNumberBox } from "@alethio/explorer-ui/lib/box/block/BlockNumberBo
 import { TimeElapsedBox } from "app/shared/component/TimeElapsedBox";
 import { AddressHashBox } from "@alethio/explorer-ui/lib/box/account/AddressHashBox";
 import { TimeInPoolBox } from "@alethio/explorer-ui/lib/box/tx/TimeInPoolBox";
-import { TxStatus } from "./TxStatus";
+import { TxStatusBox } from "./TxStatusBox";
 
 export interface ITxDetailsProps {
     txHash: string;
@@ -56,7 +56,7 @@ export class TxDetails extends React.PureComponent<ITxDetailsProps> {
                                 locale={locale}
                             />
                         : null }
-                        <TxStatus tx={tx} translation={tr} />
+                        <TxStatusBox tx={tx} translation={tr} />
                     </LayoutRowItem>
                 </LayoutRow>
                 { !isPendingTxDetails(tx) ?

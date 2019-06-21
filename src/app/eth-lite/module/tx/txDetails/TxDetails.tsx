@@ -18,7 +18,7 @@ import { AddressHashBox } from "@alethio/explorer-ui/lib/box/account/AddressHash
 import { ITxDetails } from "app/eth-lite/data/tx/details/ITxDetails";
 import { ITxReceipt } from "app/eth-lite/data/tx/receipt/ITxReceipt";
 import { IBlockBasicInfo } from "app/shared/data/block/IBlockBasicInfo";
-import { TxStatus } from "app/eth-lite/module/tx/txDetails/TxStatus";
+import { TxStatusBox } from "app/eth-lite/module/tx/txDetails/TxStatusBox";
 import { NotAvailableBox } from "app/shared/component/NotAvailableBox";
 
 export interface ITxDetailsProps {
@@ -48,7 +48,7 @@ export class TxDetails extends React.PureComponent<ITxDetailsProps> {
                         <Label arrow disabled={tx.value.isZero()}>{tr.get("txView.content.txValue.label")}</Label>
                         <EthValueBox wei={tx.value} locale={locale} />
                         { txReceipt ?
-                        <TxStatus txReceipt={txReceipt} translation={tr} />
+                        <TxStatusBox txReceipt={txReceipt} translation={tr} />
                         : <NotAvailableBox translation={tr} /> }
                     </LayoutRowItem>
                 </LayoutRow>

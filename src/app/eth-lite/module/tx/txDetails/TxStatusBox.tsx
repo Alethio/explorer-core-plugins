@@ -6,12 +6,12 @@ import { TooltipRegular } from "@alethio/ui/lib/overlay/tooltip/TooltipRegular";
 import { ErrorIcon } from "@alethio/ui/lib/icon/ErrorIcon";
 import { ITxReceipt } from "app/eth-lite/data/tx/receipt/ITxReceipt";
 
-export interface ITxStatusProps {
+export interface ITxStatusBoxProps {
     txReceipt: ITxReceipt;
     translation: ITranslation;
 }
 
-export class TxStatus extends React.Component<ITxStatusProps> {
+export class TxStatusBox extends React.Component<ITxStatusBoxProps> {
     render() {
         let { status } = this.props.txReceipt;
         let translation = this.props.translation;
