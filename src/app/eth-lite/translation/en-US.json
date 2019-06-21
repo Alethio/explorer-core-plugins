@@ -63,6 +63,8 @@
 
     "txView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different transaction.",
     "txView.content.txValue.label": "Value",
+    "txView.content.txStatus.ok": "Message was successful",
+    "txView.content.txStatus.error": "An error occurred",
     "txView.content.txIndex.label": "Position",
     "txView.content.gasUsed.label": "Gas used by TX",
     "txView.content.cumulativeGasUsed.label": "Cumulative gas used",
