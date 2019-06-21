@@ -1,3 +1,7 @@
+# v2.0.3
+
+- Fix tx receipt status not being properly displayed on the tx page
+
 # v2.0.2
 
 - Fix clipboard copy confirmation icon in several components
