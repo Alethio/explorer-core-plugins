@@ -39,7 +39,7 @@ export class Search implements ISearch {
             let result: IResult<IAccountResultData> = {
                 type: ResultType.Account,
                 data: {
-                    address: "0x" + accountMatch[1]
+                    address: "0x" + accountMatch[2]
                 }
             };
             return [result];
