@@ -2,7 +2,7 @@
     "name": "@alethio/explorer-plugin-eth-lite",
     "publisher": "aleth.io",
     "pluginName": "eth-lite",
-    "version": "2.0.3",
+    "version": "2.0.4",
     "description": "Alethio Explorer core plugin that fetches data via Web3, directly from an ETH node",
     "author": "Alexandru Ciuca <alexandru.ciuca@consensys.net>",
     "license": "MIT",
