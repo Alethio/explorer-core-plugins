@@ -3,7 +3,7 @@ import { GridFields } from "@alethio/ui/lib/control/grid/state/GridFields";
 import { EthRenderer } from "@alethio/ui/lib/data/gridRenderer/EthRenderer";
 import { AccountHashRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/account/AccountHashRenderer";
 import { BlockLinkRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/block/BlockLinkRenderer";
-import { ShortDateRenderer } from "@alethio/ui/lib/data/gridRenderer/ShortDateRenderer";
+import { DateTimeRenderer } from "@alethio/ui/lib/data/gridRenderer/DateTimeRenderer";
 import { TxTypeExtraRenderer } from "./txsGrid/TxTypeExtraRenderer";
 import { TransferDirectionRenderer } from "./txsGrid/TransferDirectionRenderer";
 import { ITxLiteByAccountMined } from "app/eth-extended/data/tx/lite/byAccount/mined/ITxLiteByAccountMined";
@@ -109,13 +109,13 @@ export class TxsMinedGridFields extends GridFields<ITxLiteByAccountMined> {
             )
         },
         {
-            label: t.get("accountView.content.accountSummary.transactions.blockDate.label"),
+            label: t.get("accountView.content.accountSummary.transactions.blockTime.label"),
             fieldKey: ITxsMinedGridFieldKeys.BlockTime,
             type: "string",
             isSortable: false,
             selected: true,
             getFieldValue: f => f.block.creationTime,
-            renderer: new ShortDateRenderer(
+            renderer: new DateTimeRenderer(
                 locale,
                 f => f.block.creationTime
             )
