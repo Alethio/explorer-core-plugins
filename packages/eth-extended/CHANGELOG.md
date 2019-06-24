@@ -1,3 +1,7 @@
+# v2.1.3
+
+- Show date/time instead of short date in account accordion grids
+
 # v2.1.2
 
 - Fix clipboard copy confirmation icon in several components
