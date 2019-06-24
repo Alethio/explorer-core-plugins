@@ -21,6 +21,11 @@
     "general.hotjarError": "加载Hotjar反馈部件出错。若您正在使用广告拦截插件，请禁用插件并再次尝试。",
 
     "toolbar.search.label": "搜索",
+    "toolbar.ethstats.label": "EthStats 2.0",
+    "toolbar.api.label": "Alethio 数据接口",
+    "toolbar.monitoring.label": "Alethio 数据监测",
+    "toolbar.reports.label": "Alethio 数据报告",
+    "toolbar.company.label": "关于我们",
     "toolbar.feedback.label": "提交您的反馈",
 
     "search.button.label": "搜索",

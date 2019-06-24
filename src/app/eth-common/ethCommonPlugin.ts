@@ -6,19 +6,28 @@ import { blockListContext } from "./context/blockListContext";
 import { searchModule } from "./module/search/searchModule";
 import { latestBlockContext } from "./context/latestBlockContext";
 import { latestBlockInfoModule } from "./module/block/latestBlockInfo/latestBlockInfoModule";
-import { txPage } from "app/eth-common/page/tx/txPage";
-import { txListModule } from "app/eth-common/module/tx/txList/txListModule";
-import { accountPage } from "app/eth-common/page/account/accountPage";
+import { txPage } from "./page/tx/txPage";
+import { txListModule } from "./module/tx/txList/txListModule";
+import { accountPage } from "./page/account/accountPage";
 import { identiconModule as accountIdenticonModule } from "./module/account/identicon/accountIdenticonModule";
-import { toolbarSearchModule } from "app/eth-common/module/search/toolbarSearchModule";
-import { toolbarFeedbackModule } from "app/eth-common/module/toolbar/toolbarFeedbackModule";
-import { topbarSearchModule } from "app/eth-common/module/search/topbarSearchModule";
-import { topbarFeedbackModule } from "app/eth-common/module/toolbar/topbarFeedbackModule";
-import { SearchInlineStore } from "app/eth-common/module/search/SearchInlineStore";
-import { privacyPolicyPage } from "app/eth-common/page/privacy-policy/privacyPolicyPage";
-import { latestBlockRangeContext } from "app/eth-common/context/latestBlockRangeContext";
-import { chartsModule } from "app/eth-common/module/dashboard/chartsModule";
-import { blocksChartModule } from "app/eth-common/module/dashboard/blocksChart/blocksChartModule";
+import { toolbarSearchModule } from "./module/search/toolbarSearchModule";
+import { toolbarFeedbackModule } from "./module/toolbar/feedback/toolbarFeedbackModule";
+import { topbarSearchModule } from "./module/search/topbarSearchModule";
+import { topbarFeedbackModule } from "./module/toolbar/feedback/topbarFeedbackModule";
+import { SearchInlineStore } from "./module/search/SearchInlineStore";
+import { privacyPolicyPage } from "./page/privacy-policy/privacyPolicyPage";
+import { latestBlockRangeContext } from "./context/latestBlockRangeContext";
+import { chartsModule } from "./module/dashboard/chartsModule";
+import { blocksChartModule } from "./module/dashboard/blocksChart/blocksChartModule";
+import { ethstatsModule } from "./module/toolbar/ethstatsModule";
+import { alethioApiModule as toolbarApiModule } from "./module/toolbar/alethioApiModule";
+import { alethioMonitoringModule as toolbarMonitoringModule } from "./module/toolbar/alethioMonitoringModule";
+import { alethioReportsModule as toolbarReportsModule } from "./module/toolbar/alethioReportsModule";
+import { alethioApiModule as topbarApiModule } from "./module/topbar/alethioApiModule";
+import { alethioMonitoringModule as topbarMonitoringModule } from "./module/topbar/alethioMonitoringModule";
+import { alethioReportsModule as topbarReportsModule } from "./module/topbar/alethioReportsModule";
+import { alethioCompanyModule as toolbarAlethioCompanyModule } from "./module/toolbar/alethioCompanyModule";
+import { alethioCompanyModule as topbarAlethioCompanyModule } from "./module/topbar/alethioCompanyModule";
 
 const ethCommonPlugin: IPlugin = {
     init(config, api, logger, publicPath) {
@@ -40,6 +49,22 @@ const ethCommonPlugin: IPlugin = {
         api.addModuleDef("module://aleth.io/dashboard/blocksChart", blocksChartModule);
         api.addContextDef("context://aleth.io/dashboard/latestBlockRange", latestBlockRangeContext);
         api.addModuleDef("module://aleth.io/dashboard/latestBlockInfo", latestBlockInfoModule);
+
+        api.addModuleDef("module://aleth.io/toolbar/ethstats", ethstatsModule(config.ethstatsUrl));
+
+        api.addModuleDef("module://aleth.io/toolbar/alethioApi", toolbarApiModule(config.alethioApiUrl));
+        api.addModuleDef("module://aleth.io/topbar/alethioApi", topbarApiModule(config.alethioApiUrl));
+
+        api.addModuleDef("module://aleth.io/toolbar/alethioMonitoring",
+            toolbarMonitoringModule(config.alethioMonitoringUrl));
+        api.addModuleDef("module://aleth.io/topbar/alethioMonitoring",
+            topbarMonitoringModule(config.alethioMonitoringUrl));
+
+        api.addModuleDef("module://aleth.io/toolbar/alethioReports", toolbarReportsModule(config.alethioReportsUrl));
+        api.addModuleDef("module://aleth.io/topbar/alethioReports", topbarReportsModule(config.alethioReportsUrl));
+
+        api.addModuleDef("module://aleth.io/toolbar/company", toolbarAlethioCompanyModule(config.companyUrl));
+        api.addModuleDef("module://aleth.io/topbar/company", topbarAlethioCompanyModule(config.companyUrl));
 
         api.addModuleDef("module://aleth.io/toolbar/feedback", toolbarFeedbackModule);
         api.addModuleDef("module://aleth.io/topbar/feedback", topbarFeedbackModule);

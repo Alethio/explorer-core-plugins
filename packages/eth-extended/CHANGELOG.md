@@ -1,3 +1,7 @@
+# v3.0.0
+
+- Move toolbar product links to `@alethio/explorer-plugin-eth-common`.
+
 # v2.1.3
 
 - Show date/time instead of short date in account accordion grids
