@@ -8,7 +8,7 @@ import { CmLinkRenderer } from "app/eth-extended/component/grid/cm/CmLinkRendere
 import { TransferDirectionRenderer } from "./txsGrid/TransferDirectionRenderer";
 import { AccountHashRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/account/AccountHashRenderer";
 import { BlockLinkRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/block/BlockLinkRenderer";
-import { ShortDateRenderer } from "@alethio/ui/lib/data/gridRenderer/ShortDateRenderer";
+import { DateTimeRenderer } from "@alethio/ui/lib/data/gridRenderer/DateTimeRenderer";
 import { CmParentLinkRenderer } from "app/eth-extended/component/grid/cm/CmParentLinkRenderer";
 
 enum ICmGridFieldKeys {
@@ -135,13 +135,13 @@ export class CmGridFields extends GridFields<ICmLite> {
                 f => f.block.id
             )
         }, {
-            label: t.get("accountView.content.accountSummary.transactions.blockDate.label"),
+            label: t.get("accountView.content.accountSummary.transactions.blockTime.label"),
             fieldKey: ICmGridFieldKeys.BlockTime,
             type: "string",
             isSortable: false,
             selected: true,
             getFieldValue: f => f.block.creationTime,
-            renderer: new ShortDateRenderer(
+            renderer: new DateTimeRenderer(
                 locale,
                 f => f.block.creationTime
             )

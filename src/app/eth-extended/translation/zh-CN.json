@@ -209,7 +209,7 @@
     "accountView.content.accountSummary.pendingTransactions.label": "待处理交易",
     "accountView.content.accountSummary.minedTransactions.label": "历史交易",
     "accountView.content.accountSummary.transactions.blockNumber.label": "区块高度#",
-    "accountView.content.accountSummary.transactions.blockDate.label": "区块时间戳",
+    "accountView.content.accountSummary.transactions.blockTime.label": "区块时间戳",
 
     "accountView.contract.compilerVersion.label": "编译模式",
     "accountView.contract.optimizer.label": "优化器",
