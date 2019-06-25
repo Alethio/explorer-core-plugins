@@ -28,6 +28,7 @@ import { alethioMonitoringModule as topbarMonitoringModule } from "./module/topb
 import { alethioReportsModule as topbarReportsModule } from "./module/topbar/alethioReportsModule";
 import { alethioCompanyModule as toolbarAlethioCompanyModule } from "./module/toolbar/alethioCompanyModule";
 import { alethioCompanyModule as topbarAlethioCompanyModule } from "./module/topbar/alethioCompanyModule";
+import { networkModule } from "./module/dashboard/networkModule";
 
 const ethCommonPlugin: IPlugin = {
     init(config, api, logger, publicPath) {
@@ -44,6 +45,8 @@ const ethCommonPlugin: IPlugin = {
 
         api.addPageDef("page://aleth.io/account", accountPage);
         api.addModuleDef("module://aleth.io/account/identicon", accountIdenticonModule);
+
+        api.addModuleDef("module://aleth.io/dashboard/network", networkModule);
 
         api.addModuleDef("module://aleth.io/dashboard/charts", chartsModule);
         api.addModuleDef("module://aleth.io/dashboard/blocksChart", blocksChartModule);

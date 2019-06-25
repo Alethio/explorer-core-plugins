@@ -52,6 +52,7 @@ Refer to [eth-extended/pages.sample.json](../eth-extended/pages.sample.json) or 
 | module://aleth.io/block/confirmations | { blockNumber } | N/A | Shows real-time number of block confirmations | [blockConfirmationsModule](../../src/app/eth-common/module/block/blockConfirmationsModule.ts) |
 | module://aleth.io/tx/list | { txHash } | N/A | Sidebar chart showing the current transaction in the context of the parent block | [txListModule](../../src/app/eth-common/module/tx/txList/txListModule.ts) |
 | module://aleth.io/account/identicon | { accountHash } | N/A | Renders an identicon for the given account hash | [accountIdenticonModule](../../src/app/eth-common/module/account/identicon/accountIdenticonModule.ts) |
+| module://aleth.io/dashboard/network | N/A | N/A | Shows the current network name and an optional dropdown for switching to other networks. See implementation for configuration options. | [networkModule](../../src/app/eth-common/module/dashboard/networkModule.tsx) |
 | module://aleth.io/search | N/A | N/A | Search widget | [searchModule](../../src/app/eth-common/module/search/searchModule.ts) |
 | module://aleth.io/dashboard/charts | N/A | content | Layout wrapper for charts on dashboard page | [chartsModule](../../src/app/eth-common/module/dashboard/chartsModule.ts) |
 | module://aleth.io/dashboard/blocksChart | { rangeStart, rangeEnd } | children | Chart showing tx counts for a range of blocks. Exposes slot for adding content under it | [blocksChartModule](../../src/app/eth-common/module/dashboard/blocksChart/blocksChartModule.ts) |
