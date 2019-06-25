@@ -49,12 +49,6 @@
     "general.grid.footer.loadMore.label": "Load More",
     "general.grid.footer.norowsavailable.label": "These are not the droids you are looking for",
 
-    "toolbar.ethstats.label": "EthStats 2.0",
-    "toolbar.api.label": "Alethio API",
-    "toolbar.monitoring.label": "Alethio Monitoring",
-    "toolbar.reports.label": "Alethio Reports",
-    "toolbar.company.label": "About us",
-
     "dashboardView.title": "Welcome to Alethio",
     "dashboardView.subTitle": "The Ethereum Data Analytics Platform",
     "dashboardView.pendingChart.title.label": "Mined transactions average time in pool",

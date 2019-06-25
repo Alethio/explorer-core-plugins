@@ -1,0 +1,7 @@
+{
+    "alethioApiUrl": "https://api.aleth.io/docs",
+    "alethioMonitoringUrl": "https://monitoring.aleth.io",
+    "alethioReportsUrl": "https://reports.aleth.io",
+    "ethstatsUrl": "https://ethstats.io",
+    "companyUrl": "https://company.aleth.io"
+}

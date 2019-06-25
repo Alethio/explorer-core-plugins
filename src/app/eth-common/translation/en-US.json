@@ -21,6 +21,11 @@
     "general.hotjarError": "There was an error loading the Hotjar feedback widget. If you are using an ad blocker, please disable it and try again.",
 
     "toolbar.search.label": "Search",
+    "toolbar.ethstats.label": "EthStats 2.0",
+    "toolbar.api.label": "Alethio API",
+    "toolbar.monitoring.label": "Alethio Monitoring",
+    "toolbar.reports.label": "Alethio Reports",
+    "toolbar.company.label": "About us",
     "toolbar.feedback.label": "Submit feedback",
 
     "search.button.label": "Search",

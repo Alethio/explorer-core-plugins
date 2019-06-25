@@ -49,12 +49,6 @@
     "general.grid.footer.loadMore.label": "加载更多",
     "general.grid.footer.norowsavailable.label": "无更多记录可显示",
 
-    "toolbar.ethstats.label": "EthStats 2.0",
-    "toolbar.api.label": "Alethio 数据接口",
-    "toolbar.monitoring.label": "Alethio 数据监测",
-    "toolbar.reports.label": "Alethio 数据报告",
-    "toolbar.company.label": "关于我们",
-
     "dashboardView.title": "欢迎来到Alethio",
     "dashboardView.subTitle": "基于以太坊区块链的数据分析平台",
     "dashboardView.pendingChart.title.label": "交易平均等待时长",
