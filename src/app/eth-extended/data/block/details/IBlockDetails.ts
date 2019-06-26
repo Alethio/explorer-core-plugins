@@ -1,10 +1,11 @@
 import { ITxLite } from "app/eth-extended/data/tx/ITxLite";
 import { BigNumber } from "app/util/BigNumber";
+import { IBlockCommonDetails } from "app/shared/data/block/IBlockCommonDetails";
 
 /**
  * Block data with full block details coming from backend API
  */
-export interface IBlockDetails {
+export interface IBlockDetails extends IBlockCommonDetails {
     /** Block number */
     id: number;
     /** Unix timestamp */
