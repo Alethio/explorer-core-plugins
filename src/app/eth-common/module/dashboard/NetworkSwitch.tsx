@@ -1,10 +1,11 @@
 import * as React from "react";
+import ReactDOM from "react-dom";
 import styled from "@alethio/explorer-ui/lib/styled-components";
 import { observer } from "mobx-react";
 import { observable } from "mobx";
 import { Popover } from "@alethio/ui/lib/overlay/Popover";
 import { contains } from "@puzzl/browser/lib/dom";
-import { ITranslation } from "plugin-api/ITranslation";
+import { NetworkButton } from "app/eth-common/module/dashboard/NetworkButton";
 
 const Link = styled.a`
     text-decoration: none;
@@ -12,16 +13,6 @@ const Link = styled.a`
     cursor: pointer;
 
     color: ${props => props.theme.colors.link};
-`;
-
-const LinkButton = styled(Link)`
-    margin-left: 12px;
-    font-size: 12px;
-    line-height: 12px;
-    padding-top: 3px;
-    font-weight: 600;
-    text-transform: uppercase;
-    user-select: none;
 `;
 
 const ListItem = styled.div`
@@ -44,11 +35,11 @@ const Url = styled.span`
 `;
 
 export interface INetworkSwitchProps {
+    networkName: string;
     networks: {
         name: string;
         url: string;
     }[];
-    translation: ITranslation;
 }
 
 @observer
@@ -59,11 +50,17 @@ export class NetworkSwitch extends React.Component<INetworkSwitchProps> {
     private targetEl: HTMLElement;
 
     render() {
+        let { networks } = this.props;
+
         return (
-            <Popover visible={this.layerVisible} placement="right" offset={8} content={this.renderPopover()}>
-                <LinkButton innerRef={ref => this.targetEl = ref!} onClick={this.handleLayerToggle}>
-                    { this.props.translation.get("dashboardView.network.switch.label") }
-                </LinkButton>
+            <Popover visible={this.layerVisible} placement="bottom" offset={8} content={this.renderPopover()}>
+                <NetworkButton
+                    disabled={!networks.length}
+                    ref={ref => this.targetEl = (ref && ReactDOM.findDOMNode(ref) as HTMLElement)!}
+                    onClick={this.handleButtonClick}
+                >
+                    { this.props.networkName }
+                </NetworkButton>
             </Popover>
         );
     }
@@ -85,14 +82,14 @@ export class NetworkSwitch extends React.Component<INetworkSwitchProps> {
         location.href = url;
     }
 
-    private handleLayerToggle = () => {
+    private handleButtonClick = () => {
         this.toggleLayer();
     }
 
     private handleDocumentClick = (e: MouseEvent) => {
         if (!contains(this.layerEl, e.target as HTMLElement) &&
             !contains(this.targetEl, e.target as HTMLElement)) {
-            this.layerVisible = false;
+            this.toggleLayer();
         }
     }
 

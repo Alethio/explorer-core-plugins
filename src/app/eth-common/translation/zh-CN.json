@@ -37,7 +37,6 @@
     "search.result.address.label": "地址",
 
     "dashboardView.network.label": "你在看:",
-    "dashboardView.network.switch.label": "更改",
     "dashboardView.lastBlocksChart.title.label": "最新区块交易",
     "dashboardView.content.latestBlock.label": "最新区块",
 

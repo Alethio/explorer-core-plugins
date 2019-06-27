@@ -37,7 +37,6 @@
     "search.result.address.label": "Address",
 
     "dashboardView.network.label": "You are viewing:",
-    "dashboardView.network.switch.label": "Change",
     "dashboardView.lastBlocksChart.title.label": "Last blocks transactions",
     "dashboardView.content.latestBlock.label": "Latest block",
 

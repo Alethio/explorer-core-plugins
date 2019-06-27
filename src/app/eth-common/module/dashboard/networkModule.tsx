@@ -8,7 +8,7 @@ const validateOptions = (options: INetworkProps) => {
     if (!options.networkName) {
         throw new Error(`Missing option "networkName"`);
     }
-    if (options.otherNetworks.length) {
+    if (options.otherNetworks && options.otherNetworks.length) {
         if (options.otherNetworks
             .some(n => typeof n !== "object" || typeof n.name !== "string" || typeof n.url !== "string")
         ) {
@@ -29,13 +29,14 @@ const NetworkRoot = styled.h1`
     margin: 32px 0 7px 0;
 `;
 
-const NetworkName = styled.b`
-    margin-left: 12px;
+const NetworkLabel = styled.div`
+    margin-top: -2px;
+    margin-right: 8px;
 `;
 
 interface INetworkProps {
     networkName: string;
-    otherNetworks: {
+    otherNetworks?: {
         name: string;
         url: string;
     }[];
@@ -46,11 +47,8 @@ export const networkModule: IModuleDef<INetworkProps, {}> = {
     contextType: {},
     dataAdapters: [],
     getContentComponent: async () => props => <NetworkRoot>
-        <span>{props.translation.get("dashboardView.network.label")}</span>
-        <NetworkName>{ props.networkName }</NetworkName>
-        { props.otherNetworks.length ?
-        <NetworkSwitch networks={props.otherNetworks} translation={props.translation} />
-        : null }
+        <NetworkLabel>{props.translation.get("dashboardView.network.label")}</NetworkLabel>
+        <NetworkSwitch networkName={props.networkName} networks={props.otherNetworks || []} />
     </NetworkRoot>,
     getContentProps: props => {
         let { options, translation } = props;
