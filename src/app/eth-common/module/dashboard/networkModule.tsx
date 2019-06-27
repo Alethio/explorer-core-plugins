@@ -3,8 +3,9 @@ import { IModuleDef } from "plugin-api/IModuleDef";
 import { ITranslation } from "plugin-api/ITranslation";
 import styled from "@alethio/explorer-ui/lib/styled-components";
 import { NetworkSwitch } from "./NetworkSwitch";
+import { INetworkModuleOptions } from "./INetworkModuleOptions";
 
-const validateOptions = (options: INetworkProps) => {
+const validateOptions = (options: INetworkModuleOptions) => {
     if (!options.networkName) {
         throw new Error(`Missing option "networkName"`);
     }
@@ -34,12 +35,7 @@ const NetworkLabel = styled.div`
     margin-right: 8px;
 `;
 
-interface INetworkProps {
-    networkName: string;
-    otherNetworks?: {
-        name: string;
-        url: string;
-    }[];
+interface INetworkProps extends INetworkModuleOptions {
     translation: ITranslation;
 }
 
@@ -53,10 +49,10 @@ export const networkModule: IModuleDef<INetworkProps, {}> = {
     getContentProps: props => {
         let { options, translation } = props;
 
-        validateOptions(options as any);
+        validateOptions(options as INetworkModuleOptions);
 
         return {
-            ...options as INetworkProps,
+            ...options as INetworkModuleOptions,
             translation
         };
     }
