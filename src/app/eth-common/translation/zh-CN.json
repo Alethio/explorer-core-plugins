@@ -36,7 +36,7 @@
     "search.result.uncle.label": "叔块",
     "search.result.address.label": "地址",
 
-    "dashboardView.network.label": "你在看:",
+    "dashboardView.network.label": "正在浏览：",
     "dashboardView.lastBlocksChart.title.label": "最新区块交易",
     "dashboardView.content.latestBlock.label": "最新区块",
 
