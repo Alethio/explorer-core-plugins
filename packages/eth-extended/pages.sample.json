@@ -101,6 +101,15 @@
         "def": "page://aleth.io/dashboard",
         "children": {
             "content": [
+                {
+                    "def": "module://aleth.io/dashboard/network",
+                    "options": {
+                        "networkName": "Ethereum Mainnet",
+                        "otherNetworks": [
+                            { "name": "Goerli Testnet", "url": "https://goerli.aleth.io" }
+                        ]
+                    }
+                },
                 { "def": "module://aleth.io/search" },
                 {
                     "def": "context://aleth.io/dashboard/latestBlockRange",
