@@ -1,3 +1,7 @@
+# v2.1.1
+
+- Fix network switch not being clear enough by adding a dropdown icon
+
 # v2.1.0
 
 - Add toolbar product links from `@alethio/explorer-plugin-eth-extended`. See [config.sample.json](config.sample.json) for configuration changes.
