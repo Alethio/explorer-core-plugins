@@ -1,6 +1,7 @@
 import * as React from "react";
 import { ValueBox } from "@alethio/ui/lib/layout/content/box/ValueBox";
 import styled, { css } from "@alethio/ui/lib/styled-components";
+import { ArrowDownIcon } from "@alethio/ui/lib/icon/ArrowDownIcon";
 
 interface INetworkButtonRootProps {
     disabled?: boolean;
@@ -23,6 +24,16 @@ const StyledValueBox = styled(ValueBox)`
     border-radius: 4px;
 `;
 
+const ContentWrapper = styled.div`
+    display: flex;
+`;
+
+const ArrowIconWrapper = styled.div`
+    color: ${props => props.theme.colors.base.secondary.color};
+    padding-top: 1px;
+    margin-left: 8px;
+`;
+
 export interface INetworkButtonProps {
     disabled?: boolean;
     onClick?(): void;
@@ -41,7 +52,14 @@ export class NetworkButton extends React.Component<INetworkButtonProps> {
                     })}
                     variant="big"
                 >
-                    <NetworkLabel>{ children }</NetworkLabel>
+                    <ContentWrapper>
+                        <NetworkLabel>{ children }</NetworkLabel>
+                        { !disabled ?
+                        <ArrowIconWrapper>
+                            <ArrowDownIcon />
+                        </ArrowIconWrapper>
+                        : null }
+                    </ContentWrapper>
                 </StyledValueBox>
             </NetworkButtonRoot>
         );
