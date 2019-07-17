@@ -4,12 +4,11 @@ import { PricesApi } from "./PricesApi";
 import { RabbitApi } from "app/eth-extended/data/prices/RabbitApi";
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
 import { PricesDataSetReader } from "./PricesDataSetReader";
-import { AlethioDataSourceConfig } from "app/eth-extended/AlethioDataSourceConfig";
 
 const CACHE_SIZE = 100;
 
 export class PricesStoreFactory {
-    constructor(private appConfig: AlethioDataSourceConfig) {
+    constructor(private pricesApiUrl: string) {
 
     }
 
@@ -18,7 +17,7 @@ export class PricesStoreFactory {
             new FifoCache(CACHE_SIZE),
             new PricesApi(
                 new RabbitApi(new HttpRequest()),
-                this.appConfig.getPricesApiUrl(),
+                this.pricesApiUrl,
                 new PricesDataSetReader()
             )
         );

@@ -26,6 +26,7 @@ import { BlockTxTimeInPoolStore } from "app/eth-extended/data/block/txTimeInPool
 import { AlethioDataSourceConfig, IConfigData } from "app/eth-extended/AlethioDataSourceConfig";
 import { Web3Factory } from "app/eth-extended/Web3Factory";
 import { ContractWeb3ApiFactory } from "./data/contract/ContractWeb3ApiFactory";
+import { PricesStore } from "app/eth-extended/data/prices/PricesStore";
 
 export class AlethioDataSourceFactory {
     create(configData: IConfigData, logger: ILogger) {
@@ -43,7 +44,13 @@ export class AlethioDataSourceFactory {
         let logEventsStore = new LogEventsStoreFactory(config).create();
         let cmLiteStore = new CmLiteStoreFactory(config).create();
         let cmDetailsStore = new CmDetailsStoreFactory(config, logger).create();
-        let pricesStore = new PricesStoreFactory(config).create();
+
+        let pricesApiUrl = config.getPricesApiUrl();
+        let pricesStore: PricesStore | undefined;
+        if (pricesApiUrl) {
+            pricesStore = new PricesStoreFactory(pricesApiUrl).create();
+        }
+
         let uncleDetailsStore = new UncleDetailsStoreFactory(config).create();
         let txPartialCountsByAccountStore = new TxPendingCountsStoreFactory().create(deepstream);
         let accountDetailsStore = new AccountDetailsStoreFactory(config).create();
