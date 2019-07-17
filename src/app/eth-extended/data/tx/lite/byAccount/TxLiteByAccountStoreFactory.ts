@@ -12,12 +12,12 @@ import { TxLiteByAccountPendingApi } from "app/eth-extended/data/tx/lite/byAccou
 import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { TxLiteByAccountPendingReader as TxLiteByAccountPendingReader } from "./pending/TxLiteByAccountPendingReader";
 import { DsRpcApi } from "app/eth-extended/data/DsRpcApi";
-import { AlethioDataSourceConfig } from "app/eth-extended/AlethioDataSourceConfig";
+import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 
 const API_CACHE_SIZE = 5;
 
 export class TxLiteByAccountStoreFactory {
-    constructor(private appConfig: AlethioDataSourceConfig) {
+    constructor(private appConfig: EthExtendedPluginConfig) {
 
     }
 

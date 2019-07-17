@@ -8,13 +8,13 @@ import { LogEventsByTxApi } from "app/eth-extended/data/logEvents/byTx/LogEvents
 import { LogEventsStore } from "app/eth-extended/data/logEvents/LogEventsStore";
 import { LogEventsByCmStore } from "app/eth-extended/data/logEvents/byCm/LogEventsByCmStore";
 import { LogEventsByCmApi } from "app/eth-extended/data/logEvents/byCm/LogEventsByCmApi";
-import { AlethioDataSourceConfig } from "app/eth-extended/AlethioDataSourceConfig";
+import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 
 const BY_TX_CACHE_SIZE = 100;
 const BY_CM_CACHE_SIZE = 100;
 
 export class LogEventsStoreFactory {
-    constructor(private appConfig: AlethioDataSourceConfig) {
+    constructor(private appConfig: EthExtendedPluginConfig) {
 
     }
 

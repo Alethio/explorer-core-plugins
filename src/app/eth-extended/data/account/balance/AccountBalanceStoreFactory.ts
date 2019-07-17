@@ -3,10 +3,10 @@ import { AccountBalanceApi } from "./AccountBalanceApi";
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
 import { AccountBalanceDataSetReader } from "./AccountBalanceDataSetReader";
 import { BalanceHttpApi } from "app/eth-extended/data/account/balance/BalanceHttpApi";
-import { AlethioDataSourceConfig } from "app/eth-extended/AlethioDataSourceConfig";
+import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 
 export class AccountBalanceStoreFactory {
-    constructor(private appConfig: AlethioDataSourceConfig) {
+    constructor(private appConfig: EthExtendedPluginConfig) {
 
     }
 

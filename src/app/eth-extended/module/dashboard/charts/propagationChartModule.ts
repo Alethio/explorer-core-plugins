@@ -3,7 +3,7 @@ import { IPropagationChartItem } from "app/eth-extended/module/dashboard/charts/
 import { IEthNodesInfo } from "app/eth-extended/module/dashboard/charts/data/IEthNodesInfo";
 import { IPropagationProps, Propagation } from "./component/Propagation";
 
-export const propagationChartModule: (ethstatsUrl: string) => IModuleDef<IPropagationProps, void> =
+export const propagationChartModule: (ethstatsUrl?: string) => IModuleDef<IPropagationProps, void> =
 (ethstatsUrl) => ({
     contextType: {},
 
@@ -23,6 +23,10 @@ export const propagationChartModule: (ethstatsUrl: string) => IModuleDef<IPropag
         let propagationItems = asyncData.get("adapter://aleth.io/propagationInfo")!.data as (
             IPropagationChartItem[] | undefined);
         let ethNodesInfo = asyncData.get("adapter://aleth.io/ethNodesInfo")!.data as IEthNodesInfo;
+
+        if (!ethstatsUrl) {
+            throw new Error(`Propagation chart module requires "ethstatsUrl" config`);
+        }
 
         let props: IPropagationProps = {
             translation,

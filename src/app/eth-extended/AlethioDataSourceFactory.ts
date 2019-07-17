@@ -23,14 +23,13 @@ import { PendingPoolStore } from "app/eth-extended/module/dashboard/charts/data/
 import { NetstatsStore } from "app/eth-extended/module/dashboard/charts/data/NetstatsStore";
 import { PropagationChartStore } from "app/eth-extended/module/dashboard/charts/data/PropagationChartStore";
 import { BlockTxTimeInPoolStore } from "app/eth-extended/data/block/txTimeInPool/BlockTxTimeInPoolStore";
-import { AlethioDataSourceConfig, IConfigData } from "app/eth-extended/AlethioDataSourceConfig";
+import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 import { Web3Factory } from "app/eth-extended/Web3Factory";
 import { ContractWeb3ApiFactory } from "./data/contract/ContractWeb3ApiFactory";
 import { PricesStore } from "app/eth-extended/data/prices/PricesStore";
 
 export class AlethioDataSourceFactory {
-    create(configData: IConfigData, logger: ILogger) {
-        let config = new AlethioDataSourceConfig().fromJson(configData);
+    create(config: EthExtendedPluginConfig, logger: ILogger) {
         let deepstream = new Deepstream(config.getDeepstreamConfig());
         let pendingTxWatcher = new PendingTxWatcher(deepstream, logger);
 

@@ -5,12 +5,12 @@ import { BlockDetailsReader } from "./BlockDetailsReader";
 import { BlockDetailsApi } from "./BlockDetailsApi";
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
 import { HttpApi } from "app/eth-extended/data/HttpApi";
-import { AlethioDataSourceConfig } from "app/eth-extended/AlethioDataSourceConfig";
+import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 
 const CACHE_SIZE = 100;
 
 export class BlockDetailsStoreFactory {
-    constructor(private appConfig: AlethioDataSourceConfig) {
+    constructor(private appConfig: EthExtendedPluginConfig) {
 
     }
 

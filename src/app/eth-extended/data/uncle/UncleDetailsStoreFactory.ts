@@ -5,12 +5,12 @@ import { UncleDetailsStore } from "./UncleDetailsStore";
 import { IUncleDetails } from "./IUncleDetails";
 import { UncleDetailsApi } from "./UncleDetailsApi";
 import { UncleDetailsReader } from "app/eth-extended/data/uncle/UncleDetailsReader";
-import { AlethioDataSourceConfig } from "app/eth-extended/AlethioDataSourceConfig";
+import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 
 const CACHE_SIZE = 5;
 
 export class UncleDetailsStoreFactory {
-    constructor(private appConfig: AlethioDataSourceConfig) {
+    constructor(private appConfig: EthExtendedPluginConfig) {
 
     }
 

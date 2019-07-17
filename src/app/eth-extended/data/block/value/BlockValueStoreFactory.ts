@@ -5,7 +5,7 @@ import { BlockValueApi } from "app/eth-extended/data/block/value/BlockValueApi";
 import { BlockValueReader } from "app/eth-extended/data/block/value/BlockValueReader";
 import { BlockValueStore } from "app/shared/data/block/value/BlockValueStore";
 import { BlockRangeStore } from "app/shared/data/block/value/BlockRangeStore";
-import { AlethioDataSourceConfig } from "app/eth-extended/AlethioDataSourceConfig";
+import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 import { IBlockTxCount } from "app/shared/data/block/value/IBlockTxCount";
 
 /** Number of cached pages */
@@ -14,7 +14,7 @@ const CACHE_SIZE = 10;
 const PAGE_SIZE = 50;
 
 export class BlockValueStoreFactory {
-    constructor(private appConfig: AlethioDataSourceConfig) {
+    constructor(private appConfig: EthExtendedPluginConfig) {
 
     }
 

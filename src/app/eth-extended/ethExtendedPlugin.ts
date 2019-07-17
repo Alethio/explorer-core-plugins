@@ -33,18 +33,20 @@ import { blockDetailsModule } from "./module/block/blockDetails/blockDetailsModu
 import { unclePage } from "./page/uncle/unclePage";
 import { uncleDetailsModule } from "app/shared/module/uncle/uncleDetails/uncleDetailsModule";
 import { blockTxsModule } from "./module/block/blockTxs/blockTxsModule";
-import { txParentBlockContext } from "app/eth-extended/context/txParentBlockContext";
-import { txParentBlockOptionalContext } from "app/eth-extended/context/txParentBlockOptionalContext";
-import { txDetailsModule } from "app/eth-extended/module/tx/txDetails/txDetailsModule";
+import { txParentBlockContext } from "./context/txParentBlockContext";
+import { txParentBlockOptionalContext } from "./context/txParentBlockOptionalContext";
+import { txDetailsModule } from "./module/tx/txDetails/txDetailsModule";
 import { BlockBasicInfoAdapter } from "app/shared/adapter/block/BlockBasicInfoAdapter";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
-import { dashboardPage } from "app/eth-extended/page/dashboard/dashboardPage";
-import { uncleByHashContextType } from "app/eth-extended/context/uncleByHashContextType";
+import { dashboardPage } from "./page/dashboard/dashboardPage";
+import { uncleByHashContextType } from "./context/uncleByHashContextType";
+import { EthExtendedPluginConfig } from "./EthExtendedPluginConfig";
 
 const ethExtendedPlugin: IPlugin = {
-    init(config, api, logger, publicPath) {
+    init(configData: unknown, api, logger, publicPath) {
         __webpack_public_path__ = publicPath;
 
+        let config = new EthExtendedPluginConfig().fromJson(configData as any);
         let dataSource = new AlethioDataSourceFactory().create(config, logger);
 
         api.addDataSource("source://aleth.io/api", dataSource);
@@ -99,7 +101,8 @@ const ethExtendedPlugin: IPlugin = {
 
         api.addPageDef("page://aleth.io/dashboard", dashboardPage);
         api.addModuleDef("module://aleth.io/dashboard/avgTimeInPoolChart", avgTimeInPoolChartModule);
-        api.addModuleDef("module://aleth.io/dashboard/propagationChart", propagationChartModule(config.ethstatsUrl));
+        api.addModuleDef("module://aleth.io/dashboard/propagationChart",
+            propagationChartModule(config.getEthstatsUrl()));
     },
 
     getAvailableLocales() {

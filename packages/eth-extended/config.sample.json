@@ -33,5 +33,6 @@
 
     "UNCLE_API_URL_MASK": "https://blk-api.ethstats.io/api/v3/uncle/%s",
 
-    "ethstatsUrl": "https://ethstats.io"
+    "ethstatsUrl": "https://ethstats.io",
+    "ethSymbol": "ETH"
 }
