@@ -1,3 +1,4 @@
 {
-    "nodeUrl": "https://mainnet.infura.io/v3/<project_id>"
+    "nodeUrl": "https://mainnet.infura.io/v3/<project_id>",
+    "ethSymbol": "ETH"
 }
