@@ -22,12 +22,13 @@ export interface ITotalPortfolioProps {
     isFreshAccount: boolean;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
 }
 
 @observer
 export class TotalPortfolio extends React.Component<ITotalPortfolioProps> {
     render() {
-        let { translation: tr, locale, latestBalance, totalBalance, isFreshAccount } = this.props;
+        let { translation: tr, locale, latestBalance, totalBalance, isFreshAccount, ethSymbol } = this.props;
 
         return (
             <LayoutRow minWidth={960}>
@@ -35,7 +36,11 @@ export class TotalPortfolio extends React.Component<ITotalPortfolioProps> {
                     <Label>{tr.get("accountView.content.totalHoldings.label")}</Label>
                     { isFreshAccount || (latestBalance.loadStatus === LoadStatus.Loaded && totalBalance) ?
                     <>
-                    <EthValueBox wei={totalBalance ? totalBalance.wei : new BigNumber(0)} locale={locale} />
+                    <EthValueBox
+                        wei={totalBalance ? totalBalance.wei : new BigNumber(0)}
+                        locale={locale}
+                        symbol={ethSymbol}
+                    />
                     <UsdValueBox colors="secondary" value={totalBalance ? totalBalance.usd : 0} locale={locale} />
                     </>
                     :

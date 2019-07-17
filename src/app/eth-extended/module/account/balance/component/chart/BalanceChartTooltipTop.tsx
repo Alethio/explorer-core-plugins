@@ -12,6 +12,7 @@ const Root = styled.div`
 
 export interface IBalanceChartTooltipTopProps {
     locale: string;
+    ethSymbol: string;
     payload: IBalanceAreaChartPayload;
 }
 
@@ -22,6 +23,7 @@ export class BalanceChartTooltipTop extends React.Component<IBalanceChartTooltip
                 <EthValueBox
                     locale={this.props.locale}
                     wei={this.props.payload.balanceWei}
+                    symbol={this.props.ethSymbol}
                     variant="small"
                 />
                 <UsdValueBox

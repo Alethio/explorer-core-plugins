@@ -33,12 +33,13 @@ export interface IAccountDetailsProps {
     totalBalance: ITotalBalance | undefined;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
     logger: ILogger;
 }
 
 export class AccountDetails extends React.PureComponent<IAccountDetailsProps> {
     render() {
-        let { translation: tr, accountDetails: account, locale, latestBalance, totalBalance } = this.props;
+        let { translation: tr, accountDetails: account, locale, latestBalance, totalBalance, ethSymbol } = this.props;
 
         return <>
             <LayoutRow minWidth={660}>
@@ -102,7 +103,7 @@ export class AccountDetails extends React.PureComponent<IAccountDetailsProps> {
                 </LayoutRowItem>
                 : null }
             </LayoutRow>
-            <AccountMeta locale={locale} translation={tr} account={account} />
+            <AccountMeta locale={locale} translation={tr} account={account} ethSymbol={ethSymbol} />
             { account.createdAtBlock ?
             <LayoutRow minWidth={960}>
                 <LayoutRowItem>
@@ -166,6 +167,7 @@ export class AccountDetails extends React.PureComponent<IAccountDetailsProps> {
                 isFreshAccount={!!account.isFresh}
                 translation={tr}
                 locale={locale}
+                ethSymbol={ethSymbol}
             />
         </>;
     }

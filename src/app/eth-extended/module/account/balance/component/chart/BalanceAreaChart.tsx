@@ -28,6 +28,7 @@ const ActiveDot = withTheme($ActiveDot);
 export interface IBalanceAreaChartProps {
     data: IPortfolioChartData<IBalanceAreaChartPayload>;
     locale: string;
+    ethSymbol: string;
     disabled?: boolean;
     theme: ITheme;
 }
@@ -36,10 +37,8 @@ class $BalanceAreaChart extends React.Component<IBalanceAreaChartProps> {
     private rootEl: HTMLElement;
 
     render() {
-        let chartData = this.props.data;
-        let locale = this.props.locale;
         let colors = this.props.theme.colors;
-        let disabled = this.props.disabled;
+        let { data: chartData, locale, disabled, ethSymbol } = this.props;
 
         let fillColor = colors.accountBalanceChartFill;
         let strokeColor = !disabled ? colors.accountBalanceChartStroke : colors.accountBalanceChartDisabledStroke;
@@ -107,7 +106,7 @@ class $BalanceAreaChart extends React.Component<IBalanceAreaChartProps> {
                             <>
                             <ChartTooltip placement="top" arrow {...props} referenceEl={this.rootEl}>
                                 {(payload) => (
-                                    <BalanceChartTooltipTop locale={locale} payload={payload} />
+                                    <BalanceChartTooltipTop locale={locale} payload={payload} ethSymbol={ethSymbol} />
                                 )}
                             </ChartTooltip>
                             <ChartTooltip placement="bottom" {...props} referenceEl={this.rootEl}>

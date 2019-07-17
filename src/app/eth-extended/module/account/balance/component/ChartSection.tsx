@@ -18,12 +18,13 @@ export interface IChartSectionProps {
     isFreshAccount: boolean;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
 }
 
 @observer
 export class ChartSection extends React.Component<IChartSectionProps> {
     render() {
-        let { accountBalance, isFreshAccount, translation: tr, locale } = this.props;
+        let { accountBalance, isFreshAccount, translation: tr, locale, ethSymbol } = this.props;
 
         return (
             <ChartContainer>
@@ -36,6 +37,7 @@ export class ChartSection extends React.Component<IChartSectionProps> {
                     data={!isFreshAccount && accountBalance.isLoaded() ?
                         this.computeChartData(accountBalance.data) : this.getPlaceholderChartData()}
                     locale={locale}
+                    ethSymbol={ethSymbol}
                     disabled={isFreshAccount || !accountBalance.isLoaded()}
                 />
             </ChartContainer>

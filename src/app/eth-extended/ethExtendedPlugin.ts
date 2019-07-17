@@ -49,6 +49,8 @@ const ethExtendedPlugin: IPlugin = {
         let config = new EthExtendedPluginConfig().fromJson(configData as any);
         let dataSource = new AlethioDataSourceFactory().create(config, logger);
 
+        let ethSymbol = config.getEthSymbol();
+
         api.addDataSource("source://aleth.io/api", dataSource);
 
         api.addDataAdapter("adapter://aleth.io/block/basic", new BlockBasicInfoAdapter(dataSource));
@@ -80,8 +82,8 @@ const ethExtendedPlugin: IPlugin = {
             new AccountBalanceAdapter(dataSource, false));
         api.addDataAdapter("adapter://aleth.io/extended/account/balance?historical",
             new AccountBalanceAdapter(dataSource, true));
-        api.addModuleDef("module://aleth.io/account/details", accountDetailsModule);
-        api.addModuleDef("module://aleth.io/account/balance", accountBalanceModule);
+        api.addModuleDef("module://aleth.io/account/details", accountDetailsModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/account/balance", accountBalanceModule(ethSymbol));
         api.addModuleDef("module://aleth.io/account/summary", accountSummaryModule(dataSource));
         api.addModuleDef("module://aleth.io/account/contract", accountContractModule(dataSource));
 

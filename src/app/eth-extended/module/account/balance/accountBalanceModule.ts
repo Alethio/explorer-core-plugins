@@ -7,7 +7,7 @@ import { IAsyncData } from "plugin-api/IAsyncData";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { accountContextType } from "app/shared/context/accountContextType";
 
-export const accountBalanceModule: IModuleDef<IBalanceProps, IAccountContext> = {
+export const accountBalanceModule: (ethSymbol: string) => IModuleDef<IBalanceProps, IAccountContext> = (ethSymbol) => ({
     contextType: accountContextType,
 
     dataAdapters: [{
@@ -31,8 +31,9 @@ export const accountBalanceModule: IModuleDef<IBalanceProps, IAccountContext> = 
             isFreshAccount: !!accountDetails.isFresh,
             totalBalance,
             translation,
-            locale
+            locale,
+            ethSymbol
         };
         return props;
     }
-};
+});
