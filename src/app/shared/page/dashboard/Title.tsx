@@ -2,7 +2,7 @@ import styled from "@alethio/explorer-ui/lib/styled-components";
 
 export const Title = styled.h1`
     text-align: center;
-	color: #357CFF;
+	color: ${({theme}) => theme.colors.base.accent.color};
 	font-size: 36px;
 	letter-spacing: 0.23px;
 	line-height: 43px;

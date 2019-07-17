@@ -54,12 +54,12 @@ const events: (internalNav: IInternalNav) => import("react-graph-vis").IGraphPro
 const accountSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="41" height="41">` +
     `<foreignObject x="0" y="0" width="100%" height="100%">` +
     `<div xmlns="http://www.w3.org/1999/xhtml"
-    style="padding: 3px; border: 1px solid #A7B5D1; border-radius: 100%; background-color: white">` +
+    style="padding: 3px; border: 1px solid #99A7C2; border-radius: 100%; background-color: white">` +
     `<div xmlns="http://www.w3.org/1999/xhtml"
         style="padding: 9px; border-radius: 100%; border: 1px solid rgba(167, 181, 209, 0.4);
         background-color: white;">` +
     `<div xmlns="http://www.w3.org/1999/xhtml"
-        style="height: 12px; width: 12px; transform: rotate(45deg); background-color: #A7B5D1">` +
+        style="height: 12px; width: 12px; transform: rotate(45deg); background-color: #99A7C2">` +
     `</div>` +
     `</div>` +
     `</div>` +
@@ -275,7 +275,7 @@ class $TriggerGraphLayerContent extends React.Component<ITriggerGraphLayerConten
         } else if (tempType === "ContractMsg") {
             return "#FF9F1C";
         } else if (tempType === "Account") {
-            return "#A7B5D1";
+            return "#99A7C2";
         }
         return "";
     }

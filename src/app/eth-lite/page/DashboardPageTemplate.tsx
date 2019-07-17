@@ -9,7 +9,7 @@ import { Title } from "app/shared/page/dashboard/Title";
 import { SubTitle } from "app/shared/page/dashboard/SubTitle";
 
 const GithubLink = styled.a`
-	color: #357CFF;
+	color: ${({theme}) => theme.colors.base.accent.color};
     opacity: 1;
     transition: opacity linear 100ms;
     text-decoration: none;
@@ -19,7 +19,7 @@ const GithubLink = styled.a`
     }
 
     &:visited {
-        color: #357CFF;
+        color: ${({theme}) => theme.colors.base.accent.color};
     }
 `;
 
