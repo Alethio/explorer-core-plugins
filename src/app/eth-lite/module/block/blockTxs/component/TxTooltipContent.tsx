@@ -11,11 +11,12 @@ export interface ITxTooltipContentProps {
     tx: ITxDetails;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
 }
 
 export class TxTooltipContent extends React.Component<ITxTooltipContentProps> {
     render() {
-        let { tx, translation } = this.props;
+        let { tx, translation, ethSymbol } = this.props;
         return (
             <TxTooltipContentWrapper>
                 <TxHashBox variant="small">{tx.hash}</TxHashBox>
@@ -27,7 +28,7 @@ export class TxTooltipContent extends React.Component<ITxTooltipContentProps> {
                     <Label arrow disabled={tx.value.isZero()}>{translation.get("txTooltip.value.label")}</Label>
                 </div>
                 <div style={{display: "flex"}}>
-                    <EthValueBox variant="smallThin" wei={tx.value} locale={this.props.locale} />
+                    <EthValueBox variant="smallThin" wei={tx.value} locale={this.props.locale} symbol={ethSymbol} />
                 </div>
             </TxTooltipContentWrapper>
         );

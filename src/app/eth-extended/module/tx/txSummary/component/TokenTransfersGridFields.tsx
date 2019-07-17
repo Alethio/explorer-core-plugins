@@ -18,7 +18,7 @@ enum ITokenTransfersGridFieldKeys {
 }
 
 export class TokenTransfersGridFields extends GridFields<ITokenTransfer> {
-    constructor(t: ITranslation, locale: string) {
+    constructor(t: ITranslation, locale: string, ethSymbol: string) {
         super();
         this.fields = [{
             label: t.get("txView.content.txSummary.txTokenTransfersGrid.header.address.label"),
@@ -70,7 +70,7 @@ export class TokenTransfersGridFields extends GridFields<ITokenTransfer> {
                 f => f.value.shiftedBy(-f.decimals).integerValue(BigNumber.ROUND_FLOOR)
             )
         }, {
-            label: t.get("general.feeEth"),
+            label: t.get("general.feeEth", { "%s": ethSymbol }),
             fieldKey: ITokenTransfersGridFieldKeys.Fee,
             type: "number",
             isSortable: true,

@@ -5,7 +5,7 @@ import { IBlockDetails } from "app/eth-lite/data/block/details/IBlockDetails";
 import { IBlockContext } from "app/shared/context/IBlockContext";
 import { blockContextType } from "app/shared/context/blockContextType";
 
-export const blockTxsModule: IModuleDef<IBlockTxsProps, IBlockContext, void> = {
+export const blockTxsModule: (ethSymbol: string) => IModuleDef<IBlockTxsProps, IBlockContext, void> = (ethSymbol) => ({
     contextType: blockContextType,
 
     dataAdapters: [
@@ -27,8 +27,9 @@ export const blockTxsModule: IModuleDef<IBlockTxsProps, IBlockContext, void> = {
             txs: blockDetails.transactions,
             translation,
             locale,
+            ethSymbol,
             uiStateContainer
         };
         return props;
     }
-};
+});

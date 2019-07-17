@@ -23,7 +23,7 @@ enum ICmGridFieldKeys {
 }
 
 export class CmGridFields extends GridFields<ICmLite> {
-    constructor(t: ITranslation, locale: string) {
+    constructor(t: ITranslation, locale: string, ethSymbol: string) {
         super();
         this.fields = [{
             label: t.get("general.grid.header.type.label"),
@@ -59,7 +59,7 @@ export class CmGridFields extends GridFields<ICmLite> {
             getFieldValue: f => f.to,
             renderer: new AccountHashRenderer(void 0, f => f.to)
         }, {
-            label: t.get("general.valueEth"),
+            label: t.get("general.valueEth", { "%s": ethSymbol }),
             fieldKey: ICmGridFieldKeys.Value,
             type: "number",
             isSortable: true,
@@ -70,7 +70,7 @@ export class CmGridFields extends GridFields<ICmLite> {
                 f => f.value
             )
         }, {
-            label: t.get("general.feeEth"),
+            label: t.get("general.feeEth", { "%s": ethSymbol }),
             fieldKey: ICmGridFieldKeys.Fee,
             type: "number",
             isSortable: true,

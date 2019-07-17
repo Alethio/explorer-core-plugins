@@ -21,6 +21,7 @@ export interface ISummaryProps {
     translation: ITranslation;
     txCounts: ITxCounts;
     locale: string;
+    ethSymbol: string;
     logger: ILogger;
     cmLiteByAccountStore: CmLiteByAccountStore;
     txLiteByAccountStore: TxLiteByAccountStore;
@@ -29,7 +30,8 @@ export interface ISummaryProps {
 export class Summary extends React.Component<ISummaryProps> {
     render() {
         let {
-            translation: tr, txCounts, locale, accountDetails: account, cmLiteByAccountStore, txLiteByAccountStore
+            translation: tr, txCounts, locale, accountDetails: account, cmLiteByAccountStore, txLiteByAccountStore,
+            ethSymbol
         } = this.props;
 
         if (account.isFresh) {
@@ -71,6 +73,7 @@ export class Summary extends React.Component<ISummaryProps> {
                     account={account}
                     translation={tr}
                     locale={locale}
+                    ethSymbol={ethSymbol}
                     logger={this.props.logger}
                     cmLiteByAccountStore={cmLiteByAccountStore}
                     txCounts={txCounts}

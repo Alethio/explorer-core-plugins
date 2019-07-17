@@ -7,7 +7,8 @@ import { BigNumber } from "app/util/BigNumber";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { accountContextType } from "app/shared/context/accountContextType";
 
-export const accountDetailsModule: IModuleDef<IAccountDetailsProps, IAccountContext> = {
+export const accountDetailsModule: (ethSymbol: string) => IModuleDef<IAccountDetailsProps, IAccountContext> =
+(ethSymbol) => ({
     contextType: accountContextType,
 
     dataAdapters: [{
@@ -29,9 +30,10 @@ export const accountDetailsModule: IModuleDef<IAccountDetailsProps, IAccountCont
             accountDetails,
             accountBalance,
             locale,
+            ethSymbol,
             logger,
             translation
         };
         return props;
     }
-};
+});

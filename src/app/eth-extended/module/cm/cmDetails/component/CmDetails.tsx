@@ -33,12 +33,13 @@ export interface ICmDetailsProps {
     latestEthPrice: number | undefined;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
     modules?: JSX.Element[];
 }
 
 export class CmDetails extends React.PureComponent<ICmDetailsProps> {
     render() {
-        let { translation: tr, cmDetails: cm, locale, latestEthPrice } = this.props;
+        let { translation: tr, cmDetails: cm, locale, latestEthPrice, ethSymbol } = this.props;
 
         return <>
             <LayoutSection>
@@ -59,6 +60,7 @@ export class CmDetails extends React.PureComponent<ICmDetailsProps> {
                         <EthValueBox
                             wei={cm.type === CmType.SelfDestruct ? cm.refundBalance! : cm.value}
                             locale={locale}
+                            symbol={ethSymbol}
                         />
                         { latestEthPrice ?
                         <UsdValueBox
@@ -137,7 +139,8 @@ export class CmDetails extends React.PureComponent<ICmDetailsProps> {
                     </LayoutRowItem>
                     <LayoutRowItem>
                         <Label>{tr.get("cmView.content.cmFee.label")}</Label>
-                        <EthValueBox wei={cm.gasUsed.multipliedBy(cm.gasPrice)} decimals={9} locale={locale} />
+                        <EthValueBox wei={cm.gasUsed.multipliedBy(cm.gasPrice)} decimals={9} locale={locale}
+                            symbol={ethSymbol} />
                         { latestEthPrice ?
                         <UsdValueBox colors="highlight"
                             value={weiToEth(cm.gasUsed.multipliedBy(cm.gasPrice))

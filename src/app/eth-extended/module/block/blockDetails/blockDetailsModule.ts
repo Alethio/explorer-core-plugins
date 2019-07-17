@@ -6,7 +6,8 @@ import { BlockDetailsSlotType } from "./BlockDetailsSlotType";
 import { IBlockContext } from "app/shared/context/IBlockContext";
 import { blockContextType } from "app/shared/context/blockContextType";
 
-export const blockDetailsModule: IModuleDef<IBlockDetailsProps, IBlockContext, BlockDetailsSlotType> = {
+export const blockDetailsModule: (ethSymbol: string) =>
+IModuleDef<IBlockDetailsProps, IBlockContext, BlockDetailsSlotType> = (ethSymbol) => ({
     contextType: blockContextType,
     slotNames: Object.values(BlockDetailsSlotType),
 
@@ -29,7 +30,8 @@ export const blockDetailsModule: IModuleDef<IBlockDetailsProps, IBlockContext, B
             blockDetails,
             translation,
             locale,
+            ethSymbol,
             slots: slots as Record<BlockDetailsSlotType, JSX.Element[]>
         };
     }
-};
+});

@@ -25,6 +25,7 @@ interface ITxGridProps {
     transactions: ITxDetails[];
     locale: string;
     translation: ITranslation;
+    ethSymbol: string;
     gridSortingOptions: GridSortingOptions;
 }
 
@@ -36,14 +37,14 @@ export class TxsGrid extends React.Component<ITxGridProps> {
 
     constructor(props: ITxGridProps) {
         super(props);
-        this.gridFields = new TxGridFields(props.translation, props.locale);
+        this.gridFields = new TxGridFields(props.translation, props.locale, props.ethSymbol);
         this.gridSortingOptions = this.props.gridSortingOptions;
     }
 
     @action
     componentDidUpdate(prevProps: ITxGridProps) {
         if (this.props.translation !== prevProps.translation) {
-            this.gridFields = new TxGridFields(this.props.translation, this.props.locale);
+            this.gridFields = new TxGridFields(this.props.translation, this.props.locale, this.props.ethSymbol);
         }
     }
 

@@ -14,6 +14,7 @@ export interface ITxsPendingGridProps {
     itemCount: number;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
     logger: ILogger;
 }
 
@@ -22,7 +23,8 @@ export class TxsPendingGrid extends React.Component<ITxsPendingGridProps> {
     private gridSortingOptions: GridSortingOptions;
     constructor(props: ITxsPendingGridProps) {
         super(props);
-        this.gridFields = new TxsPendingGridFields(props.translation, props.locale, props.accountAddress);
+        this.gridFields = new TxsPendingGridFields(
+            props.translation, props.locale, props.ethSymbol, props.accountAddress);
         this.gridSortingOptions = new GridSortingOptions();
     }
     render() {

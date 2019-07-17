@@ -6,12 +6,12 @@ import { FifoCache } from "app/util/cache/FifoCache";
 import { ContractAbiFactory } from "app/eth-extended/data/contract/ContractAbiFactory";
 import { ContractAbi } from "app/eth-extended/data/contract/ContractAbi";
 import { ILogger } from "plugin-api/ILogger";
-import { AlethioDataSourceConfig } from "app/eth-extended/AlethioDataSourceConfig";
+import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 
 const CACHE_SIZE = 10;
 
 export class ContractDetailsStoreFactory {
-    constructor(private appConfig: AlethioDataSourceConfig, private logger: ILogger) {
+    constructor(private appConfig: EthExtendedPluginConfig, private logger: ILogger) {
 
     }
 

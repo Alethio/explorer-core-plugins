@@ -23,11 +23,12 @@ export interface IUncleDetailsProps {
     uncleDetails: IUncleDetailsExtended | IUncleDetailsLite;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
 }
 
 export class UncleDetails extends React.PureComponent<IUncleDetailsProps> {
     render() {
-        let { translation: tr, uncleDetails: uncle, locale} = this.props;
+        let { translation: tr, uncleDetails: uncle, locale, ethSymbol } = this.props;
 
         return <>
             <LayoutRow minWidth={900}>
@@ -90,7 +91,8 @@ export class UncleDetails extends React.PureComponent<IUncleDetailsProps> {
                     { (uncle as IUncleDetailsExtended).beneficiaryReward ?
                     <>
                     <Label arrow>{tr.get("blockView.content.beneficiary.reward.label")}</Label>
-                    <EthValueBox wei={(uncle as IUncleDetailsExtended).beneficiaryReward} locale={locale} />
+                    <EthValueBox wei={(uncle as IUncleDetailsExtended).beneficiaryReward} locale={locale}
+                        symbol={ethSymbol} />
                     </>
                     : null }
                 </LayoutRowItem>

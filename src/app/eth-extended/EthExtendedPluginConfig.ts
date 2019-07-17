@@ -1,6 +1,12 @@
 import { IDeepstreamConfig } from "app/util/network/Deepstream";
 
 export interface IConfigData {
+    /** Custom ETH symbol (e.g. GöETH) */
+    ethSymbol?: string;
+
+    /** URL to EthStats product. Used by chart modules on dashboard page, as well as toolbar product links */
+    ethstatsUrl?: string;
+
     ACCOUNT_API_URL_MASK: string;
     ACCOUNT_TX_API_URL_MASK: string;
     ACCOUNT_CM_API_URL_MASK: string;
@@ -37,7 +43,7 @@ export interface IConfigData {
     UNCLE_API_URL_MASK: string;
 }
 
-export class AlethioDataSourceConfig {
+export class EthExtendedPluginConfig {
     private data: IConfigData;
 
     fromJson(data: IConfigData) {
@@ -184,5 +190,13 @@ export class AlethioDataSourceConfig {
 
     getInfuraApiUrl() {
         return this.data.INFURA_API_URL;
+    }
+
+    getEthSymbol() {
+        return this.data.ethSymbol || "ETH";
+    }
+
+    getEthstatsUrl() {
+        return this.data.ethstatsUrl;
     }
 }

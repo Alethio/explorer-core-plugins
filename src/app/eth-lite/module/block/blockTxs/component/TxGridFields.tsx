@@ -7,7 +7,7 @@ import { ITxGridFieldKeys } from "./TxsGrid";
 import { ITxDetails } from "app/eth-lite/data/tx/details/ITxDetails";
 
 export class TxGridFields extends GridFields<ITxDetails> {
-    constructor(t: ITranslation, locale: string) {
+    constructor(t: ITranslation, locale: string, ethSymbol: string) {
         super();
         this.fields = [{
             label: t.get("general.hash"),
@@ -35,7 +35,7 @@ export class TxGridFields extends GridFields<ITxDetails> {
             getFieldValue: f => f.to,
             renderer: new AccountLinkRenderer(f => f.to)
         }, {
-            label: t.get("general.valueEth"),
+            label: t.get("general.valueEth", { "%s": ethSymbol }),
             fieldKey: ITxGridFieldKeys.Value,
             type: "number",
             isSortable: true,

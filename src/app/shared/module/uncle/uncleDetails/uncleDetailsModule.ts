@@ -7,8 +7,12 @@ import { IUncleDetails as IUncleDetailsLite } from "app/eth-lite/data/uncle/IUnc
 
 type ModuleType = IModuleDef<IUncleDetailsProps, IUncleByHashContext | IUncleByBlockContext>;
 
-export const uncleDetailsModule: (uncleDetailsAdapterUri: string, contextType: ModuleType["contextType"]) =>
-ModuleType = (uncleDetailsAdapterUri, contextType) => ({
+export const uncleDetailsModule: (options: {
+    uncleDetailsAdapterUri: string;
+    contextType: ModuleType["contextType"];
+    ethSymbol: string;
+}) =>
+ModuleType = ({ uncleDetailsAdapterUri, contextType, ethSymbol }) => ({
     contextType,
     dataAdapters: [{
         ref: uncleDetailsAdapterUri
@@ -23,6 +27,7 @@ ModuleType = (uncleDetailsAdapterUri, contextType) => ({
         let props: IUncleDetailsProps = {
             uncleDetails,
             locale,
+            ethSymbol,
             translation
         };
         return props;

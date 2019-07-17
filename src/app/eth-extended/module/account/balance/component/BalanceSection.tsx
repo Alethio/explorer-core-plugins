@@ -52,6 +52,7 @@ export interface IBalanceSectionProps {
     totalBalance: ITotalBalance | undefined;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
 }
 
 @observer
@@ -60,7 +61,7 @@ export class BalanceSection extends React.Component<IBalanceSectionProps> {
     private tokenBalanceExpanded: boolean;
 
     render() {
-        let { translation: tr, locale, historicalBalance, totalBalance } = this.props;
+        let { translation: tr, locale, historicalBalance, totalBalance, ethSymbol } = this.props;
 
         return (
             <BalanceSectionRoot accountHasTokens={historicalBalance.isLoaded() && historicalBalance.data.hasTokens()}>
@@ -85,6 +86,7 @@ export class BalanceSection extends React.Component<IBalanceSectionProps> {
                                         ethBalance={historicalBalance.data.getEthBalance()}
                                         totalBalance={totalBalance}
                                         locale={locale}
+                                        ethSymbol={ethSymbol}
                                     />
                                     { historicalBalance.data.hasTokens() ?
                                         <AllTokensBalanceDetails

@@ -12,14 +12,14 @@ import { CmLiteByAccountStore } from "app/eth-extended/data/contractMsg/lite/byA
 import { CmLiteByAccountApi } from "app/eth-extended/data/contractMsg/lite/byAccount/CmLiteByAccountApi";
 import { CmLiteByAccountReader } from "./byAccount/CmLiteByAccountReader";
 import { ICmLiteByAccount } from "app/eth-extended/data/contractMsg/lite/byAccount/ICmLiteByAccount";
-import { AlethioDataSourceConfig } from "app/eth-extended/AlethioDataSourceConfig";
+import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 
 const BY_TX_CACHE_SIZE = 5;
 const BY_CM_CACHE_SIZE = 5;
 const BY_ACCOUNT_CACHE_SIZE = 5;
 
 export class CmLiteStoreFactory {
-    constructor(private appConfig: AlethioDataSourceConfig) {
+    constructor(private appConfig: EthExtendedPluginConfig) {
 
     }
 

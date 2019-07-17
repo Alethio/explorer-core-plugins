@@ -15,7 +15,7 @@ enum ITxsPendingGridFieldKeys {
 }
 
 export class TxsPendingGridFields extends GridFields<ITxLiteByAccountPending> {
-    constructor(t: ITranslation, locale: string, currentAccountAddress: string) {
+    constructor(t: ITranslation, locale: string, ethSymbol: string, currentAccountAddress: string) {
         super();
         this.fields = [{
             label: t.get("general.hash"),
@@ -60,7 +60,7 @@ export class TxsPendingGridFields extends GridFields<ITxLiteByAccountPending> {
                 f => f.to
             )
         }, {
-            label: t.get("general.valueEth"),
+            label: t.get("general.valueEth", { "%s": ethSymbol }),
             fieldKey: ITxsPendingGridFieldKeys.Value,
             type: "number",
             isSortable: false,

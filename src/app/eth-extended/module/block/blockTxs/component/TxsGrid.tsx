@@ -32,6 +32,7 @@ interface ITxGridProps {
     transactions: ITxLite[];
     locale: string;
     translation: ITranslation;
+    ethSymbol: string;
     gridSortingOptions: GridSortingOptions;
     highlightThreshold: number;
     highlightDataSelector(t: ITxLite): number | BigNumber;
@@ -46,14 +47,15 @@ export class TxsGrid extends React.Component<ITxGridProps> {
 
     constructor(props: ITxGridProps) {
         super(props);
-        this.gridFields = new TxGridFields(props.translation, props.locale, this.highlight);
+        this.gridFields = new TxGridFields(props.translation, props.locale, props.ethSymbol, this.highlight);
         this.gridSortingOptions = this.props.gridSortingOptions;
     }
 
     @action
     componentDidUpdate(prevProps: ITxGridProps) {
         if (this.props.translation !== prevProps.translation) {
-            this.gridFields = new TxGridFields(this.props.translation, this.props.locale, this.highlight);
+            this.gridFields = new TxGridFields(
+                this.props.translation, this.props.locale, this.props.ethSymbol, this.highlight);
         }
     }
 

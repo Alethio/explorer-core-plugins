@@ -10,13 +10,13 @@ import { TokenInfoReader } from "app/eth-extended/data/token/TokenInfoReader";
 import { TokenTransferStore } from "app/eth-extended/data/token/transfer/TokenTransferStore";
 import { TokenTransferByCmStore } from "app/eth-extended/data/token/transfer/byCm/TokenTransferByCmStore";
 import { TokenTransferByCmApi } from "app/eth-extended/data/token/transfer/byCm/TokenTransferByCmApi";
-import { AlethioDataSourceConfig } from "app/eth-extended/AlethioDataSourceConfig";
+import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 
 const BY_TX_CACHE_SIZE = 100;
 const BY_CM_CACHE_SIZE = 100;
 
 export class TokenTransferStoreFactory {
-    constructor(private appConfig: AlethioDataSourceConfig) {
+    constructor(private appConfig: EthExtendedPluginConfig) {
 
     }
 

@@ -9,8 +9,11 @@ import { ITxCounts } from "./ITxCounts";
 import { accountContextType } from "app/shared/context/accountContextType";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 
-export const accountSummaryModule: (dataSource: AlethioDataSource) => IModuleDef<ISummaryProps, IAccountContext> =
-(dataSource) => ({
+export const accountSummaryModule: (options: {
+    dataSource: AlethioDataSource;
+    ethSymbol: string;
+}) => IModuleDef<ISummaryProps, IAccountContext> =
+({ dataSource, ethSymbol }) => ({
     contextType: accountContextType,
 
     dataAdapters: [{
@@ -54,6 +57,7 @@ export const accountSummaryModule: (dataSource: AlethioDataSource) => IModuleDef
             accountDetails,
             cmLiteByAccountStore: cmLiteStore.getByAccountStore(),
             locale,
+            ethSymbol,
             logger,
             translation,
             txCounts,

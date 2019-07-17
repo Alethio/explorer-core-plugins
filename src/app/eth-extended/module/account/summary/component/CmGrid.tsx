@@ -15,6 +15,7 @@ export interface ICmGridProps {
     itemCount: number;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
     logger: ILogger;
 }
 
@@ -23,7 +24,7 @@ export class CmGrid extends React.Component<ICmGridProps> {
     private gridSortingOptions: GridSortingOptions;
     constructor(props: ICmGridProps) {
         super(props);
-        this.gridFields = new CmGridFields(props.translation, props.locale, props.accountAddress);
+        this.gridFields = new CmGridFields(props.translation, props.locale, props.ethSymbol, props.accountAddress);
         this.gridSortingOptions = new GridSortingOptions();
     }
     render() {

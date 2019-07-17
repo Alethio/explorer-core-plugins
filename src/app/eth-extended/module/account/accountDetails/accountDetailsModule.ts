@@ -7,7 +7,8 @@ import { IAsyncData } from "plugin-api/IAsyncData";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { accountContextType } from "app/shared/context/accountContextType";
 
-export const accountDetailsModule: IModuleDef<IAccountDetailsProps, IAccountContext> = {
+export const accountDetailsModule: (ethSymbol: string) => IModuleDef<IAccountDetailsProps, IAccountContext> =
+(ethSymbol) => ({
     contextType: accountContextType,
     dataAdapters: [{
         ref: AlethioAdapterType.AccountDetailsExtended
@@ -41,9 +42,10 @@ export const accountDetailsModule: IModuleDef<IAccountDetailsProps, IAccountCont
             latestBalance,
             totalBalance,
             locale,
+            ethSymbol,
             logger,
             translation
         };
         return props;
     }
-};
+});

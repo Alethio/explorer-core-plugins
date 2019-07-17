@@ -52,6 +52,7 @@ export interface IAccountSummaryProps {
     translation: ITranslation;
     locale: string;
     logger: ILogger;
+    ethSymbol: string;
     cmLiteByAccountStore: CmLiteByAccountStore;
     txLiteByAccountStore: TxLiteByAccountStore;
     txCounts: ITxCounts | undefined;
@@ -175,6 +176,7 @@ export class AccountSummary extends React.Component<IAccountSummaryProps> {
                             accountAddress={account.address}
                             translation={tr}
                             locale={this.props.locale}
+                            ethSymbol={this.props.ethSymbol}
                             logger={this.props.logger}
                         />
                     </GridRoot>;
@@ -205,6 +207,7 @@ export class AccountSummary extends React.Component<IAccountSummaryProps> {
                                 itemCount={this.props.txCounts!.pending}
                                 translation={tr}
                                 locale={this.props.locale}
+                                ethSymbol={this.props.ethSymbol}
                                 logger={this.props.logger}
                             />
                         </GridRoot>}
@@ -239,6 +242,7 @@ export class AccountSummary extends React.Component<IAccountSummaryProps> {
                             accountAddress={account.address}
                             translation={tr}
                             locale={this.props.locale}
+                            ethSymbol={this.props.ethSymbol}
                             logger={this.props.logger}
                         />
                     </GridRoot>;

@@ -10,7 +10,7 @@ import { TxReceiptStore } from "app/eth-lite/data/tx/receipt/TxReceiptStore";
 import { AccountDetailsApi } from "app/eth-lite/data/account/AccountDetailsApi";
 import { AccountBalanceApi } from "app/eth-lite/data/account/AccountBalanceApi";
 import { Web3EthApi } from "app/eth-lite/data/Web3EthApi";
-import { Web3DataSourceConfig } from "app/eth-lite/Web3DataSourceConfig";
+import { EthLitePluginConfig } from "app/eth-lite/EthLitePluginConfig";
 
 interface IWeb3DataStores {
     blockStateStore: BlockStateStore;
@@ -26,7 +26,7 @@ interface IWeb3DataStores {
 
 export class Web3DataSource implements IDataSource {
     constructor(
-        private config: Web3DataSourceConfig,
+        private config: EthLitePluginConfig,
         private lastBlockWatcher: LastBlockWatcher,
         private web3EthApi: Web3EthApi,
         public stores: IWeb3DataStores

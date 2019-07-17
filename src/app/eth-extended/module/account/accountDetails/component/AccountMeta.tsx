@@ -13,12 +13,13 @@ import { EthValueBox } from "@alethio/ui/lib/data/box/EthValueBox";
 export interface IAccountMetaProps {
     account: IAccountDetails;
     locale: string;
+    ethSymbol: string;
     translation: ITranslation;
 }
 
 export class AccountMeta extends React.Component<IAccountMetaProps> {
     render() {
-        let { translation: tr, account, locale } = this.props;
+        let { translation: tr, account, locale, ethSymbol } = this.props;
 
         if (isPrecompiledAccountDetails(account)) {
             return <>
@@ -66,7 +67,7 @@ export class AccountMeta extends React.Component<IAccountMetaProps> {
                 <LayoutRow>
                     <LayoutRowItem>
                         <Label>{tr.get("accountView.content.accountBalancePrefunded.label")}</Label>
-                        <EthValueBox wei={account.meta.accountBalancePrefunded} locale={locale} />
+                        <EthValueBox wei={account.meta.accountBalancePrefunded} locale={locale} symbol={ethSymbol} />
                     </LayoutRowItem>
                 </LayoutRow> : null }
             </>;

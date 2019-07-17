@@ -34,12 +34,13 @@ export interface IBlockDetailsProps {
     blockDetails: IBlockDetails;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
     slots: Record<BlockDetailsSlotType, JSX.Element[]>;
 }
 
 export class BlockDetails extends React.PureComponent<IBlockDetailsProps> {
     render() {
-        let { translation: tr, blockDetails: block, slots, locale } = this.props;
+        let { translation: tr, blockDetails: block, slots, locale, ethSymbol } = this.props;
 
         return <>
             <LayoutSection useWrapper>
@@ -166,7 +167,7 @@ export class BlockDetails extends React.PureComponent<IBlockDetailsProps> {
                             translation={tr.get("blockView.content.beneficiary.mineTime")} />
                         : null }
                         <Label arrow>{tr.get("blockView.content.beneficiary.reward.label")}</Label>
-                        <EthValueBox wei={block.beneficiaryReward} locale={locale} />
+                        <EthValueBox wei={block.beneficiaryReward} locale={locale} symbol={ethSymbol} />
                     </LayoutRowItem>
                 </LayoutRow>
                 : null }

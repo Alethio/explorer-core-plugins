@@ -40,6 +40,7 @@ export interface ITxSummaryProps {
     tx: ITxDetails;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
     tokenTransferStore: TokenTransferStore;
     cmLiteStore: CmLiteStore;
     txGraphStore: TxGraphStore;
@@ -143,7 +144,7 @@ export class TxSummary extends React.Component<ITxSummaryProps> {
     }
 
     private buildItems(tx: ITxDetails) {
-        let tr = this.props.translation;
+        let { translation: tr, ethSymbol } = this.props;
 
         let items = !isFullTxDetails(tx) ? null : <>
             <AccordionItem<ITxSummaryItemConfig>
@@ -158,7 +159,7 @@ export class TxSummary extends React.Component<ITxSummaryProps> {
                 content={async () => {
                     let contractMsgs = await this.props.cmLiteStore.fetchByTx(this.props.tx.hash);
                     return <CmGrid
-                        items={contractMsgs} translation={tr} locale={this.props.locale}
+                        items={contractMsgs} translation={tr} locale={this.props.locale} ethSymbol={ethSymbol}
                     />;
                 }}
             />
@@ -167,7 +168,8 @@ export class TxSummary extends React.Component<ITxSummaryProps> {
                 value={tx.tokenTransferCount}
                 content={async () => {
                     let tokenTransfers = await this.props.tokenTransferStore.fetchByTx(this.props.tx.hash);
-                    return <TokenTransfersGrid items={tokenTransfers} translation={tr} locale={this.props.locale} />;
+                    return <TokenTransfersGrid items={tokenTransfers} translation={tr} locale={this.props.locale}
+                        ethSymbol={ethSymbol} />;
                 }}
             />
             <AccordionItem<ITxSummaryItemConfig>

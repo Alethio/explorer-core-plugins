@@ -1,10 +1,10 @@
-import { AlethioDataSourceConfig } from "app/eth-extended/AlethioDataSourceConfig";
+import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 
 export class Web3Factory {
     private Web3: typeof import("web3").default;
 
     constructor(
-        private appConfig: AlethioDataSourceConfig
+        private appConfig: EthExtendedPluginConfig
     ) {}
 
     async create() {

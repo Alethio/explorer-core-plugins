@@ -15,12 +15,12 @@ interface IEthBalanceDetailsProps {
     ethBalance: IAccountBalanceData;
     totalBalance: ITotalBalance;
     locale: string;
+    ethSymbol: string;
 }
 
 export class EthBalanceDetails extends React.PureComponent<IEthBalanceDetailsProps> {
     render() {
-        let locale = this.props.locale;
-        let ethBalance = this.props.ethBalance;
+        let { locale, ethBalance, ethSymbol } = this.props;
         let newestDataPoint = ethBalance.chart[0];
         let percentFraction = this.props.totalBalance.usd ?
             newestDataPoint.balanceUsd / this.props.totalBalance.usd :
@@ -29,7 +29,7 @@ export class EthBalanceDetails extends React.PureComponent<IEthBalanceDetailsPro
         return (
             <>
                 <LayoutBoxItem>
-                    <EthValueBox wei={newestDataPoint.balance} locale={locale} />
+                    <EthValueBox wei={newestDataPoint.balance} locale={locale} symbol={ethSymbol} />
                 </LayoutBoxItem>
                 <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForFullView}}>
                     <LayoutBoxItem>

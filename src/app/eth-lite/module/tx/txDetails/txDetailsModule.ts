@@ -11,7 +11,8 @@ enum SlotType {
     BlockConfirmations = "blockConfirmations"
 }
 
-export const txDetailsModule: IModuleDef<ITxDetailsProps, ITxContext, SlotType> = {
+export const txDetailsModule: (ethSymbol: string) => IModuleDef<ITxDetailsProps, ITxContext, SlotType> =
+(ethSymbol) => ({
     contextType: txContextType,
     slotNames: Object.values(SlotType),
 
@@ -39,9 +40,10 @@ export const txDetailsModule: IModuleDef<ITxDetailsProps, ITxContext, SlotType> 
             txReceipt,
             blockBasicInfo,
             locale,
+            ethSymbol,
             translation,
             blockConfirmationsSlot: slots && slots[SlotType.BlockConfirmations]
         };
         return props;
     }
-};
+});

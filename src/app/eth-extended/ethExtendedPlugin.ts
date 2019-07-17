@@ -33,19 +33,23 @@ import { blockDetailsModule } from "./module/block/blockDetails/blockDetailsModu
 import { unclePage } from "./page/uncle/unclePage";
 import { uncleDetailsModule } from "app/shared/module/uncle/uncleDetails/uncleDetailsModule";
 import { blockTxsModule } from "./module/block/blockTxs/blockTxsModule";
-import { txParentBlockContext } from "app/eth-extended/context/txParentBlockContext";
-import { txParentBlockOptionalContext } from "app/eth-extended/context/txParentBlockOptionalContext";
-import { txDetailsModule } from "app/eth-extended/module/tx/txDetails/txDetailsModule";
+import { txParentBlockContext } from "./context/txParentBlockContext";
+import { txParentBlockOptionalContext } from "./context/txParentBlockOptionalContext";
+import { txDetailsModule } from "./module/tx/txDetails/txDetailsModule";
 import { BlockBasicInfoAdapter } from "app/shared/adapter/block/BlockBasicInfoAdapter";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
-import { dashboardPage } from "app/eth-extended/page/dashboard/dashboardPage";
-import { uncleByHashContextType } from "app/eth-extended/context/uncleByHashContextType";
+import { dashboardPage } from "./page/dashboard/dashboardPage";
+import { uncleByHashContextType } from "./context/uncleByHashContextType";
+import { EthExtendedPluginConfig } from "./EthExtendedPluginConfig";
 
 const ethExtendedPlugin: IPlugin = {
-    init(config, api, logger, publicPath) {
+    init(configData: unknown, api, logger, publicPath) {
         __webpack_public_path__ = publicPath;
 
+        let config = new EthExtendedPluginConfig().fromJson(configData as any);
         let dataSource = new AlethioDataSourceFactory().create(config, logger);
+
+        let ethSymbol = config.getEthSymbol();
 
         api.addDataSource("source://aleth.io/api", dataSource);
 
@@ -58,19 +62,23 @@ const ethExtendedPlugin: IPlugin = {
         api.addDataAdapter("adapter://aleth.io/block-range/summary", new BlockListAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/block/latestNo",
             new LatestBlockNumberAdapter(dataSource.stores.blockStateStore));
-        api.addModuleDef("module://aleth.io/block/details", blockDetailsModule);
-        api.addModuleDef("module://aleth.io/block/txs", blockTxsModule);
+        api.addModuleDef("module://aleth.io/block/details", blockDetailsModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/block/txs", blockTxsModule(ethSymbol));
 
         api.addPageDef("page://aleth.io/uncle", unclePage);
         api.addDataAdapter("adapter://aleth.io/extended/uncle/details", new UncleDetailsAdapter(dataSource));
         api.addModuleDef("module://aleth.io/uncle/details",
-            uncleDetailsModule(AlethioAdapterType.UncleDetailsExtended, uncleByHashContextType));
+            uncleDetailsModule({
+                uncleDetailsAdapterUri: AlethioAdapterType.UncleDetailsExtended,
+                contextType: uncleByHashContextType,
+                ethSymbol
+            }));
 
         api.addContextDef("context://aleth.io/extended/tx/parentBlock", txParentBlockContext);
         api.addContextDef("context://aleth.io/extended/tx/parentBlock?optional", txParentBlockOptionalContext);
         api.addDataAdapter("adapter://aleth.io/extended/tx/details", new TxDetailsAdapter(dataSource));
-        api.addModuleDef("module://aleth.io/tx/details", txDetailsModule);
-        api.addModuleDef("module://aleth.io/tx/summary", txSummaryModule(dataSource));
+        api.addModuleDef("module://aleth.io/tx/details", txDetailsModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/tx/summary", txSummaryModule({ dataSource, ethSymbol }));
         api.addModuleDef("module://aleth.io/tx/payload", txPayloadModule);
 
         api.addDataAdapter("adapter://aleth.io/extended/account/details", new AccountDetailsAdapter(dataSource));
@@ -78,17 +86,17 @@ const ethExtendedPlugin: IPlugin = {
             new AccountBalanceAdapter(dataSource, false));
         api.addDataAdapter("adapter://aleth.io/extended/account/balance?historical",
             new AccountBalanceAdapter(dataSource, true));
-        api.addModuleDef("module://aleth.io/account/details", accountDetailsModule);
-        api.addModuleDef("module://aleth.io/account/balance", accountBalanceModule);
-        api.addModuleDef("module://aleth.io/account/summary", accountSummaryModule(dataSource));
+        api.addModuleDef("module://aleth.io/account/details", accountDetailsModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/account/balance", accountBalanceModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/account/summary", accountSummaryModule({ dataSource, ethSymbol}));
         api.addModuleDef("module://aleth.io/account/contract", accountContractModule(dataSource));
 
         api.addPageDef("page://aleth.io/cm", cmPage);
         api.addDataAdapter("adapter://aleth.io/cm/details", new CmDetailsAdapter(dataSource));
         api.addContextDef("context://aleth.io/cm/parent", cmParentContext);
         api.addModuleDef("module://aleth.io/cm/list", cmListModule(dataSource));
-        api.addModuleDef("module://aleth.io/cm/details", cmDetailsModule);
-        api.addModuleDef("module://aleth.io/cm/summary", cmSummaryModule(dataSource));
+        api.addModuleDef("module://aleth.io/cm/details", cmDetailsModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/cm/summary", cmSummaryModule({ dataSource, ethSymbol }));
         api.addModuleDef("module://aleth.io/cm/payload", cmPayloadModule);
 
         api.addDataAdapter("adapter://aleth.io/search/v2", new SearchAdapter(dataSource.stores.search));
@@ -99,7 +107,8 @@ const ethExtendedPlugin: IPlugin = {
 
         api.addPageDef("page://aleth.io/dashboard", dashboardPage);
         api.addModuleDef("module://aleth.io/dashboard/avgTimeInPoolChart", avgTimeInPoolChartModule);
-        api.addModuleDef("module://aleth.io/dashboard/propagationChart", propagationChartModule(config.ethstatsUrl));
+        api.addModuleDef("module://aleth.io/dashboard/propagationChart",
+            propagationChartModule(config.getEthstatsUrl()));
     },
 
     getAvailableLocales() {

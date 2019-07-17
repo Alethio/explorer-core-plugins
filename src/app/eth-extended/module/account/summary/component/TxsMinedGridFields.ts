@@ -22,7 +22,7 @@ enum ITxsMinedGridFieldKeys {
 }
 
 export class TxsMinedGridFields extends GridFields<ITxLiteByAccountMined> {
-    constructor(t: ITranslation, locale: string, currentAccountAddress: string) {
+    constructor(t: ITranslation, locale: string, ethSymbol: string, currentAccountAddress: string) {
         super();
         this.fields = [{
             label: t.get("general.grid.header.type.label"),
@@ -75,7 +75,7 @@ export class TxsMinedGridFields extends GridFields<ITxLiteByAccountMined> {
                 f => f.to
             )
         }, {
-            label: t.get("general.valueEth"),
+            label: t.get("general.valueEth", { "%s": ethSymbol }),
             fieldKey: ITxsMinedGridFieldKeys.Value,
             type: "number",
             isSortable: false,
@@ -86,7 +86,7 @@ export class TxsMinedGridFields extends GridFields<ITxLiteByAccountMined> {
                 f => f.value
             )
         }, {
-            label: t.get("general.feeEth"),
+            label: t.get("general.feeEth", { "%s": ethSymbol }),
             fieldKey: ITxsMinedGridFieldKeys.Fee,
             type: "number",
             isSortable: false,

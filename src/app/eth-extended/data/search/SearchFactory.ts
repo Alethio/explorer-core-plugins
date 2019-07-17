@@ -8,10 +8,10 @@ import { SearchDsRpcApi } from "app/eth-extended/data/search/SearchDsRpcApi";
 import { DsRpcApi } from "app/eth-extended/data/DsRpcApi";
 import { Deepstream } from "app/util/network/Deepstream";
 import { ILogger } from "plugin-api/ILogger";
-import { AlethioDataSourceConfig } from "app/eth-extended/AlethioDataSourceConfig";
+import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 
 export class SearchFactory {
-    constructor(private appConfig: AlethioDataSourceConfig, private logger: ILogger) {
+    constructor(private appConfig: EthExtendedPluginConfig, private logger: ILogger) {
 
     }
 

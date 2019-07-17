@@ -7,12 +7,12 @@ import { CmDetailsApi } from "app/eth-extended/data/contractMsg/details/CmDetail
 import { CmDetailsReader } from "app/eth-extended/data/contractMsg/details/CmDetailsReader";
 import { Decoder } from "app/eth-extended/data/payload/Decoder";
 import { ILogger } from "plugin-api/ILogger";
-import { AlethioDataSourceConfig } from "app/eth-extended/AlethioDataSourceConfig";
+import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 
 const CACHE_SIZE = 100;
 
 export class CmDetailsStoreFactory {
-    constructor(private appConfig: AlethioDataSourceConfig, private logger: ILogger) {
+    constructor(private appConfig: EthExtendedPluginConfig, private logger: ILogger) {
 
     }
 

@@ -28,13 +28,14 @@ export interface ITxDetailsProps {
     blockBasicInfo: IBlockBasicInfo;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
     blockConfirmationsSlot?: JSX.Element[];
 }
 
 export class TxDetails extends React.PureComponent<ITxDetailsProps> {
     render() {
         let {
-            translation: tr, txDetails: tx, blockBasicInfo: block, txReceipt, locale, blockConfirmationsSlot
+            translation: tr, txDetails: tx, blockBasicInfo: block, txReceipt, locale, blockConfirmationsSlot, ethSymbol
         } = this.props;
 
         return <>
@@ -46,7 +47,7 @@ export class TxDetails extends React.PureComponent<ITxDetailsProps> {
                     </LayoutRowItem>
                     <LayoutRowItem>
                         <Label arrow disabled={tx.value.isZero()}>{tr.get("txView.content.txValue.label")}</Label>
-                        <EthValueBox wei={tx.value} locale={locale} />
+                        <EthValueBox wei={tx.value} locale={locale} symbol={ethSymbol} />
                         { txReceipt ?
                         <TxStatusBox txReceipt={txReceipt} translation={tr} />
                         : <NotAvailableBox translation={tr} /> }
@@ -112,7 +113,8 @@ export class TxDetails extends React.PureComponent<ITxDetailsProps> {
                     </LayoutRowItem>
                     <LayoutRowItem>
                         <Label>{tr.get("txView.content.txFee.label")}</Label>
-                        <EthValueBox wei={txReceipt.gasUsed.multipliedBy(tx.gasPrice)} decimals={9} locale={locale} />
+                        <EthValueBox wei={txReceipt.gasUsed.multipliedBy(tx.gasPrice)} decimals={9} locale={locale}
+                            symbol={ethSymbol} />
                     </LayoutRowItem>
                 </LayoutRow> }
                 { txReceipt && <LayoutRow>

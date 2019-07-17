@@ -26,6 +26,7 @@ export interface IBlockTxsProps {
     txs: ITxDetails[];
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
     uiStateContainer: IGlobalState;
 }
 
@@ -43,7 +44,7 @@ export class BlockTxs extends React.Component<IBlockTxsProps> {
     }
 
     render() {
-        let { translation: tr, txs, locale, uiStateContainer } = this.props;
+        let { translation: tr, txs, locale, uiStateContainer, ethSymbol } = this.props;
         let {
             txsGridSortingOptions, txsHighlightFields, txsViewMode
         } = uiStateContainer.blockTxsLiteState as BlockTxsState;
@@ -86,6 +87,7 @@ export class BlockTxs extends React.Component<IBlockTxsProps> {
                     gridSortingOptions={txsGridSortingOptions}
                     locale={locale}
                     translation={tr}
+                    ethSymbol={ethSymbol}
                 />
                 }
                 <Spacer height="64px" />
@@ -98,6 +100,7 @@ export class BlockTxs extends React.Component<IBlockTxsProps> {
         return <TxTooltipContent
             tx={tx}
             translation={this.props.translation} locale={this.props.locale}
+            ethSymbol={this.props.ethSymbol}
         />;
     }
 }
