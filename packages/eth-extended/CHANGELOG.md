@@ -1,3 +1,7 @@
+# Unreleased
+
+- Option to disable USD prices functionality by configuration, by making `PRICES_API_URL` optional.
+
 # v3.0.0
 
 - Move toolbar product links to `@alethio/explorer-plugin-eth-common`.
