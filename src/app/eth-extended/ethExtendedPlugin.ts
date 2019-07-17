@@ -62,8 +62,8 @@ const ethExtendedPlugin: IPlugin = {
         api.addDataAdapter("adapter://aleth.io/block-range/summary", new BlockListAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/block/latestNo",
             new LatestBlockNumberAdapter(dataSource.stores.blockStateStore));
-        api.addModuleDef("module://aleth.io/block/details", blockDetailsModule);
-        api.addModuleDef("module://aleth.io/block/txs", blockTxsModule);
+        api.addModuleDef("module://aleth.io/block/details", blockDetailsModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/block/txs", blockTxsModule(ethSymbol));
 
         api.addPageDef("page://aleth.io/uncle", unclePage);
         api.addDataAdapter("adapter://aleth.io/extended/uncle/details", new UncleDetailsAdapter(dataSource));
@@ -73,7 +73,7 @@ const ethExtendedPlugin: IPlugin = {
         api.addContextDef("context://aleth.io/extended/tx/parentBlock", txParentBlockContext);
         api.addContextDef("context://aleth.io/extended/tx/parentBlock?optional", txParentBlockOptionalContext);
         api.addDataAdapter("adapter://aleth.io/extended/tx/details", new TxDetailsAdapter(dataSource));
-        api.addModuleDef("module://aleth.io/tx/details", txDetailsModule);
+        api.addModuleDef("module://aleth.io/tx/details", txDetailsModule(ethSymbol));
         api.addModuleDef("module://aleth.io/tx/summary", txSummaryModule(dataSource));
         api.addModuleDef("module://aleth.io/tx/payload", txPayloadModule);
 
@@ -91,7 +91,7 @@ const ethExtendedPlugin: IPlugin = {
         api.addDataAdapter("adapter://aleth.io/cm/details", new CmDetailsAdapter(dataSource));
         api.addContextDef("context://aleth.io/cm/parent", cmParentContext);
         api.addModuleDef("module://aleth.io/cm/list", cmListModule(dataSource));
-        api.addModuleDef("module://aleth.io/cm/details", cmDetailsModule);
+        api.addModuleDef("module://aleth.io/cm/details", cmDetailsModule(ethSymbol));
         api.addModuleDef("module://aleth.io/cm/summary", cmSummaryModule(dataSource));
         api.addModuleDef("module://aleth.io/cm/payload", cmPayloadModule);
 

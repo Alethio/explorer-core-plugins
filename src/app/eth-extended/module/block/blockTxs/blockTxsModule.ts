@@ -5,7 +5,7 @@ import { IBlockDetails } from "app/eth-extended/data/block/details/IBlockDetails
 import { IBlockContext } from "app/shared/context/IBlockContext";
 import { blockContextType } from "app/shared/context/blockContextType";
 
-export const blockTxsModule: IModuleDef<IBlockTxsProps, IBlockContext, void> = {
+export const blockTxsModule: (ethSymbol: string) => IModuleDef<IBlockTxsProps, IBlockContext, void> = (ethSymbol) => ({
     contextType: blockContextType,
 
     dataAdapters: [
@@ -33,8 +33,9 @@ export const blockTxsModule: IModuleDef<IBlockTxsProps, IBlockContext, void> = {
             latestEthPrice,
             translation,
             locale,
+            ethSymbol,
             uiStateContainer
         };
         return props;
     }
-};
+});

@@ -31,12 +31,13 @@ export interface ITxDetailsProps {
     latestEthPrice: number | undefined;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
     blockConfirmationsSlot?: JSX.Element[];
 }
 
 export class TxDetails extends React.PureComponent<ITxDetailsProps> {
     render() {
-        let { translation: tr, txDetails: tx, locale, latestEthPrice, blockConfirmationsSlot } = this.props;
+        let { translation: tr, txDetails: tx, locale, latestEthPrice, blockConfirmationsSlot, ethSymbol } = this.props;
 
         return <>
             <LayoutSection useWrapper>
@@ -49,7 +50,7 @@ export class TxDetails extends React.PureComponent<ITxDetailsProps> {
                         <Label>{tr.get("txView.content.txType.label")}</Label>
                         <TxTypeBox>{tr.get("general.tx.type." + TxType[tx.type])}</TxTypeBox>
                         <Label arrow disabled={tx.value.isZero()}>{tr.get("txView.content.txValue.label")}</Label>
-                        <EthValueBox wei={tx.value} locale={locale} />
+                        <EthValueBox wei={tx.value} locale={locale} symbol={ethSymbol} />
                         { latestEthPrice ?
                             <UsdValueBox
                                 value={weiToEth(tx.value).multipliedBy(latestEthPrice).toNumber()}
@@ -137,7 +138,8 @@ export class TxDetails extends React.PureComponent<ITxDetailsProps> {
                     { !isPendingTxDetails(tx) ?
                     <LayoutRowItem>
                         <Label>{tr.get("txView.content.txFee.label")}</Label>
-                        <EthValueBox wei={tx.gasUsed.multipliedBy(tx.gasPrice)} decimals={9} locale={locale} />
+                        <EthValueBox wei={tx.gasUsed.multipliedBy(tx.gasPrice)} decimals={9} locale={locale}
+                            symbol={ethSymbol} />
                         { latestEthPrice ?
                         <UsdValueBox colors="highlight"
                             value={weiToEth(tx.gasUsed.multipliedBy(tx.gasPrice))
@@ -147,7 +149,8 @@ export class TxDetails extends React.PureComponent<ITxDetailsProps> {
                     :
                     <LayoutRowItem>
                         <Label>{tr.get("txView.content.maxTxFee.label")}</Label>
-                        <EthValueBox wei={tx.gasLimit.multipliedBy(tx.gasPrice)} decimals={9} locale={locale} />
+                        <EthValueBox wei={tx.gasLimit.multipliedBy(tx.gasPrice)} decimals={9} locale={locale}
+                            symbol={ethSymbol} />
                         { latestEthPrice ?
                         <UsdValueBox value={weiToEth(tx.gasLimit.multipliedBy(tx.gasPrice))
                             .multipliedBy(latestEthPrice).toNumber()} locale={locale} />

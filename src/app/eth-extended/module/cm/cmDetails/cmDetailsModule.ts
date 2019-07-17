@@ -9,7 +9,8 @@ enum CmDetailsSlotType {
     Modules = "modules"
 }
 
-export const cmDetailsModule: IModuleDef<ICmDetailsProps, ICmContext, CmDetailsSlotType> = {
+export const cmDetailsModule: (ethSymbol: string) => IModuleDef<ICmDetailsProps, ICmContext, CmDetailsSlotType> =
+(ethSymbol) => ({
     contextType: cmContextType,
     slotNames: Object.values(CmDetailsSlotType),
 
@@ -34,9 +35,10 @@ export const cmDetailsModule: IModuleDef<ICmDetailsProps, ICmContext, CmDetailsS
             cmDetails,
             latestEthPrice,
             locale,
+            ethSymbol,
             translation,
             modules: slots && slots[CmDetailsSlotType.Modules]
         };
         return props;
     }
-};
+});
