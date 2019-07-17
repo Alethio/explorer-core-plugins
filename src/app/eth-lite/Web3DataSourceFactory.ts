@@ -1,5 +1,5 @@
 import { Web3DataSource } from "app/eth-lite/Web3DataSource";
-import { IConfigData, Web3DataSourceConfig } from "app/eth-lite/Web3DataSourceConfig";
+import { EthLitePluginConfig } from "app/eth-lite/EthLitePluginConfig";
 import { Web3EthApi } from "app/eth-lite/data/Web3EthApi";
 import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { SearchFactory } from "app/eth-lite/data/search/SearchFactory";
@@ -15,8 +15,7 @@ import { AccountDetailsApi } from "app/eth-lite/data/account/AccountDetailsApi";
 import { AccountDetailsReader } from "app/eth-lite/data/account/AccountDetailsReader";
 
 export class Web3DataSourceFactory {
-    create(configData: IConfigData, logger: ILogger) {
-        let config = new Web3DataSourceConfig().fromJson(configData);
+    create(config: EthLitePluginConfig, logger: ILogger) {
         let web3EthApi = new Web3EthApi();
 
         let blockStateStore = new BlockStateStore();

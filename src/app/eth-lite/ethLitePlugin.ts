@@ -22,11 +22,13 @@ import { accountContractModule } from "app/eth-lite/module/account/accountContra
 import { BlockBasicInfoAdapter } from "app/shared/adapter/block/BlockBasicInfoAdapter";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { uncleByIndexContextType } from "app/eth-lite/context/uncleByIndexContextType";
+import { EthLitePluginConfig } from "app/eth-lite/EthLitePluginConfig";
 
 const ethLitePlugin: IPlugin = {
-    init(config, api, logger, publicPath) {
+    init(configData: unknown, api, logger, publicPath) {
         __webpack_public_path__ = publicPath;
 
+        let config = new EthLitePluginConfig().fromJson(configData as any);
         let dataSource = new Web3DataSourceFactory().create(config, logger);
 
         api.addDataSource("source://aleth.io/web3", dataSource);

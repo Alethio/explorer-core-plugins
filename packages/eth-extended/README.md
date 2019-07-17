@@ -6,7 +6,7 @@ See [cms-plugin-tool](https://github.com/Alethio/cms-plugin-tool) for install in
 
 ## Configuration
 
-The structure of the config object is described [here](../../src/app/eth-extended/AlethioDataSourceConfig.ts).
+The structure of the config object is described [here](../../src/app/eth-extended/EthExtendedPluginConfig.ts).
 
 See [config.sample.json](config.sample.json) for an example.
 

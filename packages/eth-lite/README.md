@@ -6,16 +6,7 @@ See [cms-plugin-tool](https://github.com/Alethio/cms-plugin-tool) for install in
 
 ## Configuration
 
-The plugin accepts the following configuration options:
-```ts
-interface IConfig {
-    /**
-     * A node URL, which is passed to the web3 library. HTTP authentication is supported by prepending the URL with
-     * user:pass@host...
-     */
-    nodeUrl: string;
-}
-```
+The structure of the config object is described [here](../../src/app/eth-lite/EthLitePluginConfig.ts).
 
 See [config.sample.json](config.sample.json) for an example.
 
