@@ -1,6 +1,7 @@
 # Unreleased
 
 - Option to disable USD prices functionality by configuration, by making `PRICES_API_URL` optional.
+- Add configurable `ethSymbol` (e.g. GöETH)
 
 # v3.0.0
 

@@ -1,3 +1,7 @@
+# Unreleased
+
+- Add configurable `ethSymbol` (e.g. GöETH)
+
 # v2.0.4
 
 - Fix search results for account hashes in eth-lite plugin
