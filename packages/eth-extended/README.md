@@ -6,6 +6,8 @@ See [cms-plugin-tool](https://github.com/Alethio/cms-plugin-tool) for install in
 
 ## Configuration
 
+The structure of the config object is described [here](../../src/app/eth-extended/AlethioDataSourceConfig.ts).
+
 See [config.sample.json](config.sample.json) for an example.
 
 Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
@@ -56,7 +58,7 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 | adapter://aleth.io/block/basic | { blockNumber } | [IBlockBasicInfo](../../src/app/shared/data/block/IBlockBasicInfo.ts) | Adapter for basic block data | [BlockBasicInfoAdapter](../../src/app/shared/adapter/block/BlockBasicInfoAdapter.ts) |
 | adapter://aleth.io/extended/block/details | { blockNumber } | [IBlockDetails](../../src/app/eth-extended/data/block/details/IBlockDetails.ts) | Provides detailed block data specific to the full explorer | [BlockDetailsAdapter](../../src/app/eth-extended/adapter/block/BlockDetailsAdapter.ts) |
 | adapter://aleth.io/block/details | { blockNumber } | [IBlockCommonDetails](../../src/app/shared/data/block/IBlockCommonDetails.ts) | Generic adapter for block details common between eth-lite and eth-extended | [BlockDetailsAdapter](../../src/app/eth-lite/adapter/block/BlockDetailsAdapter.ts) |
-| adapter://aleth.io/prices/latest | { blockNumber } | number | The price of ETH in USD at the latest block | [EthPriceAdapter](../../src/app/eth-extended/adapter/EthPriceAdapter.ts) |
+| adapter://aleth.io/prices/latest | { blockNumber } | number \| undefined | The price of ETH in USD at the latest block or undefined if disabled by configuration | [EthPriceAdapter](../../src/app/eth-extended/adapter/EthPriceAdapter.ts) |
 | adapter://aleth.io/block/confirmations | { blockNumber } | [IBlockConfirmations](../../src/app/shared/adapter/block/BlockConfirmationsAdapter.ts) | Info about number of confirmations for a given block | [BlockConfirmationsAdapter](../../src/app/shared/adapter/block/BlockConfirmationsAdapter.ts) |
 | adapter://aleth.io/block-range/summary | { rangeStart, rangeEnd, blockNumber } | Array<[IBlockTxCount](../../src/app/shared/data/block/value/IBlockTxCount.ts) \| undefined>| TX counts per block for a range of blocks | [BlockListAdapter](../../src/app/shared/adapter/block/BlockListAdapter.ts) |
 | adapter://aleth.io/block/latestNo | {} | number | Returns the latest block number on the chain | [LatestBlockNumberAdapter](../../src/app/shared/adapter/block/LatestBlockNumberAdapter.ts) |

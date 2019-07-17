@@ -17,6 +17,11 @@ export class EthPriceAdapter implements IDataAdapter<IEthPriceContext, number> {
 
     async load(context: IEthPriceContext) {
         let { blockStateStore, pricesStore } = this.dataSource.stores;
+
+        if (!pricesStore) {
+            return void 0;
+        }
+
         let latest = blockStateStore.getLatest();
 
         let pricesResult = await pricesStore.fetch([ latest, context.blockNumber ]);

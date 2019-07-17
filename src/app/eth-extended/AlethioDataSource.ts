@@ -40,7 +40,7 @@ interface IAlethioDataStores {
     tokenTransferStore: TokenTransferStore;
     cmLiteStore: CmLiteStore;
     cmDetailsStore: CmDetailsStore;
-    pricesStore: PricesStore;
+    pricesStore?: PricesStore;
     uncleDetailsStore: UncleDetailsStore;
     accountDetailsStore: AccountDetailsStore;
     accountBalanceStore: AccountBalanceStore;

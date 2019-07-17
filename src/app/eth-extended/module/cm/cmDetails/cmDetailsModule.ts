@@ -3,6 +3,7 @@ import { ICmDetails } from "app/eth-extended/data/contractMsg/details/ICmDetails
 import { ICmContext } from "../../../context/ICmContext";
 import { ICmDetailsProps, CmDetails } from "./component/CmDetails";
 import { cmContextType } from "app/shared/context/cmContextType";
+import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 
 enum CmDetailsSlotType {
     Modules = "modules"
@@ -15,7 +16,7 @@ export const cmDetailsModule: IModuleDef<ICmDetailsProps, ICmContext, CmDetailsS
     dataAdapters: [{
         ref: "adapter://aleth.io/cm/details"
     }, {
-        ref: "adapter://aleth.io/prices/latest",
+        ref: AlethioAdapterType.EthPrices,
         optional: true
     }],
 
@@ -25,7 +26,7 @@ export const cmDetailsModule: IModuleDef<ICmDetailsProps, ICmContext, CmDetailsS
         let { asyncData, context, translation, locale, slots } = data;
 
         let cmDetails = asyncData.get("adapter://aleth.io/cm/details")!.data as ICmDetails;
-        let latestEthPrice = asyncData.get("adapter://aleth.io/prices/latest")!.data as number | undefined;
+        let latestEthPrice = asyncData.get(AlethioAdapterType.EthPrices)!.data as number | undefined;
 
         let props: ICmDetailsProps = {
             txHash: context.txHash,

@@ -23,7 +23,8 @@ export interface IConfigData {
 
     INFURA_API_URL: string;
 
-    PRICES_API_URL: string;
+    /** URL to the USD prices API endpoint (optional). Omit it to disable USD prices functionality. */
+    PRICES_API_URL?: string;
 
     SEARCH_API_URL_MASK: string;
 
