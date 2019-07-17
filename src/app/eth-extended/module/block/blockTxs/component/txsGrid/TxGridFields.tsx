@@ -56,7 +56,7 @@ export class TxGridFields extends GridFields<ITxLite> {
                 f => f.value
             )
         }, {
-            label: t.get("general.feeEth"),
+            label: t.get("general.feeEth", { "%s": ethSymbol }),
             fieldKey: ITxGridFieldKeys.Fee,
             type: "number",
             isSortable: true,

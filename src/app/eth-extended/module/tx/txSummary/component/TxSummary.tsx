@@ -168,7 +168,8 @@ export class TxSummary extends React.Component<ITxSummaryProps> {
                 value={tx.tokenTransferCount}
                 content={async () => {
                     let tokenTransfers = await this.props.tokenTransferStore.fetchByTx(this.props.tx.hash);
-                    return <TokenTransfersGrid items={tokenTransfers} translation={tr} locale={this.props.locale} />;
+                    return <TokenTransfersGrid items={tokenTransfers} translation={tr} locale={this.props.locale}
+                        ethSymbol={ethSymbol} />;
                 }}
             />
             <AccordionItem<ITxSummaryItemConfig>

@@ -10,6 +10,7 @@ export interface ITokenTransfersGridProps {
     items: ITokenTransfer[];
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
 }
 
 export class TokenTransfersGrid extends React.Component<ITokenTransfersGridProps> {
@@ -17,7 +18,7 @@ export class TokenTransfersGrid extends React.Component<ITokenTransfersGridProps
     private gridSortingOptions: GridSortingOptions;
     constructor(props: ITokenTransfersGridProps) {
         super(props);
-        this.gridFields = new TokenTransfersGridFields(props.translation, props.locale);
+        this.gridFields = new TokenTransfersGridFields(props.translation, props.locale, props.ethSymbol);
         this.gridSortingOptions = new GridSortingOptions();
     }
     render() {

@@ -134,7 +134,8 @@ export class CmSummary extends React.Component<ICmSummaryProps> {
                 value={cm.tokenTransferCount}
                 content={async () => {
                     let tokenTransfers = await this.props.tokenTransferStore.fetchByCm(cm.txHash, cm.txValidationIndex);
-                    return <TokenTransfersGrid items={tokenTransfers} translation={tr} locale={this.props.locale} />;
+                    return <TokenTransfersGrid items={tokenTransfers} translation={tr} locale={this.props.locale}
+                        ethSymbol={ethSymbol} />;
                 }}
             />
             <AccordionItem<ICmSummaryItemConfig>

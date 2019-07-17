@@ -70,7 +70,7 @@ export class CmGridFields extends GridFields<ICmLite> {
                 f => f.value
             )
         }, {
-            label: t.get("general.feeEth"),
+            label: t.get("general.feeEth", { "%s": ethSymbol }),
             fieldKey: ICmGridFieldKeys.Fee,
             type: "number",
             isSortable: true,

@@ -21,7 +21,7 @@
     "general.to": "接收地址",
     "general.creates": "创建",
     "general.valueEth": "数额（%s）",
-    "general.feeEth": "费用（以太币）",
+    "general.feeEth": "费用（%s）",
     "general.gasUsed": "实际使用燃料数额",
     "general.gasLimit": "燃料限额",
     "general.gasPrice": "燃料单价",

@@ -86,7 +86,7 @@ export class TxsMinedGridFields extends GridFields<ITxLiteByAccountMined> {
                 f => f.value
             )
         }, {
-            label: t.get("general.feeEth"),
+            label: t.get("general.feeEth", { "%s": ethSymbol }),
             fieldKey: ITxsMinedGridFieldKeys.Fee,
             type: "number",
             isSortable: false,
