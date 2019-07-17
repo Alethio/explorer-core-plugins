@@ -22,7 +22,7 @@
     "general.to": "To",
     "general.creates": "Creates",
     "general.refunds": "Refunds",
-    "general.valueEth": "Value (ETH)",
+    "general.valueEth": "Value (%s)",
     "general.feeEth": "Fee (ETH)",
     "general.gasUsed": "Gas used",
     "general.gasLimit": "Gas limit",

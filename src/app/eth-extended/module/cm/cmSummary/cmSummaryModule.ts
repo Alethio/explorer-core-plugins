@@ -6,8 +6,8 @@ import { ICmDetails } from "app/eth-extended/data/contractMsg/details/ICmDetails
 import { cmContextType } from "app/shared/context/cmContextType";
 
 export const cmSummaryModule:
-    (dataSource: AlethioDataSource) => IModuleDef<ICmSummaryProps, ICmContext> =
-(dataSource) => ({
+    (options: {dataSource: AlethioDataSource; ethSymbol: string }) => IModuleDef<ICmSummaryProps, ICmContext> =
+({ dataSource, ethSymbol }) => ({
     contextType: cmContextType,
 
     dataAdapters: [{
@@ -25,6 +25,7 @@ export const cmSummaryModule:
             locale,
             logEventsStore,
             logger,
+            ethSymbol,
             tokenTransferStore,
             translation,
             cm

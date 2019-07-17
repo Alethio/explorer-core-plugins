@@ -9,7 +9,7 @@ import { ITxGridFieldKeys, IHighlightFn } from "../TxsGrid";
 import { TxHighlightRenderer } from "./TxHighlightRenderer";
 
 export class TxGridFields extends GridFields<ITxLite> {
-    constructor(t: ITranslation, locale: string, highlightFn: IHighlightFn) {
+    constructor(t: ITranslation, locale: string, ethSymbol: string, highlightFn: IHighlightFn) {
         super();
         this.fields = [{
             label: t.get("general.grid.header.type.label"),
@@ -45,7 +45,7 @@ export class TxGridFields extends GridFields<ITxLite> {
             getFieldValue: f => f.to,
             renderer: new AccountLinkRenderer(f => f.to)
         }, {
-            label: t.get("general.valueEth"),
+            label: t.get("general.valueEth", { "%s": ethSymbol }),
             fieldKey: ITxGridFieldKeys.Value,
             type: "number",
             isSortable: true,

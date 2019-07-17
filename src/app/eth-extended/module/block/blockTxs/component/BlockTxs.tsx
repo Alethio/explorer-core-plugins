@@ -45,7 +45,7 @@ export class BlockTxs extends React.Component<IBlockTxsProps> {
     }
 
     render() {
-        let { translation: tr, txs, locale, uiStateContainer } = this.props;
+        let { translation: tr, txs, locale, uiStateContainer, ethSymbol } = this.props;
         let {
             txsGridSortingOptions, txsHighlightFields, txsViewMode
         } = uiStateContainer.blockTxsState as BlockTxsState;
@@ -89,6 +89,7 @@ export class BlockTxs extends React.Component<IBlockTxsProps> {
                     gridSortingOptions={txsGridSortingOptions}
                     locale={locale}
                     translation={tr}
+                    ethSymbol={ethSymbol}
                 />
                 }
                 <Spacer height="64px" />

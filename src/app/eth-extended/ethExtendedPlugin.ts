@@ -78,7 +78,7 @@ const ethExtendedPlugin: IPlugin = {
         api.addContextDef("context://aleth.io/extended/tx/parentBlock?optional", txParentBlockOptionalContext);
         api.addDataAdapter("adapter://aleth.io/extended/tx/details", new TxDetailsAdapter(dataSource));
         api.addModuleDef("module://aleth.io/tx/details", txDetailsModule(ethSymbol));
-        api.addModuleDef("module://aleth.io/tx/summary", txSummaryModule(dataSource));
+        api.addModuleDef("module://aleth.io/tx/summary", txSummaryModule({ dataSource, ethSymbol }));
         api.addModuleDef("module://aleth.io/tx/payload", txPayloadModule);
 
         api.addDataAdapter("adapter://aleth.io/extended/account/details", new AccountDetailsAdapter(dataSource));
@@ -88,7 +88,7 @@ const ethExtendedPlugin: IPlugin = {
             new AccountBalanceAdapter(dataSource, true));
         api.addModuleDef("module://aleth.io/account/details", accountDetailsModule(ethSymbol));
         api.addModuleDef("module://aleth.io/account/balance", accountBalanceModule(ethSymbol));
-        api.addModuleDef("module://aleth.io/account/summary", accountSummaryModule(dataSource));
+        api.addModuleDef("module://aleth.io/account/summary", accountSummaryModule({ dataSource, ethSymbol}));
         api.addModuleDef("module://aleth.io/account/contract", accountContractModule(dataSource));
 
         api.addPageDef("page://aleth.io/cm", cmPage);
@@ -96,7 +96,7 @@ const ethExtendedPlugin: IPlugin = {
         api.addContextDef("context://aleth.io/cm/parent", cmParentContext);
         api.addModuleDef("module://aleth.io/cm/list", cmListModule(dataSource));
         api.addModuleDef("module://aleth.io/cm/details", cmDetailsModule(ethSymbol));
-        api.addModuleDef("module://aleth.io/cm/summary", cmSummaryModule(dataSource));
+        api.addModuleDef("module://aleth.io/cm/summary", cmSummaryModule({ dataSource, ethSymbol }));
         api.addModuleDef("module://aleth.io/cm/payload", cmPayloadModule);
 
         api.addDataAdapter("adapter://aleth.io/search/v2", new SearchAdapter(dataSource.stores.search));

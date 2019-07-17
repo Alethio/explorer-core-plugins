@@ -20,7 +20,7 @@
     "general.from": "From",
     "general.to": "To",
     "general.creates": "Creates",
-    "general.valueEth": "Value (ETH)",
+    "general.valueEth": "Value (%s)",
     "general.feeEth": "Fee (ETH)",
     "general.gasUsed": "Gas used",
     "general.gasLimit": "Gas limit",

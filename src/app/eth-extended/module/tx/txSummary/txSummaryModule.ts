@@ -7,8 +7,8 @@ import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { txContextType } from "app/shared/context/txContextType";
 
 export const txSummaryModule:
-    (dataSource: AlethioDataSource) => IModuleDef<ITxSummaryProps, ITxContext> =
-(dataSource) => ({
+    (options: { dataSource: AlethioDataSource; ethSymbol: string; }) => IModuleDef<ITxSummaryProps, ITxContext> =
+({ dataSource, ethSymbol }) => ({
     contextType: txContextType,
 
     dataAdapters: [{
@@ -26,6 +26,7 @@ export const txSummaryModule:
             locale,
             logEventsStore,
             logger,
+            ethSymbol,
             tokenTransferStore,
             translation,
             tx,

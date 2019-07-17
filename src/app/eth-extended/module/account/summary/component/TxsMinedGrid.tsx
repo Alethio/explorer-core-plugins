@@ -15,6 +15,7 @@ export interface ITxsMinedGridProps {
     itemCount: number;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
     logger: ILogger;
 }
 
@@ -23,7 +24,8 @@ export class TxsMinedGrid extends React.Component<ITxsMinedGridProps> {
     private gridSortingOptions: GridSortingOptions;
     constructor(props: ITxsMinedGridProps) {
         super(props);
-        this.gridFields = new TxsMinedGridFields(props.translation, props.locale, props.accountAddress);
+        this.gridFields = new TxsMinedGridFields(
+            props.translation, props.locale, props.ethSymbol, props.accountAddress);
         this.gridSortingOptions = new GridSortingOptions();
     }
     render() {

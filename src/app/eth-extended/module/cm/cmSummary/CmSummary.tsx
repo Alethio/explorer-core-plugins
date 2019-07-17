@@ -34,6 +34,7 @@ export interface ICmSummaryProps {
     cm: ICmDetails;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
     logger: ILogger;
     tokenTransferStore: TokenTransferStore;
     cmLiteStore: CmLiteStore;
@@ -115,7 +116,7 @@ export class CmSummary extends React.Component<ICmSummaryProps> {
     }
 
     private buildItems(cm: ICmDetails) {
-        let tr = this.props.translation;
+        let { translation: tr, ethSymbol } = this.props;
 
         let items = <>
             <AccordionItem<ICmSummaryItemConfig>
@@ -124,7 +125,7 @@ export class CmSummary extends React.Component<ICmSummaryProps> {
                 content={async () => {
                     let contractMsgs = await this.props.cmLiteStore.fetchByCm(cm.txHash, cm.txValidationIndex);
                     return <CmGrid
-                        items={contractMsgs} translation={tr} locale={this.props.locale}
+                        items={contractMsgs} translation={tr} locale={this.props.locale} ethSymbol={ethSymbol}
                     />;
                 }}
             />
