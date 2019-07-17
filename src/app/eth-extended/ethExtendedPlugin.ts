@@ -68,7 +68,11 @@ const ethExtendedPlugin: IPlugin = {
         api.addPageDef("page://aleth.io/uncle", unclePage);
         api.addDataAdapter("adapter://aleth.io/extended/uncle/details", new UncleDetailsAdapter(dataSource));
         api.addModuleDef("module://aleth.io/uncle/details",
-            uncleDetailsModule(AlethioAdapterType.UncleDetailsExtended, uncleByHashContextType));
+            uncleDetailsModule({
+                uncleDetailsAdapterUri: AlethioAdapterType.UncleDetailsExtended,
+                contextType: uncleByHashContextType,
+                ethSymbol
+            }));
 
         api.addContextDef("context://aleth.io/extended/tx/parentBlock", txParentBlockContext);
         api.addContextDef("context://aleth.io/extended/tx/parentBlock?optional", txParentBlockOptionalContext);

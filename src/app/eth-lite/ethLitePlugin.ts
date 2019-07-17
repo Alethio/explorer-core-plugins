@@ -31,6 +31,8 @@ const ethLitePlugin: IPlugin = {
         let config = new EthLitePluginConfig().fromJson(configData as any);
         let dataSource = new Web3DataSourceFactory().create(config, logger);
 
+        let ethSymbol = config.getEthSymbol();
+
         api.addDataSource("source://aleth.io/web3", dataSource);
 
         api.addPageDef("page://aleth.io/dashboard", dashboardPage);
@@ -46,21 +48,25 @@ const ethLitePlugin: IPlugin = {
             new BlockConfirmationsAdapter(dataSource.stores.blockStateStore));
 
         api.addModuleDef("module://aleth.io/lite/block/details", blockDetailsModule);
-        api.addModuleDef("module://aleth.io/lite/block/txs", blockTxsModule);
+        api.addModuleDef("module://aleth.io/lite/block/txs", blockTxsModule(ethSymbol));
 
         api.addPageDef("page://aleth.io/uncle", unclePage);
         api.addDataAdapter("adapter://aleth.io/lite/uncle/details", new UncleDetailsAdapter(dataSource));
         api.addModuleDef("module://aleth.io/lite/uncle/details",
-            uncleDetailsModule(AlethioAdapterType.UncleDetailsLite, uncleByIndexContextType));
+            uncleDetailsModule({
+                uncleDetailsAdapterUri: AlethioAdapterType.UncleDetailsLite,
+                contextType: uncleByIndexContextType,
+                ethSymbol
+            }));
 
         api.addContextDef("context://aleth.io/lite/tx/parentBlock", txParentBlockContext);
         api.addDataAdapter("adapter://aleth.io/lite/tx/details", new TxDetailsAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/lite/tx/receipt", new TxReceiptAdapter(dataSource));
-        api.addModuleDef("module://aleth.io/lite/tx/details", txDetailsModule);
+        api.addModuleDef("module://aleth.io/lite/tx/details", txDetailsModule(ethSymbol));
 
         api.addDataAdapter("adapter://aleth.io/lite/account/details", new AccountDetailsAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/lite/account/balance", new AccountBalanceAdapter(dataSource));
-        api.addModuleDef("module://aleth.io/lite/account/details", accountDetailsModule);
+        api.addModuleDef("module://aleth.io/lite/account/details", accountDetailsModule(ethSymbol));
         api.addModuleDef("module://aleth.io/lite/account/contract", accountContractModule);
     },
 

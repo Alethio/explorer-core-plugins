@@ -21,13 +21,14 @@ export interface IAccountDetailsProps {
     accountBalance: IAsyncData<BigNumber>;
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
     logger: ILogger;
 }
 
 @observer
 export class AccountDetails extends React.Component<IAccountDetailsProps> {
     render() {
-        let { translation: tr, accountDetails: account, locale, accountBalance: balance } = this.props;
+        let { translation: tr, accountDetails: account, locale, accountBalance: balance, ethSymbol } = this.props;
 
         return <>
             <LayoutRow minWidth={660}>
@@ -47,7 +48,7 @@ export class AccountDetails extends React.Component<IAccountDetailsProps> {
                 <LayoutRowItem>
                     <Label>{tr.get("accountView.content.balance.label")}</Label>
                     { balance.isLoaded() ?
-                    <EthValueBox locale={locale} wei={balance.data} />
+                    <EthValueBox locale={locale} wei={balance.data} symbol={ethSymbol} />
                     :
                     <NotAvailableBox translation={tr} /> }
                 </LayoutRowItem>

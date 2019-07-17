@@ -26,6 +26,7 @@ export interface IBlockTxsProps {
     txs: ITxDetails[];
     translation: ITranslation;
     locale: string;
+    ethSymbol: string;
     uiStateContainer: IGlobalState;
 }
 
@@ -98,6 +99,7 @@ export class BlockTxs extends React.Component<IBlockTxsProps> {
         return <TxTooltipContent
             tx={tx}
             translation={this.props.translation} locale={this.props.locale}
+            ethSymbol={this.props.ethSymbol}
         />;
     }
 }
