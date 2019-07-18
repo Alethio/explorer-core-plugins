@@ -34,6 +34,7 @@ export interface IAccountDetailsProps {
     translation: ITranslation;
     locale: string;
     ethSymbol: string;
+    usdPricesEnabled: boolean;
     logger: ILogger;
 }
 
@@ -161,6 +162,7 @@ export class AccountDetails extends React.PureComponent<IAccountDetailsProps> {
                 </LayoutRowItem>
             </LayoutRow>
             : null }
+            { this.props.usdPricesEnabled ?
             <TotalPortfolio
                 latestBalance={latestBalance}
                 totalBalance={totalBalance}
@@ -168,7 +170,7 @@ export class AccountDetails extends React.PureComponent<IAccountDetailsProps> {
                 translation={tr}
                 locale={locale}
                 ethSymbol={ethSymbol}
-            />
+            /> : null }
         </>;
     }
 }

@@ -29,6 +29,7 @@ export interface IBalanceAreaChartProps {
     data: IPortfolioChartData<IBalanceAreaChartPayload>;
     locale: string;
     ethSymbol: string;
+    usdPricesEnabled: boolean;
     disabled?: boolean;
     theme: ITheme;
 }
@@ -38,7 +39,7 @@ class $BalanceAreaChart extends React.Component<IBalanceAreaChartProps> {
 
     render() {
         let colors = this.props.theme.colors;
-        let { data: chartData, locale, disabled, ethSymbol } = this.props;
+        let { data: chartData, locale, disabled, ethSymbol, usdPricesEnabled } = this.props;
 
         let fillColor = colors.accountBalanceChartFill;
         let strokeColor = !disabled ? colors.accountBalanceChartStroke : colors.accountBalanceChartDisabledStroke;
@@ -106,7 +107,8 @@ class $BalanceAreaChart extends React.Component<IBalanceAreaChartProps> {
                             <>
                             <ChartTooltip placement="top" arrow {...props} referenceEl={this.rootEl}>
                                 {(payload) => (
-                                    <BalanceChartTooltipTop locale={locale} payload={payload} ethSymbol={ethSymbol} />
+                                    <BalanceChartTooltipTop locale={locale} payload={payload} ethSymbol={ethSymbol}
+                                        usdPricesEnabled={usdPricesEnabled} />
                                 )}
                             </ChartTooltip>
                             <ChartTooltip placement="bottom" {...props} referenceEl={this.rootEl}>

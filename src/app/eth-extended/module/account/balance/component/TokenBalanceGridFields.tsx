@@ -1,5 +1,5 @@
 import * as React from "react";
-import { GridFields } from "@alethio/ui/lib/control/grid/state/GridFields";
+import { GridFields, IGridField } from "@alethio/ui/lib/control/grid/state/GridFields";
 import { ITranslation } from "plugin-api/ITranslation";
 import { IAccountBalanceData } from "app/eth-extended/data/account/balance/IAccountBalanceDataSet";
 import { FractionRenderer } from "./grid/FractionRenderer";
@@ -18,7 +18,7 @@ enum ITokenBalanceGridFieldKeys {
 }
 
 export class TokenBalanceGridFields extends GridFields<IAccountBalanceData> {
-    constructor(t: ITranslation, locale: string, totalTokenBalanceUsd: number) {
+    constructor(t: ITranslation, locale: string, private usdPricesEnabled: boolean, totalTokenBalanceUsd: number) {
         super();
         this.fields = [{
             label: t.get("accountView.content.balanceGrid.header.name"),
@@ -35,6 +35,7 @@ export class TokenBalanceGridFields extends GridFields<IAccountBalanceData> {
             fieldKey: ITokenBalanceGridFieldKeys.Balance,
             type: "number",
             isSortable: true,
+            defaultSortOrder: GridSortingOrder.Descending,
             selected: true,
             getFieldValue: f => f.chart[0].balance.shiftedBy(-f.currency.decimals),
             renderer: new TokenBalanceRenderer(
@@ -42,7 +43,7 @@ export class TokenBalanceGridFields extends GridFields<IAccountBalanceData> {
                 f => f.chart[0].balance.shiftedBy(-f.currency.decimals),
                 f => f.currency.symbol
             )
-        }, {
+        }, ...usdPricesEnabled ? [{
             label: t.get("accountView.content.balanceGrid.header.balanceUsd"),
             fieldKey: ITokenBalanceGridFieldKeys.BalanceUsd,
             type: "number",
@@ -67,10 +68,12 @@ export class TokenBalanceGridFields extends GridFields<IAccountBalanceData> {
             selected: true,
             getFieldValue: f => f.chart[0].balanceUsd,
             renderer: new BalanceChartRenderer()
-        }];
+        }] as IGridField<IAccountBalanceData>[] : []];
     }
 
     public get defaultSortedField() {
-        return this.fields.find(f => f.fieldKey === ITokenBalanceGridFieldKeys.PercentFraction);
+        return this.fields.find(f => this.usdPricesEnabled ?
+            f.fieldKey === ITokenBalanceGridFieldKeys.PercentFraction :
+            f.fieldKey === ITokenBalanceGridFieldKeys.Balance);
     }
 }

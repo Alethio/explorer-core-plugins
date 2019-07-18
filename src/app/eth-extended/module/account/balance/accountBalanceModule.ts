@@ -6,8 +6,11 @@ import { IAccountDetails } from "app/eth-extended/data/account/details/IAccountD
 import { IAsyncData } from "plugin-api/IAsyncData";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { accountContextType } from "app/shared/context/accountContextType";
+import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 
-export const accountBalanceModule: (ethSymbol: string) => IModuleDef<IBalanceProps, IAccountContext> = (ethSymbol) => ({
+export const accountBalanceModule: (
+    config: EthExtendedPluginConfig
+) => IModuleDef<IBalanceProps, IAccountContext> = (config) => ({
     contextType: accountContextType,
 
     dataAdapters: [{
@@ -32,7 +35,8 @@ export const accountBalanceModule: (ethSymbol: string) => IModuleDef<IBalancePro
             totalBalance,
             translation,
             locale,
-            ethSymbol
+            ethSymbol: config.getEthSymbol(),
+            usdPricesEnabled: config.isUsdPricesEnabled()
         };
         return props;
     }

@@ -7,6 +7,9 @@ export interface IConfigData {
     /** URL to EthStats product. Used by chart modules on dashboard page, as well as toolbar product links */
     ethstatsUrl?: string;
 
+    /** Show prices in USD and all related functionality? (default = true) */
+    usdPrices?: boolean;
+
     ACCOUNT_API_URL_MASK: string;
     ACCOUNT_TX_API_URL_MASK: string;
     ACCOUNT_CM_API_URL_MASK: string;
@@ -29,7 +32,7 @@ export interface IConfigData {
 
     INFURA_API_URL: string;
 
-    /** URL to the USD prices API endpoint (optional). Omit it to disable USD prices functionality. */
+    /** URL to the USD prices API endpoint (optional). */
     PRICES_API_URL?: string;
 
     SEARCH_API_URL_MASK: string;
@@ -198,5 +201,9 @@ export class EthExtendedPluginConfig {
 
     getEthstatsUrl() {
         return this.data.ethstatsUrl;
+    }
+
+    isUsdPricesEnabled() {
+        return this.data.usdPrices !== void 0 ? this.data.usdPrices : true;
     }
 }

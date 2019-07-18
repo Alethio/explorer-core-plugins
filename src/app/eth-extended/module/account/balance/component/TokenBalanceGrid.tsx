@@ -11,6 +11,7 @@ interface ITokenBalanceGridProps {
     tokenBalances: IAccountBalanceData[];
     translation: ITranslation;
     locale: string;
+    usdPricesEnabled: boolean;
 }
 
 export class TokenBalanceGrid extends React.PureComponent<ITokenBalanceGridProps> {
@@ -22,7 +23,8 @@ export class TokenBalanceGrid extends React.PureComponent<ITokenBalanceGridProps
         let totalTokenBalanceUsd = props.tokenBalances.reduce((acc, item) => {
             return acc + item.chart[0].balanceUsd;
         }, 0);
-        this.gridFields = new TokenBalanceGridFields(props.translation, props.locale, totalTokenBalanceUsd);
+        this.gridFields = new TokenBalanceGridFields(props.translation, props.locale,
+            props.usdPricesEnabled, totalTokenBalanceUsd);
         this.gridSortingOptions = new GridSortingOptions(this.gridFields.defaultSortedField);
     }
 
@@ -32,7 +34,8 @@ export class TokenBalanceGrid extends React.PureComponent<ITokenBalanceGridProps
                 return acc + item.chart[0].balanceUsd;
             }, 0);
             let { translation, locale } = this.props;
-            this.gridFields = new TokenBalanceGridFields(translation, locale, totalTokenBalanceUsd);
+            this.gridFields = new TokenBalanceGridFields(translation, locale,
+                this.props.usdPricesEnabled, totalTokenBalanceUsd);
         }
     }
 

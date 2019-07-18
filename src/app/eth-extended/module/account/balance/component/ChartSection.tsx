@@ -12,6 +12,7 @@ import { IPortfolioChartData, CHART_DATA_KEY } from "./chart/BalanceChartData";
 import { IBalanceAreaChartPayload } from "./chart/IBalanceAreaChartPayload";
 import { BALANCE_HISTORY_DAYS } from "app/eth-extended/data/account/balance/AccountBalanceStore";
 import { IAsyncData } from "plugin-api/IAsyncData";
+import { weiToEth } from "app/util/wei";
 
 export interface IChartSectionProps {
     accountBalance: IAsyncData<AccountBalance>;
@@ -19,12 +20,13 @@ export interface IChartSectionProps {
     translation: ITranslation;
     locale: string;
     ethSymbol: string;
+    usdPricesEnabled: boolean;
 }
 
 @observer
 export class ChartSection extends React.Component<IChartSectionProps> {
     render() {
-        let { accountBalance, isFreshAccount, translation: tr, locale, ethSymbol } = this.props;
+        let { accountBalance, isFreshAccount, translation: tr, locale, ethSymbol, usdPricesEnabled } = this.props;
 
         return (
             <ChartContainer>
@@ -38,6 +40,7 @@ export class ChartSection extends React.Component<IChartSectionProps> {
                         this.computeChartData(accountBalance.data) : this.getPlaceholderChartData()}
                     locale={locale}
                     ethSymbol={ethSymbol}
+                    usdPricesEnabled={usdPricesEnabled}
                     disabled={isFreshAccount || !accountBalance.isLoaded()}
                 />
             </ChartContainer>
@@ -51,13 +54,14 @@ export class ChartSection extends React.Component<IChartSectionProps> {
             points: []
         };
         data.points = accountBalance.computeTotalBalance().map(balance => {
+            let dataPoint = this.props.usdPricesEnabled ? balance.usd : weiToEth(balance.wei).toNumber();
             let point: IBalanceAreaChartPayload = {
-                [CHART_DATA_KEY]: balance.usd,
+                [CHART_DATA_KEY]: dataPoint,
                 balanceWei: balance.wei,
                 timestamp: balance.timestamp
             };
-            data.min = Math.min(data.min, balance.usd);
-            data.max = Math.max(data.max, balance.usd);
+            data.min = Math.min(data.min, dataPoint);
+            data.max = Math.max(data.max, dataPoint);
             return point;
         }).reverse();
 

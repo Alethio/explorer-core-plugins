@@ -19,13 +19,13 @@ interface IAllTokensBalanceDetailsProps {
     locale: string;
     translation: ITranslation;
     expanded: boolean;
+    usdPricesEnabled: boolean;
     onToggleExpand(): void;
 }
 
 export class AllTokensBalanceDetails extends React.PureComponent<IAllTokensBalanceDetailsProps> {
     render() {
-        let locale = this.props.locale;
-        let tr = this.props.translation;
+        let { locale, translation: tr, usdPricesEnabled } = this.props;
         let totalTokenUsdBalance = this.props.tokenAggregatedBalance[0].balanceUsd;
         let percentFraction = this.props.totalBalance.usd ?
             totalTokenUsdBalance / this.props.totalBalance.usd :
@@ -42,6 +42,8 @@ export class AllTokensBalanceDetails extends React.PureComponent<IAllTokensBalan
                         onClick={this.props.onToggleExpand}
                     />
                 </LayoutBoxItem>
+                { usdPricesEnabled ?
+                <>
                 <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForFullView}}>
                     <LayoutBoxItem>
                         <ValueBox>
@@ -64,6 +66,7 @@ export class AllTokensBalanceDetails extends React.PureComponent<IAllTokensBalan
                 <LayoutBoxItem justifyContent="flex-end">
                     <UsdValueBox colors="secondary" value={totalTokenUsdBalance} locale={locale} />
                 </LayoutBoxItem>
+                </> : null }
             </>
         );
     }

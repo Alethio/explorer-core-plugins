@@ -16,11 +16,14 @@ export interface IBalanceProps {
     translation: ITranslation;
     locale: string;
     ethSymbol: string;
+    usdPricesEnabled: boolean;
 }
 
 export class Balance extends React.Component<IBalanceProps> {
     render() {
-        let { historicalBalance, isFreshAccount, totalBalance, translation: tr, locale, ethSymbol } = this.props;
+        let {
+            historicalBalance, isFreshAccount, totalBalance, translation: tr, locale, ethSymbol, usdPricesEnabled
+        } = this.props;
 
         return <>
             <ChartSection
@@ -29,6 +32,7 @@ export class Balance extends React.Component<IBalanceProps> {
                 translation={tr}
                 locale={locale}
                 ethSymbol={ethSymbol}
+                usdPricesEnabled={usdPricesEnabled}
             />
             <ContentBottomSection>
                 <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForStandardView}}>
@@ -41,6 +45,7 @@ export class Balance extends React.Component<IBalanceProps> {
                     translation={tr}
                     locale={locale}
                     ethSymbol={ethSymbol}
+                    usdPricesEnabled={usdPricesEnabled}
                 /> : null }
             </ContentBottomSection>
         </>;

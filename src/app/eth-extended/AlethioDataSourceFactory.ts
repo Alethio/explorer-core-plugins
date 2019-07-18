@@ -46,7 +46,7 @@ export class AlethioDataSourceFactory {
 
         let pricesApiUrl = config.getPricesApiUrl();
         let pricesStore: PricesStore | undefined;
-        if (pricesApiUrl) {
+        if (config.isUsdPricesEnabled() && pricesApiUrl) {
             pricesStore = new PricesStoreFactory(pricesApiUrl).create();
         }
 
