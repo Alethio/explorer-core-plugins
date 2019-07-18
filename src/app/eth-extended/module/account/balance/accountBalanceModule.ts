@@ -7,6 +7,7 @@ import { IAsyncData } from "plugin-api/IAsyncData";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { accountContextType } from "app/shared/context/accountContextType";
 import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
+import { IAccountBalanceModuleOptions } from "./IAccountBalanceModuleOptions";
 
 export const accountBalanceModule: (
     config: EthExtendedPluginConfig
@@ -22,7 +23,7 @@ export const accountBalanceModule: (
 
     getContentComponent: () => import("./component/Balance").then(({ Balance }) => Balance),
     getContentProps(data) {
-        let { asyncData, translation, locale } = data;
+        let { asyncData, translation, locale, options } = data;
 
         let accountDetails = asyncData.get(AlethioAdapterType.AccountDetailsExtended)!.data as IAccountDetails;
         let historicalBalance = asyncData.get(AlethioAdapterType.AccountBalanceExtendedHist) as (
@@ -36,7 +37,8 @@ export const accountBalanceModule: (
             translation,
             locale,
             ethSymbol: config.getEthSymbol(),
-            usdPricesEnabled: config.isUsdPricesEnabled()
+            usdPricesEnabled: config.isUsdPricesEnabled(),
+            mainChartTokenAddress: options ? (options as IAccountBalanceModuleOptions).mainChartTokenAddress : void 0
         };
         return props;
     }

@@ -32,24 +32,24 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 
 ### Modules
 
-| Module URI | Context shape | Module slots | Description | Implementation |
-| --- | --- | --- | --- | --- |
-| module://aleth.io/block/details | { blockNumber } | confirmations, txs, extraData | Block data fields | [blockDetailsModule](../../src/app/eth-extended/module/block/blockDetails/blockDetailsModule.ts) |
-| module://aleth.io/block/txs | { blockNumber } | N/A | Transactions in given block, in two visualizations (grid and heat map) | [blockTxsModule](../../src/app/eth-extended/module/block/blockTxs/blockTxsModule.ts) |
-| module://aleth.io/uncle/details | { uncleHash } | N/A | Uncle data fields | [uncleDetailsModule](../../src/app/shared/module/uncle/uncleDetails/uncleDetailsModule.ts) |
-| module://aleth.io/tx/details | { txHash } | blockConfirmations | Transaction data fields | [txDetailsModule](../../src/app/eth-extended/module/tx/txDetails/txDetailsModule.ts) |
-| module://aleth.io/tx/summary | { txHash } | N/A | Accordion with contract messages, log events, token transfers etc. |[txSummaryModule](../../src/app/eth-extended/module/tx/txSummary/txSummaryModule.ts) |
-| module://aleth.io/tx/payload" | { txHash } | N/A | Decoded tx payload | [txPayloadModule](../../src/app/eth-extended/module/tx/txPayload/txPayloadModule.ts) |
-| module://aleth.io/account/details | { accountHash } | N/A | Account data fields | [accountDetailsModule](../../src/app/eth-extended/module/account/accountDetails/accountDetailsModule.ts) |
-| module://aleth.io/account/balance | { accountHash } | N/A | Account balance chart | [accountBalanceModule](../../src/app/eth-extended/module/account/balance/accountBalanceModule.ts) |
-| module://aleth.io/account/summary | { accountHash } | N/A | Accordion with transactions, contract messages etc. | [accountSummaryModule](../../src/app/eth-extended/module/account/summary/accountSummaryModule.ts) |
-| module://aleth.io/account/contract | { accountHash } | accordionItems | Accordion with contract data (source code, account code etc.) with slots for adding new items | [accountContractModule](../../src/app/eth-extended/module/account/contract/accountContractModule.ts) |
-| module://aleth.io/cm/list | { txHash, validationIndex, parentValidationIndex} | N/A | Chart for CM page sidebar showing contract messages found in the same parent | [cmListModule](../../src/app/eth-extended/module/cm/cmList/cmListModule.ts) |
-| module://aleth.io/cm/details | { txHash, validationIndex } | modules | Contract message data fields | [cmDetailsModule](../../src/app/eth-extended/module/cm/cmDetails/cmDetailsModule.ts) |
-| module://aleth.io/cm/summary | { txHash, validationIndex } | N/A | Accordion with child contract messages, token transfers etc. | [cmSummaryModule](../../src/app/eth-extended/module/cm/cmSummary/cmSummaryModule.ts) |
-| module://aleth.io/dashboard/avgTimeInPoolChart | { rangeStart, rangeEnd } | N/A | Chart showing average time spent in pool for Txs that were included in each block | [avgTimeInPoolChartModule](../../src/app/eth-extended/module/dashboard/charts/avgTimeInPoolChartModule.ts) |
+| Module URI | Context shape | Module slots | Description | Implementation | Options |
+| --- | --- | --- | --- | --- | --- |
+| module://aleth.io/block/details | { blockNumber } | confirmations, txs, extraData | Block data fields |[blockDetailsModule](../../src/app/eth-extended/module/block/blockDetails/blockDetailsModule.ts) | N/A |
+| module://aleth.io/block/txs | { blockNumber } | N/A | Transactions in given block, in two visualizations (grid and heat map) | [blockTxsModule](../../src/app/eth-extended/module/block/blockTxs/blockTxsModule.ts) | N/A |
+| module://aleth.io/uncle/details | { uncleHash } | N/A | Uncle data fields | [uncleDetailsModule](../../src/app/shared/module/uncle/uncleDetails/uncleDetailsModule.ts) | N/A |
+| module://aleth.io/tx/details | { txHash } | blockConfirmations | Transaction data fields | [txDetailsModule](../../src/app/eth-extended/module/tx/txDetails/txDetailsModule.ts) | N/A |
+| module://aleth.io/tx/summary | { txHash } | N/A | Accordion with contract messages, log events, token transfers etc. |[txSummaryModule](../../src/app/eth-extended/module/tx/txSummary/txSummaryModule.ts) | N/A |
+| module://aleth.io/tx/payload" | { txHash } | N/A | Decoded tx payload | [txPayloadModule](../../src/app/eth-extended/module/tx/txPayload/txPayloadModule.ts) | N/A |
+| module://aleth.io/account/details | { accountHash } | N/A | Account data fields | [accountDetailsModule](../../src/app/eth-extended/module/account/accountDetails/accountDetailsModule.ts) | N/A |
+| module://aleth.io/account/balance | { accountHash } | N/A | Account balance chart | [accountBalanceModule](../../src/app/eth-extended/module/account/balance/accountBalanceModule.ts) | [IAccountBalanceModuleOptions](../../src/app/eth-extended/module/account/balance/IAccountBalanceModuleOptions.ts) |
+| module://aleth.io/account/summary | { accountHash } | N/A | Accordion with transactions, contract messages etc. | [accountSummaryModule](../../src/app/eth-extended/module/account/summary/accountSummaryModule.ts) | N/A |
+| module://aleth.io/account/contract | { accountHash } | accordionItems | Accordion with contract data (source code, account code etc.) with slots for adding new items | [accountContractModule](../../src/app/eth-extended/module/account/contract/accountContractModule.ts) | N/A |
+| module://aleth.io/cm/list | { txHash, validationIndex, parentValidationIndex} | N/A | Chart for CM page sidebar showing contract messages found in the same parent | [cmListModule](../../src/app/eth-extended/module/cm/cmList/cmListModule.ts) | N/A |
+| module://aleth.io/cm/details | { txHash, validationIndex } | modules | Contract message data fields | [cmDetailsModule](../../src/app/eth-extended/module/cm/cmDetails/cmDetailsModule.ts) | N/A |
+| module://aleth.io/cm/summary | { txHash, validationIndex } | N/A | Accordion with child contract messages, token transfers etc. | [cmSummaryModule](../../src/app/eth-extended/module/cm/cmSummary/cmSummaryModule.ts) | N/A |
+| module://aleth.io/dashboard/avgTimeInPoolChart | { rangeStart, rangeEnd } | N/A | Chart showing average time spent in pool for Txs that were included in each block | [avgTimeInPoolChartModule](../../src/app/eth-extended/module/dashboard/charts/avgTimeInPoolChartModule.ts) | N/A |
 | module://aleth.io/dashboard/propagationChart | {} | N/A | Chart showing mined block propagation statistics | [propagationChartModule](../../src/app/eth-extended/module/dashboard/charts/propagationChartModule.ts) |
-| module://aleth.io/cm/payload | { txHash, validationIndex } | N/A | Decoded contract message payload | [cmPayloadModule](../../src\app/eth-extended/module/cm/cmPayload/cmPayloadModule.ts) |
+| module://aleth.io/cm/payload | { txHash, validationIndex } | N/A | Decoded contract message payload | [cmPayloadModule](../../src\app/eth-extended/module/cm/cmPayload/cmPayloadModule.ts) | N/A |
 
 ### Data Adapters
 

@@ -17,16 +17,19 @@ export interface IBalanceProps {
     locale: string;
     ethSymbol: string;
     usdPricesEnabled: boolean;
+    mainChartTokenAddress?: string;
 }
 
 export class Balance extends React.Component<IBalanceProps> {
     render() {
         let {
-            historicalBalance, isFreshAccount, totalBalance, translation: tr, locale, ethSymbol, usdPricesEnabled
+            historicalBalance, isFreshAccount, totalBalance, translation: tr, locale, ethSymbol, usdPricesEnabled,
+            mainChartTokenAddress
         } = this.props;
 
         return <>
             <ChartSection
+                tokenAddress={mainChartTokenAddress ? mainChartTokenAddress.replace(/^0x/, "") : void 0}
                 accountBalance={historicalBalance}
                 isFreshAccount={isFreshAccount}
                 translation={tr}
