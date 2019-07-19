@@ -48,7 +48,7 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 | module://aleth.io/cm/details | { txHash, validationIndex } | modules | Contract message data fields | [cmDetailsModule](../../src/app/eth-extended/module/cm/cmDetails/cmDetailsModule.ts) | N/A |
 | module://aleth.io/cm/summary | { txHash, validationIndex } | N/A | Accordion with child contract messages, token transfers etc. | [cmSummaryModule](../../src/app/eth-extended/module/cm/cmSummary/cmSummaryModule.ts) | N/A |
 | module://aleth.io/dashboard/avgTimeInPoolChart | { rangeStart, rangeEnd } | N/A | Chart showing average time spent in pool for Txs that were included in each block | [avgTimeInPoolChartModule](../../src/app/eth-extended/module/dashboard/charts/avgTimeInPoolChartModule.ts) | N/A |
-| module://aleth.io/dashboard/propagationChart | {} | N/A | Chart showing mined block propagation statistics | [propagationChartModule](../../src/app/eth-extended/module/dashboard/charts/propagationChartModule.ts) |
+| module://aleth.io/dashboard/propagationChart | {} | N/A | Chart showing mined block propagation statistics | [propagationChartModule](../../src/app/eth-extended/module/dashboard/charts/propagationChartModule.ts) | N/A |
 | module://aleth.io/cm/payload | { txHash, validationIndex } | N/A | Decoded contract message payload | [cmPayloadModule](../../src\app/eth-extended/module/cm/cmPayload/cmPayloadModule.ts) | N/A |
 
 ### Data Adapters
