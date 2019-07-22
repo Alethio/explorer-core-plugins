@@ -16,19 +16,26 @@ export interface IBalanceProps {
     translation: ITranslation;
     locale: string;
     ethSymbol: string;
+    usdPricesEnabled: boolean;
+    mainChartTokenAddress?: string;
 }
 
 export class Balance extends React.Component<IBalanceProps> {
     render() {
-        let { historicalBalance, isFreshAccount, totalBalance, translation: tr, locale, ethSymbol } = this.props;
+        let {
+            historicalBalance, isFreshAccount, totalBalance, translation: tr, locale, ethSymbol, usdPricesEnabled,
+            mainChartTokenAddress
+        } = this.props;
 
         return <>
             <ChartSection
+                tokenAddress={mainChartTokenAddress ? mainChartTokenAddress.replace(/^0x/, "") : void 0}
                 accountBalance={historicalBalance}
                 isFreshAccount={isFreshAccount}
                 translation={tr}
                 locale={locale}
                 ethSymbol={ethSymbol}
+                usdPricesEnabled={usdPricesEnabled}
             />
             <ContentBottomSection>
                 <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForStandardView}}>
@@ -41,6 +48,7 @@ export class Balance extends React.Component<IBalanceProps> {
                     translation={tr}
                     locale={locale}
                     ethSymbol={ethSymbol}
+                    usdPricesEnabled={usdPricesEnabled}
                 /> : null }
             </ContentBottomSection>
         </>;

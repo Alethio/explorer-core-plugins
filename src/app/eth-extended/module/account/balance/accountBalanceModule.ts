@@ -6,8 +6,12 @@ import { IAccountDetails } from "app/eth-extended/data/account/details/IAccountD
 import { IAsyncData } from "plugin-api/IAsyncData";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { accountContextType } from "app/shared/context/accountContextType";
+import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
+import { IAccountBalanceModuleOptions } from "./IAccountBalanceModuleOptions";
 
-export const accountBalanceModule: (ethSymbol: string) => IModuleDef<IBalanceProps, IAccountContext> = (ethSymbol) => ({
+export const accountBalanceModule: (
+    config: EthExtendedPluginConfig
+) => IModuleDef<IBalanceProps, IAccountContext> = (config) => ({
     contextType: accountContextType,
 
     dataAdapters: [{
@@ -19,7 +23,7 @@ export const accountBalanceModule: (ethSymbol: string) => IModuleDef<IBalancePro
 
     getContentComponent: () => import("./component/Balance").then(({ Balance }) => Balance),
     getContentProps(data) {
-        let { asyncData, translation, locale } = data;
+        let { asyncData, translation, locale, options } = data;
 
         let accountDetails = asyncData.get(AlethioAdapterType.AccountDetailsExtended)!.data as IAccountDetails;
         let historicalBalance = asyncData.get(AlethioAdapterType.AccountBalanceExtendedHist) as (
@@ -32,7 +36,9 @@ export const accountBalanceModule: (ethSymbol: string) => IModuleDef<IBalancePro
             totalBalance,
             translation,
             locale,
-            ethSymbol
+            ethSymbol: config.getEthSymbol(),
+            usdPricesEnabled: config.isUsdPricesEnabled(),
+            mainChartTokenAddress: options ? (options as IAccountBalanceModuleOptions).mainChartTokenAddress : void 0
         };
         return props;
     }

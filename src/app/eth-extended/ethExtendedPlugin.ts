@@ -86,8 +86,8 @@ const ethExtendedPlugin: IPlugin = {
             new AccountBalanceAdapter(dataSource, false));
         api.addDataAdapter("adapter://aleth.io/extended/account/balance?historical",
             new AccountBalanceAdapter(dataSource, true));
-        api.addModuleDef("module://aleth.io/account/details", accountDetailsModule(ethSymbol));
-        api.addModuleDef("module://aleth.io/account/balance", accountBalanceModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/account/details", accountDetailsModule(config));
+        api.addModuleDef("module://aleth.io/account/balance", accountBalanceModule(config));
         api.addModuleDef("module://aleth.io/account/summary", accountSummaryModule({ dataSource, ethSymbol}));
         api.addModuleDef("module://aleth.io/account/contract", accountContractModule(dataSource));
 

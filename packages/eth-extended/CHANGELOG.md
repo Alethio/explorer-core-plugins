@@ -1,7 +1,8 @@
 # Unreleased
 
-- Option to disable USD prices functionality by configuration, by making `PRICES_API_URL` optional.
+- Option to disable USD prices functionality by configuration (`usdPrices` config option).
 - Add configurable `ethSymbol` (e.g. GöETH)
+- Add configurable token address for main balance chart on account page (`mainChartTokenAddress` module option). Useful when USD prices are disabled and we want to plot ETH or a given token instead.
 
 # v3.0.0
 

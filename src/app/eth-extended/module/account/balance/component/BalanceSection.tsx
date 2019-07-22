@@ -23,9 +23,14 @@ const BalanceSectionRoot = styled<{accountHasTokens: boolean}, "div">("div")`
         display: ${(props) => props.accountHasTokens ? "block" : "none"};
     }
 `;
-const BalanceSectionGrid = styled.div`
+
+interface IBalanceSectionGridProps {
+    usdPricesEnabled: boolean;
+}
+
+const BalanceSectionGrid = styled<IBalanceSectionGridProps, "div">("div")`
     display: grid;
-    grid-template-columns: repeat(5, auto);
+    grid-template-columns: repeat(${ props => props.usdPricesEnabled ? 5 : 1 }, auto);
 
     @media ${props => props.theme.mediaQueries.breakPoints.smallerThanStandardView} {
         grid-template-columns: repeat(3, auto);
@@ -53,6 +58,7 @@ export interface IBalanceSectionProps {
     translation: ITranslation;
     locale: string;
     ethSymbol: string;
+    usdPricesEnabled: boolean;
 }
 
 @observer
@@ -61,7 +67,7 @@ export class BalanceSection extends React.Component<IBalanceSectionProps> {
     private tokenBalanceExpanded: boolean;
 
     render() {
-        let { translation: tr, locale, historicalBalance, totalBalance, ethSymbol } = this.props;
+        let { translation: tr, locale, historicalBalance, totalBalance, ethSymbol, usdPricesEnabled } = this.props;
 
         return (
             <BalanceSectionRoot accountHasTokens={historicalBalance.isLoaded() && historicalBalance.data.hasTokens()}>
@@ -81,12 +87,13 @@ export class BalanceSection extends React.Component<IBalanceSectionProps> {
                             <Label>{tr.get("accountView.content.balance.label")}</Label>
                             { historicalBalance.isLoaded() && totalBalance ?
                             <BalanceGridRoot>
-                                <BalanceSectionGrid>
+                                <BalanceSectionGrid usdPricesEnabled={usdPricesEnabled}>
                                     <EthBalanceDetails
                                         ethBalance={historicalBalance.data.getEthBalance()}
                                         totalBalance={totalBalance}
                                         locale={locale}
                                         ethSymbol={ethSymbol}
+                                        usdPricesEnabled={usdPricesEnabled}
                                     />
                                     { historicalBalance.data.hasTokens() ?
                                         <AllTokensBalanceDetails
@@ -97,6 +104,7 @@ export class BalanceSection extends React.Component<IBalanceSectionProps> {
                                             onToggleExpand={this.toggleTokenBalanceContent}
                                             locale={locale}
                                             translation={tr}
+                                            usdPricesEnabled={usdPricesEnabled}
                                         />
                                     : null }
                                 </BalanceSectionGrid>
@@ -115,6 +123,7 @@ export class BalanceSection extends React.Component<IBalanceSectionProps> {
                             tokenBalances={historicalBalance.data.getAllTokenBalances()}
                             translation={tr}
                             locale={locale}
+                            usdPricesEnabled={usdPricesEnabled}
                         />
                     </BalanceGridRoot>
                 </Fade>

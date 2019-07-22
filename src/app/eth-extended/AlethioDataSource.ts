@@ -92,7 +92,6 @@ export class AlethioDataSource implements IDataSource {
             heartbeatInterval: 60000
         });
 
-        // TODO: loading and errors states; render the app component with loading/error box instead of page content
         deepstream.subscribeToRecord<any>("db/v2/lastBlock", (data) => {
             logger.info(`New latest block received: #${data.number}`);
             blockStateStore.setLatest(data.number);
