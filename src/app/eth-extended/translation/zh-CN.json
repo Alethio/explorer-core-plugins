@@ -55,7 +55,7 @@
     "dashboardView.pendingChart.tooltip.txs.label": "于矿池中等待%d",
     "dashboardView.pendingPool.size.label": "待确认交易数",
     "dashboardView.pendingPool.valueAdded.label": "金额处理速度",
-    "dashboardView.pendingPool.valueAdded.perSec": "以太币/秒",
+    "dashboardView.pendingPool.valueAdded.perSec": "{ethSymbol}/秒",
     "dashboardView.pendingPool.transferAdded.label": "代币转账处理速度",
     "dashboardView.pendingPool.transferAdded.perSec": "ERC20/秒",
     "dashboardView.propagationChart.title.label": "传播网络",

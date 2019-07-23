@@ -55,7 +55,7 @@
     "dashboardView.pendingChart.tooltip.txs.label": "%d in pool",
     "dashboardView.pendingPool.size.label": "Pending pool size",
     "dashboardView.pendingPool.valueAdded.label": "Value added",
-    "dashboardView.pendingPool.valueAdded.perSec": "ETH/s",
+    "dashboardView.pendingPool.valueAdded.perSec": "{ethSymbol}/s",
     "dashboardView.pendingPool.transferAdded.label": "Transfer added",
     "dashboardView.pendingPool.transferAdded.perSec": "ERC20/s",
     "dashboardView.propagationChart.title.label": "Propagation",

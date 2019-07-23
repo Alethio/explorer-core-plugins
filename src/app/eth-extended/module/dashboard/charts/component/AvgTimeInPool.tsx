@@ -15,11 +15,12 @@ export interface IAvgTimeInPoolProps {
     blockValues: (IBlockTxTimeInPool | undefined)[];
     context: ILatestBlockRangeContext;
     pendingPoolInfo: IPendingPoolInfo;
+    ethSymbol: string;
 }
 
 export class AvgTimeInPool extends React.Component<IAvgTimeInPoolProps> {
     render() {
-        let { translation: tr, pendingPoolInfo, blockValues, context } = this.props;
+        let { translation: tr, pendingPoolInfo, blockValues, context, ethSymbol } = this.props;
 
         return (
             <div>
@@ -40,7 +41,7 @@ export class AvgTimeInPool extends React.Component<IAvgTimeInPoolProps> {
                         <Label>{ tr.get("dashboardView.pendingPool.valueAdded.label") }</Label>
                         <ValueBox>
                             { pendingPoolInfo.eth + " " +
-                            tr.get("dashboardView.pendingPool.valueAdded.perSec") }
+                            tr.get("dashboardView.pendingPool.valueAdded.perSec", { "{ethSymbol}": ethSymbol}) }
                         </ValueBox>
                     </LayoutRowItem>
                     <LayoutRowItem>
