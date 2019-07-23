@@ -29,7 +29,7 @@ export interface IChartSectionProps {
 export class ChartSection extends React.Component<IChartSectionProps> {
     render() {
         let {
-            accountBalance, isFreshAccount, translation: tr, locale, ethSymbol, usdPricesEnabled
+            accountBalance, isFreshAccount, translation: tr, locale, ethSymbol, usdPricesEnabled, tokenAddress
         } = this.props;
 
         return (
@@ -43,9 +43,11 @@ export class ChartSection extends React.Component<IChartSectionProps> {
                     data={!isFreshAccount && accountBalance.isLoaded() ?
                         this.computeChartData(accountBalance.data) : this.getPlaceholderChartData()}
                     locale={locale}
-                    ethSymbol={this.props.tokenAddress && accountBalance.isLoaded() ?
-                        accountBalance.data.getTokenBalance(this.props.tokenAddress).currency.symbol :
-                        ethSymbol}
+                    ethSymbol={
+                        tokenAddress && accountBalance.isLoaded() &&
+                        accountBalance.data.hasToken(tokenAddress) ?
+                            accountBalance.data.getTokenBalance(tokenAddress).currency.symbol :
+                            ethSymbol}
                     usdPricesEnabled={usdPricesEnabled}
                     disabled={isFreshAccount || !accountBalance.isLoaded()}
                 />
@@ -62,7 +64,7 @@ export class ChartSection extends React.Component<IChartSectionProps> {
 
         let { tokenAddress, usdPricesEnabled } = this.props;
 
-        if (tokenAddress) {
+        if (tokenAddress && accountBalance.hasToken(tokenAddress)) {
                 let balanceData = accountBalance.getTokenBalance(tokenAddress);
 
                 data.points = balanceData.chart.map(balance => {
