@@ -42,6 +42,10 @@ export class AccountBalance {
         return this.data.get(tokenAddr)!;
     }
 
+    hasToken(tokenAddr: string) {
+        return this.data.has(tokenAddr);
+    }
+
     getAllTokenBalances() {
         return [...this.data]
             .filter(([tokenAddr, _data]) => tokenAddr !== ETH_ADDR)
