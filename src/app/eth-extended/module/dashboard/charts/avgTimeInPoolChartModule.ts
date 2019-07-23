@@ -5,7 +5,9 @@ import { ILatestBlockRangeContext } from "../../../../shared/context/ILatestBloc
 import { IBlockTxTimeInPool } from "app/eth-extended/data/block/txTimeInPool/IBlockTxTimeInPool";
 import { blockRangeContextType } from "app/shared/context/blockRangeContextType";
 
-export const avgTimeInPoolChartModule: IModuleDef<IAvgTimeInPoolProps, ILatestBlockRangeContext> = {
+export const avgTimeInPoolChartModule: (
+    ethSymbol: string
+) => IModuleDef<IAvgTimeInPoolProps, ILatestBlockRangeContext> = (ethSymbol) => ({
     contextType: blockRangeContextType,
 
     dataAdapters: [{
@@ -29,8 +31,9 @@ export const avgTimeInPoolChartModule: IModuleDef<IAvgTimeInPoolProps, ILatestBl
             blockValues,
             context,
             pendingPoolInfo,
-            translation
+            translation,
+            ethSymbol
         };
         return props;
     }
-};
+});

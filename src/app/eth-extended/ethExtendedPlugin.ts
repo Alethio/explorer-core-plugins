@@ -106,7 +106,7 @@ const ethExtendedPlugin: IPlugin = {
         api.addDataAdapter("adapter://aleth.io/ethNodesInfo", new EthNodesInfoAdapter(dataSource));
 
         api.addPageDef("page://aleth.io/dashboard", dashboardPage);
-        api.addModuleDef("module://aleth.io/dashboard/avgTimeInPoolChart", avgTimeInPoolChartModule);
+        api.addModuleDef("module://aleth.io/dashboard/avgTimeInPoolChart", avgTimeInPoolChartModule(ethSymbol));
         api.addModuleDef("module://aleth.io/dashboard/propagationChart",
             propagationChartModule(config.getEthstatsUrl()));
     },
