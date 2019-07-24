@@ -128,7 +128,7 @@ export class SearchState {
         // setTimeout to prevent the results layer from disappearing when clicking on a result
         this.blurTimeout = setTimeout(() => {
             this.deactivate();
-        }, 100);
+        }, 350 /* this is minimally sufficient for touchpad taps as well as slower user clicks */);
     }
 
     handleKeyPress = (ev: React.KeyboardEvent<HTMLInputElement>) => {
