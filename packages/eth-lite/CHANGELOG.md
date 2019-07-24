@@ -1,4 +1,4 @@
-# Unreleased
+# v2.1.0
 
 - Add configurable `ethSymbol` (e.g. GöETH)
 

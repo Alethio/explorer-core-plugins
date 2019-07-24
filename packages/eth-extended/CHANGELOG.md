@@ -1,4 +1,4 @@
-# Unreleased
+# v3.1.0
 
 - Option to disable USD prices functionality by configuration (`usdPrices` config option).
 - Add configurable `ethSymbol` (e.g. GöETH)
