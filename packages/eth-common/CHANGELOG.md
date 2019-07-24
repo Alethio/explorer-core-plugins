@@ -1,3 +1,7 @@
+# v2.1.2
+
+- Fix clicks on search results not triggering on touchpads on slower mouse clicks
+
 # v2.1.1
 
 - Fix network switch not being clear enough by adding a dropdown icon
