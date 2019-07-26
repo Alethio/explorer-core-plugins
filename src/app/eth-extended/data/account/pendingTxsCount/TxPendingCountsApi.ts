@@ -9,14 +9,13 @@ export class TxPendingCountsApi {
 
     }
 
-    async fetch(accountHash: string, blockNo: number) {
-        let data = await this.dsRpcApi.fetch("pending:v2:getAccountTransactions:counters", {
-            address: "0x" + accountHash.replace(/^0x/, ""),
-            number: blockNo
+    async fetch(accountHash: string) {
+        let data = await this.dsRpcApi.fetch("pending:v3:getAccountTransactions:counters", {
+            address: "0x" + accountHash.replace(/^0x/, "")
         });
 
         if (!data) {
-            throw new Error(`No data found in deepstream for accountHash "${accountHash}" and blockNo "${blockNo}"`);
+            throw new Error(`No data found in deepstream for accountHash "${accountHash}"`);
         }
 
         return this.reader.read(data);

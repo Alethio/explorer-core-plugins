@@ -23,9 +23,8 @@ export const accountSummaryModule: (options: {
         def: {
             contextType: accountContextType,
             async load(context) {
-                let { blockStateStore, txPendingCountsByAccountStore } = dataSource.stores;
-                let latestBlockNo = blockStateStore.getLatest();
-                let counts = await txPendingCountsByAccountStore.fetch(context.accountHash, latestBlockNo);
+                let { txPendingCountsByAccountStore } = dataSource.stores;
+                let counts = await txPendingCountsByAccountStore.fetch(context.accountHash);
                 return counts.inbound + counts.outbound;
             },
             createWatcher(context) {

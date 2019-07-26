@@ -98,17 +98,17 @@ export class AlethioDataSource implements IDataSource {
         }).catch(e => logger.error(e));
 
         let blockTxTimeInPoolReader = new BlockTxTimeInPoolReader();
-        deepstream.subscribeToRecord<any>("pending/v2/blockSummaries", data => {
+        deepstream.subscribeToRecord<any>("pending/v3/blockSummaries", data => {
             let latestValues = (data as any[]).map(item => blockTxTimeInPoolReader.read(item));
             blockTxTimeInPoolStore.setLatestValues(latestValues);
         }).catch(e => logger.error(e));
 
-        deepstream.subscribeToRecord<any>("pending/v2/stats/perSecond", data => {
+        deepstream.subscribeToRecord<any>("pending/v3/stats/perSecond", data => {
             pendingPoolStore.setEth(Number(data.eth));
             pendingPoolStore.setErc(Number(data.erc20));
         }).catch(e => logger.error(e));
 
-        deepstream.subscribeToRecord<any>("pending/v2/stats/pool", data => {
+        deepstream.subscribeToRecord<any>("pending/v3/stats/pool", data => {
             pendingPoolStore.setSize(Number(data.size));
         }).catch(e => logger.error(e));
 

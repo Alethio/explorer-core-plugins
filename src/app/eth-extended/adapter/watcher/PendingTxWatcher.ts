@@ -31,7 +31,7 @@ export class PendingTxWatcher {
         if (!this.callbacks.has(txHash)) {
             this.callbacks.set(txHash, data => this.handleStatusChange(data, txHash));
         }
-        this.deepstream.subscribeToEvent<string>(`pending:v2:tx:${txHash}`, this.callbacks.get(txHash)!)
+        this.deepstream.subscribeToEvent<string>(`pending:v3:tx:${txHash}`, this.callbacks.get(txHash)!)
             .catch(e => this.logger.error(e));
     }
 
@@ -44,7 +44,7 @@ export class PendingTxWatcher {
             existingHandlers.delete(handler);
         }
         if (!existingHandlers.size) {
-            this.deepstream.unsubscribeFromEvent(`pending:v2:tx:${txHash}`, this.callbacks.get(txHash)!)
+            this.deepstream.unsubscribeFromEvent(`pending:v3:tx:${txHash}`, this.callbacks.get(txHash)!)
                 .catch(e => this.logger.error(e));
             this.callbacks.delete(txHash);
             this.handlers.delete(txHash);
