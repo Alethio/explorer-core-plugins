@@ -1,4 +1,4 @@
-# Unreleased
+# v3.2.0
 
 - Update to `pending/v3` deepstream API.
 
