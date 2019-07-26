@@ -20,10 +20,7 @@ export class TxLiteByAccountStore {
     }
 
     async fetchPending(accountHash: string, offset: number, limit: number) {
-        let latestBlock = this.blockStateStore.getLatest();
-        let pendingTxs = await this.pendingStore.fetch(
-            accountHash, latestBlock, offset, limit
-        );
+        let pendingTxs = await this.pendingStore.fetch(accountHash, offset, limit);
 
         this._onFetchPending.dispatch(this, accountHash);
 

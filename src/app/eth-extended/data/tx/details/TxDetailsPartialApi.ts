@@ -10,7 +10,7 @@ export class TxDetailsPartialApi {
     }
 
     async fetch(txHash: string) {
-        let txData = await this.dsRpcApi.fetch("pending:v2:getTx", { hash: "0x" + txHash.replace(/^0x/, "") });
+        let txData = await this.dsRpcApi.fetch("pending:v3:getTx", { hash: "0x" + txHash.replace(/^0x/, "") });
 
         if (!txData) {
             throw new Error(`No data found in deepstream for txHash "${txHash}"`);

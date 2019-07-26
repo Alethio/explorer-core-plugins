@@ -9,14 +9,9 @@ export class TxLiteByAccountPendingApi {
 
     }
 
-    /**
-     * @param accountHash
-     * @param blockNo only used because the call returns the mined txs count as well
-     */
-    async fetch(accountHash: string, blockNo: number, offset: number, limit: number) {
-        let data = await this.dsRpcApi.fetch("pending:v2:getAccountTransactions:pending", {
+    async fetch(accountHash: string, offset: number, limit: number) {
+        let data = await this.dsRpcApi.fetch("pending:v3:getAccountTransactions", {
             address: "0x" + accountHash.replace(/^0x/, ""),
-            number: blockNo,
             offset,
             limit
         });
@@ -26,6 +21,6 @@ export class TxLiteByAccountPendingApi {
         }
 
         // tslint:disable-next-line: no-string-literal
-        return ((data as any)["transactions"] as any[]).map((raw: any) => this.reader.read(raw));
+        return (data as any[]).map((raw: any) => this.reader.read(raw));
     }
 }

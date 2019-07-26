@@ -5,8 +5,8 @@ export class TxPendingCountsStore {
 
     }
 
-    async fetch(accountHash: string, blockNo: number) {
-        return await this.api.fetch(accountHash, blockNo);
+    async fetch(accountHash: string) {
+        return await this.api.fetch(accountHash);
     }
 
 }

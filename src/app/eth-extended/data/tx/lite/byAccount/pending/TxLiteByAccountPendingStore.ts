@@ -7,8 +7,8 @@ export class TxLiteByAccountPendingStore {
 
     }
 
-    async fetch(accountHash: string, blockNo: number, offset: number, limit: number) {
-        let data = await this.api.fetch(accountHash, blockNo, offset, limit);
+    async fetch(accountHash: string, offset: number, limit: number) {
+        let data = await this.api.fetch(accountHash, offset, limit);
         return data;
     }
 }

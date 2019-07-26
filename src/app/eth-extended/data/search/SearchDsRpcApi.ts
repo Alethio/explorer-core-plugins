@@ -16,7 +16,7 @@ export class SearchDsRpcApi {
     async search(hash: string) {
         let data: any;
         try {
-            data = await this.dsRpcApi.fetch("pending:v2:search", {
+            data = await this.dsRpcApi.fetch("pending:v3:search", {
                 hash: "0x" + hash.replace(/^0x/, "")
             });
         } catch (e) {
