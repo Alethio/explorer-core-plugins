@@ -24,7 +24,8 @@ export class TxDetailsAdapter implements IDataAdapter<ITxContext, ITxDetails> {
         }
     }
 
-    createWatcher(context: ITxContext, lastData: ITxDetails) {
-        return new TxDataWatcher(this.dataSource.stores.blockStateStore, this.dataSource.pendingTxWatcher, lastData);
+    createWatcher(context: ITxContext, lastData: ITxDetails | undefined) {
+        return new TxDataWatcher(this.dataSource.stores.blockStateStore, this.dataSource.pendingTxWatcher,
+            context.txHash, lastData);
     }
 }

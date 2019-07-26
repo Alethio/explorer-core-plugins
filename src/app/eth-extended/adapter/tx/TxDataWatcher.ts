@@ -15,7 +15,8 @@ export class TxDataWatcher implements IDataWatcher {
     constructor(
         private blockStateStore: BlockStateStore,
         private pendingTxWatcher: PendingTxWatcher,
-        private lastDetails: ITxDetails
+        private txHash: string,
+        private lastDetails: ITxDetails | undefined
     ) {
 
     }
@@ -26,7 +27,7 @@ export class TxDataWatcher implements IDataWatcher {
 
     watch() {
         let txDetails = this.lastDetails;
-        let txHash = txDetails.hash;
+        let txHash = this.txHash;
 
         if (!txDetails || isPendingTxDetails(txDetails)) {
             let handler = this.pendingTxHandler = () => {
@@ -53,7 +54,7 @@ export class TxDataWatcher implements IDataWatcher {
             this.refreshDisposer = void 0;
         }
         if (this.pendingTxHandler) {
-            this.pendingTxWatcher.unwatch(this.lastDetails.hash, this.pendingTxHandler);
+            this.pendingTxWatcher.unwatch(this.txHash, this.pendingTxHandler);
         }
     }
 }

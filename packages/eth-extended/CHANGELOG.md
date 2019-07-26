@@ -1,3 +1,7 @@
+# Unreleased
+
+- Fix error when searching for a non-existent tx hash.
+
 # v3.2.0
 
 - Update to `pending/v3` deepstream API.
