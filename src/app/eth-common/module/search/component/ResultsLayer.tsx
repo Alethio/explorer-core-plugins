@@ -2,6 +2,7 @@ import styled from "@alethio/explorer-ui/lib/styled-components";
 
 export const ResultsLayer = styled.div`
     position: absolute;
+    z-index: 1000;
     bottom: 0;
     left: -1px; /** border adjust */
     transform: translateY(100%);

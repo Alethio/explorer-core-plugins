@@ -1,3 +1,7 @@
+# Unreleased
+
+- Fix a layout bug in search module which was visible only when the module was placed in a relatively positioned parent
+
 # v2.1.2
 
 - Fix clicks on search results not triggering on touchpads on slower mouse clicks

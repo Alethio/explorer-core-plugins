@@ -26,6 +26,8 @@ const ExpanderWrapper = styled.div`
 
 const AccordionFrameWrapper = styled.div`
     margin-bottom: -${({theme}) => theme.spacing.contentBottom}px;
+    /** For FloatingActionBar's */
+    position: relative;
 `;
 
 export interface IContractAccordionItemConfig extends IAccordionItemConfig {
