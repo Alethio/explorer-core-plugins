@@ -1,3 +1,7 @@
+# Unreleased
+
+- Fix bugs which were visible only when modules with accordions were placed in a relatively positioned parent
+
 # v2.1.0
 
 - Add configurable `ethSymbol` (e.g. GöETH)
