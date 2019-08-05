@@ -26,5 +26,7 @@ export const toolbarSearchModule: (searchInlineStore: SearchInlineStore) => IMod
             logger
         };
         return props;
-    }
+    },
+
+    getHelpComponent: () => ({ translation }) => translation.get("dashboardView.help.search") as any
 });

@@ -21,5 +21,6 @@ export const alethioCompanyModule: (alethioCompanyUrl: string) => IModuleDef<IAl
             </ExternalLink>
         </ToolbarItem>
     ),
-    getContentProps : data => data
+    getContentProps : data => data,
+    getHelpComponent: () => ({ translation }) => translation.get("toolbar.company.help") as any
 });

@@ -41,5 +41,6 @@ export const accountBalanceModule: (
             mainChartTokenAddress: options ? (options as IAccountBalanceModuleOptions).mainChartTokenAddress : void 0
         };
         return props;
-    }
+    },
+    getHelpComponent: () => ({ translation }) => translation.get("accountView.content.accountBalance.help") as any
 });

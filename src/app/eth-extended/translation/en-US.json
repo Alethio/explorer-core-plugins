@@ -63,6 +63,9 @@
     "dashboardView.propagation.activeNodes.label": "Active nodes",
     "dashboardView.propagation.label": "Propagation",
 
+    "dashboardView.help.avgTimeInPoolChart": "Transactions waiting to be processed by miners are temporarily stored in the Pending Pool. The graph shows the average time that a transaction waits to be mined. Based on the total number of pending transactions stored, we calculate the average ETH value added per second and the average number of tokens transferred per second.",
+    "dashboardView.help.propagationChart": "This graph shows the evolution of transactions as they have been propagated by miners to active nodes. The total number of nodes, displayed here, directly correlates with the propagation speed (how fast they were broadcasted to other nodes in the blockchain). To offer perspective on the efficiency on the network, we also calculate the percentage of transactions to which this propagation speed applies.<br /><a href=\"%s\" rel=\"noopener noreferrer\">EthStats Network Statistics</a> offers more insights into network performance.",
+
     "blockView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different block.",
     "blockView.content.dataNotLoaded.text": "Data is still being processed. Please be patient",
     "blockView.content.blockNumber.label": "Block",
@@ -92,6 +95,8 @@
     "blockView.content.transactionsHighlight.contractMessageCount.label": "Contract Message Count",
     "blockView.content.transactionsHighlight.contractCreationCount.label": "Contract Creation Count",
     "txTooltip.value.label": "Value",
+
+    "blockView.content.transactions.help": "So what does this block contain? That is what we show you in this visual representation of transactions within the block. You can see the total number of transactions and highlight their various indicators. The size of the circles here indicates their relative value, compared to that of all other transactions in the block. Hovering over any of the circles will display individual information, such as Tx address, value and wallet addresses involved. <br /> You can also switch to a standard, table view by clicking on the striped button at the top.",
 
     "uncleView.sidebar.logo": "Un",
     "uncleView.sidebar.title": "Uncle page",
@@ -133,6 +138,9 @@
     "txView.content.txSummary.txTokenTransfersGrid.header.value.label": "Value",
     "txView.content.txSummary.logEvents.topic.value": "Topic",
     "txView.content.txSummary.logEvents.logData.value": "Log Data",
+
+    "txView.content.txSummary.help": "Public details about the contents of this transaction are stored here and you can view them separately. Our graph module helps you better visualise this information - just click on this button to activate it.",
+
     "txView.content.decodedPayload.method.label": "function",
     "txView.content.decodedPayload.methodId.label": "methodID",
     "txView.content.decodedPayload.inputs.label": "inputs",
@@ -140,6 +148,8 @@
 
     "cmView.sidebar.logo": "Cm",
     "cmView.sidebar.title": "Contract messages",
+    "cmView.sidebar.cmList.help": "The resulting contract message can be viewed and copied from here. <br />The vertical graphic displays all contract messages within the associated transaction. The size of the circles represented here reflects the relative value exchange, compared with other contract messages within this transaction.",
+
     "cmView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different contract message.",
     "cmView.content.id.label": "ID",
     "cmView.content.cmType.label": "Type",
@@ -152,6 +162,8 @@
     "cmView.content.depth.label": "Depth",
     "cmView.content.traceAddress.label": "Trace address",
     "cmView.content.blockValidationIndex.label": "Block validation index",
+
+    "cmView.content.cmDetails.help": "This is the fundamental information about this specific contract message. It includes its ID, value, associated transaction and account and gas cost performance.",
 
     "cmView.content.cmSummary.label": "Summary",
     "cmView.content.cmSummary.contractMessages.label": "Contract Messages",
@@ -199,12 +211,17 @@
     "accountView.type.TokenHolder": "Token Holder Account",
     "accountView.type.Unknown": "Account",
 
+    "accountView.content.accountDetails.help": "Exploring an account’s activity on the network starts with the basics: address, portfolio (expressed in ETH and USD using real time exchange value), content distribution (currency vs tokens) and a link to the external account (via the QR code).",
+    "accountView.content.accountBalance.help": "Get a quick overview of the account’s balance in each of the previous 30 days and see the evolution of its portfolio. It’s current balance is updated below, along with its value calculated in USD.",
+
     "accountView.content.accountSummary.label": "Summary",
     "accountView.content.accountSummary.contractMessages.label": "Contract Messages",
     "accountView.content.accountSummary.pendingTransactions.label": "Pending Transactions",
     "accountView.content.accountSummary.minedTransactions.label": "Transactions",
     "accountView.content.accountSummary.transactions.blockNumber.label": "Block #",
     "accountView.content.accountSummary.transactions.blockTime.label": "Block Time",
+
+    "accountView.content.accountSummary.help": "This is a summary of incoming, outgoing and pending transactions associated with this account. The table below displays detailed information about all transactions occurring in this account, in chronological order (newest to oldest). View a specific type of transaction by using the 3 filters here.<br />Contracts displayed here also feature their source code, ABIs, account code and arguments. Simply scroll below to access these details.",
 
     "accountView.contract.compilerVersion.label": "Compiler Version",
     "accountView.contract.optimizer.label": "Optimizer",

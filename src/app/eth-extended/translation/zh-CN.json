@@ -63,6 +63,9 @@
     "dashboardView.propagation.activeNodes.label": "活跃节点",
     "dashboardView.propagation.label": "传播速度",
 
+    "dashboardView.help.avgTimeInPoolChart": "矿工未处理的交易将会在矿池中等待。下图展示了交易在矿池中的平均等待时长。基于所有等待中的交易所涉及的金额与代币数量，我们推算出了平均金额处理速度与代币转账处理速度。",
+    "dashboardView.help.propagationChart": "下图展示了交易由矿工传播到以太坊网络内活跃节点的进程。下方显示了监控网络内的活跃节点总数与传播速度（即交易在区块链中被传播到其他节点的速度）。传播速度中的百分比代表该速度下所处理完成的交易占总数的比例，可以衡量整个网络的处理效率。<br /><a href=\"%s\" rel=\"noopener noreferrer\">EthStats网络数据</a>将为您提供更多关于网络节点的数据信息。",
+
     "blockView.content.noData.text": "无数据 <br /> 试一下其他区块吧！",
     "blockView.content.dataNotLoaded.text": "数据正在处理中，请耐心等待",
     "blockView.content.blockNumber.label": "区块",
@@ -92,6 +95,8 @@
     "blockView.content.transactionsHighlight.contractMessageCount.label": "合约消息发送数量",
     "blockView.content.transactionsHighlight.contractCreationCount.label": "合约创建数量",
     "txTooltip.value.label": "金额",
+
+    "blockView.content.transactions.help": "那么，这个区块里有什么呢？此处的可视化效果将告诉你区块中所包含的内容。你可以看到其中的交易总数，并按不同指标突出标记其中的交易。此处的圆圈大小代表了他们相对于区块中其他交易，所选指标的值的大小。鼠标悬停在任意一个圆圈上将展示其具体信息，如交易地址、金额、涉及的钱包地址等。 <br /> 右上方的按钮可随时帮助您切换到标准表格视图。",
 
     "uncleView.sidebar.logo": "叔块",
     "uncleView.sidebar.title": "叔区块页",
@@ -132,6 +137,9 @@
     "txView.content.txSummary.txTokenTransfersGrid.header.value.label": "数额",
     "txView.content.txSummary.logEvents.topic.value": "题目",
     "txView.content.txSummary.logEvents.logData.value": "日志数据",
+
+    "txView.content.txSummary.help": "此处储存了该交易所包含内容的所有公开信息，您可分类浏览。我们的关系图帮助您更好的可视化所有信息，点击按钮即可查看。",
+
     "txView.content.decodedPayload.method.label": "调用函数",
     "txView.content.decodedPayload.methodId.label": "方法ID",
     "txView.content.decodedPayload.inputs.label": "输入",
@@ -139,6 +147,8 @@
 
     "cmView.sidebar.logo": "消息",
     "cmView.sidebar.title": "合约消息",
+    "cmView.sidebar.cmList.help": "左侧纵向展示了同一交易中所有被触发的相关合约消息。您可以点击并复制消息ID。<br />圆圈的大小代表在同一交易中，该消息所处理的金额与其他消息相比的相对数额大小。",
+
     "cmView.content.noData.text": "无数据 <br /> 试一下其他消息吧！",
     "cmView.content.id.label": "ID",
     "cmView.content.cmType.label": "类型",
@@ -151,6 +161,8 @@
     "cmView.content.depth.label": "深度",
     "cmView.content.traceAddress.label": "迹地址",
     "cmView.content.blockValidationIndex.label": "区块内验证索引",
+
+    "cmView.content.cmDetails.help": "此处展现了该合约消息的基础信息，包括ID、金额、相关联交易与账户，以及燃料消耗信息。",
 
     "cmView.content.cmSummary.label": "内容概览",
     "cmView.content.cmSummary.contractMessages.label": "合约消息",
@@ -198,12 +210,17 @@
     "accountView.type.TokenHolder": "代币持有账户",
     "accountView.type.Unknown": "账户",
 
+    "accountView.content.accountDetails.help": "账户在网络中的动态信息，包括了最基础的哈希地址、资产总额（同时用以太币与其实时美元价格进行估算）、资产分布（包括以太币及其他代币）以及账户QR二维码链接。",
+    "accountView.content.accountBalance.help": "您可快速浏览该账户在过去30天内的每日所持资产余额走势。账户最新余额明细则展示于图表下方，其价值同时以美元为单位进行了换算。",
+
     "accountView.content.accountSummary.label": "内容概览",
     "accountView.content.accountSummary.contractMessages.label": "合约消息",
     "accountView.content.accountSummary.pendingTransactions.label": "待处理交易",
     "accountView.content.accountSummary.minedTransactions.label": "历史交易",
     "accountView.content.accountSummary.transactions.blockNumber.label": "区块高度#",
     "accountView.content.accountSummary.transactions.blockTime.label": "区块时间戳",
+
+    "accountView.content.accountSummary.help": "此处总结了该账户所发起、接收、以及待处理交易的信息。下方的表格按时间顺序（由新到旧）展示了其历史交易的详细信息。通过筛选交易类型您可以浏览任意特定类型的交易记录。<br />此外，若该账户为合约账户，此处还会展示其源代码、ABIs、账户代码及论据。您可下拉以浏览全部记录。",
 
     "accountView.contract.compilerVersion.label": "编译模式",
     "accountView.contract.optimizer.label": "优化器",

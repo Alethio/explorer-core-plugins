@@ -28,6 +28,10 @@
     "toolbar.company.label": "关于我们",
     "toolbar.feedback.label": "提交您的反馈",
 
+    "toolbar.ethstats.help": "EthStats网络节点数据作为我们的附属产品，将为你呈现以太坊网络中各节点实况：运载量、健康指数、实时动态等。点击此按钮进入网站。",
+    "toolbar.feedback.help": "我们期待您的反馈！请留下您宝贵的意见，帮助我们不断优化升级。广告拦截插件或将阻止表格弹出，请禁用插件后尝试。",
+    "toolbar.company.help": "了解更多开发团队相关信息、产品及资讯，请访问Alethio官方网站。",
+
     "search.button.label": "搜索",
     "search.box.placeholder": "搜索…",
     "search.noResults.text": "对不起，未查找到返回结果",
@@ -40,8 +44,13 @@
     "dashboardView.lastBlocksChart.title.label": "最新区块交易",
     "dashboardView.content.latestBlock.label": "最新区块",
 
+    "dashboardView.help.search": "如果您想查找某一个具体交易、区块或账户信息，请在此输入地址哈希值并搜索。",
+    "dashboardView.help.blocksChart": "下图为以太坊实时动态。水平轴涵盖50个最新区块，并通过条形高度突出了其包含的交易数。下方数据更新了最新区块高度、时间戳、所包含的交易数及叔块数量。",
+
     "blockView.sidebar.logo": "区块",
     "blockView.sidebar.title": "区块图标长度按交易数呈现",
+
+    "blockView.sidebar.blockList.help": "此处的可视化效果展现了当前浏览区块在链中与前后区块的对比，长度仅代表其所包含交易数的多少。",
 
     "blockView.content.noData.text": "无数据 <br /> 试一下其他区块吧！",
     "blockView.content.blockSummary.txs.label": "%d个交易",
@@ -57,6 +66,8 @@
     "txView.sidebar.logo": "交易",
     "txView.sidebar.title": "交易图标大小按金额呈现",
     "txView.sidebar.txNotAvailable.label": "没有该交易的数据",
+
+    "txView.sidebar.txList.help": "为了更直观地了解该交易的量级，我们将该区块中的所有交易按位置展示于左侧，并按其所处理金额大小调整圆圈的大小。<br />您可以点击任意圆圈跳转到该区块中的其他交易页面。",
 
     "txView.content.noData.text": "无数据 <br /> 试一下其他交易吧！",
 

@@ -28,6 +28,10 @@
     "toolbar.company.label": "About us",
     "toolbar.feedback.label": "Submit feedback",
 
+    "toolbar.ethstats.help": "Our complementary product, EthStats Network Statistics, gives you a bird’s-eye view of the current status - load, health, activity - of the Ethereum network. Clicking on this button will redirect you to its dedicated domain.",
+    "toolbar.feedback.help": "We need all the feedback you can give us so share your thoughts here and help us make EthStats even better for you. Adblockers may prevent you from seeing our feedback form so please turn them off for this purpose.",
+    "toolbar.company.help": "Find out more about our team, projects and vision on Alethio’s official website.",
+
     "search.button.label": "Search",
     "search.box.placeholder": "Search...",
     "search.noResults.text": "Sorry, your query didn't return any results",
@@ -40,8 +44,13 @@
     "dashboardView.lastBlocksChart.title.label": "Last blocks transactions",
     "dashboardView.content.latestBlock.label": "Latest block",
 
+    "dashboardView.help.search": "If you want to see details about a specific transaction, block or account just type its hash number in this search box.",
+    "dashboardView.help.blocksChart": "Check our quick overview of the latest activity on the Ethereum blockchain. The horizontal graphic displays the 50 most recent blocks, highlighting the number of transactions included in each one. We also show you the number of the latest mined block, time passed since the last processed transaction and how many transactions and uncles were included in this set.",
+
     "blockView.sidebar.logo": "Bk",
     "blockView.sidebar.title": "Blocks by tx count",
+
+    "blockView.sidebar.blockList.help": "This is a visual representation of how this particular block performed against blocks mined immediately before and after it. The graph takes into account only the total number of transactions included in the block.",
 
     "blockView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different block.",
     "blockView.content.blockSummary.txs.label": "%d TXs",
@@ -55,6 +64,8 @@
     "txView.sidebar.logo": "Tx",
     "txView.sidebar.title": "Transactions by value",
     "txView.sidebar.txNotAvailable.label": "Transaction data not available",
+
+    "txView.sidebar.txList.help": "To give you context, we’re displaying the map of the block from which this transaction originates. You can instantly navigate to another transaction from this block, by clicking on its corresponding circle.<br />The size of each circle suggests the relative value of the transaction, compared with all others within the block.",
 
     "txView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different transaction.",
 

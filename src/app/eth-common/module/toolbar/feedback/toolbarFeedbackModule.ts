@@ -11,5 +11,7 @@ export const toolbarFeedbackModule: IModuleDef<IToolbarFeedbackProps, {}> = {
             translation
         };
         return props;
-    }
+    },
+
+    getHelpComponent: () => ({ translation }) => translation.get("toolbar.feedback.help") as any
 };

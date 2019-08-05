@@ -33,5 +33,7 @@ export const blocksChartModule: IModuleDef<IBlocksChartWrapperProps, ILatestBloc
             modules: slots ? slots[BlocksChartSlotType.Children] : void 0
         };
         return props;
-    }
+    },
+
+    getHelpComponent: () => ({ translation }) => translation.get("dashboardView.help.blocksChart") as any
 };

@@ -51,5 +51,6 @@ export const accountDetailsModule: (
             translation
         };
         return props;
-    }
+    },
+    getHelpComponent: () => ({ translation }) => translation.get("accountView.content.accountDetails.help") as any
 });

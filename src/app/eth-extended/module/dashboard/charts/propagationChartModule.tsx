@@ -1,3 +1,4 @@
+import React from "react";
 import { IModuleDef } from "plugin-api/IModuleDef";
 import { IPropagationChartItem } from "app/eth-extended/module/dashboard/charts/data/IPropagationChartItem";
 import { IEthNodesInfo } from "app/eth-extended/module/dashboard/charts/data/IEthNodesInfo";
@@ -36,5 +37,9 @@ export const propagationChartModule: (ethstatsUrl?: string) => IModuleDef<IPropa
             ethNodesInfo
         };
         return props;
-    }
+    },
+
+    getHelpComponent: () => ({ translation }) => <div dangerouslySetInnerHTML={{
+        __html: translation.get("dashboardView.help.propagationChart").replace(/%s/, ethstatsUrl || "about:blank")
+    }} />
 });
