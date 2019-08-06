@@ -7,6 +7,7 @@ import { StatusNotConfirmedIcon } from "@alethio/ui/lib/icon/StatusNotConfirmedI
 import { ITxDetails } from "app/eth-extended/data/tx/details/ITxDetails";
 import { isPendingTxDetails } from "app/eth-extended/data/tx/details/isPendingTxDetails";
 import { ErrorIcon } from "@alethio/ui/lib/icon/ErrorIcon";
+import { isFullTxDetails } from "app/eth-extended/data/tx/details/isFullTxDetails";
 
 export interface ITxStatusBoxProps {
     tx: ITxDetails;
@@ -17,6 +18,10 @@ export class TxStatusBox extends React.Component<ITxStatusBoxProps> {
     render() {
         let tx = this.props.tx;
         let translation = this.props.translation;
+
+        if (!isPendingTxDetails(tx) && !isFullTxDetails(tx)) {
+            return null;
+        }
 
         return (
             <TooltipRegular placement="right" content={

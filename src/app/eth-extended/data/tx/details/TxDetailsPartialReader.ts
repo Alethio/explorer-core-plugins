@@ -34,10 +34,7 @@ export class TxDetailsPartialReader {
                     creationTime: Number(data["blockCreationTime"])
                 },
                 txIndex: Number(data["txIndex"]),
-                gasUsed: new BigNumber(data["txGasUsed"]),
-                cumulativeGasUsed: new BigNumber(data["cumulativeGasUsed"]),
-                firstSeenAt: Number(data["firstSeenAt"]),
-                error: [false, "false"].indexOf(data["txStatus"]) !== -1
+                firstSeenAt: Number(data["firstSeenAt"])
             };
             return minedTx;
         } else {
