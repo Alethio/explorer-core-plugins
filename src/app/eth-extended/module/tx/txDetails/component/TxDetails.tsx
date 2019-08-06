@@ -129,13 +129,13 @@ export class TxDetails extends React.PureComponent<ITxDetailsProps> {
                     </LayoutRowItem>
                 </LayoutRow>
                 <LayoutRow minWidth={750}>
-                    { !isPendingTxDetails(tx) ?
+                    { isFullTxDetails(tx) ?
                     <LayoutRowItem>
                         <Label>{tr.get("txView.content.gasUsed.label")}</Label>
                         <GasUsedValueBox value={tx.gasUsed} limit={tx.gasLimit} locale={locale} />
                     </LayoutRowItem>
                     : null }
-                    { !isPendingTxDetails(tx) ?
+                    { isFullTxDetails(tx) ?
                     <LayoutRowItem>
                         <Label>{tr.get("txView.content.txFee.label")}</Label>
                         <EthValueBox wei={tx.gasUsed.multipliedBy(tx.gasPrice)} decimals={9} locale={locale}
@@ -158,7 +158,7 @@ export class TxDetails extends React.PureComponent<ITxDetailsProps> {
                     </LayoutRowItem>
                     }
                 </LayoutRow>
-                { !isPendingTxDetails(tx) ?
+                { isFullTxDetails(tx) ?
                 <LayoutRow>
                     <LayoutRowItem>
                         <Label>{tr.get("txView.content.cumulativeGasUsed.label")}</Label>
