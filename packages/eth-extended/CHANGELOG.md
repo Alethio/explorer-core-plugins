@@ -4,6 +4,7 @@
 - Fix bugs which were visible only when modules with accordions were placed in a relatively positioned parent
 - Remove TX fields which are no longer available from `pending/v3`.
 - Deprecated `module://aleth.io/block/details` and split into smaller modules (`/block/basic`, `/block/txs`, `/block/advanced` and `/block/logs-bloom`)
+- Deprecated `module://aleth.io/tx/details` and split into smaller modules (`/tx/basic` and `/tx/advanced`)
 - Add help content (requires @alethio/cms@1.0.0-beta.6)
 
 # v3.2.0
