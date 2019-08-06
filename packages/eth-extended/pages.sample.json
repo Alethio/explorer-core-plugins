@@ -9,16 +9,19 @@
                 ]
             }],
             "content": [{
-                "def": "module://aleth.io/block/details",
+                "def": "module://aleth.io/block/basic",
                 "pageCritical": true,
                 "children": {
                     "confirmations": [
                         { "def": "module://aleth.io/block/confirmations" }
-                    ],
-                    "txs": [
-                        { "def": "module://aleth.io/block/txs" }
                     ]
                 }
+            }, {
+                "def": "module://aleth.io/block/txs"
+            }, {
+                "def": "module://aleth.io/block/advanced"
+            }, {
+                "def": "module://aleth.io/block/logs-bloom"
             }]
         }
     }, {
@@ -42,7 +45,7 @@
                 "def": "context://aleth.io/extended/tx/parentBlock?optional",
                 "pageCritical": true,
                 "children": [{
-                    "def": "module://aleth.io/tx/details",
+                    "def": "module://aleth.io/tx/basic",
                     "children": {
                         "blockConfirmations": [{
                             "def": "context://aleth.io/extended/tx/parentBlock",
@@ -51,6 +54,8 @@
                             }]
                         }]
                     }
+                }, {
+                    "def": "module://aleth.io/tx/advanced"
                 }, {
                     "def": "module://aleth.io/tx/summary"
                 }, {
