@@ -44,6 +44,8 @@ import { EthExtendedPluginConfig } from "./EthExtendedPluginConfig";
 import { blockBasicModule } from "app/eth-extended/module/block/blockBasic/blockBasicModule";
 import { blockAdvancedModule } from "app/eth-extended/module/block/blockAdvanced/blockAdvancedModule";
 import { blockLogsBloomModule } from "app/eth-extended/module/block/blockLogsBloom/blockLogsBloomModule";
+import { txBasicModule } from "app/eth-extended/module/tx/txBasic/txBasicModule";
+import { txAdvancedModule } from "app/eth-extended/module/tx/txAdvanced/txAdvancedModule";
 
 const ethExtendedPlugin: IPlugin = {
     init(configData: unknown, api, logger, publicPath) {
@@ -84,6 +86,8 @@ const ethExtendedPlugin: IPlugin = {
         api.addContextDef("context://aleth.io/extended/tx/parentBlock?optional", txParentBlockOptionalContext);
         api.addDataAdapter("adapter://aleth.io/extended/tx/details", new TxDetailsAdapter(dataSource));
         api.addModuleDef("module://aleth.io/tx/details", txDetailsModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/tx/basic", txBasicModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/tx/advanced", txAdvancedModule(ethSymbol));
         api.addModuleDef("module://aleth.io/tx/summary", txSummaryModule({ dataSource, ethSymbol }));
         api.addModuleDef("module://aleth.io/tx/payload", txPayloadModule);
 

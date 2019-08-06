@@ -126,6 +126,9 @@
     "txView.content.inputData.label": "Input data",
     "txView.content.error.label": "Error",
 
+    "txView.content.basic.help": "Welcome to the transaction view! This is the primary information associated with this particular transaction. It shows its current value (in ETH and USD), the block in which it was included, as well as the issuing and receiving accounts (their addresses can be copied if you wish to look them up).",
+    "txView.content.advanced.help": "As gas costs are what fuels the network, this section gives you a perspective into the costs of this specific transaction, as well as background information about gas consumption throughout the entire network.",
+
     "txView.content.txSummary.label": "Summary",
     "txView.content.txSummary.contractMessages.label": "Contract Messages",
     "txView.content.txSummary.tokenTransfers.label": "Token Transfers",

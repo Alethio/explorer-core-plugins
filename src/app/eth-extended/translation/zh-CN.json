@@ -125,6 +125,9 @@
     "txView.content.erc20.unknownToken.label": "（未知的代币类型）",
     "txView.content.inputData.label": "输入数据",
 
+    "txView.content.basic.help": "欢迎来到交易页！ 此处展示了该交易的基础信息，包括所处理金额（同时用以太币与其实时美元价格进行估算）、所处区块高度、发送与接收账户地址（鼠标悬停后可复制）。",
+    "txView.content.advanced.help": "这一部分提供了关于交易所使用燃料的所有信息。",
+
     "txView.content.txSummary.label": "内容概览",
     "txView.content.txSummary.contractMessages.label": "合约消息",
     "txView.content.txSummary.tokenTransfers.label": "代币转账",
