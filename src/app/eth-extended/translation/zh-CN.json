@@ -96,7 +96,10 @@
     "blockView.content.transactionsHighlight.contractCreationCount.label": "合约创建数量",
     "txTooltip.value.label": "金额",
 
+    "blockView.content.basic.help": "欢迎来到区块页！此处展示了该区块的基础信息，包括其高度、时间戳、含有叔块数（即比特币中的‘孤块’），以及其所含交易类型的分布（交易由是否向智能合约发送消息而分为消息型和金额型）。",
     "blockView.content.transactions.help": "那么，这个区块里有什么呢？此处的可视化效果将告诉你区块中所包含的内容。你可以看到其中的交易总数，并按不同指标突出标记其中的交易。此处的圆圈大小代表了他们相对于区块中其他交易，所选指标的值的大小。鼠标悬停在任意一个圆圈上将展示其具体信息，如交易地址、金额、涉及的钱包地址等。 <br /> 右上方的按钮可随时帮助您切换到标准表格视图。",
+    "blockView.content.advanced.help": "此处展示了挖出该区块的矿工信息及其相关数据。你可以看到其耗时、燃料消耗、难度值和所获区块奖励金额。",
+    "blockView.content.logsBloom.help": "此处总结了区块中的所有交易信息并突出了所可能包含的日志信息。<br /> 关于此处这一指标，您可以在以下链接了解更多——<a href=\"https://ethon.consensys.net/prop-blocklogsbloom.html\" rel=\"noopener noreferrer\">以太坊本体论：区块的Bloom日志</a>",
 
     "uncleView.sidebar.logo": "叔块",
     "uncleView.sidebar.title": "叔区块页",

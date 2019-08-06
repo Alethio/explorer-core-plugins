@@ -96,7 +96,10 @@
     "blockView.content.transactionsHighlight.contractCreationCount.label": "Contract Creation Count",
     "txTooltip.value.label": "Value",
 
+    "blockView.content.basic.help": "Welcome to the block view! This first section contains basic information about a block - its identification number, time since it was mined, uncles (the Ethereum equivalent of Bitcoin’s orphan blocks) and a visual comparison between the number of transactions which did and did not call on a smart contract.",
     "blockView.content.transactions.help": "So what does this block contain? That is what we show you in this visual representation of transactions within the block. You can see the total number of transactions and highlight their various indicators. The size of the circles here indicates their relative value, compared to that of all other transactions in the block. Hovering over any of the circles will display individual information, such as Tx address, value and wallet addresses involved. <br /> You can also switch to a standard, table view by clicking on the striped button at the top.",
+    "blockView.content.advanced.help": "This section contains information about the miner who processed this block and its performance. You can see the duration, gas cost, difficulty and reward given.",
+    "blockView.content.logsBloom.help": "This is a summary of all transactions within this block, highlighting their associated logs (if any).<br /> You can read more about this parameter here - <a href=\"https://ethon.consensys.net/prop-blocklogsbloom.html\" rel=\"noopener noreferrer\">https://ethon.consensys.net/prop-blocklogsbloom.html</a>",
 
     "uncleView.sidebar.logo": "Un",
     "uncleView.sidebar.title": "Uncle page",
