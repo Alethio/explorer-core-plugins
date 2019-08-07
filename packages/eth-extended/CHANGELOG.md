@@ -1,4 +1,4 @@
-# Unreleased
+# v3.3.0
 
 - Fix error when searching for a non-existent tx hash.
 - Fix bugs which were visible only when modules with accordions were placed in a relatively positioned parent
