@@ -10,7 +10,6 @@
 - Fix bugs which were visible only when modules with accordions were placed in a relatively positioned parent
 - Remove TX fields which are no longer available from `pending/v3`.
 
-
 # v3.2.0
 
 - Update to `pending/v3` deepstream API.
