@@ -70,3 +70,4 @@ Refer to [eth-extended/pages.sample.json](../eth-extended/pages.sample.json) or 
 | module://aleth.io/topbar/feedback | N/A | N/A | Hotjar feedback icon (mobile topbar item) | [topbarFeedbackModule](../../src/app/eth-common/module/toolbar/feedback/topbarFeedbackModule.ts) | N/A |
 | module://aleth.io/toolbar/search | N/A | N/A | Search icon (left-side toolbar item) | [toolbarSearchModule](../../src/app/eth-common/module/search/toolbarSearchModule.ts) | N/A |
 | module://aleth.io/topbar/search | N/A | N/A | Search icon (mobile topbar item) | [topbarSearchModule](../../src/app/eth-common/module/search/topbarSearchModule.ts) | N/A |
+| module://aleth.io/cookie-banner | N/A | N/A | Cookie banner | [cookieBannerModule.ts](../../src/app/eth-common/module/cookieBannerModule.ts)| N/A |
