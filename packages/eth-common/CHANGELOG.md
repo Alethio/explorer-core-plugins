@@ -1,7 +1,11 @@
 # Unreleased
 
-- Fix a layout bug in search module which was visible only when the module was placed in a relatively positioned parent
 - Add help content (requires @alethio/cms@1.0.0-beta.6)
+
+# v2.2.0
+
+- Fix a layout bug in search module which was visible only when the module was placed in a relatively positioned parent
+- Add cookie banner module
 
 # v2.1.2
 

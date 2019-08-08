@@ -29,6 +29,9 @@ import { alethioReportsModule as topbarReportsModule } from "./module/topbar/ale
 import { alethioCompanyModule as toolbarAlethioCompanyModule } from "./module/toolbar/alethioCompanyModule";
 import { alethioCompanyModule as topbarAlethioCompanyModule } from "./module/topbar/alethioCompanyModule";
 import { networkModule } from "./module/dashboard/networkModule";
+import { cookieBannerModule } from "./module/cookieBannerModule";
+import { CookieBannerState } from "@alethio/explorer-ui/lib/cookieBanner/CookieBannerState";
+import { StorageFactory } from "app/shared/storage/StorageFactory";
 
 const ethCommonPlugin: IPlugin = {
     init(config, api, logger, publicPath) {
@@ -77,7 +80,11 @@ const ethCommonPlugin: IPlugin = {
         api.addModuleDef("module://aleth.io/toolbar/search", toolbarSearchModule(searchInlineStore));
         api.addModuleDef("module://aleth.io/topbar/search", topbarSearchModule(searchInlineStore));
 
+        let storage = new StorageFactory(window.localStorage).create();
+
         api.addPageDef("page://aleth.io/privacy-policy", privacyPolicyPage);
+        api.addModuleDef("module://aleth.io/cookie-banner", cookieBannerModule(
+            new CookieBannerState(storage)));
     },
 
     getAvailableLocales() {

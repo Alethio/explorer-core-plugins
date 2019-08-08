@@ -71,5 +71,10 @@
 
     "uncleView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different uncle.",
 
-    "accountView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different account."
+    "accountView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different account.",
+
+    "cookieBanner.label": "Cookie Policy",
+    "cookieBanner.text": "By using this site, you agree to our use of cookies, which we use to analyse our traffic in accordance with our %sPrivacy Policy%s . We also share information about your use of our site with our analytics partners",
+    "cookieBanner.accept": "Accept",
+    "cookieBanner.moreInfo": "More Info"
 }

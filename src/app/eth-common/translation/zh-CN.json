@@ -71,5 +71,10 @@
 
     "txView.content.noData.text": "无数据 <br /> 试一下其他交易吧！",
 
-    "accountView.content.noData.text": "无数据。 <br /> 试一下其他账户吧！"
+    "accountView.content.noData.text": "无数据。 <br /> 试一下其他账户吧！",
+
+    "cookieBanner.label": "Cookie条款",
+    "cookieBanner.text": "继续使用本网站表示您同意使用浏览器Cookie。我们承诺缓存数据的使用将仅限于网站及其合作伙伴的流量数据分析，并符合用户同意的隐私条例。",
+    "cookieBanner.accept": "同意",
+    "cookieBanner.moreInfo": "更多信息"
 }
