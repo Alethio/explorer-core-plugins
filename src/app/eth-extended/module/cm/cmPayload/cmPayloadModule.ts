@@ -25,5 +25,7 @@ export const cmPayloadModule: IModuleDef<ICmPayloadProps, ICmContext> = {
             cmDetails
         };
         return props;
-    }
+    },
+
+    getHelpComponent: () => ({ translation }) => translation.get("cmView.content.decodedPayload.help") as any
 };

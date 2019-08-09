@@ -27,5 +27,6 @@ export const latestBlockInfoModule: IModuleDef<ILatestBlockInfoProps, IBlockCont
             lastBlock: blockInfo
         };
         return props;
-    }
+    },
+    getHelpComponent: () => ({ translation }) => translation.get("dashboardView.help.latestBlockInfo") as any
 };

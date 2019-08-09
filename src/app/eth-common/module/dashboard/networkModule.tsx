@@ -55,5 +55,6 @@ export const networkModule: IModuleDef<INetworkProps, {}> = {
             ...options as INetworkModuleOptions,
             translation
         };
-    }
+    },
+    getHelpComponent: () => ({ translation }) => translation.get("dashboardView.help.network") as any
 };

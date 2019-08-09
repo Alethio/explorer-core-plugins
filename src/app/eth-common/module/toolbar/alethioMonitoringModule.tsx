@@ -21,5 +21,8 @@ export const alethioMonitoringModule: (alethioMonitoringUrl: string) => IModuleD
             </ExternalLink>
         </ToolbarItem>
     ),
-    getContentProps : data => data
+    getContentProps : data => data,
+    getHelpComponent: () => ({ translation }) => <div dangerouslySetInnerHTML={{
+        __html: translation.get("toolbar.monitoring.help")
+    }} />
 });

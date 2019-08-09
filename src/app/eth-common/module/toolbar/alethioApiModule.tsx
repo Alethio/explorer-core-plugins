@@ -20,5 +20,8 @@ export const alethioApiModule: (alethioApiUrl: string) => IModuleDef<IAlethioApi
             </ExternalLink>
         </ToolbarItem>
     ),
-    getContentProps : data => data
+    getContentProps : data => data,
+    getHelpComponent: () => ({ translation }) => <div dangerouslySetInnerHTML={{
+        __html: translation.get("toolbar.api.help")
+    }} />
 });

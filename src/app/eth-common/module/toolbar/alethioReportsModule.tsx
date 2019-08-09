@@ -21,5 +21,8 @@ export const alethioReportsModule: (alethioReportsUrl: string) => IModuleDef<IAl
             </ExternalLink>
         </ToolbarItem>
     ),
-    getContentProps : data => data
+    getContentProps : data => data,
+    getHelpComponent: () => ({ translation }) => <div dangerouslySetInnerHTML={{
+        __html: translation.get("toolbar.reports.help")
+    }} />
 });

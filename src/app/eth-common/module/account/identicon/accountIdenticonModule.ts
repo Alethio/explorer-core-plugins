@@ -30,6 +30,6 @@ export const identiconModule: IModuleDef<IIdenticonProps, IAccountContext> = {
             identicon: data.asyncData.get("identicon")!.data as IdenticonProxy
         };
         return props;
-    }
-
+    },
+    getHelpComponent: () => ({ translation }) => translation.get("accountView.sidebar.identicon.help") as any
 };

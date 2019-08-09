@@ -28,9 +28,12 @@
     "toolbar.company.label": "关于我们",
     "toolbar.feedback.label": "提交您的反馈",
 
-    "toolbar.ethstats.help": "EthStats网络节点数据作为我们的附属产品，将为你呈现以太坊网络中各节点实况：运载量、健康指数、实时动态等。点击此按钮进入网站。",
+    "toolbar.ethstats.help": "前往Ethstats监测平台了解实时的以太坊网络使用情况及网络健康状况。",
+    "toolbar.api.help": "Alethio的数据API接口基于<a href=\"https://ethon.consensys.net/\" rel=\"noopener noreferrer\">以太坊本体论</a>语义架构及<a href=\"https://jsonapi.org/\" rel=\"noopener noreferrer\">JSON:API</a>打造，提供综合、全面的指标化、索引化的以太坊实时数据。",
+    "toolbar.monitoring.help": "前往Alethio的数据监测中心添加您所关注的以太坊账户或合约，实时接收账户活动预警或推送。",
+    "toolbar.reports.help": "前往Alethio的数据报告中心免费下载您业务、科研所需的以太坊精细化、结构化、语义化数据。",
     "toolbar.feedback.help": "我们期待您的反馈！请留下您宝贵的意见，帮助我们不断优化升级。广告拦截插件或将阻止表格弹出，请禁用插件后尝试。",
-    "toolbar.company.help": "了解更多开发团队相关信息、产品及资讯，请访问Alethio官方网站。",
+    "toolbar.company.help": "前往Alethio主页了解更多产品及资讯。",
 
     "search.button.label": "搜索",
     "search.box.placeholder": "搜索…",
@@ -44,13 +47,15 @@
     "dashboardView.lastBlocksChart.title.label": "最新区块交易",
     "dashboardView.content.latestBlock.label": "最新区块",
 
-    "dashboardView.help.search": "如果您想查找某一个具体交易、区块或账户信息，请在此输入地址哈希值并搜索。",
-    "dashboardView.help.blocksChart": "下图为以太坊实时动态。水平轴涵盖50个最新区块，并通过条形高度突出了其包含的交易数。下方数据更新了最新区块高度、时间戳、所包含的交易数及叔块数量。",
+    "dashboardView.help.network": "选择您想浏览的网络。",
+    "dashboardView.help.search": "输入您想搜索的交易哈希地址、区块号、特定的代币或账户地址（名称或哈希地址）。",
+    "dashboardView.help.blocksChart": "概览网络中前50个最新区块的交易情况。",
+    "dashboardView.help.latestBlockInfo": "了解最新区块的生成时间、所含交易量和叔块量。",
 
     "blockView.sidebar.logo": "区块",
     "blockView.sidebar.title": "区块图标长度按交易数呈现",
 
-    "blockView.sidebar.blockList.help": "此处的可视化效果展现了当前浏览区块在链中与前后区块的对比，长度仅代表其所包含交易数的多少。",
+    "blockView.sidebar.blockList.help": "此处的可视化效果，展现了当前浏览区块在链中与前后区块的对比——条块长度代表各区块包含交易数的多少。点击不同条块可切换到该区块的详细信息页面。",
 
     "blockView.content.noData.text": "无数据 <br /> 试一下其他区块吧！",
     "blockView.content.blockSummary.txs.label": "%d个交易",
@@ -67,10 +72,11 @@
     "txView.sidebar.title": "交易图标大小按金额呈现",
     "txView.sidebar.txNotAvailable.label": "没有该交易的数据",
 
-    "txView.sidebar.txList.help": "为了更直观地了解该交易的量级，我们将该区块中的所有交易按位置展示于左侧，并按其所处理金额大小调整圆圈的大小。<br />您可以点击任意圆圈跳转到该区块中的其他交易页面。",
+    "txView.sidebar.txList.help": "为了更直观地了解该交易的量级，我们将其所在区块中的所有交易按位置展示于此，并按其所处理金额大小显示圆圈的相对大小。<br />点击任意圆圈跳转到该交易的详细信息页面。",
 
     "txView.content.noData.text": "无数据 <br /> 试一下其他交易吧！",
 
+    "accountView.sidebar.identicon.help": "此处为各个账户特有的唯一身份图标，于账户注册时自动生成。",
     "accountView.content.noData.text": "无数据。 <br /> 试一下其他账户吧！",
 
     "cookieBanner.label": "Cookie条款",
