@@ -33,5 +33,6 @@ export const txSummaryModule:
             txGraphStore
         };
         return props;
-    }
+    },
+    getHelpComponent: () => ({ translation }) => translation.get("txView.content.txSummary.help") as any
 });

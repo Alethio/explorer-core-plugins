@@ -1,3 +1,4 @@
+import React from "react";
 import { IModuleDef } from "plugin-api/IModuleDef";
 import { ISummaryProps } from "./component/Summary";
 import { IAccountContext } from "app/shared/context/IAccountContext";
@@ -63,5 +64,8 @@ export const accountSummaryModule: (options: {
             txLiteByAccountStore
         };
         return props;
-    }
+    },
+    getHelpComponent: () => ({ translation }) => <div dangerouslySetInnerHTML={{
+        __html: translation.get("accountView.content.accountSummary.help")
+    }} />
 });

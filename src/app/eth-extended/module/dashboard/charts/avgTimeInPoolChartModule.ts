@@ -35,5 +35,7 @@ export const avgTimeInPoolChartModule: (
             ethSymbol
         };
         return props;
-    }
+    },
+
+    getHelpComponent: () => ({ translation }) => translation.get("dashboardView.help.avgTimeInPoolChart") as any
 });

@@ -63,6 +63,9 @@
     "dashboardView.propagation.activeNodes.label": "活跃节点",
     "dashboardView.propagation.label": "传播速度",
 
+    "dashboardView.help.avgTimeInPoolChart": "通过条形图了解待定交易池中确认交易的历史平均时长。下方指标反映了网络的交易处理速度、每秒交易额以及代币转帐速度。",
+    "dashboardView.help.propagationChart": "每当一个新的交易处理完成后，它将会被传播到网络中的活跃节点。活跃节点的数量会影响网络中一部分交易（以百分制计）传播的速度（以每秒计）。这些指标可以大致评估网络当前的健康状况/通畅程度。<br />请前往 <a href=\"%s\" rel=\"noopener noreferrer\">以太坊网络监测平台</a>了解更多关于网络状况的数据。",
+
     "blockView.content.noData.text": "无数据 <br /> 试一下其他区块吧！",
     "blockView.content.dataNotLoaded.text": "数据正在处理中，请耐心等待",
     "blockView.content.blockNumber.label": "区块",
@@ -93,6 +96,11 @@
     "blockView.content.transactionsHighlight.contractCreationCount.label": "合约创建数量",
     "txTooltip.value.label": "金额",
 
+    "blockView.content.basic.help": "此处展示了该区块的基础信息，包括其高度、时间戳、所含叔块数与父区块哈希值，以及其所含交易类型的分布（交易由是否向智能合约发送消息而分为消息型和金额型）。",
+    "blockView.content.transactions.help": "此处的可视化效果呈现了区块中所包含的所有交易。鼠标悬停在任意一个圆圈上将展示其具体信息，如交易地址、金额、涉及的钱包地址等。圆圈大小代表了他们相对于区块中其他交易，所选指标的值的大小。<br />右上方按钮可切换到标准表格视图。",
+    "blockView.content.advanced.help": "此处展示了挖出该区块的矿工信息及其相关数据，包括耗时、燃料消耗、难度值和所获区块奖励金额。",
+    "blockView.content.logsBloom.help": "此处的矩阵总结了区块中的所有交易信息，并突出了所可能包含的日志信息。<br />关于该指标，您可以前往以下链接了解更多——<a href=\"https://ethon.consensys.net/prop-blocklogsbloom.html\" rel=\"noopener noreferrer\">以太坊本体论：区块的Bloom日志</a>",
+
     "uncleView.sidebar.logo": "叔块",
     "uncleView.sidebar.title": "叔区块页",
     "uncleView.content.uncleNumber.label": "叔块",
@@ -117,6 +125,9 @@
     "txView.content.erc20.unknownToken.label": "（未知的代币类型）",
     "txView.content.inputData.label": "输入数据",
 
+    "txView.content.basic.help": "此处展示了该交易的基础信息，包括所处理交易数量、交易金额、时间戳、所处区块高度、发送与接收交易的钱包地址、于区块中的位置。",
+    "txView.content.advanced.help": "此处展示了生成并确认该交易所消耗的燃料相关数据，包括所使用燃料量、占全网燃料消耗比重、单价及费用等。",
+
     "txView.content.txSummary.label": "内容概览",
     "txView.content.txSummary.contractMessages.label": "合约消息",
     "txView.content.txSummary.tokenTransfers.label": "代币转账",
@@ -132,13 +143,20 @@
     "txView.content.txSummary.txTokenTransfersGrid.header.value.label": "数额",
     "txView.content.txSummary.logEvents.topic.value": "题目",
     "txView.content.txSummary.logEvents.logData.value": "日志数据",
+
+    "txView.content.txSummary.help": "此处储存了该交易所包含内容的所有公开信息，包括其所使用的智能合约、相关代币及日志数据。查看关系图可帮助您可视化浏览所有信息。",
+
     "txView.content.decodedPayload.method.label": "调用函数",
     "txView.content.decodedPayload.methodId.label": "方法ID",
     "txView.content.decodedPayload.inputs.label": "输入",
     "txView.content.decodedPayload.outputs.label": "输出",
 
+    "txView.content.decodedPayload.help": "查看该交易的输入数据（合约消息或合约初始数据）。数据仅存在于消息型交易及创建型交易中。",
+
     "cmView.sidebar.logo": "消息",
     "cmView.sidebar.title": "合约消息",
+    "cmView.sidebar.cmList.help": "此处展示了该笔交易所涉及的所有合约消息。每个圆圈代表一条合约消息，大小反应了所处理交易额的相对大小。",
+
     "cmView.content.noData.text": "无数据 <br /> 试一下其他消息吧！",
     "cmView.content.id.label": "ID",
     "cmView.content.cmType.label": "类型",
@@ -152,9 +170,14 @@
     "cmView.content.traceAddress.label": "迹地址",
     "cmView.content.blockValidationIndex.label": "区块内验证索引",
 
+    "cmView.content.cmDetails.help": "查看合约消息的基本信息，包括消息编号、所属交易哈希地址、交易发送者账户地址及燃料费用等。",
+    "cmView.content.decodedPayload.help": "查看该合约消息的输入数据（合约消息或合约初始数据）。数据仅存在于消息型交易及创建型交易中。",
+
     "cmView.content.cmSummary.label": "内容概览",
     "cmView.content.cmSummary.contractMessages.label": "合约消息",
     "cmView.content.cmSummary.tokenTransfers.label": "代币转账",
+
+    "cmView.content.cmSummary.help": "此处统计了合约消息执行的各类内容的数目。点击类目查看详细信息。",
 
     "accountView.content.accountHash.label": "地址",
     "accountView.content.accountType.label": "类型",
@@ -198,12 +221,17 @@
     "accountView.type.TokenHolder": "代币持有账户",
     "accountView.type.Unknown": "账户",
 
+    "accountView.content.accountDetails.help": "快速检阅账户基础信息及交易活动，包含账户地址信息、资产数额及/或资产结构。个人帐户享有QR二维码链接。此处针对账户所持有的代币展示了额外的丰富信息，包括各代币的类型、进制和总供应量。",
+    "accountView.content.accountBalance.help": "查看该账户在过去30天的资产演变过程。账户余额将会定时更新，并显示于下方。",
+
     "accountView.content.accountSummary.label": "内容概览",
     "accountView.content.accountSummary.contractMessages.label": "合约消息",
     "accountView.content.accountSummary.pendingTransactions.label": "待处理交易",
     "accountView.content.accountSummary.minedTransactions.label": "历史交易",
     "accountView.content.accountSummary.transactions.blockNumber.label": "区块高度#",
     "accountView.content.accountSummary.transactions.blockTime.label": "区块时间戳",
+
+    "accountView.content.accountSummary.help": "此处总结了该账户所发起、接收、以及待处理交易的信息，并按时间顺序（由新到旧）展示了其历史交易的详细信息。",
 
     "accountView.contract.compilerVersion.label": "编译模式",
     "accountView.contract.optimizer.label": "优化器",
@@ -228,5 +256,7 @@
     "accountView.contract.read.reset.label": "重置",
     "accountView.contract.read.inputDefaultPlaceholder.label": "[输入]",
     "accountView.contract.read.query.label": "查询",
-    "accountView.contract.read.result.label": "结果"
+    "accountView.contract.read.result.label": "结果",
+
+    "accountView.contract.help": "针对合约账户，此处将会提供更深度的信息，包括其源代码、ABIs、账户代码及论据。点击各类目以浏览分类信息。"
 }

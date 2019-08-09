@@ -1,3 +1,4 @@
+import React from "react";
 import { IModuleDef } from "plugin-api/IModuleDef";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { ITxSidebarProps, TxSidebar } from "./component/TxSidebar";
@@ -28,5 +29,10 @@ export const txListModule: IModuleDef<ITxSidebarProps, ITxContext> = {
             mobileVisible: sidebarVisible
         };
         return props;
-    }
+    },
+
+    getWrapperStyle: () => ({ display: "flex", flexDirection: "row" }),
+    getHelpComponent: () => ({ translation }) => <div dangerouslySetInnerHTML={{
+        __html: translation.get("txView.sidebar.txList.help")
+    }} />
 };

@@ -1,3 +1,4 @@
+import React from "react";
 import { IModuleDef } from "plugin-api/IModuleDef";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { IBlockTxsProps } from "./component/BlockTxs";
@@ -37,5 +38,9 @@ export const blockTxsModule: (ethSymbol: string) => IModuleDef<IBlockTxsProps, I
             uiStateContainer
         };
         return props;
-    }
+    },
+
+    getHelpComponent: () => ({ translation }) => <div dangerouslySetInnerHTML={{
+        __html: translation.get("blockView.content.transactions.help")
+    }} />
 });

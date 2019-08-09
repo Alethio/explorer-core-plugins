@@ -28,6 +28,13 @@
     "toolbar.company.label": "About us",
     "toolbar.feedback.label": "Submit feedback",
 
+    "toolbar.ethstats.help": "Check the realtime usage, performance and overall state of the network, with our Ethstats Network Monitor.",
+    "toolbar.api.help": "Get access to synthesized, indexed data in real-time with Alethio API, our powerful data model with interlinked, aggregated responses. Developed in line with best practices and standards by <a href=\"https://ethon.consensys.net/\" rel=\"noopener noreferrer\">EthOn</a> and <a href=\"https://jsonapi.org/\" rel=\"noopener noreferrer\">JSON:API</a>",
+    "toolbar.monitoring.help": "Monitor and receive realtime alerts for any account or smart contract on the Ethereum network, with Alethio Monitoring.",
+    "toolbar.reports.help": "Create structured, semantic Ethereum data sets tailored to your business & research needs, using Alethio's Ethereum Blockchain Reports",
+    "toolbar.feedback.help": "We’d love to hear back from you! Send us your feedback and questions, to make your Alethio experience better and better. To make sure you can access our feedback form, please turn off your ad blockers first.",
+    "toolbar.company.help": "Find out more about who we are and what we’re here to build, on our company website.",
+
     "search.button.label": "Search",
     "search.box.placeholder": "Search...",
     "search.noResults.text": "Sorry, your query didn't return any results",
@@ -40,8 +47,15 @@
     "dashboardView.lastBlocksChart.title.label": "Last blocks transactions",
     "dashboardView.content.latestBlock.label": "Latest block",
 
+    "dashboardView.help.network": "Choose where you want to explore.",
+    "dashboardView.help.search": "Search for a transaction or block (by hash number), or a specific token or account (by name or alias).",
+    "dashboardView.help.blocksChart": "Check out what happened (transactions) in the last 50 blocks registered on the network",
+    "dashboardView.help.latestBlockInfo": "See the last mined block, time since the last processed transaction and total number of transactions & uncles in this set.",
+
     "blockView.sidebar.logo": "Bk",
     "blockView.sidebar.title": "Blocks by tx count",
+
+    "blockView.sidebar.blockList.help": "This is a visual comparison of this block’s performance against blocks mined just before and right after it, based on the number of transactions included in each one. Click on another block in the graph to view its detailed page.",
 
     "blockView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different block.",
     "blockView.content.blockSummary.txs.label": "%d TXs",
@@ -56,10 +70,13 @@
     "txView.sidebar.title": "Transactions by value",
     "txView.sidebar.txNotAvailable.label": "Transaction data not available",
 
+    "txView.sidebar.txList.help": "This is a visual list of all transactions included in the block from which this transaction originates. The circle size is an indicator of a transaction’s relative value (compared to the other ones in the block). Clicking on a circle will take you to that transaction’s details page.",
+
     "txView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different transaction.",
 
     "uncleView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different uncle.",
 
+    "accountView.sidebar.identicon.help": "This is the unique identicon of this account, generated automatically upon account creation.",
     "accountView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different account.",
 
     "cookieBanner.label": "Cookie Policy",

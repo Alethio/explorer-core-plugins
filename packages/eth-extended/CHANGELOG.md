@@ -1,3 +1,9 @@
+# Unreleased
+
+- Deprecated `module://aleth.io/block/details` and split into smaller modules (`/block/basic`, `/block/txs`, `/block/advanced` and `/block/logs-bloom`)
+- Deprecated `module://aleth.io/tx/details` and split into smaller modules (`/tx/basic` and `/tx/advanced`)
+- Add help content (requires @alethio/cms@1.0.0-beta.6)
+
 # v3.3.0
 
 - Fix error when searching for a non-existent tx hash.

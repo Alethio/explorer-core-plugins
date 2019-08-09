@@ -26,5 +26,7 @@ export const searchModule: (searchInlineStore: SearchInlineStore) => IModuleDef<
             logger
         };
         return props;
-    }
+    },
+
+    getHelpComponent: () => ({ translation }) => translation.get("dashboardView.help.search") as any
 });

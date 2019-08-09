@@ -41,6 +41,11 @@ import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { dashboardPage } from "./page/dashboard/dashboardPage";
 import { uncleByHashContextType } from "./context/uncleByHashContextType";
 import { EthExtendedPluginConfig } from "./EthExtendedPluginConfig";
+import { blockBasicModule } from "app/eth-extended/module/block/blockBasic/blockBasicModule";
+import { blockAdvancedModule } from "app/eth-extended/module/block/blockAdvanced/blockAdvancedModule";
+import { blockLogsBloomModule } from "app/eth-extended/module/block/blockLogsBloom/blockLogsBloomModule";
+import { txBasicModule } from "app/eth-extended/module/tx/txBasic/txBasicModule";
+import { txAdvancedModule } from "app/eth-extended/module/tx/txAdvanced/txAdvancedModule";
 
 const ethExtendedPlugin: IPlugin = {
     init(configData: unknown, api, logger, publicPath) {
@@ -63,7 +68,10 @@ const ethExtendedPlugin: IPlugin = {
         api.addDataAdapter("adapter://aleth.io/block/latestNo",
             new LatestBlockNumberAdapter(dataSource.stores.blockStateStore));
         api.addModuleDef("module://aleth.io/block/details", blockDetailsModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/block/basic", blockBasicModule);
         api.addModuleDef("module://aleth.io/block/txs", blockTxsModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/block/advanced", blockAdvancedModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/block/logs-bloom", blockLogsBloomModule);
 
         api.addPageDef("page://aleth.io/uncle", unclePage);
         api.addDataAdapter("adapter://aleth.io/extended/uncle/details", new UncleDetailsAdapter(dataSource));
@@ -78,6 +86,8 @@ const ethExtendedPlugin: IPlugin = {
         api.addContextDef("context://aleth.io/extended/tx/parentBlock?optional", txParentBlockOptionalContext);
         api.addDataAdapter("adapter://aleth.io/extended/tx/details", new TxDetailsAdapter(dataSource));
         api.addModuleDef("module://aleth.io/tx/details", txDetailsModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/tx/basic", txBasicModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/tx/advanced", txAdvancedModule(ethSymbol));
         api.addModuleDef("module://aleth.io/tx/summary", txSummaryModule({ dataSource, ethSymbol }));
         api.addModuleDef("module://aleth.io/tx/payload", txPayloadModule);
 

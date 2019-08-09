@@ -31,5 +31,6 @@ export const cmSummaryModule:
             cm
         };
         return props;
-    }
+    },
+    getHelpComponent: () => ({ translation }) => translation.get("cmView.content.cmSummary.help") as any
 });

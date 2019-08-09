@@ -24,5 +24,7 @@ export const txPayloadModule: IModuleDef<ITxPayloadProps, ITxContext> = {
             txDetails
         };
         return props;
-    }
+    },
+
+    getHelpComponent: () => ({ translation }) => translation.get("txView.content.decodedPayload.help") as any
 };

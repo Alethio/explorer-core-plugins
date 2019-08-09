@@ -1,3 +1,7 @@
+# Unreleased
+
+- Add help content (requires @alethio/cms@1.0.0-beta.6)
+
 # v2.2.0
 
 - Fix a layout bug in search module which was visible only when the module was placed in a relatively positioned parent

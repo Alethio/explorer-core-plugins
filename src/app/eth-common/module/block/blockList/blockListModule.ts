@@ -28,5 +28,12 @@ export const blockListModule: IModuleDef<IBlockListAsideProps, IBlockListContext
             context,
             translation
         };
-    }
+    },
+
+    getHelpComponent: () => ({ translation }) => translation.get("blockView.sidebar.blockList.help") as any,
+
+    getWrapperStyle: () => ({
+        flex: "1 1 auto",
+        display: "flex"
+    })
 };

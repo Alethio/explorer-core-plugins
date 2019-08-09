@@ -1,3 +1,4 @@
+import React from "react";
 import { IModuleDef } from "plugin-api/IModuleDef";
 import { ICmParentContext } from "../../../context/ICmParentContext";
 import { ICmLite } from "app/eth-extended/data/contractMsg/lite/ICmLite";
@@ -40,5 +41,9 @@ export const cmListModule: (dataSource: AlethioDataSource) => IModuleDef<ICmSide
             mobileVisible: sidebarVisible
         };
         return props;
-    }
+    },
+
+    getHelpComponent: () => ({ translation }) => <div dangerouslySetInnerHTML={{
+        __html: translation.get("cmView.sidebar.cmList.help")
+    }} />
 });

@@ -35,5 +35,6 @@ export const accountContractModule:
             accordionExtraItems: slots && slots[ContractModuleSlotType.AccordionItems]
         };
         return props;
-    }
+    },
+    getHelpComponent: () => ({ translation }) => translation.get("accountView.contract.help") as any
 });

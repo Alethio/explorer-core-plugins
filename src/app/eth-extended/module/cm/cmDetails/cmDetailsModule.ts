@@ -40,5 +40,7 @@ export const cmDetailsModule: (ethSymbol: string) => IModuleDef<ICmDetailsProps,
             modules: slots && slots[CmDetailsSlotType.Modules]
         };
         return props;
-    }
+    },
+
+    getHelpComponent: () => ({ translation }) => translation.get("cmView.content.cmDetails.help") as any
 });

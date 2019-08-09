@@ -1,16 +1,14 @@
 import { IBlockDetails } from "app/eth-extended/data/block/details/IBlockDetails";
 import { IModuleDef } from "plugin-api/IModuleDef";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
-import { IBlockDetailsProps } from "./component/BlockDetails";
-import { BlockDetailsSlotType } from "./BlockDetailsSlotType";
+import { IBlockBasicProps } from "./BlockBasic";
+import { BlockBasicSlotType } from "./BlockBasicSlotType";
 import { IBlockContext } from "app/shared/context/IBlockContext";
 import { blockContextType } from "app/shared/context/blockContextType";
 
-/** @deprecated */
-export const blockDetailsModule: (ethSymbol: string) =>
-IModuleDef<IBlockDetailsProps, IBlockContext, BlockDetailsSlotType> = (ethSymbol) => ({
+export const blockBasicModule: IModuleDef<IBlockBasicProps, IBlockContext, BlockBasicSlotType> = {
     contextType: blockContextType,
-    slotNames: Object.values(BlockDetailsSlotType),
+    slotNames: Object.values(BlockBasicSlotType),
 
     dataAdapters: [
         {
@@ -19,7 +17,7 @@ IModuleDef<IBlockDetailsProps, IBlockContext, BlockDetailsSlotType> = (ethSymbol
     ],
 
     getContentComponent() {
-        return import("./component/BlockDetails").then(({ BlockDetails }) => BlockDetails);
+        return import("./BlockBasic").then(({ BlockBasic }) => BlockBasic);
     },
 
     getContentProps(data) {
@@ -31,8 +29,9 @@ IModuleDef<IBlockDetailsProps, IBlockContext, BlockDetailsSlotType> = (ethSymbol
             blockDetails,
             translation,
             locale,
-            ethSymbol,
-            slots: slots as Record<BlockDetailsSlotType, JSX.Element[]>
+            slots: slots as Record<BlockBasicSlotType, JSX.Element[]>
         };
-    }
-});
+    },
+
+    getHelpComponent: () => ({ translation }) => translation.get("blockView.content.basic.help") as any
+};

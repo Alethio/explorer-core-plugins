@@ -34,10 +34,13 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 
 | Module URI | Context shape | Module slots | Description | Implementation | Options |
 | --- | --- | --- | --- | --- | --- |
-| module://aleth.io/block/details | { blockNumber } | confirmations, txs, extraData | Block data fields |[blockDetailsModule](../../src/app/eth-extended/module/block/blockDetails/blockDetailsModule.ts) | N/A |
+| module://aleth.io/block/basic | { blockNumber } | confirmations | Block basic data fields |[blockBasicModule](../../src/app/eth-extended/module/block/blockBasic/blockBasicModule.tsx) | N/A |
 | module://aleth.io/block/txs | { blockNumber } | N/A | Transactions in given block, in two visualizations (grid and heat map) | [blockTxsModule](../../src/app/eth-extended/module/block/blockTxs/blockTxsModule.ts) | N/A |
+| module://aleth.io/block/advanced | { blockNumber } | extraData | Block advanced data fields |[blockAdvancedModule](../../src/app/eth-extended/module/block/blockAdvanced/blockAdvancedModule.tsx) | N/A |
+| module://aleth.io/block/logs-bloom | { blockNumber } | N/A | Block logs bloom |[blockLogsBloomModule](../../src/app/eth-extended/module/block/blockLogsBloom/blockLogsBloomModule.tsx) | N/A |
 | module://aleth.io/uncle/details | { uncleHash } | N/A | Uncle data fields | [uncleDetailsModule](../../src/app/shared/module/uncle/uncleDetails/uncleDetailsModule.ts) | N/A |
-| module://aleth.io/tx/details | { txHash } | blockConfirmations | Transaction data fields | [txDetailsModule](../../src/app/eth-extended/module/tx/txDetails/txDetailsModule.ts) | N/A |
+| module://aleth.io/tx/basic | { txHash } | blockConfirmations | Transaction basic data fields | [txBasicModule](../../src/app/eth-extended/module/tx/txBasic/txBasicModule.tsx) | N/A |
+| module://aleth.io/tx/advanced | { txHash } | N/A | Transaction advanced data fields | [txAdvancedModule](../../src/app/eth-extended/module/tx/txAdvanced/txAdvancedModule.tsx) | N/A |
 | module://aleth.io/tx/summary | { txHash } | N/A | Accordion with contract messages, log events, token transfers etc. |[txSummaryModule](../../src/app/eth-extended/module/tx/txSummary/txSummaryModule.ts) | N/A |
 | module://aleth.io/tx/payload" | { txHash } | N/A | Decoded tx payload | [txPayloadModule](../../src/app/eth-extended/module/tx/txPayload/txPayloadModule.ts) | N/A |
 | module://aleth.io/account/details | { accountHash } | N/A | Account data fields | [accountDetailsModule](../../src/app/eth-extended/module/account/accountDetails/accountDetailsModule.ts) | N/A |

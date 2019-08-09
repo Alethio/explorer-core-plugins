@@ -29,5 +29,7 @@ export const ethstatsModule: (ethstatsUrl: string) => IModuleDef<INetstatsProps,
             translation
         };
         return props;
-    }
+    },
+
+    getHelpComponent: () => ({ translation }) => translation.get("toolbar.ethstats.help") as any
 });
