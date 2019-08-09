@@ -1,4 +1,4 @@
-# Unreleased
+# v3.4.0
 
 - Deprecated `module://aleth.io/block/details` and split into smaller modules (`/block/basic`, `/block/txs`, `/block/advanced` and `/block/logs-bloom`)
 - Deprecated `module://aleth.io/tx/details` and split into smaller modules (`/tx/basic` and `/tx/advanced`)
