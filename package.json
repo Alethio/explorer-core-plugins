@@ -42,7 +42,7 @@
     "mocha": "^6.1.4",
     "monaco-editor-webpack-plugin": "github:mikegreiling/monaco-editor-webpack-plugin#mg-fix-public-path",
     "nyc": "^14.1.1",
-    "plugin-api": "npm:@alethio/cms-plugin-api@^1.0.0-beta.5",
+    "plugin-api": "npm:@alethio/cms-plugin-api@^1.0.0-beta.6",
     "rimraf": "^2.6.2",
     "source-map-loader": "^0.2.3",
     "source-map-support": "^0.4.14",
