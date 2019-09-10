@@ -1,3 +1,7 @@
+# v3.5.0
+
+- Add plugin manifest (@alethio/cms@1.0.0-beta.7)
+
 # v3.4.0
 
 - Deprecated `module://aleth.io/block/details` and split into smaller modules (`/block/basic`, `/block/txs`, `/block/advanced` and `/block/logs-bloom`)

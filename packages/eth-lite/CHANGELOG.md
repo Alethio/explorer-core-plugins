@@ -1,5 +1,6 @@
-# Unreleased
+# v2.2.0
 
+- Add plugin manifest (@alethio/cms@1.0.0-beta.7)
 - Fix bugs which were visible only when modules with accordions were placed in a relatively positioned parent
 
 # v2.1.0

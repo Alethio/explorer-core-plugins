@@ -1,3 +1,7 @@
+# v2.4.0
+
+- Add plugin manifest (@alethio/cms@1.0.0-beta.7)
+
 # v2.3.0
 
 - Add help content (requires @alethio/cms@1.0.0-beta.6)
