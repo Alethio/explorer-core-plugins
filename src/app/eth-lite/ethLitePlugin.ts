@@ -1,4 +1,4 @@
-import { IPlugin } from "plugin-api/IPlugin";
+import { IPlugin } from "plugin-api";
 import { dashboardPage } from "app/eth-lite/page/dashboardPage";
 import { Web3DataSourceFactory } from "app/eth-lite/Web3DataSourceFactory";
 import { SearchAdapter } from "app/shared/adapter/SearchAdapter";
@@ -81,3 +81,5 @@ const ethLitePlugin: IPlugin = {
 
 // tslint:disable-next-line:no-default-export
 export default ethLitePlugin;
+
+export const manifest = __plugin_manifest__;

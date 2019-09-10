@@ -1,4 +1,4 @@
-import { IPlugin } from "plugin-api/IPlugin";
+import { IPlugin } from "plugin-api";
 import { blockPage } from "./page/block/blockPage";
 import { blockListModule } from "./module/block/blockList/blockListModule";
 import { blockConfirmationsModule } from "./module/block/blockConfirmationsModule";
@@ -98,3 +98,5 @@ const ethCommonPlugin: IPlugin = {
 
 // tslint:disable-next-line:no-default-export
 export default ethCommonPlugin;
+
+export const manifest = __plugin_manifest__;

@@ -1,4 +1,4 @@
-import { IPlugin } from "plugin-api/IPlugin";
+import { IPlugin } from "plugin-api";
 import { AlethioDataSourceFactory } from "./AlethioDataSourceFactory";
 import { BlockDetailsAdapter } from "./adapter/block/BlockDetailsAdapter";
 import { EthPriceAdapter } from "./adapter/EthPriceAdapter";
@@ -132,3 +132,5 @@ const ethExtendedPlugin: IPlugin = {
 
 // tslint:disable-next-line:no-default-export
 export default ethExtendedPlugin;
+
+export const manifest = __plugin_manifest__;
