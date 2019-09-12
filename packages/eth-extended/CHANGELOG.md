@@ -1,3 +1,7 @@
+# Unreleased
+
+- Lazily subscribe to deepstream records, to avoid errors when those records are missing, even when they weren't used
+
 # v3.5.0
 
 - Add plugin manifest (@alethio/cms@1.0.0-beta.7)
