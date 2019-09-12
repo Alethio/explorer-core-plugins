@@ -61,7 +61,22 @@ export class AlethioDataSourceFactory {
 
         let search = new SearchFactory(config, logger).create(blockStateStore, deepstream);
 
+        // TODO factory
         let pendingPoolStore = new PendingPoolStore();
+        pendingPoolStore.statsPerSec = new LazyRecord(
+            "pending/v3/stats/perSecond",
+            deepstream,
+            rawData => ({
+                eth: Number(rawData.eth),
+                erc20: Number(rawData.erc20)
+            })
+        );
+        pendingPoolStore.poolSize = new LazyRecord(
+            "pending/v3/stats/pool",
+            deepstream,
+            rawData => Number(rawData.size)
+        );
+
         let ethStatsStore = new EthStatsStore();
         ethStatsStore.ethNodesInfo = new LazyRecord(
             "ethstats/stats/nodeCountData",

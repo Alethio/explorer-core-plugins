@@ -70,9 +70,7 @@ export class AlethioDataSource implements IDataSource {
 
     private async initDeepstream() {
         let { logger, deepstream } = this;
-        let {
-            blockStateStore, blockTxTimeInPoolStore, pendingPoolStore
-        } = this.stores;
+        let { blockStateStore, blockTxTimeInPoolStore } = this.stores;
 
         deepstream.onError.subscribe((error) => {
             logger.error("Deepstream error: " + JSON.stringify(error));
@@ -98,15 +96,6 @@ export class AlethioDataSource implements IDataSource {
         deepstream.subscribeToRecord<any>("pending/v3/blockSummaries", data => {
             let latestValues = (data as any[]).map(item => blockTxTimeInPoolReader.read(item));
             blockTxTimeInPoolStore.setLatestValues(latestValues);
-        }).catch(e => logger.error(e));
-
-        deepstream.subscribeToRecord<any>("pending/v3/stats/perSecond", data => {
-            pendingPoolStore.setEth(Number(data.eth));
-            pendingPoolStore.setErc(Number(data.erc20));
-        }).catch(e => logger.error(e));
-
-        deepstream.subscribeToRecord<any>("pending/v3/stats/pool", data => {
-            pendingPoolStore.setSize(Number(data.size));
         }).catch(e => logger.error(e));
     }
 }
