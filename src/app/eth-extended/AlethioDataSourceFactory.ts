@@ -19,16 +19,13 @@ import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { Deepstream } from "app/util/network/Deepstream";
 import { PendingTxWatcher } from "app/eth-extended/adapter/watcher/PendingTxWatcher";
 import { ILogger } from "plugin-api/ILogger";
-import { PendingPoolStore } from "app/eth-extended/module/dashboard/charts/data/PendingPoolStore";
 import { BlockTxTimeInPoolStore } from "app/eth-extended/data/block/txTimeInPool/BlockTxTimeInPoolStore";
 import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 import { Web3Factory } from "app/eth-extended/Web3Factory";
 import { ContractWeb3ApiFactory } from "./data/contract/ContractWeb3ApiFactory";
 import { PricesStore } from "app/eth-extended/data/prices/PricesStore";
-import { LazyRecord } from "app/util/network/LazyRecord";
-import { EthNodesInfoReader } from "app/eth-extended/adapter/EthNodesInfoReader";
-import { EthStatsStore as EthStatsStore } from "app/eth-extended/data/ethStats/EthStatsStore";
-import { PropagationChartDataReader } from "app/eth-extended/module/dashboard/charts/data/PropagationChartDataReader";
+import { PendingPoolStoreFactory } from "app/eth-extended/module/dashboard/charts/data/PendingPoolStoreFactory";
+import { EthStatsStoreFactory } from "app/eth-extended/data/ethStats/EthStatsStoreFactory";
 
 export class AlethioDataSourceFactory {
     create(config: EthExtendedPluginConfig, logger: ILogger) {
@@ -61,36 +58,8 @@ export class AlethioDataSourceFactory {
 
         let search = new SearchFactory(config, logger).create(blockStateStore, deepstream);
 
-        // TODO factory
-        let pendingPoolStore = new PendingPoolStore();
-        pendingPoolStore.statsPerSec = new LazyRecord(
-            "pending/v3/stats/perSecond",
-            deepstream,
-            rawData => ({
-                eth: Number(rawData.eth),
-                erc20: Number(rawData.erc20)
-            })
-        );
-        pendingPoolStore.poolSize = new LazyRecord(
-            "pending/v3/stats/pool",
-            deepstream,
-            rawData => Number(rawData.size)
-        );
-
-        let ethStatsStore = new EthStatsStore();
-        ethStatsStore.ethNodesInfo = new LazyRecord(
-            "ethstats/stats/nodeCountData",
-            deepstream,
-            new EthNodesInfoReader()
-        );
-        ethStatsStore.propagationChartData = new LazyRecord(
-            "ethstats/chart/blockPropagationChartData",
-            deepstream,
-            rawData => (
-                rawData["ethstats:blockPropagationChartData"]["ethstats:blockPropagationHistogramData"] as any[])
-                    .map((item) => new PropagationChartDataReader().read(item)
-            )
-        );
+        let pendingPoolStore = new PendingPoolStoreFactory(deepstream).create();
+        let ethStatsStore = new EthStatsStoreFactory(deepstream).create();
 
         let web3Factory = new Web3Factory(config);
         let contractWeb3Api = (new ContractWeb3ApiFactory(web3Factory)).create();
