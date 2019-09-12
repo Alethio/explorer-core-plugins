@@ -19,13 +19,13 @@ import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { Deepstream } from "app/util/network/Deepstream";
 import { PendingTxWatcher } from "app/eth-extended/adapter/watcher/PendingTxWatcher";
 import { ILogger } from "plugin-api/ILogger";
-import { BlockTxTimeInPoolStore } from "app/eth-extended/data/block/txTimeInPool/BlockTxTimeInPoolStore";
 import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 import { Web3Factory } from "app/eth-extended/Web3Factory";
 import { ContractWeb3ApiFactory } from "./data/contract/ContractWeb3ApiFactory";
 import { PricesStore } from "app/eth-extended/data/prices/PricesStore";
 import { PendingPoolStoreFactory } from "app/eth-extended/module/dashboard/charts/data/PendingPoolStoreFactory";
 import { EthStatsStoreFactory } from "app/eth-extended/data/ethStats/EthStatsStoreFactory";
+import { BlockTxTimeInPoolStoreFactory } from "app/eth-extended/data/block/txTimeInPool/BlockTxTimeInPoolStoreFactory";
 
 export class AlethioDataSourceFactory {
     create(config: EthExtendedPluginConfig, logger: ILogger) {
@@ -34,7 +34,7 @@ export class AlethioDataSourceFactory {
 
         let blockStateStore = new BlockStateStore();
         let blockDetailsStore = new BlockDetailsStoreFactory(config).create();
-        let blockTxTimeInPoolStore = new BlockTxTimeInPoolStore();
+        let blockTxTimeInPoolStore = new BlockTxTimeInPoolStoreFactory(deepstream).create();
         let blockValueStore = new BlockValueStoreFactory(config).create();
         let txDetailsStore = new TxDetailsStoreFactory(config, logger).create(deepstream);
         let tokenTransferStore = new TokenTransferStoreFactory(config).create();

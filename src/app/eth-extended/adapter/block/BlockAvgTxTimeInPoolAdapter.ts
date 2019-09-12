@@ -1,6 +1,7 @@
 import { IDataAdapter } from "plugin-api/IDataAdapter";
 import { AlethioDataSource } from "app/eth-extended/AlethioDataSource";
 import { IBlockTxTimeInPool } from "app/eth-extended/data/block/txTimeInPool/IBlockTxTimeInPool";
+import { EventWatcher } from "plugin-api/watcher/EventWatcher";
 
 export class BlockAvgTxTimeInPoolAdapter implements IDataAdapter<void, (IBlockTxTimeInPool | undefined)[]> {
     contextType = {};
@@ -10,10 +11,10 @@ export class BlockAvgTxTimeInPoolAdapter implements IDataAdapter<void, (IBlockTx
     }
 
     async load() {
-        let latestValues = this.dataSource.stores.blockTxTimeInPoolStore.getLatestValues();
-        if (!latestValues) {
-            return [];
-        }
-        return latestValues;
+        return await this.dataSource.stores.blockTxTimeInPoolStore.latestValues.fetch();
+    }
+
+    createWatcher() {
+        return new EventWatcher(this.dataSource.stores.blockTxTimeInPoolStore.latestValues.onData, () => true);
     }
 }

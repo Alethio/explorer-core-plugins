@@ -23,7 +23,6 @@ import { PendingTxWatcher } from "app/eth-extended/adapter/watcher/PendingTxWatc
 import { when } from "mobx";
 import { Web3Factory } from "app/eth-extended/Web3Factory";
 import { ContractWeb3Api } from "app/eth-extended/data/contract/ContractWeb3Api";
-import { BlockTxTimeInPoolReader } from "app/eth-extended/data/block/txTimeInPool/BlockTxTimeInPoolReader";
 import { IDataSource } from "plugin-api/IDataSource";
 import { EthStatsStore } from "app/eth-extended/data/ethStats/EthStatsStore";
 
@@ -70,7 +69,7 @@ export class AlethioDataSource implements IDataSource {
 
     private async initDeepstream() {
         let { logger, deepstream } = this;
-        let { blockStateStore, blockTxTimeInPoolStore } = this.stores;
+        let { blockStateStore } = this.stores;
 
         deepstream.onError.subscribe((error) => {
             logger.error("Deepstream error: " + JSON.stringify(error));
@@ -87,15 +86,9 @@ export class AlethioDataSource implements IDataSource {
             heartbeatInterval: 60000
         });
 
-        deepstream.subscribeToRecord<any>("db/v2/lastBlock", (data) => {
+        deepstream.subscribeToRecord<{ number: number; }>("db/v2/lastBlock", (data) => {
             logger.info(`New latest block received: #${data.number}`);
             blockStateStore.setLatest(data.number);
-        }).catch(e => logger.error(e));
-
-        let blockTxTimeInPoolReader = new BlockTxTimeInPoolReader();
-        deepstream.subscribeToRecord<any>("pending/v3/blockSummaries", data => {
-            let latestValues = (data as any[]).map(item => blockTxTimeInPoolReader.read(item));
-            blockTxTimeInPoolStore.setLatestValues(latestValues);
         }).catch(e => logger.error(e));
     }
 }
