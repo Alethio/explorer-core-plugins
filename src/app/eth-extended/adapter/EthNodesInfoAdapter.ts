@@ -13,7 +13,6 @@ export class EthNodesInfoAdapter implements IDataAdapter<{}, IEthNodesInfo> {
     async load() {
         let { ethStatsStore } = this.dataSource.stores;
 
-        // TODO: dispose, but when?
         return ethStatsStore.ethNodesInfo.fetch();
     }
 
