@@ -77,7 +77,7 @@ export class LazyRecord<T> {
                     .catch(reject);
             });
         } else if (this.subStatus === SubStatus.Pending) {
-            return this.subPromise;
+            return this.subPromise as Promise<T>;
         } else if (this.subStatus === SubStatus.Subscribed) {
             if (this.err) {
                 return Promise.reject(this.err);
