@@ -11,15 +11,13 @@ export class EthNodesInfoAdapter implements IDataAdapter<{}, IEthNodesInfo> {
     }
 
     async load() {
-        let { netstatsStore } = this.dataSource.stores;
+        let { ethStatsStore } = this.dataSource.stores;
 
-        let info: IEthNodesInfo = {
-            activeNodesCount: await netstatsStore.getActiveNodesCount()
-        };
-        return info;
+        // TODO: dispose, but when?
+        return ethStatsStore.ethNodesInfo.fetch();
     }
 
     createWatcher() {
-        return new EventWatcher(this.dataSource.stores.netstatsStore.onData, () => true);
+        return new EventWatcher(this.dataSource.stores.ethStatsStore.ethNodesInfo.onData, () => true);
     }
 }

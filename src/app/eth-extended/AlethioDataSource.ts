@@ -1,6 +1,5 @@
 import { PendingPoolStore } from "app/eth-extended/module/dashboard/charts/data/PendingPoolStore";
 import { PropagationChartStore } from "app/eth-extended/module/dashboard/charts/data/PropagationChartStore";
-import { NetstatsStore } from "app/eth-extended/module/dashboard/charts/data/NetstatsStore";
 import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { BlockDetailsStore } from "app/eth-extended/data/block/details/BlockDetailsStore";
 import { BlockValueStore } from "app/shared/data/block/value/BlockValueStore";
@@ -28,11 +27,12 @@ import { Web3Factory } from "app/eth-extended/Web3Factory";
 import { ContractWeb3Api } from "app/eth-extended/data/contract/ContractWeb3Api";
 import { BlockTxTimeInPoolReader } from "app/eth-extended/data/block/txTimeInPool/BlockTxTimeInPoolReader";
 import { IDataSource } from "plugin-api/IDataSource";
+import { EthStatsStore } from "app/eth-extended/data/ethStats/EthStatsStore";
 
 interface IAlethioDataStores {
     pendingPoolStore: PendingPoolStore;
     propagationChartStore: PropagationChartStore;
-    netstatsStore: NetstatsStore;
+    ethStatsStore: EthStatsStore;
     blockDetailsStore: BlockDetailsStore;
     blockValueStore: BlockValueStore;
     blockTxTimeInPoolStore: BlockTxTimeInPoolStore;
@@ -74,7 +74,7 @@ export class AlethioDataSource implements IDataSource {
     private async initDeepstream() {
         let { logger, deepstream } = this;
         let {
-            blockStateStore, blockTxTimeInPoolStore, pendingPoolStore, propagationChartStore, netstatsStore
+            blockStateStore, blockTxTimeInPoolStore, pendingPoolStore, propagationChartStore
         } = this.stores;
 
         deepstream.onError.subscribe((error) => {

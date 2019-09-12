@@ -20,7 +20,6 @@ import { Deepstream } from "app/util/network/Deepstream";
 import { PendingTxWatcher } from "app/eth-extended/adapter/watcher/PendingTxWatcher";
 import { ILogger } from "plugin-api/ILogger";
 import { PendingPoolStore } from "app/eth-extended/module/dashboard/charts/data/PendingPoolStore";
-import { NetstatsStore } from "app/eth-extended/module/dashboard/charts/data/NetstatsStore";
 import { PropagationChartStore } from "app/eth-extended/module/dashboard/charts/data/PropagationChartStore";
 import { BlockTxTimeInPoolStore } from "app/eth-extended/data/block/txTimeInPool/BlockTxTimeInPoolStore";
 import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
@@ -28,6 +27,8 @@ import { Web3Factory } from "app/eth-extended/Web3Factory";
 import { ContractWeb3ApiFactory } from "./data/contract/ContractWeb3ApiFactory";
 import { PricesStore } from "app/eth-extended/data/prices/PricesStore";
 import { LazyRecord } from "app/util/network/LazyRecord";
+import { EthNodesInfoReader } from "app/eth-extended/adapter/EthNodesInfoReader";
+import { EthStatsStore as EthStatsStore } from "app/eth-extended/data/ethStats/EthStatsStore";
 
 export class AlethioDataSourceFactory {
     create(config: EthExtendedPluginConfig, logger: ILogger) {
@@ -61,7 +62,12 @@ export class AlethioDataSourceFactory {
         let search = new SearchFactory(config, logger).create(blockStateStore, deepstream);
 
         let pendingPoolStore = new PendingPoolStore();
-        let netstatsStore = new NetstatsStore(new LazyRecord("ethstats/stats/nodeCountData", deepstream));
+        let ethStatsStore = new EthStatsStore();
+        ethStatsStore.ethNodesInfo = new LazyRecord(
+            "ethstats/stats/nodeCountData",
+            deepstream,
+            new EthNodesInfoReader()
+        );
         let propagationChartStore = new PropagationChartStore();
 
         let web3Factory = new Web3Factory(config);
@@ -77,7 +83,7 @@ export class AlethioDataSourceFactory {
                 blockStateStore,
                 pendingPoolStore,
                 propagationChartStore,
-                netstatsStore,
+                ethStatsStore,
                 blockDetailsStore,
                 blockValueStore,
                 blockTxTimeInPoolStore,
