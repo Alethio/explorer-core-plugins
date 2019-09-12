@@ -1,5 +1,4 @@
 import { PendingPoolStore } from "app/eth-extended/module/dashboard/charts/data/PendingPoolStore";
-import { PropagationChartStore } from "app/eth-extended/module/dashboard/charts/data/PropagationChartStore";
 import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { BlockDetailsStore } from "app/eth-extended/data/block/details/BlockDetailsStore";
 import { BlockValueStore } from "app/shared/data/block/value/BlockValueStore";
@@ -20,7 +19,6 @@ import { LogEventsStore } from "app/eth-extended/data/logEvents/LogEventsStore";
 import { Search } from "app/eth-extended/data/search/Search";
 import { Deepstream } from "app/util/network/Deepstream";
 import { ILogger } from "plugin-api/ILogger";
-import { PropagationChartDataReader } from "./module/dashboard/charts/data/PropagationChartDataReader";
 import { PendingTxWatcher } from "app/eth-extended/adapter/watcher/PendingTxWatcher";
 import { when } from "mobx";
 import { Web3Factory } from "app/eth-extended/Web3Factory";
@@ -31,7 +29,6 @@ import { EthStatsStore } from "app/eth-extended/data/ethStats/EthStatsStore";
 
 interface IAlethioDataStores {
     pendingPoolStore: PendingPoolStore;
-    propagationChartStore: PropagationChartStore;
     ethStatsStore: EthStatsStore;
     blockDetailsStore: BlockDetailsStore;
     blockValueStore: BlockValueStore;
@@ -74,7 +71,7 @@ export class AlethioDataSource implements IDataSource {
     private async initDeepstream() {
         let { logger, deepstream } = this;
         let {
-            blockStateStore, blockTxTimeInPoolStore, pendingPoolStore, propagationChartStore
+            blockStateStore, blockTxTimeInPoolStore, pendingPoolStore
         } = this.stores;
 
         deepstream.onError.subscribe((error) => {
@@ -110,15 +107,6 @@ export class AlethioDataSource implements IDataSource {
 
         deepstream.subscribeToRecord<any>("pending/v3/stats/pool", data => {
             pendingPoolStore.setSize(Number(data.size));
-        }).catch(e => logger.error(e));
-
-        let propagationChartDataReader = new PropagationChartDataReader();
-        deepstream.subscribeToRecord<any>("ethstats/chart/blockPropagationChartData", data => {
-            let propagationData =
-                (data["ethstats:blockPropagationChartData"]["ethstats:blockPropagationHistogramData"] as any[])
-                    .map((item) => propagationChartDataReader.read(item)
-                );
-            propagationChartStore.setPropagationHistogramData(propagationData);
         }).catch(e => logger.error(e));
     }
 }
