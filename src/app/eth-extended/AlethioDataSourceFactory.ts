@@ -27,6 +27,7 @@ import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfi
 import { Web3Factory } from "app/eth-extended/Web3Factory";
 import { ContractWeb3ApiFactory } from "./data/contract/ContractWeb3ApiFactory";
 import { PricesStore } from "app/eth-extended/data/prices/PricesStore";
+import { LazyRecord } from "app/util/network/LazyRecord";
 
 export class AlethioDataSourceFactory {
     create(config: EthExtendedPluginConfig, logger: ILogger) {
@@ -60,7 +61,7 @@ export class AlethioDataSourceFactory {
         let search = new SearchFactory(config, logger).create(blockStateStore, deepstream);
 
         let pendingPoolStore = new PendingPoolStore();
-        let netstatsStore = new NetstatsStore();
+        let netstatsStore = new NetstatsStore(new LazyRecord("ethstats/stats/nodeCountData", deepstream));
         let propagationChartStore = new PropagationChartStore();
 
         let web3Factory = new Web3Factory(config);

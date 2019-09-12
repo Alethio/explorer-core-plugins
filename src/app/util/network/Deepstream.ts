@@ -78,6 +78,7 @@ export class Deepstream {
     async subscribeToRecord<T>(recordName: string, listener: (data: T) => void) {
         let record = await this.getRecord(recordName);
         record.subscribe(listener, true);
+        return record;
     }
 
     async subscribeToEvent<T>(eventName: string, listener: (data: T) => void) {

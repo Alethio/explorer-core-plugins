@@ -1,15 +1,24 @@
-import { observable } from "mobx";
+import { LazyRecord } from "app/util/network/LazyRecord";
+
+interface IRawData {
+    "ethstats:nodeCountData": {
+        active: string | number;
+    };
+}
 
 export class NetstatsStore {
-    @observable
-    private activeNodesCount: number | undefined;
+    constructor(private lazyRecord: LazyRecord<IRawData>) {
 
-    setActiveNodesCount(value: number) {
-        this.activeNodesCount = value;
     }
 
-    getActiveNodesCount() {
-        return this.activeNodesCount;
+    async getActiveNodesCount() {
+        // TODO: integrate a data reader into lazy record
+        let rawData = await this.lazyRecord.fetch();
+        return Number(rawData["ethstats:nodeCountData"].active);
+    }
+
+    get onData() {
+        return this.lazyRecord.onData;
     }
 
 }

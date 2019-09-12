@@ -120,9 +120,5 @@ export class AlethioDataSource implements IDataSource {
                 );
             propagationChartStore.setPropagationHistogramData(propagationData);
         }).catch(e => logger.error(e));
-
-        deepstream.subscribeToRecord<any>("ethstats/stats/nodeCountData", data => {
-            netstatsStore.setActiveNodesCount(Number(data["ethstats:nodeCountData"].active));
-        }).catch(e => logger.error(e));
     }
 }
