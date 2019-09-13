@@ -2,7 +2,7 @@
     "name": "@alethio/explorer-plugin-eth-extended",
     "publisher": "aleth.io",
     "pluginName": "eth-extended",
-    "version": "3.5.0",
+    "version": "3.5.1",
     "description": "Alethio Explorer core plugin with content from the Alethio data pipeline",
     "author": "Alexandru Ciuca <alexandru.ciuca@consensys.net>",
     "license": "MIT",
