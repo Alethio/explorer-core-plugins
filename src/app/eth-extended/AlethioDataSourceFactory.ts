@@ -19,14 +19,13 @@ import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { Deepstream } from "app/util/network/Deepstream";
 import { PendingTxWatcher } from "app/eth-extended/adapter/watcher/PendingTxWatcher";
 import { ILogger } from "plugin-api/ILogger";
-import { PendingPoolStore } from "app/eth-extended/module/dashboard/charts/data/PendingPoolStore";
-import { NetstatsStore } from "app/eth-extended/module/dashboard/charts/data/NetstatsStore";
-import { PropagationChartStore } from "app/eth-extended/module/dashboard/charts/data/PropagationChartStore";
-import { BlockTxTimeInPoolStore } from "app/eth-extended/data/block/txTimeInPool/BlockTxTimeInPoolStore";
 import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 import { Web3Factory } from "app/eth-extended/Web3Factory";
 import { ContractWeb3ApiFactory } from "./data/contract/ContractWeb3ApiFactory";
 import { PricesStore } from "app/eth-extended/data/prices/PricesStore";
+import { PendingPoolStoreFactory } from "app/eth-extended/module/dashboard/charts/data/PendingPoolStoreFactory";
+import { EthStatsStoreFactory } from "app/eth-extended/data/ethStats/EthStatsStoreFactory";
+import { BlockTxTimeInPoolStoreFactory } from "app/eth-extended/data/block/txTimeInPool/BlockTxTimeInPoolStoreFactory";
 
 export class AlethioDataSourceFactory {
     create(config: EthExtendedPluginConfig, logger: ILogger) {
@@ -35,7 +34,7 @@ export class AlethioDataSourceFactory {
 
         let blockStateStore = new BlockStateStore();
         let blockDetailsStore = new BlockDetailsStoreFactory(config).create();
-        let blockTxTimeInPoolStore = new BlockTxTimeInPoolStore();
+        let blockTxTimeInPoolStore = new BlockTxTimeInPoolStoreFactory(deepstream).create();
         let blockValueStore = new BlockValueStoreFactory(config).create();
         let txDetailsStore = new TxDetailsStoreFactory(config, logger).create(deepstream);
         let tokenTransferStore = new TokenTransferStoreFactory(config).create();
@@ -59,9 +58,8 @@ export class AlethioDataSourceFactory {
 
         let search = new SearchFactory(config, logger).create(blockStateStore, deepstream);
 
-        let pendingPoolStore = new PendingPoolStore();
-        let netstatsStore = new NetstatsStore();
-        let propagationChartStore = new PropagationChartStore();
+        let pendingPoolStore = new PendingPoolStoreFactory(deepstream).create();
+        let ethStatsStore = new EthStatsStoreFactory(deepstream).create();
 
         let web3Factory = new Web3Factory(config);
         let contractWeb3Api = (new ContractWeb3ApiFactory(web3Factory)).create();
@@ -75,8 +73,7 @@ export class AlethioDataSourceFactory {
             {
                 blockStateStore,
                 pendingPoolStore,
-                propagationChartStore,
-                netstatsStore,
+                ethStatsStore,
                 blockDetailsStore,
                 blockValueStore,
                 blockTxTimeInPoolStore,

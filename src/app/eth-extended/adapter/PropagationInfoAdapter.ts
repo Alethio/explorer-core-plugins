@@ -1,9 +1,9 @@
 import { IDataAdapter } from "plugin-api/IDataAdapter";
 import { AlethioDataSource } from "app/eth-extended/AlethioDataSource";
-import { ObservableWatcher } from "plugin-api/watcher/ObservableWatcher";
 import { IPropagationChartItem } from "app/eth-extended/module/dashboard/charts/data/IPropagationChartItem";
+import { EventWatcher } from "plugin-api/watcher/EventWatcher";
 
-export class PropagationInfoAdapter implements IDataAdapter<{}, IPropagationChartItem[] | undefined> {
+export class PropagationInfoAdapter implements IDataAdapter<{}, IPropagationChartItem[]> {
     contextType = {};
 
     constructor(private dataSource: AlethioDataSource) {
@@ -11,15 +11,12 @@ export class PropagationInfoAdapter implements IDataAdapter<{}, IPropagationChar
     }
 
     async load() {
-        let { propagationChartStore } = this.dataSource.stores;
+        let { ethStatsStore } = this.dataSource.stores;
 
-        return propagationChartStore.getPropagationHistogramData();
+        return ethStatsStore.propagationChartData.fetch();
     }
 
     createWatcher() {
-        return new ObservableWatcher(() => {
-            let { propagationChartStore } = this.dataSource.stores;
-            propagationChartStore.getPropagationHistogramData();
-        });
+        return new EventWatcher(this.dataSource.stores.ethStatsStore.propagationChartData.onData, () => true);
     }
 }

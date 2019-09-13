@@ -1,6 +1,4 @@
 import { PendingPoolStore } from "app/eth-extended/module/dashboard/charts/data/PendingPoolStore";
-import { PropagationChartStore } from "app/eth-extended/module/dashboard/charts/data/PropagationChartStore";
-import { NetstatsStore } from "app/eth-extended/module/dashboard/charts/data/NetstatsStore";
 import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { BlockDetailsStore } from "app/eth-extended/data/block/details/BlockDetailsStore";
 import { BlockValueStore } from "app/shared/data/block/value/BlockValueStore";
@@ -21,18 +19,16 @@ import { LogEventsStore } from "app/eth-extended/data/logEvents/LogEventsStore";
 import { Search } from "app/eth-extended/data/search/Search";
 import { Deepstream } from "app/util/network/Deepstream";
 import { ILogger } from "plugin-api/ILogger";
-import { PropagationChartDataReader } from "./module/dashboard/charts/data/PropagationChartDataReader";
 import { PendingTxWatcher } from "app/eth-extended/adapter/watcher/PendingTxWatcher";
 import { when } from "mobx";
 import { Web3Factory } from "app/eth-extended/Web3Factory";
 import { ContractWeb3Api } from "app/eth-extended/data/contract/ContractWeb3Api";
-import { BlockTxTimeInPoolReader } from "app/eth-extended/data/block/txTimeInPool/BlockTxTimeInPoolReader";
 import { IDataSource } from "plugin-api/IDataSource";
+import { EthStatsStore } from "app/eth-extended/data/ethStats/EthStatsStore";
 
 interface IAlethioDataStores {
     pendingPoolStore: PendingPoolStore;
-    propagationChartStore: PropagationChartStore;
-    netstatsStore: NetstatsStore;
+    ethStatsStore: EthStatsStore;
     blockDetailsStore: BlockDetailsStore;
     blockValueStore: BlockValueStore;
     blockTxTimeInPoolStore: BlockTxTimeInPoolStore;
@@ -73,9 +69,7 @@ export class AlethioDataSource implements IDataSource {
 
     private async initDeepstream() {
         let { logger, deepstream } = this;
-        let {
-            blockStateStore, blockTxTimeInPoolStore, pendingPoolStore, propagationChartStore, netstatsStore
-        } = this.stores;
+        let { blockStateStore } = this.stores;
 
         deepstream.onError.subscribe((error) => {
             logger.error("Deepstream error: " + JSON.stringify(error));
@@ -92,37 +86,9 @@ export class AlethioDataSource implements IDataSource {
             heartbeatInterval: 60000
         });
 
-        deepstream.subscribeToRecord<any>("db/v2/lastBlock", (data) => {
+        deepstream.subscribeToRecord<{ number: number; }>("db/v2/lastBlock", (data) => {
             logger.info(`New latest block received: #${data.number}`);
             blockStateStore.setLatest(data.number);
-        }).catch(e => logger.error(e));
-
-        let blockTxTimeInPoolReader = new BlockTxTimeInPoolReader();
-        deepstream.subscribeToRecord<any>("pending/v3/blockSummaries", data => {
-            let latestValues = (data as any[]).map(item => blockTxTimeInPoolReader.read(item));
-            blockTxTimeInPoolStore.setLatestValues(latestValues);
-        }).catch(e => logger.error(e));
-
-        deepstream.subscribeToRecord<any>("pending/v3/stats/perSecond", data => {
-            pendingPoolStore.setEth(Number(data.eth));
-            pendingPoolStore.setErc(Number(data.erc20));
-        }).catch(e => logger.error(e));
-
-        deepstream.subscribeToRecord<any>("pending/v3/stats/pool", data => {
-            pendingPoolStore.setSize(Number(data.size));
-        }).catch(e => logger.error(e));
-
-        let propagationChartDataReader = new PropagationChartDataReader();
-        deepstream.subscribeToRecord<any>("ethstats/chart/blockPropagationChartData", data => {
-            let propagationData =
-                (data["ethstats:blockPropagationChartData"]["ethstats:blockPropagationHistogramData"] as any[])
-                    .map((item) => propagationChartDataReader.read(item)
-                );
-            propagationChartStore.setPropagationHistogramData(propagationData);
-        }).catch(e => logger.error(e));
-
-        deepstream.subscribeToRecord<any>("ethstats/stats/nodeCountData", data => {
-            netstatsStore.setActiveNodesCount(Number(data["ethstats:nodeCountData"].active));
         }).catch(e => logger.error(e));
     }
 }
