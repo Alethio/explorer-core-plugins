@@ -1,4 +1,4 @@
-# Unreleased
+# v3.5.1
 
 - Lazily subscribe to deepstream records, to avoid errors when those records are missing, even when they weren't used
 
