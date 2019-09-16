@@ -13,6 +13,7 @@ import { withTheme } from "@alethio/explorer-ui/lib/styled-components";
 
 const CHART_HEIGHT = 250;
 const CIRCLE_FILTER_ID = "BalanceChart-circleShadow";
+const AREA_GRADIENT_ID = "BalanceChart-areaGradient";
 
 const $ActiveDot = (props: DotProps & {theme: ITheme}) => <g>
     <circle cx={props.cx} cy={props.cy} r="12"
@@ -69,6 +70,10 @@ class $BalanceAreaChart extends React.Component<IBalanceAreaChartProps> {
                                 <feMergeNode in="SourceGraphic" />
                             </feMerge>
                         </filter>
+                        <linearGradient id={AREA_GRADIENT_ID} x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor={strokeColor} stopOpacity={0.1}/>
+                            <stop offset="95%" stopColor={strokeColor} stopOpacity={0}/>
+                        </linearGradient>
                     </defs>
                     {/*
                     The two reference areas expand the Y domain due to the alwaysShow property.
@@ -89,7 +94,7 @@ class $BalanceAreaChart extends React.Component<IBalanceAreaChartProps> {
                     <Area
                         type="monotone" dataKey={CHART_DATA_KEY}
                         strokeOpacity={0}
-                        fill={fillColor}
+                        fill={`url(#${AREA_GRADIENT_ID})`}
                         fillOpacity={1}
                         isAnimationActive={!disabled}
                     />

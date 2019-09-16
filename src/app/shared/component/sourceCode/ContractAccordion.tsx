@@ -79,11 +79,8 @@ export class ContractAccordion extends React.PureComponent<IContractAccordionPro
     ({content, status, arrowPosition}) => {
 
         return <ThemeContext.Consumer>{ theme =>
-            <AccordionFrameWrapper style={{marginLeft: -theme.spacing.sidebarWidth}}>
-                <AccordionContentFrame arrowPosition={arrowPosition ?
-                    arrowPosition + theme.spacing.sidebarWidth :
-                    void 0
-                }>
+            <AccordionFrameWrapper>
+                <AccordionContentFrame arrowPosition={arrowPosition ? arrowPosition : void 0}>
                     {/* key ensure component remounts/scrolls into view whenever status changes*/}
                     {/* HACK: Seems waiting for height animation to finish is not enough so we add a bit extra */}
                     <ScrollIntoView delay={CONTENT_ANIM_SECONDS + .1} key={status}>

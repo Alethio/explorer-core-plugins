@@ -32,14 +32,6 @@ const GridRoot = styled.div`
     max-width: 100vw;
 `;
 
-const AccordionInAccountMargin = styled.div`
-    margin-left: -${props => props.theme.spacing.sidebarWidth}px;
-
-    @media ${props => props.theme.mediaQueries.breakPoints.smallerThanStandardView} {
-        margin-left: 0px;
-    }
-`;
-
 const PAGINATION_PAGE_SIZE = 50;
 
 interface IAccountSummaryItemConfig extends IAccordionItemConfig {
@@ -125,14 +117,12 @@ export class AccountSummary extends React.Component<IAccountSummaryProps> {
         return (
             <ThemeContext.Consumer>
                 {(theme) =>
-                    <AccordionInAccountMargin>
-                        <AccordionContentFrame
-                            arrowPosition={arrowPosition ? arrowPosition + theme.spacing.sidebarWidth : void 0}
-                            backgroundColor={theme.colors.gridEvenRowBg}
-                            borderColor={theme.colors.gridBorder}
-                            noBorder
-                        >{content}</AccordionContentFrame>
-                    </AccordionInAccountMargin>
+                    <AccordionContentFrame
+                        arrowPosition={arrowPosition ? arrowPosition + theme.spacing.sidebarWidth : void 0}
+                        backgroundColor={theme.colors.gridEvenRowBg}
+                        borderColor={theme.colors.gridBorder}
+                        noBorder
+                    >{content}</AccordionContentFrame>
                 }
             </ThemeContext.Consumer>
         );
