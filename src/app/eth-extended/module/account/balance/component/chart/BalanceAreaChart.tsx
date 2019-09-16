@@ -9,7 +9,7 @@ import { BalanceChartTooltipTop } from "./BalanceChartTooltipTop";
 import { BalanceChartTooltipBottom } from "./BalanceChartTooltipBottom";
 import { IBalanceAreaChartPayload } from "./IBalanceAreaChartPayload";
 import { ITheme } from "@alethio/explorer-ui/lib/ITheme";
-import { withTheme } from "@alethio/explorer-ui/lib/styled-components";
+import styled, { withTheme } from "@alethio/explorer-ui/lib/styled-components";
 
 const CHART_HEIGHT = 250;
 const CIRCLE_FILTER_ID = "BalanceChart-circleShadow";
@@ -25,6 +25,13 @@ const $ActiveDot = (props: DotProps & {theme: ITheme}) => <g>
 </g>;
 
 const ActiveDot = withTheme($ActiveDot);
+
+const ChartWrapper = styled.div`
+    & svg {
+        /** Allow the hover "dot" to overflow */
+        overflow: visible;
+    }
+`;
 
 export interface IBalanceAreaChartProps {
     data: IPortfolioChartData<IBalanceAreaChartPayload>;
@@ -55,6 +62,7 @@ class $BalanceAreaChart extends React.Component<IBalanceAreaChartProps> {
 
         return (
             <div ref={ref => this.rootEl = ref!}>
+            <ChartWrapper>
             <ResponsiveContainer width="100%" height={CHART_HEIGHT}>
                 <AreaChart margin={{top: 0, bottom: 0, left: 0, right: 0}} data={chartData.points}>
                     <defs>
@@ -139,6 +147,7 @@ class $BalanceAreaChart extends React.Component<IBalanceAreaChartProps> {
                     />
                 </AreaChart>
             </ResponsiveContainer>
+            </ChartWrapper>
             </div>
         );
     }
