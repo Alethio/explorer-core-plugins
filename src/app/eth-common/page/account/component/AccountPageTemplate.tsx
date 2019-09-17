@@ -18,9 +18,12 @@ export class AccountPageTemplate extends React.Component<IAccountPageTemplatePro
         return (
             <Container>
                 <Sidebar sticky mobileVisible={this.props.sidebarVisible}>
+                    { slots[AccountPageSlotType.Identicon] ?
                     <IdenticonWrapper>
                         { slots && slots[AccountPageSlotType.Identicon] }
                     </IdenticonWrapper>
+                    : null }
+                    { slots && slots[AccountPageSlotType.Sidebar] }
                 </Sidebar>
                 <Content>
                     { slots && slots[AccountPageSlotType.Top] }
