@@ -10,6 +10,7 @@ const IdenticonImg = styled("img")`
     width: ${props => props.theme.spacing.identiconSize}px;
     height: ${props => props.theme.spacing.identiconSize}px;
     border: 1px solid ${({theme}) => theme.colors.identiconBorder};
+    display: block;
 `;
 
 export class Identicon extends React.PureComponent<IIdenticonProps> {
