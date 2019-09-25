@@ -42,16 +42,6 @@ const BalanceGridRoot = styled.div`
     overflow-y: auto;
 `;
 
-// HACK: duplicated component, but we'll remove when we refactor the page to use a standard sidebar
-const ContentLeftPadded = styled.div`
-    box-sizing: border-box;
-    padding-left: ${props => props.theme.spacing.sidebarWidth}px;
-
-    @media ${props => props.theme.mediaQueries.breakPoints.smallerThanStandardView} {
-        padding-left: 0px;
-    }
-`;
-
 export interface IBalanceSectionProps {
     historicalBalance: IAsyncData<AccountBalance>;
     totalBalance: ITotalBalance | undefined;
@@ -71,51 +61,49 @@ export class BalanceSection extends React.Component<IBalanceSectionProps> {
 
         return (
             <BalanceSectionRoot accountHasTokens={historicalBalance.isLoaded() && historicalBalance.data.hasTokens()}>
-                <ContentLeftPadded>
-                    {/* The value 540 is the same value as the hide of the row first label when
-                    `ignoreFirstLabel` is used. TODO: Replace this with the future implementation of Layout
-                    that will move labels and info on separate lines when viewport is too small */}
-                    <ResponsiveContainer behavior="show" forScreenWidth={{lowerThan: 540}}>
-                        <LayoutRow>
-                            <LayoutRowItem>
-                                <Label>{tr.get("accountView.content.balance.label")}</Label>
-                            </LayoutRowItem>
-                        </LayoutRow>
-                    </ResponsiveContainer>
-                    <LayoutRow responsive={{ignoreFirstLabel: "forLowRes"}}>
-                        <LayoutRowItem autoHeight>
+                {/* The value 540 is the same value as the hide of the row first label when
+                `ignoreFirstLabel` is used. TODO: Replace this with the future implementation of Layout
+                that will move labels and info on separate lines when viewport is too small */}
+                <ResponsiveContainer behavior="show" forScreenWidth={{lowerThan: 540}}>
+                    <LayoutRow>
+                        <LayoutRowItem>
                             <Label>{tr.get("accountView.content.balance.label")}</Label>
-                            { historicalBalance.isLoaded() && totalBalance ?
-                            <BalanceGridRoot>
-                                <BalanceSectionGrid usdPricesEnabled={usdPricesEnabled}>
-                                    <EthBalanceDetails
-                                        ethBalance={historicalBalance.data.getEthBalance()}
-                                        totalBalance={totalBalance}
-                                        locale={locale}
-                                        ethSymbol={ethSymbol}
-                                        usdPricesEnabled={usdPricesEnabled}
-                                    />
-                                    { historicalBalance.data.hasTokens() ?
-                                        <AllTokensBalanceDetails
-                                            tokenAggregatedBalance={historicalBalance.data.aggregateTokenBalance()}
-                                            totalTokenTypes={historicalBalance.data.getTokenTypeCount()}
-                                            totalBalance={totalBalance}
-                                            expanded={this.tokenBalanceExpanded}
-                                            onToggleExpand={this.toggleTokenBalanceContent}
-                                            locale={locale}
-                                            translation={tr}
-                                            usdPricesEnabled={usdPricesEnabled}
-                                        />
-                                    : null }
-                                </BalanceSectionGrid>
-                            </BalanceGridRoot>
-                            : (
-                                historicalBalance.loadStatus === LoadStatus.Loading ?
-                                <SpinnerRegular /> : <ErrorIconHint translation={tr} />
-                            ) }
                         </LayoutRowItem>
                     </LayoutRow>
-                </ContentLeftPadded>
+                </ResponsiveContainer>
+                <LayoutRow responsive={{ignoreFirstLabel: "forLowRes"}}>
+                    <LayoutRowItem autoHeight>
+                        <Label>{tr.get("accountView.content.balance.label")}</Label>
+                        { historicalBalance.isLoaded() && totalBalance ?
+                        <BalanceGridRoot>
+                            <BalanceSectionGrid usdPricesEnabled={usdPricesEnabled}>
+                                <EthBalanceDetails
+                                    ethBalance={historicalBalance.data.getEthBalance()}
+                                    totalBalance={totalBalance}
+                                    locale={locale}
+                                    ethSymbol={ethSymbol}
+                                    usdPricesEnabled={usdPricesEnabled}
+                                />
+                                { historicalBalance.data.hasTokens() ?
+                                    <AllTokensBalanceDetails
+                                        tokenAggregatedBalance={historicalBalance.data.aggregateTokenBalance()}
+                                        totalTokenTypes={historicalBalance.data.getTokenTypeCount()}
+                                        totalBalance={totalBalance}
+                                        expanded={this.tokenBalanceExpanded}
+                                        onToggleExpand={this.toggleTokenBalanceContent}
+                                        locale={locale}
+                                        translation={tr}
+                                        usdPricesEnabled={usdPricesEnabled}
+                                    />
+                                : null }
+                            </BalanceSectionGrid>
+                        </BalanceGridRoot>
+                        : (
+                            historicalBalance.loadStatus === LoadStatus.Loading ?
+                            <SpinnerRegular /> : <ErrorIconHint translation={tr} />
+                        ) }
+                    </LayoutRowItem>
+                </LayoutRow>
                 { this.tokenBalanceExpanded && historicalBalance.isLoaded() && totalBalance ?
                 <Fade duration={.2} delay={.2}>
                     <BalanceGridRoot>

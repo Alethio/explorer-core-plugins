@@ -1,3 +1,7 @@
+# v4.0.0
+
+- **Breaking change** Remove left padding from account summary and contract modules (will display correctly with eth-common plugin v3+).
+
 # v3.5.1
 
 - Lazily subscribe to deepstream records, to avoid errors when those records are missing, even when they weren't used

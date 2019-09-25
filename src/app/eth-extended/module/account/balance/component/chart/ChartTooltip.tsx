@@ -35,7 +35,11 @@ class $ChartTooltip extends React.Component<IChartTooltipProps> {
         // Viewport top and left
         let top = refOffset.top + (this.props.placement === "top" ? 0 : this.props.viewBox.height) - window.scrollY;
         // TODO: this ensure tooltip and arrow stay in the viewport. Should be fixed from graph x axis limits
-        let left = clamp(refOffset.left + this.props.coordinate.x, 15, this.props.viewBox.width - 15) - window.scrollX;
+        let left = clamp(
+            refOffset.left + this.props.coordinate.x,
+            15,
+            refOffset.left + this.props.viewBox.width - 15
+        ) - window.scrollX;
 
         return <Popover
             offset={this.props.arrow ? 5 : 0}

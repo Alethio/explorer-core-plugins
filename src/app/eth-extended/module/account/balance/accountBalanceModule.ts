@@ -42,5 +42,9 @@ export const accountBalanceModule: (
         };
         return props;
     },
-    getHelpComponent: () => ({ translation }) => translation.get("accountView.content.accountBalance.help") as any
+    getHelpComponent: () => ({ translation }) => translation.get("accountView.content.accountBalance.help") as any,
+    getWrapperStyle: () => ({
+        // Allow the chart hover "dot" to go over the sidebar
+        zIndex: 2
+    })
 });

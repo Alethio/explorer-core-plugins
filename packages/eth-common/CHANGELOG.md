@@ -1,3 +1,7 @@
+# v3.0.0
+
+- **Breaking change** Rework account page layout to use a regular sidebar
+
 # v2.4.0
 
 - Add plugin manifest (@alethio/cms@1.0.0-beta.7)
