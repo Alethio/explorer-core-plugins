@@ -1,3 +1,7 @@
+# v3.0.0
+
+- **Breaking change** Remove left padding from contract module (will display correctly with eth-common plugin v3+).
+
 # v2.2.0
 
 - Add plugin manifest (@alethio/cms@1.0.0-beta.7)
