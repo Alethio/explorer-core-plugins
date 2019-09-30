@@ -19,7 +19,7 @@ const $ActiveDot = (props: DotProps & {theme: ITheme}) => <g>
     <circle cx={props.cx} cy={props.cy} r="12"
         fill={props.theme.colors.accountBalanceChartOverlayBg}
         stroke={props.theme.colors.accountBalanceChartOverlayBorder}
-        filter={`url(#${CIRCLE_FILTER_ID})`} />
+        filter={`url(${location.pathname}#${CIRCLE_FILTER_ID})`} />
     <circle cx={props.cx} cy={props.cy} r="4"
         fill={props.theme.colors.accountBalanceChartStroke} />
 </g>;
@@ -102,7 +102,7 @@ class $BalanceAreaChart extends React.Component<IBalanceAreaChartProps> {
                     <Area
                         type="monotone" dataKey={CHART_DATA_KEY}
                         strokeOpacity={0}
-                        fill={`url(#${AREA_GRADIENT_ID})`}
+                        fill={`url(${location.pathname}#${AREA_GRADIENT_ID})`}
                         fillOpacity={1}
                         isAnimationActive={!disabled}
                     />

@@ -1,3 +1,7 @@
+# Unreleased
+
+- Fix balance chart gradient rendering on Safari
+
 # v4.0.0
 
 - **Breaking change** Remove left padding from account summary and contract modules (will display correctly with eth-common plugin v3+).
