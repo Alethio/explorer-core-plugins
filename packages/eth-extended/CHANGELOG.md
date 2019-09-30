@@ -1,4 +1,4 @@
-# Unreleased
+# v4.0.1
 
 - Fix balance chart gradient rendering on Safari
 
