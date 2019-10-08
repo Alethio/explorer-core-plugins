@@ -1,0 +1,15 @@
+{
+    "general.loading": "加载中",
+    "general.error": "出错了！",
+    "general.hash": "哈希值",
+    "general.from": "发送地址",
+    "general.to": "接收地址",
+    "general.valueEth": "数额（%s）",
+    "general.feeEth": "费用（%s）",
+    "general.grid.header.type.label": "类型",
+    "general.grid.footer.norowsavailable.label": "无更多记录可显示",
+    "accountView.content.accountSummary.label": "内容概览",
+    "accountView.content.accountSummary.minedTransactions.label": "历史交易",
+    "accountView.content.accountSummary.transactions.blockNumber.label": "区块高度#",
+    "accountView.content.accountSummary.transactions.blockTime.label": "区块时间戳"
+}

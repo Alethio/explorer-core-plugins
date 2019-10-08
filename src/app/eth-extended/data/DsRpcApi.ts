@@ -1,4 +1,4 @@
-import { NotFoundError } from "app/eth-extended/data/NotFoundError";
+import { NotFoundError } from "app/shared/data/NotFoundError";
 import { Deepstream } from "app/util/network/Deepstream";
 
 interface IServerResponse<T> {

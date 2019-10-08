@@ -1,6 +1,6 @@
 import { FifoCache } from "app/util/cache/FifoCache";
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { Deepstream } from "app/util/network/Deepstream";
 import { TxLiteByAccountStore } from "app/eth-extended/data/tx/lite/byAccount/TxLiteByAccountStore";
 import { ITxLiteByAccountMined } from "app/eth-extended/data/tx/lite/byAccount/mined/ITxLiteByAccountMined";

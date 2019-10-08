@@ -1,5 +1,5 @@
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
-import { NotFoundError } from "app/eth-extended/data/NotFoundError";
+import { NotFoundError } from "app/shared/data/NotFoundError";
 
 interface IServerResponse<T> {
     status: number;

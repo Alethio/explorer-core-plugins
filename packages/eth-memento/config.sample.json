@@ -1,0 +1,4 @@
+{
+    "ethSymbol": "ETH",
+    "accountTxApiUrlMask": "https://blk-api.ethstats.io/api/v3/account/%s/txs"
+}

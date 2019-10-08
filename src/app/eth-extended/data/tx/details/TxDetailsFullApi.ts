@@ -1,6 +1,6 @@
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { TxDetailsFullReader } from "app/eth-extended/data/tx/details/TxDetailsFullReader";
-import { NotFoundError } from "app/eth-extended/data/NotFoundError";
+import { NotFoundError } from "app/shared/data/NotFoundError";
 
 export class TxDetailsFullApi {
     constructor(

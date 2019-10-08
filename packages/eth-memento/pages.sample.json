@@ -1,0 +1,20 @@
+{
+    "pages": [{
+        "def": "page://aleth.io/account",
+        "children": {
+            "identicon": [{
+                "def": "module://aleth.io/3box/profile",
+                "children": {
+                    "fallback": [{ "def": "module://aleth.io/account/identicon" }]
+                }
+            }],
+            "top": [
+                { "def": "module://aleth.io/lite/account/details", "pageCritical": true }
+            ],
+            "bottom": [
+                { "def": "module://aleth.io/memento/account/txs" },
+                { "def": "module://aleth.io/lite/account/contract" }
+            ]
+        }
+    }]
+}

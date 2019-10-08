@@ -1,4 +1,4 @@
-import { IPaginatedView } from "app/eth-extended/module/account/summary/pagination/IPaginatedView";
+import { IPaginatedView } from "./IPaginatedView";
 
 interface IStore<TItem, TCursor> {
     fetch(cursor: TCursor, limit: number): Promise<TItem[]>;
@@ -30,22 +30,32 @@ export class CursorPaginatedView<TItem, TCursor> implements IPaginatedView<TItem
         await this.loadItems(this.initialCursor, this.currentPage);
     }
 
+    async goToNextPage() {
+        if (this.currentPage === void 0) {
+            throw new Error(`Not initialized`);
+        }
+        await this.loadNextPage();
+        this.currentPage++;
+    }
+
     async loadNextPage() {
         if (this.currentPage === void 0) {
             throw new Error(`Not initialized`);
         }
         let currentItems = this.getItems();
+        if (!currentItems) {
+            throw new Error(`Page ${this.currentPage + 1} can't be loaded because the previous page is not loaded`);
+        }
         // We have no "next URL" in server response, so we only know it's the last page when there are fewer items
         if (currentItems.length < this.pageSize) {
             throw new RangeError(`We are already on the last page`);
         }
         let lastItem = currentItems[currentItems.length - 1];
         let newCursor = this.getCursor(lastItem);
-        this.currentPage++;
-        await this.loadItems(newCursor, this.currentPage);
+        await this.loadItems(newCursor, this.currentPage + 1);
     }
 
-    async loadPreviousPage() {
+    async goToPreviousPage() {
         if (this.currentPage === void 0) {
             throw new Error(`Not initialized`);
         }

@@ -1,4 +1,4 @@
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { ICursor } from "app/eth-extended/data/contractMsg/lite/byAccount/ICursor";
 import { CmLiteByAccountReader } from "./CmLiteByAccountReader";
 

@@ -1,6 +1,6 @@
 import { Search } from "app/eth-extended/data/search/Search";
 import { SearchHttpApi } from "app/eth-extended/data/search/SearchHttpApi";
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { ResultReader } from "app/eth-extended/data/search/ResultReader";
 import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";

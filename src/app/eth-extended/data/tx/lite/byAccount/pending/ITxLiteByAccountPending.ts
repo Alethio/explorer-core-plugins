@@ -1,4 +1,4 @@
-import { ITxLiteByAccountBase } from "app/eth-extended/data/tx/lite/byAccount/ITxLiteByAccountBase";
+import { ITxLiteByAccountBase } from "app/shared/data/tx/byAccount/ITxLiteByAccountBase";
 
 /**
  * Data for pending txs, coming from deepstream

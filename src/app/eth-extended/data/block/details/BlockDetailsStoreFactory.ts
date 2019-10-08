@@ -4,7 +4,7 @@ import { IBlockDetails } from "./IBlockDetails";
 import { BlockDetailsReader } from "./BlockDetailsReader";
 import { BlockDetailsApi } from "./BlockDetailsApi";
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 
 const CACHE_SIZE = 100;

@@ -1,5 +1,5 @@
 import { TxType } from "app/eth-extended/data/tx/TxType";
-import { ITxLiteByAccountBase } from "app/eth-extended/data/tx/lite/byAccount/ITxLiteByAccountBase";
+import { ITxLiteByAccountBase } from "app/shared/data/tx/byAccount/ITxLiteByAccountBase";
 import { BigNumber } from "app/util/BigNumber";
 
 export interface ITxLiteByAccountMined extends ITxLiteByAccountBase {

@@ -1,6 +1,6 @@
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { TokenResponseReader } from "app/eth-extended/data/token/transfer/TokenResponseReader";
-import { NotFoundError } from "app/eth-extended/data/NotFoundError";
+import { NotFoundError } from "app/shared/data/NotFoundError";
 
 export class TokenTransferByCmApi {
     constructor(

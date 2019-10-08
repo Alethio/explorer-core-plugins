@@ -2,7 +2,7 @@ import * as React from "react";
 import { ITranslation } from "plugin-api/ITranslation";
 import { GridSortingOptions } from "@alethio/ui/lib/control/grid/state/GridSortingOptions";
 import { GridFields } from "@alethio/ui/lib/control/grid/state/GridFields";
-import { OffsetPaginatedView } from "app/eth-extended/module/account/summary/pagination/OffsetPaginatedView";
+import { OffsetPaginatedView } from "app/shared/data/pagination/OffsetPaginatedView";
 import { PaginatedGrid } from "app/eth-extended/module/account/summary/component/PaginatedGrid";
 import { TxsPendingGridFields } from "./TxsPendingGridFields";
 import { ILogger } from "plugin-api/ILogger";

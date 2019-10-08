@@ -2,7 +2,7 @@ import * as assert from "assert";
 import * as TypeMoq from "typemoq";
 import { CmLiteByTxApi } from "app/eth-extended/data/contractMsg/lite/byTx/CmLiteByTxApi";
 import { CmLiteReader } from "app/eth-extended/data/contractMsg/lite/CmLiteReader";
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { CmType } from "app/eth-extended/data/contractMsg/CmType";
 import { BigNumber } from "app/util/BigNumber";
 

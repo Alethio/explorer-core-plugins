@@ -6,7 +6,7 @@ import { GridFields } from "@alethio/ui/lib/control/grid/state/GridFields";
 import { CmGridFields } from "app/eth-extended/module/account/summary/component/CmGridFields";
 import { PaginatedGrid } from "app/eth-extended/module/account/summary/component/PaginatedGrid";
 import { ICursor } from "app/eth-extended/data/contractMsg/lite/byAccount/ICursor";
-import { CursorPaginatedView } from "app/eth-extended/module/account/summary/pagination/CursorPaginatedView";
+import { CursorPaginatedView } from "app/shared/data/pagination/CursorPaginatedView";
 import { ILogger } from "plugin-api/ILogger";
 
 export interface ICmGridProps {
