@@ -18,7 +18,7 @@ import { AccountCodeRenderer } from "app/shared/component/sourceCode/AccountCode
 import { ContractAccordion, IContractAccordionItemConfig } from "app/shared/component/sourceCode/ContractAccordion";
 import { AccordionItem } from "@alethio/ui/lib/control/accordion/AccordionItem";
 
-const ACCORDION_CONTENT_HEIGHT = 500;
+const ACCORDION_CONTENT_HEIGHT = 700;
 
 export interface IContractDetailsProps {
     accountDetails: IContractAccountDetails;
