@@ -1,3 +1,7 @@
+# v4.0.2
+
+- Increase source code widget height
+
 # v4.0.1
 
 - Fix balance chart gradient rendering on Safari
