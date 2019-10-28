@@ -3,7 +3,6 @@
     "publisher": "aleth.io",
     "pluginName": "eth-memento",
     "version": "1.0.0",
-    "private": true,
     "description": "Alethio Explorer core plugin that fetches data via Memento Lite Pipeline",
     "author": "Mircea Ulmeanu <mircea.ulmeanu@consensys.net>",
     "license": "MIT",
@@ -14,5 +13,8 @@
     "main": "dist/index.js",
     "publishConfig": {
         "access": "public"
+    },
+    "engines": {
+        "@alethio/cms": "^1.0.0-beta.7"
     }
 }
