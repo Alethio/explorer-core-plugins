@@ -2,7 +2,7 @@ import { AccountDetailsStore } from "./AccountDetailsStore";
 import { AccountDetailsReader } from "./AccountDetailsReader";
 import { AccountDetailsApi } from "./AccountDetailsApi";
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 
 export class AccountDetailsStoreFactory {

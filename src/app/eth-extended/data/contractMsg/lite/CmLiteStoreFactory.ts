@@ -3,7 +3,7 @@ import { CmLiteByTxStore } from "app/eth-extended/data/contractMsg/lite/byTx/CmL
 import { FifoCache } from "app/util/cache/FifoCache";
 import { ICmLite } from "app/eth-extended/data/contractMsg/lite/ICmLite";
 import { CmLiteByTxApi } from "app/eth-extended/data/contractMsg/lite/byTx/CmLiteByTxApi";
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
 import { CmLiteReader } from "app/eth-extended/data/contractMsg/lite/CmLiteReader";
 import { CmLiteByCmStore } from "app/eth-extended/data/contractMsg/lite/byCm/CmLiteByCmStore";

@@ -1,0 +1,4 @@
+{
+    "ethSymbol": "ETH",
+    "accountTxApiUrlMask": "https://memento-api.example.com/endpoint/account/%s/transactions"
+}

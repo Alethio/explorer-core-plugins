@@ -1,5 +1,5 @@
 import { ResultReader } from "app/eth-extended/data/search/ResultReader";
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 
 export class SearchHttpApi {
     constructor(

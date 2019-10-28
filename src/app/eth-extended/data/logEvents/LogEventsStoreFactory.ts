@@ -1,5 +1,5 @@
 import { FifoCache } from "app/util/cache/FifoCache";
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
 import { LogEventsReader } from "app/eth-extended/data/logEvents/LogEventsReader";
 import { LogEventsByTxStore } from "app/eth-extended/data/logEvents/byTx/LogEventsByTxStore";

@@ -1,7 +1,7 @@
 import { AlethioDataSource } from "app/eth-extended/AlethioDataSource";
 import { IDataAdapter } from "plugin-api/IDataAdapter";
 import { IAccountDetails } from "app/eth-extended/data/account/details/IAccountDetails";
-import { NotFoundError } from "app/eth-extended/data/NotFoundError";
+import { NotFoundError } from "app/shared/data/NotFoundError";
 import { AccountType } from "app/shared/data/account/AccountType";
 import { LatestBlockWatcher } from "app/shared/adapter/block/LatestBlockWatcher";
 import { accountContextType } from "app/shared/context/accountContextType";

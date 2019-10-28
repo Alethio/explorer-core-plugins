@@ -1,4 +1,4 @@
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { CmLiteReader } from "app/eth-extended/data/contractMsg/lite/CmLiteReader";
 
 export class CmLiteByCmApi {

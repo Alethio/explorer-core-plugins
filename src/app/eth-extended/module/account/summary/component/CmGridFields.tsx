@@ -5,7 +5,7 @@ import { CmTypeExtraRenderer } from "app/eth-extended/component/grid/cm/CmTypeEx
 import { NumberRenderer } from "@alethio/ui/lib/data/gridRenderer/NumberRenderer";
 import { EthRenderer } from "@alethio/ui/lib/data/gridRenderer/EthRenderer";
 import { CmLinkRenderer } from "app/eth-extended/component/grid/cm/CmLinkRenderer";
-import { TransferDirectionRenderer } from "./txsGrid/TransferDirectionRenderer";
+import { TransferDirectionRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/tx/TransferDirectionRenderer";
 import { AccountHashRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/account/AccountHashRenderer";
 import { BlockLinkRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/block/BlockLinkRenderer";
 import { DateTimeRenderer } from "@alethio/ui/lib/data/gridRenderer/DateTimeRenderer";

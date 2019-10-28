@@ -1,4 +1,4 @@
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { IGraphData } from "app/eth-extended/data/tx/graph/IGraphData";
 
 enum GraphType {

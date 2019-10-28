@@ -1,6 +1,6 @@
 import { FifoCache } from "app/util/cache/FifoCache";
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { TxDetailsStore } from "app/eth-extended/data/tx/details/TxDetailsStore";
 import { TxDetailsFullReader } from "app/eth-extended/data/tx/details/TxDetailsFullReader";
 import { TxDetailsFullApi } from "app/eth-extended/data/tx/details/TxDetailsFullApi";

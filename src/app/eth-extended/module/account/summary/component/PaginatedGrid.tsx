@@ -2,11 +2,12 @@ import * as React from "react";
 import { ITranslation } from "plugin-api/ITranslation";
 import { observer } from "mobx-react";
 import { observable, runInAction } from "mobx";
-import { CursorPagination, LoadStatus } from "@alethio/ui/lib/control/pagination/CursorPagination";
+import { CursorPagination } from "@alethio/ui/lib/control/pagination/CursorPagination";
+import { LoadStatus } from "@alethio/ui/lib/control/pagination/LoadStatus";
 import { GridFields } from "@alethio/ui/lib/control/grid/state/GridFields";
 import { IGridSortingOptions } from "@alethio/ui/lib/control/grid/state/IGridSortingOptions";
 import { Grid } from "app/shared/component/Grid";
-import { IPaginatedView } from "app/eth-extended/module/account/summary/pagination/IPaginatedView";
+import { IPaginatedView } from "app/shared/data/pagination/IPaginatedView";
 
 export interface IPaginatedGridProps<TItem> {
     fields: GridFields<TItem>;
@@ -77,7 +78,7 @@ export class PaginatedGrid<TItem> extends React.Component<IPaginatedGridProps<TI
     private handleNextPage = async () => {
         this.loadStatus = LoadStatus.NotLoaded;
         try {
-            await this.props.paginatedView.loadNextPage();
+            await this.props.paginatedView.goToNextPage();
         } catch (e) {
             this.props.onPageError(e);
             this.loadStatus = LoadStatus.Error;
@@ -94,7 +95,7 @@ export class PaginatedGrid<TItem> extends React.Component<IPaginatedGridProps<TI
     private handlePrevPage = async () => {
         this.loadStatus = LoadStatus.NotLoaded;
         try {
-            await this.props.paginatedView.loadPreviousPage();
+            await this.props.paginatedView.goToPreviousPage();
         } catch (e) {
             this.props.onPageError(e);
             this.loadStatus = LoadStatus.Error;

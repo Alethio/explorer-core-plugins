@@ -1,0 +1,11 @@
+{
+    "pages": [{
+        "def": "page://aleth.io/account",
+        "children": {
+            "bottom": [
+                { "def": "module://aleth.io/memento/account/txs" },
+                { "def": "module://aleth.io/lite/account/contract" }
+            ]
+        }
+    }]
+}

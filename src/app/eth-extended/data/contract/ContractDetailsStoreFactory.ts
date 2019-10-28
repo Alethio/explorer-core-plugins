@@ -1,6 +1,6 @@
 import { ContractDetailsStore } from "app/eth-extended/data/contract/ContractDetailsStore";
 import { ContractDetailsApi } from "app/eth-extended/data/contract/ContractDetailsApi";
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
 import { FifoCache } from "app/util/cache/FifoCache";
 import { ContractAbiFactory } from "app/eth-extended/data/contract/ContractAbiFactory";

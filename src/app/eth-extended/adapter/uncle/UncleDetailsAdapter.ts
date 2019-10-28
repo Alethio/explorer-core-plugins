@@ -1,6 +1,6 @@
 import { IDataAdapter } from "plugin-api/IDataAdapter";
 import { IUncleDetails } from "app/eth-extended/data/uncle/IUncleDetails";
-import { NotFoundError } from "app/eth-extended/data/NotFoundError";
+import { NotFoundError } from "app/shared/data/NotFoundError";
 import { AlethioDataSource } from "../../AlethioDataSource";
 import { IUncleByHashContext } from "../../context/IUncleByHashContext";
 import { uncleByHashContextType } from "app/eth-extended/context/uncleByHashContextType";

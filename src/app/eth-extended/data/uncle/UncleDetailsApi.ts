@@ -1,6 +1,6 @@
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { UncleDetailsReader } from "app/eth-extended/data/uncle/UncleDetailsReader";
-import { NotFoundError } from "app/eth-extended/data/NotFoundError";
+import { NotFoundError } from "app/shared/data/NotFoundError";
 
 export class UncleDetailsApi {
     constructor(

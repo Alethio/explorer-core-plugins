@@ -5,7 +5,7 @@ import { AccountHashRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/
 import { BlockLinkRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/block/BlockLinkRenderer";
 import { DateTimeRenderer } from "@alethio/ui/lib/data/gridRenderer/DateTimeRenderer";
 import { TxTypeExtraRenderer } from "./txsGrid/TxTypeExtraRenderer";
-import { TransferDirectionRenderer } from "./txsGrid/TransferDirectionRenderer";
+import { TransferDirectionRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/tx/TransferDirectionRenderer";
 import { ITxLiteByAccountMined } from "app/eth-extended/data/tx/lite/byAccount/mined/ITxLiteByAccountMined";
 import { TxLinkRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/tx/TxLinkRenderer";
 

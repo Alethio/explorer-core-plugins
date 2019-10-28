@@ -5,7 +5,7 @@ import { GridFields } from "@alethio/ui/lib/control/grid/state/GridFields";
 import { ITxLiteByAccountMined } from "app/eth-extended/data/tx/lite/byAccount/mined/ITxLiteByAccountMined";
 import { TxsMinedGridFields } from "app/eth-extended/module/account/summary/component/TxsMinedGridFields";
 import { ICursor } from "app/eth-extended/data/contractMsg/lite/byAccount/ICursor";
-import { CursorPaginatedView } from "app/eth-extended/module/account/summary/pagination/CursorPaginatedView";
+import { CursorPaginatedView } from "app/shared/data/pagination/CursorPaginatedView";
 import { PaginatedGrid } from "app/eth-extended/module/account/summary/component/PaginatedGrid";
 import { ILogger } from "plugin-api/ILogger";
 

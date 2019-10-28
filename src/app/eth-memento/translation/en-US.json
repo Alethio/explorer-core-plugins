@@ -1,0 +1,16 @@
+{
+    "general.loading": "Loading",
+    "general.error": "An error has occurred",
+    "general.hash": "Hash",
+    "general.from": "From",
+    "general.to": "To",
+    "general.valueEth": "Value (%s)",
+    "general.feeEth": "Fee (%s)",
+    "general.grid.footer.norowsavailable.label": "These are not the droids you are looking for",
+    "accountView.content.transferDirection.incoming.tooltip": "Incoming",
+    "accountView.content.transferDirection.outgoing.tooltip": "Outgoing",
+    "accountView.content.accountSummary.label": "Summary",
+    "accountView.content.accountSummary.minedTransactions.label": "Transactions",
+    "accountView.content.accountSummary.transactions.blockNumber.label": "Block #",
+    "accountView.content.accountSummary.transactions.blockTime.label": "Block Time"
+}

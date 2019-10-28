@@ -1,7 +1,7 @@
 import { AlethioDataSource } from "app/eth-extended/AlethioDataSource";
 import { IDataAdapter } from "plugin-api/IDataAdapter";
 import { IBlockDetails } from "app/eth-extended/data/block/details/IBlockDetails";
-import { NotFoundError } from "app/eth-extended/data/NotFoundError";
+import { NotFoundError } from "app/shared/data/NotFoundError";
 import { blockContextType } from "app/shared/context/blockContextType";
 import { IBlockContext } from "../../../shared/context/IBlockContext";
 

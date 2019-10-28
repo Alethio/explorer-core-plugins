@@ -1,6 +1,6 @@
 import { FifoCache } from "app/util/cache/FifoCache";
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { CmDetailsStore } from "app/eth-extended/data/contractMsg/details/CmDetailsStore";
 import { ICmDetails } from "app/eth-extended/data/contractMsg/details/ICmDetails";
 import { CmDetailsApi } from "app/eth-extended/data/contractMsg/details/CmDetailsApi";

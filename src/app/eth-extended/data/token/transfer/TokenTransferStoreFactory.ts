@@ -2,7 +2,7 @@ import { TokenTransferByTxStore } from "app/eth-extended/data/token/transfer/byT
 import { FifoCache } from "app/util/cache/FifoCache";
 import { ITokenTransfer } from "app/eth-extended/data/token/transfer/ITokenTransfer";
 import { TokenTransferByTxApi } from "app/eth-extended/data/token/transfer/byTx/TokenTransferByTxApi";
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
 import { TokenResponseReader } from "app/eth-extended/data/token/transfer/TokenResponseReader";
 import { TokenTransferReader } from "app/eth-extended/data/token/transfer/TokenTransferReader";

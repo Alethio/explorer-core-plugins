@@ -20,8 +20,8 @@ import { CmGrid } from "app/eth-extended/module/account/summary/component/CmGrid
 import { TxsMinedGrid } from "app/eth-extended/module/account/summary/component/TxsMinedGrid";
 import { ITxLiteByAccountMined } from "app/eth-extended/data/tx/lite/byAccount/mined/ITxLiteByAccountMined";
 import { ICursor } from "app/eth-extended/data/contractMsg/lite/byAccount/ICursor";
-import { CursorPaginatedView } from "app/eth-extended/module/account/summary/pagination/CursorPaginatedView";
-import { OffsetPaginatedView } from "app/eth-extended/module/account/summary/pagination/OffsetPaginatedView";
+import { CursorPaginatedView } from "app/shared/data/pagination/CursorPaginatedView";
+import { OffsetPaginatedView } from "app/shared/data/pagination/OffsetPaginatedView";
 import { ICmLiteByAccount } from "app/eth-extended/data/contractMsg/lite/byAccount/ICmLiteByAccount";
 import { ILogger } from "plugin-api/ILogger";
 import styled from "@alethio/explorer-ui/lib/styled-components";

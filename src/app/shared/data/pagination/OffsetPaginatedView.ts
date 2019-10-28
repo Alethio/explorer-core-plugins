@@ -1,4 +1,4 @@
-import { IPaginatedView } from "app/eth-extended/module/account/summary/pagination/IPaginatedView";
+import { IPaginatedView } from "./IPaginatedView";
 
 interface IStore<TItem> {
     fetch(offset: number, limit: number): Promise<TItem[]>;
@@ -23,7 +23,7 @@ export class OffsetPaginatedView<TItem> implements IPaginatedView<TItem> {
         await this.loadItems(this.initialOffset);
     }
 
-    async loadNextPage() {
+    async goToNextPage() {
         if (this.currentPage === void 0) {
             throw new Error(`Not initialized`);
         }
@@ -37,7 +37,7 @@ export class OffsetPaginatedView<TItem> implements IPaginatedView<TItem> {
         await this.loadItems(newOffset);
     }
 
-    async loadPreviousPage() {
+    async goToPreviousPage() {
         if (this.currentPage === void 0) {
             throw new Error(`Not initialized`);
         }

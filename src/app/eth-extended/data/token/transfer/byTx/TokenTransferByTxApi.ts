@@ -1,5 +1,5 @@
-import { HttpApi } from "app/eth-extended/data/HttpApi";
-import { NotFoundError } from "app/eth-extended/data/NotFoundError";
+import { HttpApi } from "app/shared/data/HttpApi";
+import { NotFoundError } from "app/shared/data/NotFoundError";
 import { TokenResponseReader } from "app/eth-extended/data/token/transfer/TokenResponseReader";
 
 export class TokenTransferByTxApi {

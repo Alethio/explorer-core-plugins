@@ -1,4 +1,4 @@
-import { HttpApi } from "app/eth-extended/data/HttpApi";
+import { HttpApi } from "app/shared/data/HttpApi";
 import { AccountDetailsReader } from "./AccountDetailsReader";
 
 export class AccountDetailsApi {

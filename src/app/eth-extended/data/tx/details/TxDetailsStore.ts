@@ -2,7 +2,7 @@ import { ICache } from "app/util/cache/ICache";
 import { ITxDetailsFull } from "app/eth-extended/data/tx/details/ITxDetailsFull";
 import { TxDetailsFullApi } from "app/eth-extended/data/tx/details/TxDetailsFullApi";
 import { TxDetailsPartialApi } from "app/eth-extended/data/tx/details/TxDetailsPartialApi";
-import { NotFoundError } from "app/eth-extended/data/NotFoundError";
+import { NotFoundError } from "app/shared/data/NotFoundError";
 import { ILogger } from "plugin-api/ILogger";
 
 export class TxDetailsStore {

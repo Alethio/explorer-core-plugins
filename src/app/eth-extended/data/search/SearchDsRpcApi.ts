@@ -1,5 +1,5 @@
 import { ResultReader } from "app/eth-extended/data/search/ResultReader";
-import { NotFoundError } from "app/eth-extended/data/NotFoundError";
+import { NotFoundError } from "app/shared/data/NotFoundError";
 import { DsRpcApi } from "app/eth-extended/data/DsRpcApi";
 
 export class SearchDsRpcApi {
