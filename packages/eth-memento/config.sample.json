@@ -1,4 +1,4 @@
 {
     "ethSymbol": "ETH",
-    "accountTxApiUrlMask": "https://blk-api.ethstats.io/api/v3/account/%s/txs"
+    "accountTxApiUrlMask": "https://memento-api.example.com/endpoint/account/%s/transactions"
 }

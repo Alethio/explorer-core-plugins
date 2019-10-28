@@ -11,7 +11,11 @@ export class TxLiteByAccountReader {
             value: new BigNumber(data["value"]),
             gasUsed: new BigNumber(data["txGasUsed"]),
             gasPrice: new BigNumber(data["txGasPrice"]),
-            error: data["msgStatus"] ? (data["msgStatus"] === "0x1") : void 0,
+            /**
+             * msgStatus can be "0x1" for success, "0x0" for failure (error), or undefined for txs older than
+             * byzantium hardfork (where this was introduced)
+             */
+            success: data["msgStatus"] ? (data["msgStatus"] === "0x1") : void 0,
             block: {
                 id: Number(data["includedInBlock"]),
                 creationTime: Number(data["blockCreationTime"])

@@ -22,17 +22,15 @@ export class Summary extends React.Component<ISummaryProps> {
         } = this.props;
 
         return (
-            <div style={{flex: "1 1 auto"}}>
-                <AccountSummary
-                    accountHash={accountHash}
-                    translation={tr}
-                    locale={locale}
-                    ethSymbol={ethSymbol}
-                    logger={this.props.logger}
-                    latestBlockNumber={this.props.latestBlockNumber}
-                    txLiteByAccountStore={txLiteByAccountStore}
-                />
-            </div>
+            <AccountSummary
+                accountHash={accountHash}
+                translation={tr}
+                locale={locale}
+                ethSymbol={ethSymbol}
+                logger={this.props.logger}
+                latestBlockNumber={this.props.latestBlockNumber}
+                txLiteByAccountStore={txLiteByAccountStore}
+            />
         );
     }
 }

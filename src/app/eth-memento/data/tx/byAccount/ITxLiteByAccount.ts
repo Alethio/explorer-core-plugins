@@ -7,6 +7,6 @@ export interface ITxLiteByAccount extends ITxLiteByAccountBase {
         id: number;
         creationTime: number;
     };
-    error: boolean | undefined;
+    success: boolean | undefined;
     txIndex: number;
 }

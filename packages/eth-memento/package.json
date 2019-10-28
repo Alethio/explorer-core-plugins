@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "private": true,
     "description": "Alethio Explorer core plugin that fetches data via Memento Lite Pipeline",
-    "author": "Alexandru Ciuca <alexandru.ciuca@consensys.net>",
+    "author": "Mircea Ulmeanu <mircea.ulmeanu@consensys.net>",
     "license": "MIT",
     "repository": {
         "type": "git",

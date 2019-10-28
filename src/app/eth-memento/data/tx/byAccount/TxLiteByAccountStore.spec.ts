@@ -14,7 +14,7 @@ let apiResult: ITxLiteByAccount[] = [
             creationTime: 1537255221
         },
         from: "d7005d7a71bf800c84e507490d302e33cfd462c7",
-        error: false,
+        success: false,
         to: "9beada45d3268ba8a50c1c549cc7e865197191fe",
         gasPrice: new BigNumber(5687500000),
         gasUsed: new BigNumber(21000),
@@ -28,7 +28,7 @@ let apiResult: ITxLiteByAccount[] = [
             creationTime: 1537240728
         },
         from: "eb6d43fe241fb2320b5a3c9be9cdfd4dd8226451",
-        error: false,
+        success: false,
         to: "d7005d7a71bf800c84e507490d302e33cfd462c7",
         gasPrice: new BigNumber(52000000000),
         gasUsed: new BigNumber(21000),
@@ -42,7 +42,7 @@ let apiResult: ITxLiteByAccount[] = [
             creationTime: 1537238115
         },
         from: "e423f51fc95c50a7b09873827fe44d6fa1a5391e",
-        error: false,
+        success: false,
         to: "d7005d7a71bf800c84e507490d302e33cfd462c7",
         gasPrice: new BigNumber(6000000000),
         gasUsed: new BigNumber(21000),

@@ -4,13 +4,12 @@ import { EthRenderer } from "@alethio/ui/lib/data/gridRenderer/EthRenderer";
 import { AccountHashRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/account/AccountHashRenderer";
 import { BlockLinkRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/block/BlockLinkRenderer";
 import { DateTimeRenderer } from "@alethio/ui/lib/data/gridRenderer/DateTimeRenderer";
-import { TxTypeExtraRenderer } from "./txsGrid/TxTypeExtraRenderer";
-import { TransferDirectionRenderer } from "./txsGrid/TransferDirectionRenderer";
+import { TransferDirectionRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/tx/TransferDirectionRenderer";
 import { ITxLiteByAccount } from "app/eth-memento/data/tx/byAccount/ITxLiteByAccount";
 import { TxLinkRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/tx/TxLinkRenderer";
+import { TxLinkWithStatusRenderer } from "app/eth-memento/module/component/txsGrid/TxLinkWithStatusRenderer";
 
 enum ITxsGridFieldKeys {
-    Type = "type",
     Hash = "hash",
     From = "from",
     Direction = "direction",
@@ -25,14 +24,6 @@ export class TxsGridFields extends GridFields<ITxLiteByAccount> {
     constructor(t: ITranslation, locale: string, ethSymbol: string, currentAccountAddress: string) {
         super();
         this.fields = [{
-            label: t.get("general.grid.header.type.label"),
-            fieldKey: ITxsGridFieldKeys.Type,
-            type: "string",
-            isSortable: false,
-            selected: true,
-            getFieldValue: f => "tx",
-            renderer: new TxTypeExtraRenderer(t)
-        }, {
             label: t.get("general.hash"),
             fieldKey: ITxsGridFieldKeys.Hash,
             type: "string",
@@ -40,7 +31,10 @@ export class TxsGridFields extends GridFields<ITxLiteByAccount> {
             selected: true,
             alwaysVisible: true,
             getFieldValue: f => f.hash,
-            renderer: new TxLinkRenderer(f => f.hash)
+            renderer: new TxLinkWithStatusRenderer(
+                new TxLinkRenderer(f => f.hash),
+                t
+            )
         }, {
             label: t.get("general.from"),
             fieldKey: ITxsGridFieldKeys.From,

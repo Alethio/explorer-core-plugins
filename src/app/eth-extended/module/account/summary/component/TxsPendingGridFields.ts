@@ -2,7 +2,7 @@ import { ITranslation } from "plugin-api/ITranslation";
 import { GridFields } from "@alethio/ui/lib/control/grid/state/GridFields";
 import { EthRenderer } from "@alethio/ui/lib/data/gridRenderer/EthRenderer";
 import { AccountHashRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/account/AccountHashRenderer";
-import { TransferDirectionRenderer } from "./txsGrid/TransferDirectionRenderer";
+import { TransferDirectionRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/tx/TransferDirectionRenderer";
 import { TxLinkRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/tx/TxLinkRenderer";
 import { ITxLiteByAccountPending } from "../../../../data/tx/lite/byAccount/pending/ITxLiteByAccountPending";
 
