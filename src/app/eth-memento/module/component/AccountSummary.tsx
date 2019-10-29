@@ -106,7 +106,7 @@ export class AccountSummary extends React.Component<IAccountSummaryProps> {
             <ThemeContext.Consumer>
                 {(theme) =>
                     <AccordionContentFrame
-                        arrowPosition={arrowPosition ? arrowPosition + theme.spacing.sidebarWidth : void 0}
+                        arrowPosition={arrowPosition}
                         backgroundColor={theme.colors.gridEvenRowBg}
                         borderColor={theme.colors.gridBorder}
                         noBorder

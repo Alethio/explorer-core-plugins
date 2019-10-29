@@ -1,3 +1,7 @@
+# Unreleased
+
+- (Visual bug) Fix account summary accordion arrow offset
+
 # v4.0.2
 
 - Increase source code widget height
