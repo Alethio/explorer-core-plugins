@@ -1,4 +1,4 @@
-# Unreleased
+# v4.0.3
 
 - (Visual bug) Fix account summary accordion arrow offset
 
