@@ -1,10 +1,10 @@
 import * as React from "react";
 import { ITranslation } from "plugin-api/ITranslation";
-import { IBlockDetails } from "app/eth-extended/data/block/details/IBlockDetails";
+import { IBlockDetails } from "app/eth-memento/data/block/details/IBlockDetails";
 import { BlockDetailsSlotType } from "../BlockDetailsSlotType";
-import { BlockBasic } from "app/eth-extended/module/block/blockBasic/BlockBasic";
-import { BlockAdvanced } from "app/eth-extended/module/block/blockAdvanced/BlockAdvanced";
-import { BlockLogsBloom } from "app/eth-extended/module/block/blockLogsBloom/BlockLogsBloom";
+import { BlockBasic } from "app/eth-memento/module/block/blockBasic/BlockBasic";
+import { BlockAdvanced } from "app/eth-memento/module/block/blockAdvanced/BlockAdvanced";
+import { BlockLogsBloom } from "app/eth-memento/module/block/blockLogsBloom/BlockLogsBloom";
 
 export interface IBlockDetailsProps {
     blockDetails: IBlockDetails;

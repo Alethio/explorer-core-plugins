@@ -1,5 +1,5 @@
 import { IDataAdapter } from "plugin-api/IDataAdapter";
-import { IBlockDetails } from "app/eth-extended/data/block/details/IBlockDetails";
+import { IBlockDetails } from "app/eth-memento/data/block/details/IBlockDetails";
 import { NotFoundError } from "app/shared/data/NotFoundError";
 import { blockContextType } from "app/shared/context/blockContextType";
 import { IBlockContext } from "app/shared/context/IBlockContext";

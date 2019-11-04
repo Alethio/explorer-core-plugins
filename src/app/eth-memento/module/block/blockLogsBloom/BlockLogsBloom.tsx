@@ -5,7 +5,7 @@ import { Label } from "@alethio/ui/lib/data/Label";
 import { HexData } from "@alethio/ui/lib/data/hex/HexData";
 import { LayoutSection } from "@alethio/ui/lib/layout/content/LayoutSection";
 import { ITranslation } from "plugin-api/ITranslation";
-import { IBlockDetails } from "app/eth-extended/data/block/details/IBlockDetails";
+import { IBlockDetails } from "app/eth-memento/data/block/details/IBlockDetails";
 
 export interface IBlockLogsBloomProps {
     blockDetails: IBlockDetails;

@@ -1,7 +1,7 @@
-import { IBlockDetails } from "app/eth-extended/data/block/details/IBlockDetails";
+import { IBlockDetails } from "app/eth-memento/data/block/details/IBlockDetails";
 import { IModuleDef } from "plugin-api/IModuleDef";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
-import { IBlockBasicProps } from "./BlockBasic";
+import { IBlockBasicProps } from "app/eth-memento/module/block/blockBasic/BlockBasic";
 import { BlockBasicSlotType } from "./BlockBasicSlotType";
 import { IBlockContext } from "app/shared/context/IBlockContext";
 import { blockContextType } from "app/shared/context/blockContextType";
@@ -12,18 +12,18 @@ export const blockBasicModule: IModuleDef<IBlockBasicProps, IBlockContext, Block
 
     dataAdapters: [
         {
-            ref: AlethioAdapterType.BlockDetailsExtended
+            ref: AlethioAdapterType.BlockDetailsMemento
         }
     ],
 
     getContentComponent() {
-        return import("./BlockBasic").then(({ BlockBasic }) => BlockBasic);
+        return import("app/eth-memento/module/block/blockBasic/BlockBasic").then(({ BlockBasic }) => BlockBasic);
     },
 
     getContentProps(data) {
         let { asyncData, locale, translation, slots } = data;
 
-        let blockDetails = asyncData.get(AlethioAdapterType.BlockDetailsExtended)!.data as IBlockDetails;
+        let blockDetails = asyncData.get(AlethioAdapterType.BlockDetailsMemento)!.data as IBlockDetails;
 
         return {
             blockDetails,

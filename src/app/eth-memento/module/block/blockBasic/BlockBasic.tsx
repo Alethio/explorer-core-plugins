@@ -14,9 +14,8 @@ import { BlockSizeBox } from "@alethio/explorer-ui/lib/box/block/BlockSizeBox";
 import { UncleHashBox } from "@alethio/explorer-ui/lib/box/uncle/UncleHashBox";
 import { UnclesCountBox } from "@alethio/explorer-ui/lib/box/block/UnclesCountBox";
 import { ITranslation } from "plugin-api/ITranslation";
-import { IBlockDetails } from "app/eth-extended/data/block/details/IBlockDetails";
+import { IBlockDetails } from "app/eth-memento/data/block/details/IBlockDetails";
 import { BlockBasicSlotType } from "./BlockBasicSlotType";
-import { BlockSummary } from "./blockSummary/BlockSummary";
 
 export interface IBlockBasicProps {
     blockDetails: IBlockDetails;
@@ -99,16 +98,6 @@ export class BlockBasic extends React.PureComponent<IBlockBasicProps> {
                     }} />
                 </LayoutRowItem>
             </LayoutRow>
-            { block.transactions.length ?
-            <LayoutRow>
-                <LayoutRowItem fullRow autoHeight>
-                    <Label>{tr.get("blockView.content.blockSummary.label")}</Label>
-                    <div style={{maxWidth: 500, flex: "1 1 auto"}}>
-                        <BlockSummary transactions={block.transactions} translation={tr}/>
-                    </div>
-                </LayoutRowItem>
-            </LayoutRow>
-            : null }
         </LayoutSection>;
     }
 }

@@ -1,8 +1,7 @@
 import * as React from "react";
 import { IGridFieldRenderer } from "@alethio/ui/lib/control/grid/state/IGridFieldRenderer";
 import { ITranslation } from "plugin-api/ITranslation";
-import { TxType } from "app/eth-extended/data/tx/TxType";
-import { ITxLite } from "app/eth-extended/data/tx/ITxLite";
+import { ITxLite } from "app/eth-memento/data/tx/ITxLite";
 import { TxHighlight } from "./TxHighlight";
 
 export class TxHighlightRenderer implements IGridFieldRenderer<ITxLite> {
@@ -15,7 +14,7 @@ export class TxHighlightRenderer implements IGridFieldRenderer<ITxLite> {
     render(f: ITxLite) {
         return (
             <TxHighlight highlight={this.highlight(f)}>
-                { this.translation.get("general.tx.type." + TxType[f.type]) }
+                { this.translation.get("general.tx.type.Unknown") }
             </TxHighlight>
         );
     }

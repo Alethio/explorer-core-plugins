@@ -1,5 +1,5 @@
 import React from "react";
-import { IBlockDetails } from "app/eth-extended/data/block/details/IBlockDetails";
+import { IBlockDetails } from "app/eth-memento/data/block/details/IBlockDetails";
 import { IModuleDef } from "plugin-api/IModuleDef";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { IBlockLogsBloomProps } from "./BlockLogsBloom";
@@ -11,7 +11,7 @@ export const blockLogsBloomModule: IModuleDef<IBlockLogsBloomProps, IBlockContex
 
     dataAdapters: [
         {
-            ref: AlethioAdapterType.BlockDetailsExtended
+            ref: AlethioAdapterType.BlockDetailsMemento
         }
     ],
 
