@@ -3,6 +3,9 @@ interface IConfigData {
     ethSymbol?: string;
 
     accountTxApiUrlMask: string;
+
+    BLOCK_API_URL_MASK: string;
+    BLOCK_VALUE_API_URL_MASK: string;
 }
 
 export class EthMementoPluginConfig {
@@ -22,6 +25,20 @@ export class EthMementoPluginConfig {
      */
     getAccountTxApiUrlMask() {
         return this.data.accountTxApiUrlMask;
+    }
+
+    /**
+     * URL for block api endpoint (replace %d with blockId)
+     */
+    getBlockApiUrlMask() {
+        return this.data.BLOCK_API_URL_MASK;
+    }
+
+    /**
+     * URL for block value api endpoint (replace %d, %d with range start,end)
+     */
+    getBlockValueApiUrlMask() {
+        return this.data.BLOCK_VALUE_API_URL_MASK;
     }
 
 }

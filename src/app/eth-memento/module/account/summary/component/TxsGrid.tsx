@@ -3,7 +3,7 @@ import { ITranslation } from "plugin-api/ITranslation";
 import { GridSortingOptions } from "@alethio/ui/lib/control/grid/state/GridSortingOptions";
 import { GridFields } from "@alethio/ui/lib/control/grid/state/GridFields";
 import { ITxLiteByAccount } from "app/eth-memento/data/tx/byAccount/ITxLiteByAccount";
-import { TxsGridFields } from "app/eth-memento/module/component/TxsGridFields";
+import { TxsGridFields } from "app/eth-memento/module/account/summary/component/TxsGridFields";
 import { ICursor } from "app/eth-memento/data/tx/byAccount/ICursor";
 import { CursorInfinitePaginatedView } from "../pagination/CursorInfinitePaginatedView";
 import { PaginatedGrid } from "./PaginatedGrid";

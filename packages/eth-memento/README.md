@@ -19,4 +19,4 @@ with the usage of the only module exported by this plugin.
 
 | Module URI | Context shape | Module slots | Description | Implementation |
 | --- | --- | --- | --- | --- |
-| module://aleth.io/memento/account/txs | { accountHash } | N/A | Accordion with transactions | [accountTxsModule](../../src/app/eth-memento/module/accountTxsModule.ts) |
+| module://aleth.io/memento/account/txs | { accountHash } | N/A | Accordion with transactions | [accountTxsModule](../../src/app/eth-memento/module/account/summary/accountTxsModule.ts) |

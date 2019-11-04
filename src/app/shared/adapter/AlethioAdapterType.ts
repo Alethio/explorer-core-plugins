@@ -3,6 +3,7 @@ export enum AlethioAdapterType {
 
     BlockDetailsLite = "adapter://aleth.io/lite/block/details",
     BlockDetailsExtended = "adapter://aleth.io/extended/block/details",
+    BlockDetailsMemento = "adapter://aleth.io/memento/block/details",
 
     EthPrices = "adapter://aleth.io/prices/latest",
     BlockConfirmations = "adapter://aleth.io/block/confirmations",

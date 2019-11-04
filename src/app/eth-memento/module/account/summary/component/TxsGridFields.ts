@@ -7,7 +7,7 @@ import { DateTimeRenderer } from "@alethio/ui/lib/data/gridRenderer/DateTimeRend
 import { TransferDirectionRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/tx/TransferDirectionRenderer";
 import { ITxLiteByAccount } from "app/eth-memento/data/tx/byAccount/ITxLiteByAccount";
 import { TxLinkRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/tx/TxLinkRenderer";
-import { TxLinkWithStatusRenderer } from "app/eth-memento/module/component/txsGrid/TxLinkWithStatusRenderer";
+import { TxLinkWithStatusRenderer } from "app/eth-memento/module/account/summary/component/txsGrid/TxLinkWithStatusRenderer";
 
 enum ITxsGridFieldKeys {
     Hash = "hash",

@@ -8,7 +8,7 @@ import { GridFields } from "@alethio/ui/lib/control/grid/state/GridFields";
 import { IGridSortingOptions } from "@alethio/ui/lib/control/grid/state/IGridSortingOptions";
 import { Grid } from "app/shared/component/Grid";
 import { ICursor } from "app/eth-memento/data/tx/byAccount/ICursor";
-import { CursorInfinitePaginatedView } from "app/eth-memento/module/pagination/CursorInfinitePaginatedView";
+import { CursorInfinitePaginatedView } from "app/eth-memento/module/account/summary/pagination/CursorInfinitePaginatedView";
 
 export interface IPaginatedGridProps<TItem> {
     fields: GridFields<TItem>;
