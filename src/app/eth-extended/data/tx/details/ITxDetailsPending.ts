@@ -1,6 +1,6 @@
 import { ITxDetailsBase } from "app/eth-extended/data/tx/details/ITxDetailsBase";
 import { TxStatus } from "app/eth-extended/data/tx/TxStatus";
-import { TxType } from "app/eth-extended/data/tx/TxType";
+import { TxType } from "app/shared/data/tx/TxType";
 
 /**
  * Data for pending txs, coming from deepstream

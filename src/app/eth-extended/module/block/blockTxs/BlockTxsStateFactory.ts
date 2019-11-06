@@ -1,7 +1,7 @@
 import { GridSortingOptions } from "@alethio/ui/lib/control/grid/state/GridSortingOptions";
 import { BlockTxsState } from "./BlockTxsState";
 import { TxsViewMode } from "@alethio/explorer-ui/lib/blockTxs/TxsViewMode";
-import { HighlightFieldsFull } from "./txHighlight/HighlightFieldsFull";
+import { HighlightFieldsFull } from "app/eth-extended/module/block/blockTxs/txHighlight/HighlightFieldsFull";
 
 export class BlockTxsStateFactory {
     create() {

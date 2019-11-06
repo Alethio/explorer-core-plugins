@@ -34,10 +34,10 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 
 | Module URI | Context shape | Module slots | Description | Implementation | Options |
 | --- | --- | --- | --- | --- | --- |
-| module://aleth.io/block/basic | { blockNumber } | confirmations | Block basic data fields |[blockBasicModule](../../src/app/eth-extended/module/block/blockBasic/blockBasicModule.tsx) | N/A |
-| module://aleth.io/block/txs | { blockNumber } | N/A | Transactions in given block, in two visualizations (grid and heat map) | [blockTxsModule](../../src/app/eth-extended/module/block/blockTxs/blockTxsModule.ts) | N/A |
-| module://aleth.io/block/advanced | { blockNumber } | extraData | Block advanced data fields |[blockAdvancedModule](../../src/app/eth-extended/module/block/blockAdvanced/blockAdvancedModule.tsx) | N/A |
-| module://aleth.io/block/logs-bloom | { blockNumber } | N/A | Block logs bloom |[blockLogsBloomModule](../../src/app/eth-extended/module/block/blockLogsBloom/blockLogsBloomModule.tsx) | N/A |
+| module://aleth.io/block/basic | { blockNumber } | confirmations | Block basic data fields |[blockBasicModule](../../src/app/shared/module/block/blockBasic/blockBasicModule.tsx) | N/A |
+| module://aleth.io/block/txs | { blockNumber } | N/A | Transactions in given block, in two visualizations (grid and heat map) | [blockTxsModule](../../src/app/shared/module/block/blockTxs/blockTxsModule.ts) | N/A |
+| module://aleth.io/block/advanced | { blockNumber } | extraData | Block advanced data fields |[blockAdvancedModule](../../src/app/shared/module/block/blockAdvanced/blockAdvancedModule.tsx) | N/A |
+| module://aleth.io/block/logs-bloom | { blockNumber } | N/A | Block logs bloom |[blockLogsBloomModule](../../src/app/shared/module/block/blockLogsBloom/blockLogsBloomModule.tsx) | N/A |
 | module://aleth.io/uncle/details | { uncleHash } | N/A | Uncle data fields | [uncleDetailsModule](../../src/app/shared/module/uncle/uncleDetails/uncleDetailsModule.ts) | N/A |
 | module://aleth.io/tx/basic | { txHash } | blockConfirmations | Transaction basic data fields | [txBasicModule](../../src/app/eth-extended/module/tx/txBasic/txBasicModule.tsx) | N/A |
 | module://aleth.io/tx/advanced | { txHash } | N/A | Transaction advanced data fields | [txAdvancedModule](../../src/app/eth-extended/module/tx/txAdvanced/txAdvancedModule.tsx) | N/A |
@@ -59,8 +59,7 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 | Adapter URI | Context shape | Return type | Description | Implementation |
 | --- | --- | --- | --- | --- |
 | adapter://aleth.io/block/basic | { blockNumber } | [IBlockBasicInfo](../../src/app/shared/data/block/IBlockBasicInfo.ts) | Adapter for basic block data | [BlockBasicInfoAdapter](../../src/app/shared/adapter/block/BlockBasicInfoAdapter.ts) |
-| adapter://aleth.io/extended/block/details | { blockNumber } | [IBlockDetails](../../src/app/eth-extended/data/block/details/IBlockDetails.ts) | Provides detailed block data specific to the full explorer | [BlockDetailsAdapter](../../src/app/eth-extended/adapter/block/BlockDetailsAdapter.ts) |
-| adapter://aleth.io/block/details | { blockNumber } | [IBlockCommonDetails](../../src/app/shared/data/block/IBlockCommonDetails.ts) | Generic adapter for block details common between eth-lite and eth-extended | [BlockDetailsAdapter](../../src/app/eth-lite/adapter/block/BlockDetailsAdapter.ts) |
+| adapter://aleth.io/full/block/details | { blockNumber } | [IBlockDetails](../../src/app/shared/data/block/details/IBlockDetails.ts) | Provides detailed block data specific to the full explorer | [BlockDetailsAdapter](../../src/app/shared/adapter/block/BlockDetailsAdapter.ts) |
 | adapter://aleth.io/prices/latest | { blockNumber } | number \| undefined | The price of ETH in USD at the latest block or undefined if disabled by configuration | [EthPriceAdapter](../../src/app/eth-extended/adapter/EthPriceAdapter.ts) |
 | adapter://aleth.io/block/confirmations | { blockNumber } | [IBlockConfirmations](../../src/app/shared/adapter/block/BlockConfirmationsAdapter.ts) | Info about number of confirmations for a given block | [BlockConfirmationsAdapter](../../src/app/shared/adapter/block/BlockConfirmationsAdapter.ts) |
 | adapter://aleth.io/block-range/summary | { rangeStart, rangeEnd, blockNumber } | Array<[IBlockTxCount](../../src/app/shared/data/block/value/IBlockTxCount.ts) \| undefined>| TX counts per block for a range of blocks | [BlockListAdapter](../../src/app/shared/adapter/block/BlockListAdapter.ts) |

@@ -1,3 +1,6 @@
+# unreleased
+- **Breaking change** Removed deprecated `module://aleth.io/block/details` & `adapter://aleth.io/block/details`
+
 # v3.0.0
 
 - **Breaking change** Remove left padding from contract module (will display correctly with eth-common plugin v3+).

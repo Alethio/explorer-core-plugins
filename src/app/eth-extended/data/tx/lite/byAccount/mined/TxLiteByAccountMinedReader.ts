@@ -1,6 +1,6 @@
 // tslint:disable:no-string-literal
 import { ITxLiteByAccountMined } from "app/eth-extended/data/tx/lite/byAccount/mined/ITxLiteByAccountMined";
-import { readTxType } from "app/eth-extended/data/tx/readTxType";
+import { readTxType } from "app/shared/data/tx/readTxType";
 import { BigNumber } from "app/util/BigNumber";
 
 export class TxLiteByAccountMinedReader {

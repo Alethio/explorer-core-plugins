@@ -4,7 +4,7 @@ import { ICache } from "app/util/cache/ICache";
 import { TxLiteByAccountMinedStore } from "./TxLiteByAccountMinedStore";
 import { ITxLiteByAccountMined } from "./ITxLiteByAccountMined";
 import { TxLiteByAccountMinedApi } from "app/eth-extended/data/tx/lite/byAccount/mined/TxLiteByAccountMinedApi";
-import { TxType } from "app/eth-extended/data/tx/TxType";
+import { TxType } from "app/shared/data/tx/TxType";
 import { ICursor } from "app/eth-extended/data/contractMsg/lite/byAccount/ICursor";
 import { BigNumber } from "app/util/BigNumber";
 

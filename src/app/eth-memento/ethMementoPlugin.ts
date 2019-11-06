@@ -1,36 +1,38 @@
 import { IPlugin } from "plugin-api/IPlugin";
-import { accountTxsModule } from "app/eth-memento/module/accountTxsModule";
-import { TxLiteByAccountStore } from "app/eth-memento/data/tx/byAccount/TxLiteByAccountStore";
-import { FifoCache } from "app/util/cache/FifoCache";
-import { ITxLiteByAccount } from "app/eth-memento/data/tx/byAccount/ITxLiteByAccount";
-import { TxLiteByAccountApi } from "app/eth-memento/data/tx/byAccount/TxLiteByAccountApi";
-import { HttpApi } from "app/shared/data/HttpApi";
-import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
-import { TxLiteByAccountReader } from "app/eth-memento/data/tx/byAccount/TxLiteByAccountReader";
+import { accountTxsModule } from "app/eth-memento/module/account/accountTxsModule";
 import { EthMementoPluginConfig } from "app/eth-memento/EthMementoPluginConfig";
-
-const API_CACHE_SIZE = 5;
+import { MementoDataSourceFactory } from "app/eth-memento/MementoDataSourceFactory";
+import { BlockDetailsAdapter } from "app/shared/adapter/block/BlockDetailsAdapter";
+import { blockBasicModule } from "app/shared/module/block/blockBasic/blockBasicModule";
+import { blockTxsModule } from "app/shared/module/block/blockTxs/blockTxsModule";
+import { blockAdvancedModule } from "app/shared/module/block/blockAdvanced/blockAdvancedModule";
+import { blockLogsBloomModule } from "app/shared/module/block/blockLogsBloom/blockLogsBloomModule";
+import { BlockListAdapter } from "app/shared/adapter/block/BlockListAdapter";
+import { NullEthPriceAdapter } from "app/eth-memento/adapter/NullEthPriceAdapter";
 
 const ethMementoPlugin: IPlugin = {
     init(configData: unknown, api, logger, publicPath) {
         __webpack_public_path__ = publicPath;
 
         let config = new EthMementoPluginConfig().fromJson(configData as any);
+        let dataSource = new MementoDataSourceFactory().create(config, logger);
 
-        let txByAccountStore = new TxLiteByAccountStore(
-            new FifoCache<string, ITxLiteByAccount[]>(API_CACHE_SIZE),
-            new TxLiteByAccountApi(
-                new HttpApi(new HttpRequest()),
-                new TxLiteByAccountReader(),
-                config.getAccountTxApiUrlMask()
-            )
-        );
         let ethSymbol = config.getEthSymbol();
 
+        api.addDataSource("source://aleth.io/memento/api", dataSource);
+
         api.addModuleDef("module://aleth.io/memento/account/txs", accountTxsModule({
-            store: txByAccountStore,
+            store: dataSource.stores.txByAccountStore,
             ethSymbol
         }));
+
+        api.addDataAdapter("adapter://aleth.io/full/block/details", new BlockDetailsAdapter(dataSource));
+        api.addDataAdapter("adapter://aleth.io/prices/latest", new NullEthPriceAdapter());
+        api.addModuleDef("module://aleth.io/block/basic", blockBasicModule);
+        api.addModuleDef("module://aleth.io/block/txs", blockTxsModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/block/advanced", blockAdvancedModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/block/logs-bloom", blockLogsBloomModule);
+        api.addDataAdapter("adapter://aleth.io/block-range/summary", new BlockListAdapter(dataSource));
     },
 
     getAvailableLocales() {
