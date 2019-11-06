@@ -6,11 +6,10 @@ import { ITheme } from "@alethio/explorer-ui/lib/ITheme";
 import { withTheme } from "@alethio/explorer-ui/lib/styled-components";
 import { BlockSummaryTooltipText } from "./BlockSummaryTooltipText";
 import { roundPercentages } from "app/helper/roundPercentages";
-import { ITxLite } from "app/shared/data/tx/lite/ITxLite";
-import { isFullTxLite } from "app/shared/data/tx/lite/isFullTxLite";
+import { ITxLiteFull } from "app/shared/data/tx/lite/ITxLiteFull";
 
 export interface IBlockSummaryProps {
-    transactions: ITxLite[];
+    transactions: ITxLiteFull[];
     translation: ITranslation;
     theme?: ITheme;
 }
@@ -30,9 +29,7 @@ class $BlockSummary extends React.PureComponent<IBlockSummaryProps> {
 
         let countPerType = new Map<TxType, number>();
         this.props.transactions.forEach(tx => {
-            if (isFullTxLite(tx)) {
-                countPerType.set(tx.type, (countPerType.get(tx.type) || 0) + 1);
-            }
+            countPerType.set(tx.type, (countPerType.get(tx.type) || 0) + 1);
         });
         let totalCount = [...countPerType.values()].reduce((acc, current) => acc + current, 0);
 

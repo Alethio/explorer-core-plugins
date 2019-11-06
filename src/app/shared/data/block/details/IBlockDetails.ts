@@ -32,7 +32,7 @@ export interface IBlockDetails extends IBlockCommonDetails {
 
     inconsistentWarning?: string;
 
-    /** Number of contract messages */
+    /** Number of contract messages - not available for Memento */
     contractMsgCount?: number;
 
     /** txTrie - not present for genesis block */
@@ -41,7 +41,7 @@ export interface IBlockDetails extends IBlockCommonDetails {
     receiptsTrie?: string;
 
     beneficiaryName?: string;
-    /** Miner reward (in wei) */
+    /** Miner reward (in wei) - not present for Memento */
     beneficiaryReward?: BigNumber;
     /** How much time it took to mine the block (in seconds) */
     mineTime?: number;

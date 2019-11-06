@@ -18,6 +18,7 @@ import { IBlockDetails } from "app/shared/data/block/details/IBlockDetails";
 import { BlockBasicSlotType } from "./BlockBasicSlotType";
 import { BlockSummary } from "./blockSummary/BlockSummary";
 import { isFullTxLite } from "app/shared/data/tx/lite/isFullTxLite";
+import { ITxLiteFull } from "app/shared/data/tx/lite/ITxLiteFull";
 
 export interface IBlockBasicProps {
     blockDetails: IBlockDetails;
@@ -105,7 +106,7 @@ export class BlockBasic extends React.PureComponent<IBlockBasicProps> {
                 <LayoutRowItem fullRow autoHeight>
                     <Label>{tr.get("blockView.content.blockSummary.label")}</Label>
                     <div style={{maxWidth: 500, flex: "1 1 auto"}}>
-                        <BlockSummary transactions={block.transactions} translation={tr}/>
+                        <BlockSummary transactions={block.transactions as ITxLiteFull[]} translation={tr}/>
                     </div>
                 </LayoutRowItem>
             </LayoutRow>

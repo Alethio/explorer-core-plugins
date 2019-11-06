@@ -20,8 +20,6 @@
     "general.hash": "Hash",
     "general.from": "From",
     "general.to": "To",
-    "general.creates": "Creates",
-    "general.refunds": "Refunds",
     "general.valueEth": "Value (%s)",
     "general.feeEth": "Fee (%s)",
     "general.gasUsed": "Gas used",
@@ -31,19 +29,6 @@
 
     "general.loadingText": "Data is being loaded.<br />Please be patient, it won't be long now ;)",
     "general.noData.text": "It seems there is no data to display.",
-
-    "general.tx.type.Call": "CallTX",
-    "general.tx.type.Value": "ValueTX",
-    "general.tx.type.Create": "CreateTX",
-    "general.tx.type.Unknown": "TX",
-
-    "general.contractMsg.type.Call": "CallCM",
-    "general.contractMsg.type.Create": "CreateCM",
-    "general.contractMsg.type.Value": "ValueCM",
-    "general.contractMsg.type.SelfDestruct": "SelfdestructCM",
-
-    "general.contractMsg.value": "Value",
-    "general.contractMsg.refundValue": "Refund value",
 
     "general.grid.header.type.label": "Type",
     "general.grid.footer.loadMore.label": "Load More",
@@ -56,16 +41,10 @@
     "blockView.content.inconsistentWarning.text": "Due to a bug we encountered in Parity, we were not able to fully process this block so data might be temporarily incomplete. We are working on fixing this",
     "blockView.content.parentHash.label": "Parent",
     "blockView.content.blockSize.label": "Size",
-    "blockView.content.blockSummary.label": "Block Summary",
-    "blockView.content.blockSummary.txs.label": "%d TXs",
     "blockView.content.uncles.label": "Uncles",
-    "blockView.content.contractMessages.label": "Includes",
-    "blockView.content.contractMessages.text": "Contract messages",
     "blockView.content.txTrie.label": "Tx trie",
     "blockView.content.sha3Uncles.label": "SHA3Uncles",
     "blockView.content.beneficiary.label": "Mined by",
-    "blockView.content.beneficiary.mineTime": "in %d s",
-    "blockView.content.beneficiary.reward.label": "Reward",
     "blockView.content.difficulty.label": "Difficulty",
     "blockView.content.extraData.label": "Extra data",
     "blockView.content.mixHash.label": "Mix hash",
@@ -75,15 +54,12 @@
     "blockView.content.transactions.label": "Transactions",
     "blockView.content.transactionsHighlight.label": "Highlight",
     "blockView.content.transactionsHighlight.value.label": "Value",
-    "blockView.content.transactionsHighlight.contractMessageCount.label": "Contract Message Count",
-    "blockView.content.transactionsHighlight.contractCreationCount.label": "Contract Creation Count",
     "txTooltip.value.label": "Value",
 
     "blockView.content.basic.help": "See basic information about the block - its number, time since it was mined, uncles and parent (yes, the whole family) and the percentage of transactions in this block which called on a smart contract.",
     "blockView.content.transactions.help": "Get an in-depth view for all transactions within this block. Hover over the circles to see transaction data: the Tx address, its value and wallet addresses involved. The size of the circles varies depending on their relative value, compared to other transactions in the block.<br />To switch from graphic to table view, click on the striped button at the top.",
     "blockView.content.advanced.help": "See details about the miner who processed this block: duration, gas cost, difficulty and reward value.",
     "blockView.content.logsBloom.help": "This is a matrix view of all transactions from this block. Highlighted transactions indicate the presence of a log. Find out more about logs bloom <a href=\"https://ethon.consensys.net/prop-blocklogsbloom.html\" rel=\"noopener noreferrer\">here</a>.",
-
 
     "accountView.content.transferDirection.incoming.tooltip": "Incoming",
     "accountView.content.transferDirection.outgoing.tooltip": "Outgoing",
