@@ -2,7 +2,7 @@ import * as React from "react";
 import { LayoutRow } from "@alethio/ui/lib/layout/content/LayoutRow";
 import { LayoutRowItem } from "@alethio/ui/lib/layout/content/LayoutRowItem";
 import { Label } from "@alethio/ui/lib/data/Label";
-import { TxType } from "app/eth-extended/data/tx/TxType";
+import { TxType } from "app/shared/data/tx/TxType";
 import { isFullTxDetails } from "app/eth-extended/data/tx/details/isFullTxDetails";
 import { DecodedPayload } from "./DecodedPayload";
 import { HexData } from "@alethio/ui/lib/data/hex/HexData";

@@ -1,4 +1,4 @@
-import { IBlockDetails } from "app/eth-extended/data/block/details/IBlockDetails";
+import { IBlockDetails } from "app/shared/data/block/details/IBlockDetails";
 import { IModuleDef } from "plugin-api/IModuleDef";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { IBlockDetailsProps } from "./component/BlockDetails";

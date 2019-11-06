@@ -1,5 +1,5 @@
 import { AlethioDataSource } from "app/eth-extended/AlethioDataSource";
-import { BlockDetailsStoreFactory } from "app/eth-extended/data/block/details/BlockDetailsStoreFactory";
+import { BlockDetailsStoreFactory } from "app/shared/data/block/details/BlockDetailsStoreFactory";
 import { BlockValueStoreFactory } from "app/eth-extended/data/block/value/BlockValueStoreFactory";
 import { TxDetailsStoreFactory } from "app/eth-extended/data/tx/details/TxDetailsStoreFactory";
 import { TokenTransferStoreFactory } from "app/eth-extended/data/token/transfer/TokenTransferStoreFactory";

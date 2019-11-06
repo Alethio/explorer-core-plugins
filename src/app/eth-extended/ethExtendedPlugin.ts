@@ -1,7 +1,7 @@
 import { IPlugin } from "plugin-api";
 import { AlethioDataSourceFactory } from "./AlethioDataSourceFactory";
-import { BlockDetailsAdapter } from "./adapter/block/BlockDetailsAdapter";
-import { EthPriceAdapter } from "./adapter/EthPriceAdapter";
+import { BlockDetailsAdapter } from "../shared/adapter/block/BlockDetailsAdapter";
+import { EthPriceAdapter } from "../shared/adapter/EthPriceAdapter";
 import { BlockConfirmationsAdapter } from "../shared/adapter/block/BlockConfirmationsAdapter";
 import { BlockListAdapter } from "../shared/adapter/block/BlockListAdapter";
 import { LatestBlockNumberAdapter } from "../shared/adapter/block/LatestBlockNumberAdapter";
@@ -32,7 +32,7 @@ import { BlockAvgTxTimeInPoolAdapter } from "./adapter/block/BlockAvgTxTimeInPoo
 import { blockDetailsModule } from "./module/block/blockDetails/blockDetailsModule";
 import { unclePage } from "./page/uncle/unclePage";
 import { uncleDetailsModule } from "app/shared/module/uncle/uncleDetails/uncleDetailsModule";
-import { blockTxsModule } from "./module/block/blockTxs/blockTxsModule";
+import { blockTxsModule } from "../shared/module/block/blockTxs/blockTxsModule";
 import { txParentBlockContext } from "./context/txParentBlockContext";
 import { txParentBlockOptionalContext } from "./context/txParentBlockOptionalContext";
 import { txDetailsModule } from "./module/tx/txDetails/txDetailsModule";
@@ -41,9 +41,9 @@ import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { dashboardPage } from "./page/dashboard/dashboardPage";
 import { uncleByHashContextType } from "./context/uncleByHashContextType";
 import { EthExtendedPluginConfig } from "./EthExtendedPluginConfig";
-import { blockBasicModule } from "app/eth-extended/module/block/blockBasic/blockBasicModule";
-import { blockAdvancedModule } from "app/eth-extended/module/block/blockAdvanced/blockAdvancedModule";
-import { blockLogsBloomModule } from "app/eth-extended/module/block/blockLogsBloom/blockLogsBloomModule";
+import { blockBasicModule } from "app/shared/module/block/blockBasic/blockBasicModule";
+import { blockAdvancedModule } from "app/shared/module/block/blockAdvanced/blockAdvancedModule";
+import { blockLogsBloomModule } from "app/shared/module/block/blockLogsBloom/blockLogsBloomModule";
 import { txBasicModule } from "app/eth-extended/module/tx/txBasic/txBasicModule";
 import { txAdvancedModule } from "app/eth-extended/module/tx/txAdvanced/txAdvancedModule";
 

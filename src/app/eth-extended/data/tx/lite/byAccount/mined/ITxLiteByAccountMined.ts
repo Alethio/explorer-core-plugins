@@ -1,4 +1,4 @@
-import { TxType } from "app/eth-extended/data/tx/TxType";
+import { TxType } from "app/shared/data/tx/TxType";
 import { ITxLiteByAccountBase } from "app/shared/data/tx/byAccount/ITxLiteByAccountBase";
 import { BigNumber } from "app/util/BigNumber";
 

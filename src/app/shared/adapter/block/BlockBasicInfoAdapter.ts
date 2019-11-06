@@ -6,7 +6,7 @@ import { IBlockContext } from "app/shared/context/IBlockContext";
 import { IBlockBasicInfo } from "app/shared/data/block/IBlockBasicInfo";
 import { ITxBasicInfo } from "app/shared/data/tx/ITxBasicInfo";
 import { ITxDetails } from "app/eth-lite/data/tx/details/ITxDetails";
-import { ITxLite } from "app/eth-extended/data/tx/ITxLite";
+import { ITxLite } from "app/shared/data/tx/lite/ITxLite";
 
 export class BlockBasicInfoAdapter implements IDataAdapter<IBlockContext, IBlockBasicInfo> {
     contextType = blockContextType;

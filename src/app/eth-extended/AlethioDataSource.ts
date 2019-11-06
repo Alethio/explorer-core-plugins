@@ -1,6 +1,6 @@
 import { PendingPoolStore } from "app/eth-extended/module/dashboard/charts/data/PendingPoolStore";
 import { BlockStateStore } from "app/shared/data/BlockStateStore";
-import { BlockDetailsStore } from "app/eth-extended/data/block/details/BlockDetailsStore";
+import { BlockDetailsStore } from "app/shared/data/block/details/BlockDetailsStore";
 import { BlockValueStore } from "app/shared/data/block/value/BlockValueStore";
 import { BlockTxTimeInPoolStore } from "app/eth-extended/data/block/txTimeInPool/BlockTxTimeInPoolStore";
 import { TxDetailsStore } from "app/eth-extended/data/tx/details/TxDetailsStore";

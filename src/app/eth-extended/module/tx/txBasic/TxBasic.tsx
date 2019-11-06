@@ -9,7 +9,7 @@ import { ContractIcon } from "@alethio/ui/lib/icon/ContractIcon";
 import { LayoutSection } from "@alethio/ui/lib/layout/content/LayoutSection";
 import { weiToEth } from "app/util/wei";
 import { ITranslation } from "plugin-api/ITranslation";
-import { TxType } from "app/eth-extended/data/tx/TxType";
+import { TxType } from "app/shared/data/tx/TxType";
 import { ITxDetails } from "app/eth-extended/data/tx/details/ITxDetails";
 import { isPendingTxDetails } from "app/eth-extended/data/tx/details/isPendingTxDetails";
 import { TxHashBox } from "@alethio/explorer-ui/lib/box/tx/TxHashBox";

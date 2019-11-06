@@ -1,4 +1,4 @@
-import { TxType } from "app/eth-extended/data/tx/TxType";
+import { TxType } from "app/shared/data/tx/TxType";
 import { TxStatus } from "app/eth-extended/data/tx/TxStatus";
 import { ITxDetailsBase } from "app/eth-extended/data/tx/details/ITxDetailsBase";
 
