@@ -1,7 +1,7 @@
 import { IPlugin } from "plugin-api";
 import { AlethioDataSourceFactory } from "./AlethioDataSourceFactory";
 import { BlockDetailsAdapter } from "../shared/adapter/block/BlockDetailsAdapter";
-import { EthPriceAdapter } from "../shared/adapter/EthPriceAdapter";
+import { EthPriceAdapter } from "./adapter/EthPriceAdapter";
 import { BlockConfirmationsAdapter } from "../shared/adapter/block/BlockConfirmationsAdapter";
 import { BlockListAdapter } from "../shared/adapter/block/BlockListAdapter";
 import { LatestBlockNumberAdapter } from "../shared/adapter/block/LatestBlockNumberAdapter";

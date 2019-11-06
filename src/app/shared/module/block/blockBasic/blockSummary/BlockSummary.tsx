@@ -6,8 +6,8 @@ import { ITheme } from "@alethio/explorer-ui/lib/ITheme";
 import { withTheme } from "@alethio/explorer-ui/lib/styled-components";
 import { BlockSummaryTooltipText } from "./BlockSummaryTooltipText";
 import { roundPercentages } from "app/helper/roundPercentages";
-import {ITxLite} from "app/shared/data/tx/lite/ITxLite";
-import {isFullTxLite} from "app/shared/data/tx/lite/isFullTxLite";
+import { ITxLite } from "app/shared/data/tx/lite/ITxLite";
+import { isFullTxLite } from "app/shared/data/tx/lite/isFullTxLite";
 
 export interface IBlockSummaryProps {
     transactions: ITxLite[];

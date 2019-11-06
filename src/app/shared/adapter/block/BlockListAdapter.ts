@@ -4,7 +4,7 @@ import { IBlockListContext } from "app/shared/context/IBlockListContext";
 import { blockListContextType } from "app/shared/context/blockListContextType";
 import { Web3DataSource } from "app/eth-lite/Web3DataSource";
 import { IBlockTxCount } from "app/shared/data/block/value/IBlockTxCount";
-import {MementoDataSource} from "app/eth-memento/MementoDataSource";
+import { MementoDataSource } from "app/eth-memento/MementoDataSource";
 
 export class BlockListAdapter implements IDataAdapter<IBlockListContext, (IBlockTxCount | undefined)[]> {
     contextType = blockListContextType;

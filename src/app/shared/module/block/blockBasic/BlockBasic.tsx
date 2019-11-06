@@ -17,7 +17,7 @@ import { ITranslation } from "plugin-api/ITranslation";
 import { IBlockDetails } from "app/shared/data/block/details/IBlockDetails";
 import { BlockBasicSlotType } from "./BlockBasicSlotType";
 import { BlockSummary } from "./blockSummary/BlockSummary";
-import {isFullTxLite} from "app/shared/data/tx/lite/isFullTxLite";
+import { isFullTxLite } from "app/shared/data/tx/lite/isFullTxLite";
 
 export interface IBlockBasicProps {
     blockDetails: IBlockDetails;

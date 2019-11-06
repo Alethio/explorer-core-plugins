@@ -4,7 +4,7 @@ import { IBlockDetails } from "app/shared/data/block/details/IBlockDetails";
 import { NotFoundError } from "app/shared/data/NotFoundError";
 import { blockContextType } from "app/shared/context/blockContextType";
 import { IBlockContext } from "../../context/IBlockContext";
-import {MementoDataSource} from "app/eth-memento/MementoDataSource";
+import { MementoDataSource } from "app/eth-memento/MementoDataSource";
 
 export class BlockDetailsAdapter implements IDataAdapter<IBlockContext, IBlockDetails> {
     contextType = blockContextType;

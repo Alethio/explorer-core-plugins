@@ -1,4 +1,4 @@
-import {BigNumber} from "app/util/BigNumber";
+import { BigNumber } from "app/util/BigNumber";
 
 export interface ITxLiteBase {
     index: number;

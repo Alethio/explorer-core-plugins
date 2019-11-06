@@ -1,6 +1,6 @@
 import { HighlightFields } from "@alethio/explorer-ui/lib/blockTxs/txHighlight/HighlightFields";
 import { HighlightFieldKey } from "./HighlightFieldKey";
-import {ITxLiteBase} from "app/shared/data/tx/lite/ITxLiteBase";
+import { ITxLiteBase } from "app/shared/data/tx/lite/ITxLiteBase";
 
 export class HighlightFieldsMemento extends HighlightFields<ITxLiteBase, HighlightFieldKey> {
     constructor() {

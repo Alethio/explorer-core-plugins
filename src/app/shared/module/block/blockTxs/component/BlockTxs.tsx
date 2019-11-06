@@ -1,27 +1,27 @@
 import React from "react";
-import {observer} from "mobx-react";
-import {LayoutRow} from "@alethio/ui/lib/layout/content/LayoutRow";
-import {LayoutRowItem} from "@alethio/ui/lib/layout/content/LayoutRowItem";
-import {Label} from "@alethio/ui/lib/data/Label";
-import {Spacer} from "@alethio/ui/lib/layout/Spacer";
-import {TxCountBox} from "@alethio/explorer-ui/lib/box/block/TxCountBox";
-import {ITranslation} from "plugin-api/ITranslation";
-import {TxHighlightSelector} from "@alethio/explorer-ui/lib/blockTxs/txHighlight/TxHighlightSelector";
-import {ViewSelectorBox} from "@alethio/explorer-ui/lib/blockTxs/ViewSelectorBox";
+import { observer } from "mobx-react";
+import { LayoutRow } from "@alethio/ui/lib/layout/content/LayoutRow";
+import { LayoutRowItem } from "@alethio/ui/lib/layout/content/LayoutRowItem";
+import { Label } from "@alethio/ui/lib/data/Label";
+import { Spacer } from "@alethio/ui/lib/layout/Spacer";
+import { TxCountBox } from "@alethio/explorer-ui/lib/box/block/TxCountBox";
+import { ITranslation } from "plugin-api/ITranslation";
+import { TxHighlightSelector } from "@alethio/explorer-ui/lib/blockTxs/txHighlight/TxHighlightSelector";
+import { ViewSelectorBox } from "@alethio/explorer-ui/lib/blockTxs/ViewSelectorBox";
 import {
     BlockTxsStateFactory as ExtendedBlockTxsStateFactory
 } from "app/eth-extended/module/block/blockTxs/BlockTxsStateFactory";
 import {
     BlockTxsStateFactory as MementoBlockTxsStateFactory
 } from "app/eth-memento/module/block/blockTxs/BlockTxsStateFactory";
-import {BlockTxsState} from "app/eth-extended/module/block/blockTxs/BlockTxsState";
-import {ITxLite} from "app/shared/data/tx/lite/ITxLite";
-import {TxTooltipContent} from "./TxTooltipContent";
-import {TxsHeatMap} from "@alethio/explorer-ui/lib/blockTxs/txHeatMap/TxsHeatMap";
-import {TxsGridFull} from "app/eth-extended/module/block/blockTxs/TxsGridFull";
-import {minMaxLogScale} from "app/helper/minMaxLogScale";
-import {isFullTxLite} from "app/shared/data/tx/lite/isFullTxLite";
-import {TxsGridMemento} from "app/eth-memento/module/block/blockTxs/TxsGridMemento";
+import { BlockTxsState } from "app/eth-extended/module/block/blockTxs/BlockTxsState";
+import { ITxLite } from "app/shared/data/tx/lite/ITxLite";
+import { TxTooltipContent } from "./TxTooltipContent";
+import { TxsHeatMap } from "@alethio/explorer-ui/lib/blockTxs/txHeatMap/TxsHeatMap";
+import { TxsGridFull } from "app/eth-extended/module/block/blockTxs/TxsGridFull";
+import { minMaxLogScale } from "app/helper/minMaxLogScale";
+import { isFullTxLite } from "app/shared/data/tx/lite/isFullTxLite";
+import { TxsGridMemento } from "app/eth-memento/module/block/blockTxs/TxsGridMemento";
 
 const HIGHLIGHT_THRESHOLD = 80;
 

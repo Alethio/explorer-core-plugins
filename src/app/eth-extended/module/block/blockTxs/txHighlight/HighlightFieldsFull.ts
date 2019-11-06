@@ -1,6 +1,6 @@
 import { HighlightFields } from "@alethio/explorer-ui/lib/blockTxs/txHighlight/HighlightFields";
 import { HighlightFieldKey } from "./HighlightFieldKey";
-import {ITxLiteFull} from "app/shared/data/tx/lite/ITxLiteFull";
+import { ITxLiteFull } from "app/shared/data/tx/lite/ITxLiteFull";
 
 export class HighlightFieldsFull extends HighlightFields<ITxLiteFull, HighlightFieldKey> {
     constructor() {

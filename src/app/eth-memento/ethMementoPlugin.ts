@@ -1,14 +1,14 @@
 import { IPlugin } from "plugin-api/IPlugin";
 import { accountTxsModule } from "app/eth-memento/module/account/accountTxsModule";
 import { EthMementoPluginConfig } from "app/eth-memento/EthMementoPluginConfig";
-import {MementoDataSourceFactory} from "app/eth-memento/MementoDataSourceFactory";
-import {BlockDetailsAdapter} from "app/shared/adapter/block/BlockDetailsAdapter";
-import {blockBasicModule} from "app/shared/module/block/blockBasic/blockBasicModule";
-import {blockTxsModule} from "app/shared/module/block/blockTxs/blockTxsModule";
-import {blockAdvancedModule} from "app/shared/module/block/blockAdvanced/blockAdvancedModule";
-import {blockLogsBloomModule} from "app/shared/module/block/blockLogsBloom/blockLogsBloomModule";
-import {BlockListAdapter} from "app/shared/adapter/block/BlockListAdapter";
-import {EthPriceAdapter} from "app/shared/adapter/EthPriceAdapter";
+import { MementoDataSourceFactory } from "app/eth-memento/MementoDataSourceFactory";
+import { BlockDetailsAdapter } from "app/shared/adapter/block/BlockDetailsAdapter";
+import { blockBasicModule } from "app/shared/module/block/blockBasic/blockBasicModule";
+import { blockTxsModule } from "app/shared/module/block/blockTxs/blockTxsModule";
+import { blockAdvancedModule } from "app/shared/module/block/blockAdvanced/blockAdvancedModule";
+import { blockLogsBloomModule } from "app/shared/module/block/blockLogsBloom/blockLogsBloomModule";
+import { BlockListAdapter } from "app/shared/adapter/block/BlockListAdapter";
+import { NullEthPriceAdapter } from "app/eth-memento/adapter/NullEthPriceAdapter";
 
 const ethMementoPlugin: IPlugin = {
     init(configData: unknown, api, logger, publicPath) {
@@ -27,7 +27,7 @@ const ethMementoPlugin: IPlugin = {
         }));
 
         api.addDataAdapter("adapter://aleth.io/full/block/details", new BlockDetailsAdapter(dataSource));
-        api.addDataAdapter("adapter://aleth.io/prices/latest", new EthPriceAdapter(dataSource, logger));
+        api.addDataAdapter("adapter://aleth.io/prices/latest", new NullEthPriceAdapter());
         api.addModuleDef("module://aleth.io/block/basic", blockBasicModule);
         api.addModuleDef("module://aleth.io/block/txs", blockTxsModule(ethSymbol));
         api.addModuleDef("module://aleth.io/block/advanced", blockAdvancedModule(ethSymbol));

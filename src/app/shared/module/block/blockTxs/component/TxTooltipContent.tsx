@@ -10,7 +10,7 @@ import { ITranslation } from "plugin-api/ITranslation";
 import { TxType } from "app/shared/data/tx/TxType";
 import { weiToEth } from "app/util/wei";
 import { TxTooltipContentWrapper } from "@alethio/explorer-ui/lib/blockTxs/TxTooltipContentWrapper";
-import {isFullTxLite} from "app/shared/data/tx/lite/isFullTxLite";
+import { isFullTxLite } from "app/shared/data/tx/lite/isFullTxLite";
 
 export interface ITxTooltipContentProps {
     tx: ITxLite;

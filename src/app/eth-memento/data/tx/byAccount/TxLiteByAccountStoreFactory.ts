@@ -1,11 +1,11 @@
-import {EthMementoPluginConfig} from "app/eth-memento/EthMementoPluginConfig";
-import {FifoCache} from "app/util/cache/FifoCache";
-import {HttpApi} from "app/shared/data/HttpApi";
-import {HttpRequest} from "@puzzl/browser/lib/network/HttpRequest";
-import {TxLiteByAccountStore} from "app/eth-memento/data/tx/byAccount/TxLiteByAccountStore";
-import {ITxLiteByAccount} from "app/eth-memento/data/tx/byAccount/ITxLiteByAccount";
-import {TxLiteByAccountApi} from "app/eth-memento/data/tx/byAccount/TxLiteByAccountApi";
-import {TxLiteByAccountReader} from "app/eth-memento/data/tx/byAccount/TxLiteByAccountReader";
+import { EthMementoPluginConfig } from "app/eth-memento/EthMementoPluginConfig";
+import { FifoCache } from "app/util/cache/FifoCache";
+import { HttpApi } from "app/shared/data/HttpApi";
+import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
+import { TxLiteByAccountStore } from "app/eth-memento/data/tx/byAccount/TxLiteByAccountStore";
+import { ITxLiteByAccount } from "app/eth-memento/data/tx/byAccount/ITxLiteByAccount";
+import { TxLiteByAccountApi } from "app/eth-memento/data/tx/byAccount/TxLiteByAccountApi";
+import { TxLiteByAccountReader } from "app/eth-memento/data/tx/byAccount/TxLiteByAccountReader";
 
 const CACHE_SIZE = 5;
 

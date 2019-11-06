@@ -3,7 +3,6 @@ import { IDataAdapter } from "plugin-api/IDataAdapter";
 import { ILogger } from "plugin-api/ILogger";
 import { EthPriceWatcher } from "app/eth-extended/adapter/watcher/EthPriceWatcher";
 import { blockContextType } from "app/shared/context/blockContextType";
-import {MementoDataSource} from "app/eth-memento/MementoDataSource";
 
 export interface IEthPriceContext {
     blockNumber: number;
@@ -12,7 +11,7 @@ export interface IEthPriceContext {
 export class EthPriceAdapter implements IDataAdapter<IEthPriceContext, number> {
     contextType = blockContextType;
 
-    constructor(private dataSource: AlethioDataSource | MementoDataSource, private logger: ILogger) {
+    constructor(private dataSource: AlethioDataSource, private logger: ILogger) {
 
     }
 

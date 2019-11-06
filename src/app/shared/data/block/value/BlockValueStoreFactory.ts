@@ -7,7 +7,7 @@ import { BlockValueStore } from "app/shared/data/block/value/BlockValueStore";
 import { BlockRangeStore } from "app/shared/data/block/value/BlockRangeStore";
 import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 import { IBlockTxCount } from "app/shared/data/block/value/IBlockTxCount";
-import {EthMementoPluginConfig} from "app/eth-memento/EthMementoPluginConfig";
+import { EthMementoPluginConfig } from "app/eth-memento/EthMementoPluginConfig";
 
 /** Number of cached pages */
 const CACHE_SIZE = 10;
