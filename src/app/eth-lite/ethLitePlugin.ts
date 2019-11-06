@@ -42,7 +42,6 @@ const ethLitePlugin: IPlugin = {
             new LatestBlockNumberAdapter(dataSource.stores.blockStateStore));
         api.addDataAdapter("adapter://aleth.io/block/basic", new BlockBasicInfoAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/lite/block/details", new BlockDetailsAdapter(dataSource));
-        api.addDataAdapter("adapter://aleth.io/block/details", new BlockDetailsAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/block-range/summary", new BlockListAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/block/confirmations",
             new BlockConfirmationsAdapter(dataSource.stores.blockStateStore));

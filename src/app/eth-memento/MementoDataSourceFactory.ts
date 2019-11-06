@@ -13,16 +13,12 @@ export class MementoDataSourceFactory {
         let blockValueStore = new BlockValueStoreFactory(config).create();
         let txByAccountStore = new TxLiteByAccountStoreFactory(config).create();
 
-        // no need for prices
-        let pricesStore;
-
         let mementoDataSource = new MementoDataSource(
             {
                 blockStateStore,
                 blockDetailsStore,
                 blockValueStore,
-                txByAccountStore,
-                pricesStore
+                txByAccountStore
             }
         );
 

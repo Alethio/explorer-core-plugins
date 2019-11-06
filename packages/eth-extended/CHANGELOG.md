@@ -1,3 +1,7 @@
+# unreleased
+- **Breaking change** Removed deprecated `module://aleth.io/block/details` & `adapter://aleth.io/block/details`
+- **Breaking change** Renamed `adapter://aleth.io/extended/block/details` to `adapter://aleth.io/full/block/details`
+
 # v4.0.3
 
 - (Visual bug) Fix account summary accordion arrow offset

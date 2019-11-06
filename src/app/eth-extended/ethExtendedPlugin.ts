@@ -29,7 +29,6 @@ import { accountDetailsModule } from "./module/account/accountDetails/accountDet
 import { avgTimeInPoolChartModule } from "./module/dashboard/charts/avgTimeInPoolChartModule";
 import { propagationChartModule } from "./module/dashboard/charts/propagationChartModule";
 import { BlockAvgTxTimeInPoolAdapter } from "./adapter/block/BlockAvgTxTimeInPoolAdapter";
-import { blockDetailsModule } from "./module/block/blockDetails/blockDetailsModule";
 import { unclePage } from "./page/uncle/unclePage";
 import { uncleDetailsModule } from "app/shared/module/uncle/uncleDetails/uncleDetailsModule";
 import { blockTxsModule } from "../shared/module/block/blockTxs/blockTxsModule";
@@ -59,15 +58,13 @@ const ethExtendedPlugin: IPlugin = {
         api.addDataSource("source://aleth.io/api", dataSource);
 
         api.addDataAdapter("adapter://aleth.io/block/basic", new BlockBasicInfoAdapter(dataSource));
-        api.addDataAdapter("adapter://aleth.io/extended/block/details", new BlockDetailsAdapter(dataSource));
-        api.addDataAdapter("adapter://aleth.io/block/details", new BlockDetailsAdapter(dataSource));
+        api.addDataAdapter("adapter://aleth.io/full/block/details", new BlockDetailsAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/prices/latest", new EthPriceAdapter(dataSource, logger));
         api.addDataAdapter("adapter://aleth.io/block/confirmations",
             new BlockConfirmationsAdapter(dataSource.stores.blockStateStore));
         api.addDataAdapter("adapter://aleth.io/block-range/summary", new BlockListAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/block/latestNo",
             new LatestBlockNumberAdapter(dataSource.stores.blockStateStore));
-        api.addModuleDef("module://aleth.io/block/details", blockDetailsModule(ethSymbol));
         api.addModuleDef("module://aleth.io/block/basic", blockBasicModule);
         api.addModuleDef("module://aleth.io/block/txs", blockTxsModule(ethSymbol));
         api.addModuleDef("module://aleth.io/block/advanced", blockAdvancedModule(ethSymbol));
