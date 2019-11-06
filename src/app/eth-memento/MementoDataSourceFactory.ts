@@ -4,7 +4,7 @@ import {BlockDetailsStoreFactory} from "app/shared/data/block/details/BlockDetai
 import {MementoDataSource} from "app/eth-memento/MementoDataSource";
 import {TxLiteByAccountStoreFactory} from "app/eth-memento/data/tx/byAccount/TxLiteByAccountStoreFactory";
 import {BlockStateStore} from "app/shared/data/BlockStateStore";
-import {BlockValueStoreFactory} from "app/eth-extended/data/block/value/BlockValueStoreFactory";
+import {BlockValueStoreFactory} from "app/shared/data/block/value/BlockValueStoreFactory";
 
 export class MementoDataSourceFactory {
     create(config: EthMementoPluginConfig, logger: ILogger) {

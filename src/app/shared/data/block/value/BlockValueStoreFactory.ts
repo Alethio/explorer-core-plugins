@@ -1,8 +1,8 @@
 import { FifoCache } from "app/util/cache/FifoCache";
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
 import { HttpApi } from "app/shared/data/HttpApi";
-import { BlockValueApi } from "app/eth-extended/data/block/value/BlockValueApi";
-import { BlockValueReader } from "app/eth-extended/data/block/value/BlockValueReader";
+import { BlockValueApi } from "app/shared/data/block/value/BlockValueApi";
+import { BlockValueReader } from "app/shared/data/block/value/BlockValueReader";
 import { BlockValueStore } from "app/shared/data/block/value/BlockValueStore";
 import { BlockRangeStore } from "app/shared/data/block/value/BlockRangeStore";
 import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";

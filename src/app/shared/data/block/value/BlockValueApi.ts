@@ -1,5 +1,5 @@
 import { HttpApi } from "app/shared/data/HttpApi";
-import { BlockValueReader } from "app/eth-extended/data/block/value/BlockValueReader";
+import { BlockValueReader } from "app/shared/data/block/value/BlockValueReader";
 import { IBlockRangeApi } from "app/shared/data/block/value/IBlockRangeApi";
 import { IBlockTxCount } from "app/shared/data/block/value/IBlockTxCount";
 
