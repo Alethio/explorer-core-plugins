@@ -2,10 +2,7 @@ interface IConfigData {
     /** Customizable ETH symbol (e.g. GöETH) */
     ethSymbol?: string;
 
-    accountTxApiUrlMask: string;
-
-    BLOCK_API_URL_MASK: string;
-    BLOCK_VALUE_API_URL_MASK: string;
+    apiBasePath: string;
 }
 
 export class EthMementoPluginConfig {
@@ -24,20 +21,20 @@ export class EthMementoPluginConfig {
      * Url for account / tx api endpoint (replace %s with account hash)
      */
     getAccountTxApiUrlMask() {
-        return this.data.accountTxApiUrlMask;
+        return this.data.apiBasePath + "/account/%s/txs";
     }
 
     /**
      * URL for block api endpoint (replace %d with blockId)
      */
     getBlockApiUrlMask() {
-        return this.data.BLOCK_API_URL_MASK;
+        return this.data.apiBasePath + "/block/%d";
     }
 
     /**
      * URL for block value api endpoint (replace %d, %d with range start,end)
      */
     getBlockValueApiUrlMask() {
-        return this.data.BLOCK_VALUE_API_URL_MASK;
+        return this.data.apiBasePath + "/block-range/%d/%d";
     }
 }
