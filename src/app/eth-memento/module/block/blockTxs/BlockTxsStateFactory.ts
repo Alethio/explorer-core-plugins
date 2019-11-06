@@ -1,5 +1,5 @@
 import { GridSortingOptions } from "@alethio/ui/lib/control/grid/state/GridSortingOptions";
-import { BlockTxsState } from "./BlockTxsState";
+import { BlockTxsState } from "app/eth-memento/module/block/blockTxs/BlockTxsState";
 import { TxsViewMode } from "@alethio/explorer-ui/lib/blockTxs/TxsViewMode";
 import { HighlightFieldsMemento } from "app/eth-memento/module/block/blockTxs/txHighlight/HighlightFieldsMemento";
 

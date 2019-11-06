@@ -3,7 +3,7 @@ import { IGridFieldRenderer } from "@alethio/ui/lib/control/grid/state/IGridFiel
 import { ITranslation } from "plugin-api/ITranslation";
 import { TxType } from "app/shared/data/tx/TxType";
 import { ITxLite } from "app/shared/data/tx/lite/ITxLite";
-import { TxHighlight } from "./TxHighlight";
+import { TxHighlight } from "app/shared/module/block/blockTxs/txsGrid/TxHighlight";
 import { ITxLiteFull } from "app/shared/data/tx/lite/ITxLiteFull";
 
 export class TxHighlightRenderer implements IGridFieldRenderer<ITxLiteFull> {

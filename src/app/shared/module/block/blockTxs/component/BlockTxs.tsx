@@ -18,10 +18,9 @@ import { BlockTxsState } from "app/eth-extended/module/block/blockTxs/BlockTxsSt
 import { ITxLite } from "app/shared/data/tx/lite/ITxLite";
 import { TxTooltipContent } from "./TxTooltipContent";
 import { TxsHeatMap } from "@alethio/explorer-ui/lib/blockTxs/txHeatMap/TxsHeatMap";
-import { TxsGridFull } from "app/eth-extended/module/block/blockTxs/TxsGridFull";
+import { TxsGrid } from "app/shared/module/block/blockTxs/TxsGrid";
 import { minMaxLogScale } from "app/helper/minMaxLogScale";
 import { isFullTxLite } from "app/shared/data/tx/lite/isFullTxLite";
-import { TxsGridMemento } from "app/eth-memento/module/block/blockTxs/TxsGridMemento";
 
 const HIGHLIGHT_THRESHOLD = 80;
 
@@ -93,26 +92,15 @@ export class BlockTxs extends React.Component<IBlockTxsProps> {
                     </LayoutRowItem>
                 </LayoutRow>
                 :
-                    isFullTxLite(txs[0]) ?
-                    <TxsGridFull
-                        transactions={txs}
-                        highlightThreshold={HIGHLIGHT_THRESHOLD}
-                        highlightDataSelector={txsHighlightFields.getSelectedField().getData}
-                        gridSortingOptions={txsGridSortingOptions}
-                        locale={locale}
-                        translation={tr}
-                        ethSymbol={ethSymbol}
-                    />
-                    :
-                    <TxsGridMemento
-                        transactions={txs}
-                        highlightThreshold={HIGHLIGHT_THRESHOLD}
-                        highlightDataSelector={txsHighlightFields.getSelectedField().getData}
-                        gridSortingOptions={txsGridSortingOptions}
-                        locale={locale}
-                        translation={tr}
-                        ethSymbol={ethSymbol}
-                    />
+                <TxsGrid
+                    transactions={txs}
+                    highlightThreshold={HIGHLIGHT_THRESHOLD}
+                    highlightDataSelector={txsHighlightFields.getSelectedField().getData}
+                    gridSortingOptions={txsGridSortingOptions}
+                    locale={locale}
+                    translation={tr}
+                    ethSymbol={ethSymbol}
+                />
                 }
                 <Spacer height="64px" />
             </>

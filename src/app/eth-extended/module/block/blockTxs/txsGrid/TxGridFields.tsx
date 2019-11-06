@@ -4,9 +4,18 @@ import { ITranslation } from "plugin-api/ITranslation";
 import { TxType } from "app/shared/data/tx/TxType";
 import { TxLinkRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/tx/TxLinkRenderer";
 import { AccountLinkRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/account/AccountLinkRenderer";
-import { IHighlightFn, ITxGridFieldKeys } from "../TxsGridFull";
+import { IHighlightFn } from "app/shared/module/block/blockTxs/TxsGrid";
 import { TxHighlightRenderer } from "./TxHighlightRenderer";
 import { ITxLiteFull } from "app/shared/data/tx/lite/ITxLiteFull";
+
+export enum ITxGridFieldKeys {
+    Type = "type",
+    Hash = "hash",
+    From = "from",
+    To = "to",
+    Value = "value",
+    Fee = "fee"
+}
 
 export class TxGridFields extends GridFields<ITxLiteFull> {
     constructor(t: ITranslation, locale: string, ethSymbol: string, highlightFn: IHighlightFn) {
@@ -45,7 +54,7 @@ export class TxGridFields extends GridFields<ITxLiteFull> {
             getFieldValue: f => f.to,
             renderer: new AccountLinkRenderer(f => f.to)
         }, {
-            label: t.get("general.valueEth", { "%s": ethSymbol }),
+            label: t.get("general.valueEth", {"%s": ethSymbol}),
             fieldKey: ITxGridFieldKeys.Value,
             type: "number",
             isSortable: true,
@@ -56,7 +65,7 @@ export class TxGridFields extends GridFields<ITxLiteFull> {
                 f => f.value
             )
         }, {
-            label: t.get("general.feeEth", { "%s": ethSymbol }),
+            label: t.get("general.feeEth", {"%s": ethSymbol}),
             fieldKey: ITxGridFieldKeys.Fee,
             type: "number",
             isSortable: true,

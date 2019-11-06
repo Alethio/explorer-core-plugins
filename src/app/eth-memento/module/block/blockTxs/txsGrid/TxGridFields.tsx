@@ -2,9 +2,17 @@ import { GridFields } from "@alethio/ui/lib/control/grid/state/GridFields";
 import { EthRenderer } from "@alethio/ui/lib/data/gridRenderer/EthRenderer";
 import { ITranslation } from "plugin-api/ITranslation";
 import { AccountLinkRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/account/AccountLinkRenderer";
-import { IHighlightFn, ITxGridFieldKeys } from "../TxsGridMemento";
 import { ITxLiteBase } from "app/shared/data/tx/lite/ITxLiteBase";
 import { TxHighlightRenderer } from "app/eth-memento/module/block/blockTxs/txsGrid/TxHighlightRenderer";
+import { IHighlightFn } from "app/shared/module/block/blockTxs/TxsGrid";
+
+export enum ITxGridFieldKeys {
+    Hash = "hash",
+    From = "from",
+    To = "to",
+    Value = "value",
+    Fee = "fee"
+}
 
 export class TxGridFields extends GridFields<ITxLiteBase> {
     constructor(t: ITranslation, locale: string, ethSymbol: string, highlightFn: IHighlightFn) {

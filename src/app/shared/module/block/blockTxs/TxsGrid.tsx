@@ -1,5 +1,5 @@
 import * as React from "react";
-import { observable, action } from "mobx";
+import { action, observable } from "mobx";
 import { observer } from "mobx-react";
 import styled from "@alethio/explorer-ui/lib/styled-components";
 import { GridSortingOptions } from "@alethio/ui/lib/control/grid/state/GridSortingOptions";
@@ -9,20 +9,13 @@ import { ITxLite } from "app/shared/data/tx/lite/ITxLite";
 import { ITranslation } from "plugin-api/ITranslation";
 import { minMaxLogScale } from "app/helper/minMaxLogScale";
 import { BigNumber } from "app/util/BigNumber";
-import { TxGridFields } from "./txsGrid/TxGridFields";
+import { TxGridFields as FullTxGridFields } from "app/eth-extended/module/block/blockTxs/txsGrid/TxGridFields";
+import { TxGridFields as MementoTxGridFields } from "app/eth-memento/module/block/blockTxs/txsGrid/TxGridFields";
+import { isFullTxLite } from "app/shared/data/tx/lite/isFullTxLite";
 
 const TxsGridRoot = styled.div`
     margin-top: 16px;
 `;
-
-export enum ITxGridFieldKeys {
-    Type = "type",
-    Hash = "hash",
-    From = "from",
-    To = "to",
-    Value = "value",
-    Fee = "fee"
-}
 
 export interface IHighlightFn {
     (f: ITxLite): boolean;
@@ -39,7 +32,7 @@ interface ITxGridProps {
 }
 
 @observer
-export class TxsGridMemento extends React.Component<ITxGridProps> {
+export class TxsGrid extends React.Component<ITxGridProps> {
     @observable.ref
     private gridFields: GridFields<ITxLite>;
     private gridSortingOptions: GridSortingOptions;
@@ -47,15 +40,24 @@ export class TxsGridMemento extends React.Component<ITxGridProps> {
 
     constructor(props: ITxGridProps) {
         super(props);
-        this.gridFields = new TxGridFields(props.translation, props.locale, props.ethSymbol, this.highlight);
+        if (this.props.transactions.length && isFullTxLite(this.props.transactions[0])) {
+            this.gridFields = new FullTxGridFields(props.translation, props.locale, props.ethSymbol, this.highlight);
+        } else {
+            this.gridFields = new MementoTxGridFields(props.translation, props.locale, props.ethSymbol, this.highlight);
+        }
         this.gridSortingOptions = this.props.gridSortingOptions;
     }
 
     @action
     componentDidUpdate(prevProps: ITxGridProps) {
         if (this.props.translation !== prevProps.translation) {
-            this.gridFields = new TxGridFields(
-                this.props.translation, this.props.locale, this.props.ethSymbol, this.highlight);
+            if (this.props.transactions.length && isFullTxLite(this.props.transactions[0])) {
+                this.gridFields = new FullTxGridFields(this.props.translation, this.props.locale, this.props.ethSymbol,
+                    this.highlight);
+            } else {
+                this.gridFields = new MementoTxGridFields(this.props.translation, this.props.locale,
+                    this.props.ethSymbol, this.highlight);
+            }
         }
     }
 
