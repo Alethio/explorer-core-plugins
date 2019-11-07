@@ -1,5 +1,6 @@
 export enum TxStatus {
     Pending,
     Mined,
-    Consolidated
+    Consolidated,
+    Memento
 }

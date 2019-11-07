@@ -61,6 +61,39 @@
     "blockView.content.advanced.help": "See details about the miner who processed this block: duration, gas cost, difficulty and reward value.",
     "blockView.content.logsBloom.help": "This is a matrix view of all transactions from this block. Highlighted transactions indicate the presence of a log. Find out more about logs bloom <a href=\"https://ethon.consensys.net/prop-blocklogsbloom.html\" rel=\"noopener noreferrer\">here</a>.",
 
+    "txView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different transaction.",
+    "txView.content.txValue.label": "Value",
+    "txView.content.txStatus.ok": "Message was successful",
+    "txView.content.txStatus.error": "An error occurred",
+    "txView.content.txStatus.pending": "Message is pending confirmation",
+    "txView.content.txIndex.label": "Position",
+    "txView.content.gasUsed.label": "Gas used by TX",
+    "txView.content.cumulativeGasUsed.label": "Cumulative gas used",
+    "txView.content.txFee.label": "TX fee",
+    "txView.content.maxTxFee.label": "Max TX fee",
+    "txView.content.timeSpent.label": "Time spent in pool",
+    "txView.content.timeSpent.value": "%d s",
+    "txView.content.erc20.unknownToken.label": "(Unknown Token)",
+    "txView.content.inputData.label": "Input data",
+    "txView.content.error.label": "Error",
+
+    "txView.content.basic.help": "Get an overview of this transaction, with primary information about: transaction number and value, time since execution, associated block, sender and receiver wallet addresses, position in the block distribution.",
+    "txView.content.advanced.help": "See how this transaction performed, in terms of gas cost, as an absolute value and in comparison with gas consumption across the network.",
+
+    "txView.content.txSummary.label": "Summary",
+    "txView.content.txSummary.logEvents.label": "Log Entries",
+    "txView.content.txSummary.logEvents.topic.value": "Topic",
+    "txView.content.txSummary.logEvents.logData.value": "Log Data",
+
+    "txView.content.txSummary.help": "See full public details about the transaction’s contract, tokens involved and its log. Activate the graph view for an easier overview.",
+
+    "txView.content.decodedPayload.method.label": "function",
+    "txView.content.decodedPayload.methodId.label": "methodID",
+    "txView.content.decodedPayload.inputs.label": "inputs",
+    "txView.content.decodedPayload.outputs.label": "outputs",
+
+    "txView.content.decodedPayload.help": "Check the input data for this transaction (message call or contract initialization data). Data is available for CallTx and CreateTx transactions.",
+
     "accountView.content.transferDirection.incoming.tooltip": "Incoming",
     "accountView.content.transferDirection.outgoing.tooltip": "Outgoing",
     "accountView.content.accountSummary.label": "Summary",

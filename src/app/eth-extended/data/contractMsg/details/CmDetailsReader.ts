@@ -1,7 +1,7 @@
 // tslint:disable:no-string-literal
 import { ICmDetails } from "app/eth-extended/data/contractMsg/details/ICmDetails";
 import { readCmType } from "app/eth-extended/data/contractMsg/readCmType";
-import { Decoder } from "app/eth-extended/data/payload/Decoder";
+import { Decoder } from "app/shared/data/payload/Decoder";
 import { BigNumber } from "app/util/BigNumber";
 
 export class CmDetailsReader {

@@ -1,5 +1,64 @@
 {
     "pages": [{
+        "def": "page://aleth.io/block",
+        "children": {
+            "sidebar": [{
+                "def": "context://aleth.io/block/list",
+                "children": [
+                    { "def": "module://aleth.io/block/list" }
+                ]
+            }],
+            "content": [{
+                "def": "module://aleth.io/memento/block/basic",
+                "pageCritical": true,
+                "children": {
+                    "confirmations": [
+                        { "def": "module://aleth.io/block/confirmations" }
+                    ]
+                }
+            }, {
+                "def": "module://aleth.io/memento/block/txs",
+                "pageCritical": true
+            }, {
+                "def": "module://aleth.io/memento/block/advanced",
+                "pageCritical": true
+            }, {
+                "def": "module://aleth.io/memento/block/logs-bloom",
+                "pageCritical": true
+            }]
+        }
+    }, {
+        "def": "page://aleth.io/tx",
+        "children": {
+            "sidebar": [{
+                "def": "context://aleth.io/memento/tx/parentBlock",
+                "children": [{
+                    "def": "module://aleth.io/tx/list"
+                }]
+            }],
+            "content": [{
+                "def": "context://aleth.io/memento/tx/parentBlock",
+                "pageCritical": true,
+                "children": [{
+                    "def": "module://aleth.io/memento/tx/basic",
+                    "children": {
+                        "blockConfirmations": [{
+                            "def": "context://aleth.io/memento/tx/parentBlock",
+                            "children": [{
+                                "def": "module://aleth.io/block/confirmations"
+                            }]
+                        }]
+                    }
+                }, {
+                    "def": "module://aleth.io/memento/tx/advanced"
+                }, {
+                    "def": "module://aleth.io/memento/tx/summary"
+                }, {
+                    "def": "module://aleth.io/memento/tx/payload"
+                }]
+            }]
+        }
+    }, {
         "def": "page://aleth.io/account",
         "children": {
             "bottom": [

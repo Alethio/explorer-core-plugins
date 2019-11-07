@@ -7,11 +7,12 @@ import { IBlockBasicInfo } from "app/shared/data/block/IBlockBasicInfo";
 import { ITxBasicInfo } from "app/shared/data/tx/ITxBasicInfo";
 import { ITxDetails } from "app/eth-lite/data/tx/details/ITxDetails";
 import { ITxLite } from "app/shared/data/tx/lite/ITxLite";
+import { MementoDataSource } from "app/eth-memento/MementoDataSource";
 
 export class BlockBasicInfoAdapter implements IDataAdapter<IBlockContext, IBlockBasicInfo> {
     contextType = blockContextType;
 
-    constructor(private dataSource: AlethioDataSource | Web3DataSource) {
+    constructor(private dataSource: AlethioDataSource | Web3DataSource | MementoDataSource) {
 
     }
 

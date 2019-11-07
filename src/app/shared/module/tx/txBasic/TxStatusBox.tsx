@@ -4,10 +4,11 @@ import { ValueBox } from "@alethio/ui/lib/layout/content/box/ValueBox";
 import { StatusOkIcon } from "@alethio/ui/lib/icon/StatusOkIcon";
 import { TooltipRegular } from "@alethio/ui/lib/overlay/tooltip/TooltipRegular";
 import { StatusNotConfirmedIcon } from "@alethio/ui/lib/icon/StatusNotConfirmedIcon";
-import { ITxDetails } from "app/eth-extended/data/tx/details/ITxDetails";
+import { ITxDetails } from "app/shared/data/tx/details/ITxDetails";
 import { isPendingTxDetails } from "app/eth-extended/data/tx/details/isPendingTxDetails";
 import { ErrorIcon } from "@alethio/ui/lib/icon/ErrorIcon";
 import { isFullTxDetails } from "app/eth-extended/data/tx/details/isFullTxDetails";
+import { isMementoTxDetails } from "app/eth-memento/data/tx/details/isMementoTxDetails";
 
 export interface ITxStatusBoxProps {
     tx: ITxDetails;
@@ -19,7 +20,7 @@ export class TxStatusBox extends React.Component<ITxStatusBoxProps> {
         let tx = this.props.tx;
         let translation = this.props.translation;
 
-        if (!isPendingTxDetails(tx) && !isFullTxDetails(tx)) {
+        if (!isPendingTxDetails(tx) && !isFullTxDetails(tx) && !isMementoTxDetails(tx)) {
             return null;
         }
 

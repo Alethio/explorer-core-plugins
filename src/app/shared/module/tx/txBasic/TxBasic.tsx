@@ -10,7 +10,7 @@ import { LayoutSection } from "@alethio/ui/lib/layout/content/LayoutSection";
 import { weiToEth } from "app/util/wei";
 import { ITranslation } from "plugin-api/ITranslation";
 import { TxType } from "app/shared/data/tx/TxType";
-import { ITxDetails } from "app/eth-extended/data/tx/details/ITxDetails";
+import { ITxDetails } from "app/shared/data/tx/details/ITxDetails";
 import { isPendingTxDetails } from "app/eth-extended/data/tx/details/isPendingTxDetails";
 import { TxHashBox } from "@alethio/explorer-ui/lib/box/tx/TxHashBox";
 import { TxTypeBox } from "@alethio/explorer-ui/lib/box/tx/TxTypeBox";
@@ -18,6 +18,7 @@ import { BlockNumberBox } from "@alethio/explorer-ui/lib/box/block/BlockNumberBo
 import { TimeElapsedBox } from "app/shared/component/TimeElapsedBox";
 import { AddressHashBox } from "@alethio/explorer-ui/lib/box/account/AddressHashBox";
 import { TxStatusBox } from "./TxStatusBox";
+import { isMementoTxDetails } from "app/eth-memento/data/tx/details/isMementoTxDetails";
 
 export interface ITxBasicProps {
     txHash: string;
@@ -40,8 +41,13 @@ export class TxBasic extends React.PureComponent<ITxBasicProps> {
                     <TxHashBox noLink>{this.props.txHash}</TxHashBox>
                 </LayoutRowItem>
                 <LayoutRowItem>
+                    { !isMementoTxDetails(tx) ?
+                    <>
                     <Label>{tr.get("txView.content.txType.label")}</Label>
                     <TxTypeBox>{tr.get("general.tx.type." + TxType[tx.type])}</TxTypeBox>
+                    </>
+                    : null }
+
                     <Label arrow disabled={tx.value.isZero()}>{tr.get("txView.content.txValue.label")}</Label>
                     <EthValueBox wei={tx.value} locale={locale} symbol={ethSymbol} />
                     { latestEthPrice ?
@@ -98,16 +104,23 @@ export class TxBasic extends React.PureComponent<ITxBasicProps> {
                     <Label>{tr.get("general.from")}</Label>
                     <AddressHashBox>{tx.from}</AddressHashBox>
                 </LayoutRowItem>
-                <LayoutRowItem>
-                    <Label>{
-                        tx.type === TxType.Create ?
-                        tr.get("general.creates") :
-                        tr.get("general.to")
-                    }</Label>
-                    <AddressHashBox
-                        Icon={tx.type === TxType.Create ? ContractIcon : void 0}
-                    >{tx.to}</AddressHashBox>
-                </LayoutRowItem>
+                {isMementoTxDetails(tx) ?
+                    <LayoutRowItem>
+                        <Label>{ tr.get("general.to")}</Label>
+                        <AddressHashBox>{tx.to}</AddressHashBox>
+                    </LayoutRowItem>
+                    :
+                    <LayoutRowItem>
+                        <Label>{
+                            tx.type === TxType.Create ?
+                                tr.get("general.creates") :
+                                tr.get("general.to")
+                        }</Label>
+                        <AddressHashBox
+                            Icon={tx.type === TxType.Create ? ContractIcon : void 0}
+                        >{tx.to}</AddressHashBox>
+                    </LayoutRowItem>
+                }
             </LayoutRow>
         </LayoutSection>;
     }

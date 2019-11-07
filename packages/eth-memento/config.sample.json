@@ -1,4 +1,4 @@
 {
     "ethSymbol": "ETH",
-    "accountTxApiUrlMask": "https://memento-api.example.com/endpoint/account/%s/transactions"
+    "apiBasePath": "http://localhost:3001/api/explorer"
 }

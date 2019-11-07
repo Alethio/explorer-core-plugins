@@ -1,7 +1,7 @@
 import { TxType } from "app/shared/data/tx/TxType";
-import { ITxDetailsBase } from "app/eth-extended/data/tx/details/ITxDetailsBase";
-import { TxStatus } from "app/eth-extended/data/tx/TxStatus";
-import { IDecodedPayload } from "app/eth-extended/data/payload/IDecodedPayload";
+import { ITxDetailsBase } from "app/shared/data/tx/details/ITxDetailsBase";
+import { TxStatus } from "app/shared/data/tx/TxStatus";
+import { IDecodedPayload } from "app/shared/data/payload/IDecodedPayload";
 import { BigNumber } from "app/util/BigNumber";
 
 /**

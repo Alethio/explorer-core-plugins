@@ -1,5 +1,5 @@
 import { Deepstream } from "app/util/network/Deepstream";
-import { TxStatus } from "app/eth-extended/data/tx/TxStatus";
+import { TxStatus } from "app/shared/data/tx/TxStatus";
 import { ILogger } from "plugin-api/ILogger";
 
 export interface IPendingTxHandler {

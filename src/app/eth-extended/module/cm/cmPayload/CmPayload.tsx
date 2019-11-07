@@ -3,7 +3,7 @@ import { LayoutRow } from "@alethio/ui/lib/layout/content/LayoutRow";
 import { LayoutRowItem } from "@alethio/ui/lib/layout/content/LayoutRowItem";
 import { Label } from "@alethio/ui/lib/data/Label";
 import { CmType } from "app/eth-extended/data/contractMsg/CmType";
-import { DecodedPayload } from "app/eth-extended/module/tx/txPayload/component/DecodedPayload";
+import { DecodedPayload } from "app/shared/module/tx/txPayload/component/DecodedPayload";
 import { HexData } from "@alethio/ui/lib/data/hex/HexData";
 import { ICmDetails } from "app/eth-extended/data/contractMsg/details/ICmDetails";
 import { ITranslation } from "plugin-api/ITranslation";

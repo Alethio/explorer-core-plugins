@@ -1,6 +1,6 @@
 // tslint:disable:no-string-literal
-import { ITxDetailsBase } from "app/eth-extended/data/tx/details/ITxDetailsBase";
-import { TxStatus } from "app/eth-extended/data/tx/TxStatus";
+import { ITxDetailsBase } from "app/shared/data/tx/details/ITxDetailsBase";
+import { TxStatus } from "app/shared/data/tx/TxStatus";
 import { ITxDetailsMined } from "app/eth-extended/data/tx/details/ITxDetailsMined";
 import { TxType } from "app/shared/data/tx/TxType";
 import { ITxDetailsPending } from "app/eth-extended/data/tx/details/ITxDetailsPending";

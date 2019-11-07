@@ -7,7 +7,7 @@ import { isFullTxDetails } from "app/eth-extended/data/tx/details/isFullTxDetail
 import { DecodedPayload } from "./DecodedPayload";
 import { HexData } from "@alethio/ui/lib/data/hex/HexData";
 import { ITranslation } from "plugin-api/ITranslation";
-import { ITxDetails } from "app/eth-extended/data/tx/details/ITxDetails";
+import { ITxDetails } from "app/shared/data/tx/details/ITxDetails";
 
 export interface ITxPayloadProps {
     txDetails: ITxDetails;
@@ -23,7 +23,7 @@ export class TxPayload extends React.PureComponent<ITxPayloadProps> {
 
         return <>
             { txPayload ?
-                txDecodedPayload && tx.type === TxType.Call ?
+                txDecodedPayload && isFullTxDetails(tx) && tx.type === TxType.Call ?
                 <DecodedPayload data={txDecodedPayload} tr={tr} />
                 :
                 <LayoutRow>

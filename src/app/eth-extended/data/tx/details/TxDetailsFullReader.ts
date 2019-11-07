@@ -1,8 +1,8 @@
 // tslint:disable:no-string-literal
 import { ITxDetailsFull } from "app/eth-extended/data/tx/details/ITxDetailsFull";
 import { readTxType } from "app/shared/data/tx/readTxType";
-import { TxStatus } from "app/eth-extended/data/tx/TxStatus";
-import { Decoder } from "app/eth-extended/data/payload/Decoder";
+import { TxStatus } from "app/shared/data/tx/TxStatus";
+import { Decoder } from "app/shared/data/payload/Decoder";
 import { BigNumber } from "app/util/BigNumber";
 
 export class TxDetailsFullReader {

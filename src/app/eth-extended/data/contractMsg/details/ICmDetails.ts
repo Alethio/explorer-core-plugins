@@ -1,5 +1,5 @@
 import { CmType } from "app/eth-extended/data/contractMsg/CmType";
-import { IDecodedPayload } from "app/eth-extended/data/payload/IDecodedPayload";
+import { IDecodedPayload } from "app/shared/data/payload/IDecodedPayload";
 import { BigNumber } from "app/util/BigNumber";
 
 export interface ICmDetails {

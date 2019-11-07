@@ -5,8 +5,8 @@ import { LayoutRowItem } from "@alethio/ui/lib/layout/content/LayoutRowItem";
 import { Label } from "@alethio/ui/lib/data/Label";
 import { ITranslation } from "plugin-api/ITranslation";
 import { TypedValueBox } from "@alethio/ui/lib/layout/content/box/TypedValueBox";
-import { ILogEvent } from "app/eth-extended/data/logEvents/ILogEvent";
-import { DecodedLogEventView } from "app/eth-extended/module/tx/txSummary/component/DecodedLogEventView";
+import { ILogEvent } from "app/shared/data/logEvents/ILogEvent";
+import { DecodedLogEventView } from "app/shared/module/tx/txSummary/component/DecodedLogEventView";
 
 interface ILogEventsProps {
     translation: ITranslation;

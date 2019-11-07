@@ -1,6 +1,6 @@
 import { TxType } from "app/shared/data/tx/TxType";
-import { TxStatus } from "app/eth-extended/data/tx/TxStatus";
-import { ITxDetailsBase } from "app/eth-extended/data/tx/details/ITxDetailsBase";
+import { TxStatus } from "app/shared/data/tx/TxStatus";
+import { ITxDetailsBase } from "app/shared/data/tx/details/ITxDetailsBase";
 
 /**
  * Data for mined txs, coming from deepstream

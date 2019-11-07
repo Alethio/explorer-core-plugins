@@ -13,6 +13,7 @@ export enum AlethioAdapterType {
     UncleDetailsExtended = "adapter://aleth.io/extended/uncle/details",
 
     TxDetailsExtended = "adapter://aleth.io/extended/tx/details",
+    TxDetailsMemento = "adapter://aleth.io/memento/tx/details",
     TxDetailsLite = "adapter://aleth.io/lite/tx/details",
 
     AccountDetailsExtended = "adapter://aleth.io/extended/account/details",

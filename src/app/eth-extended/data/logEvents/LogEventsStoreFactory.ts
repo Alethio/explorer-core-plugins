@@ -1,10 +1,10 @@
 import { FifoCache } from "app/util/cache/FifoCache";
 import { HttpApi } from "app/shared/data/HttpApi";
 import { HttpRequest } from "@puzzl/browser/lib/network/HttpRequest";
-import { LogEventsReader } from "app/eth-extended/data/logEvents/LogEventsReader";
-import { LogEventsByTxStore } from "app/eth-extended/data/logEvents/byTx/LogEventsByTxStore";
-import { ILogEvent } from "app/eth-extended/data/logEvents/ILogEvent";
-import { LogEventsByTxApi } from "app/eth-extended/data/logEvents/byTx/LogEventsByTxApi";
+import { LogEventsReader } from "app/shared/data/logEvents/LogEventsReader";
+import { LogEventsByTxStore } from "app/shared/data/logEvents/byTx/LogEventsByTxStore";
+import { ILogEvent } from "app/shared/data/logEvents/ILogEvent";
+import { LogEventsByTxApi } from "app/shared/data/logEvents/byTx/LogEventsByTxApi";
 import { LogEventsStore } from "app/eth-extended/data/logEvents/LogEventsStore";
 import { LogEventsByCmStore } from "app/eth-extended/data/logEvents/byCm/LogEventsByCmStore";
 import { LogEventsByCmApi } from "app/eth-extended/data/logEvents/byCm/LogEventsByCmApi";

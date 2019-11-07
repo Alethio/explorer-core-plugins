@@ -61,6 +61,38 @@
     "blockView.content.advanced.help": "此处展示了挖出该区块的矿工信息及其相关数据，包括耗时、燃料消耗、难度值和所获区块奖励金额。",
     "blockView.content.logsBloom.help": "此处的矩阵总结了区块中的所有交易信息，并突出了所可能包含的日志信息。<br />关于该指标，您可以前往以下链接了解更多——<a href=\"https://ethon.consensys.net/prop-blocklogsbloom.html\" rel=\"noopener noreferrer\">以太坊本体论：区块的Bloom日志</a>",
 
+    "txView.content.noData.text": "无数据 <br /> 试一下其他交易吧！",
+    "txView.content.txValue.label": "金额",
+    "txView.content.txStatus.ok": "消息发送成功",
+    "txView.content.txStatus.error": "出错了！",
+    "txView.content.txStatus.pending": "消息待确认",
+    "txView.content.txIndex.label": "位置",
+    "txView.content.gasUsed.label": "该交易使用燃料数额",
+    "txView.content.cumulativeGasUsed.label": "累计使用燃料数额",
+    "txView.content.txFee.label": "交易费用",
+    "txView.content.maxTxFee.label": "交易费用上限",
+    "txView.content.timeSpent.label": "矿池内等待时间",
+    "txView.content.timeSpent.value": "%d秒",
+    "txView.content.erc20.unknownToken.label": "（未知的代币类型）",
+    "txView.content.inputData.label": "输入数据",
+
+    "txView.content.basic.help": "此处展示了该交易的基础信息，包括所处理交易数量、交易金额、时间戳、所处区块高度、发送与接收交易的钱包地址、于区块中的位置。",
+    "txView.content.advanced.help": "此处展示了生成并确认该交易所消耗的燃料相关数据，包括所使用燃料量、占全网燃料消耗比重、单价及费用等。",
+
+    "txView.content.txSummary.label": "内容概览",
+    "txView.content.txSummary.logEvents.label": "日志纪录",
+    "txView.content.txSummary.logEvents.topic.value": "题目",
+    "txView.content.txSummary.logEvents.logData.value": "日志数据",
+
+    "txView.content.txSummary.help": "此处储存了该交易所包含内容的所有公开信息，包括其所使用的智能合约、相关代币及日志数据。查看关系图可帮助您可视化浏览所有信息。",
+
+    "txView.content.decodedPayload.method.label": "调用函数",
+    "txView.content.decodedPayload.methodId.label": "方法ID",
+    "txView.content.decodedPayload.inputs.label": "输入",
+    "txView.content.decodedPayload.outputs.label": "输出",
+
+    "txView.content.decodedPayload.help": "查看该交易的输入数据（合约消息或合约初始数据）。数据仅存在于消息型交易及创建型交易中。",
+
     "accountView.content.transferDirection.incoming.tooltip": "接收",
     "accountView.content.transferDirection.outgoing.tooltip": "发起",
     "accountView.content.accountSummary.label": "内容概览",

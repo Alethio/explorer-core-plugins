@@ -12,10 +12,11 @@ import { ValueBox } from "@alethio/ui/lib/layout/content/box/ValueBox";
 import { ErrorIcon } from "@alethio/ui/lib/icon/ErrorIcon";
 import { weiToEth } from "app/util/wei";
 import { ITranslation } from "plugin-api/ITranslation";
-import { ITxDetails } from "app/eth-extended/data/tx/details/ITxDetails";
+import { ITxDetails } from "app/shared/data/tx/details/ITxDetails";
 import { isFullTxDetails } from "app/eth-extended/data/tx/details/isFullTxDetails";
 import { isPendingTxDetails } from "app/eth-extended/data/tx/details/isPendingTxDetails";
 import { TimeInPoolBox } from "@alethio/explorer-ui/lib/box/tx/TimeInPoolBox";
+import { isMementoTxDetails } from "app/eth-memento/data/tx/details/isMementoTxDetails";
 
 export interface ITxAdvancedProps {
     txHash: string;
@@ -43,13 +44,13 @@ export class TxAdvanced extends React.PureComponent<ITxAdvancedProps> {
                     </LayoutRowItem>
                 </LayoutRow>
                 <LayoutRow minWidth={750}>
-                    { isFullTxDetails(tx) ?
+                    { isFullTxDetails(tx) || isMementoTxDetails(tx) ?
                     <LayoutRowItem>
                         <Label>{tr.get("txView.content.gasUsed.label")}</Label>
                         <GasUsedValueBox value={tx.gasUsed} limit={tx.gasLimit} locale={locale} />
                     </LayoutRowItem>
                     : null }
-                    { isFullTxDetails(tx) ?
+                    { isFullTxDetails(tx) || isMementoTxDetails(tx) ?
                     <LayoutRowItem>
                         <Label>{tr.get("txView.content.txFee.label")}</Label>
                         <EthValueBox wei={tx.gasUsed.multipliedBy(tx.gasPrice)} decimals={9} locale={locale}
@@ -72,7 +73,7 @@ export class TxAdvanced extends React.PureComponent<ITxAdvancedProps> {
                     </LayoutRowItem>
                     }
                 </LayoutRow>
-                { isFullTxDetails(tx) ?
+                { isFullTxDetails(tx) || isMementoTxDetails(tx) ?
                 <LayoutRow>
                     <LayoutRowItem>
                         <Label>{tr.get("txView.content.cumulativeGasUsed.label")}</Label>
@@ -82,7 +83,8 @@ export class TxAdvanced extends React.PureComponent<ITxAdvancedProps> {
                 : null}
             </LayoutSection>
             <LayoutSection>
-                { !isPendingTxDetails(tx) && tx.firstSeenAt && tx.block.creationTime > tx.firstSeenAt ?
+                { !isPendingTxDetails(tx) && !isMementoTxDetails(tx) && tx.firstSeenAt
+                && tx.block.creationTime > tx.firstSeenAt ?
                 <LayoutRow>
                     <LayoutRowItem>
                         <Label>{tr.get("txView.content.timeSpent.label")}</Label>
@@ -92,7 +94,7 @@ export class TxAdvanced extends React.PureComponent<ITxAdvancedProps> {
                     </LayoutRowItem>
                 </LayoutRow>
                 : null }
-                { isFullTxDetails(tx) && tx.error ?
+                { isFullTxDetails(tx) || isMementoTxDetails(tx) && tx.error ?
                 <LayoutRow>
                     <LayoutRowItem>
                         <Label>{tr.get("txView.content.error.label")}</Label>

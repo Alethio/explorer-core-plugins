@@ -2,7 +2,7 @@ import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { when, IReactionDisposer } from "mobx";
 import { EventDispatcher } from "@puzzl/core/lib/event/EventDispatcher";
 import { IDataWatcher } from "plugin-api/IDataWatcher";
-import { ITxDetails } from "app/eth-extended/data/tx/details/ITxDetails";
+import { ITxDetails } from "app/shared/data/tx/details/ITxDetails";
 import { isPendingTxDetails } from "app/eth-extended/data/tx/details/isPendingTxDetails";
 import { isFullTxDetails } from "app/eth-extended/data/tx/details/isFullTxDetails";
 import { PendingTxWatcher } from "app/eth-extended/adapter/watcher/PendingTxWatcher";

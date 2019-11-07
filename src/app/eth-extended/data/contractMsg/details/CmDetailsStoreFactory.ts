@@ -5,7 +5,7 @@ import { CmDetailsStore } from "app/eth-extended/data/contractMsg/details/CmDeta
 import { ICmDetails } from "app/eth-extended/data/contractMsg/details/ICmDetails";
 import { CmDetailsApi } from "app/eth-extended/data/contractMsg/details/CmDetailsApi";
 import { CmDetailsReader } from "app/eth-extended/data/contractMsg/details/CmDetailsReader";
-import { Decoder } from "app/eth-extended/data/payload/Decoder";
+import { Decoder } from "app/shared/data/payload/Decoder";
 import { ILogger } from "plugin-api/ILogger";
 import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 

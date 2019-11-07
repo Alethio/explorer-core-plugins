@@ -1,7 +1,7 @@
 import { AlethioDataSource } from "app/eth-extended/AlethioDataSource";
 import { IDataAdapter } from "plugin-api/IDataAdapter";
 import { NotFoundError } from "app/shared/data/NotFoundError";
-import { ITxDetails } from "app/eth-extended/data/tx/details/ITxDetails";
+import { ITxDetails } from "app/shared/data/tx/details/ITxDetails";
 import { TxDataWatcher } from "./TxDataWatcher";
 import { ITxContext } from "../../../shared/context/ITxContext";
 import { txContextType } from "app/shared/context/txContextType";
