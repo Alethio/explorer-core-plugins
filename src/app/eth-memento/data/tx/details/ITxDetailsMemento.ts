@@ -11,7 +11,6 @@ export interface ITxDetailsMemento extends ITxDetailsBase {
     cumulativeGasUsed: BigNumber;
 
     error: string | undefined;
-    msgStatus: string;
 
     block: {
         id: number;
