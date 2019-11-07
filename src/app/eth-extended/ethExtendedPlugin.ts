@@ -79,14 +79,24 @@ const ethExtendedPlugin: IPlugin = {
                 ethSymbol
             }));
 
-        api.addContextDef("context://aleth.io/extended/tx/parentBlock", txParentBlockContext);
+        api.addContextDef("context://aleth.io/extended/tx/parentBlock", txParentBlockContext({
+            txDetailsAdapterUri: AlethioAdapterType.TxDetailsExtended
+        }));
         api.addContextDef("context://aleth.io/extended/tx/parentBlock?optional", txParentBlockOptionalContext);
         api.addDataAdapter("adapter://aleth.io/extended/tx/details", new TxDetailsAdapter(dataSource));
         api.addModuleDef("module://aleth.io/tx/details", txDetailsModule(ethSymbol));
-        api.addModuleDef("module://aleth.io/tx/basic", txBasicModule(ethSymbol));
-        api.addModuleDef("module://aleth.io/tx/advanced", txAdvancedModule(ethSymbol));
-        api.addModuleDef("module://aleth.io/tx/summary", txSummaryModule({ dataSource, ethSymbol }));
-        api.addModuleDef("module://aleth.io/tx/payload", txPayloadModule);
+        api.addModuleDef("module://aleth.io/tx/basic", txBasicModule({
+            txDetailsAdapterUri: AlethioAdapterType.TxDetailsExtended,
+            ethSymbol
+        }));
+        api.addModuleDef("module://aleth.io/tx/advanced", txAdvancedModule({
+            txDetailsAdapterUri: AlethioAdapterType.TxDetailsExtended,
+            ethSymbol
+        }));
+        api.addModuleDef("module://aleth.io/tx/summary", txSummaryModule({dataSource, ethSymbol}));
+        api.addModuleDef("module://aleth.io/tx/payload", txPayloadModule({
+            txDetailsAdapterUri: AlethioAdapterType.TxDetailsExtended
+        }));
 
         api.addDataAdapter("adapter://aleth.io/extended/account/details", new AccountDetailsAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/extended/account/balance?latest",
@@ -95,7 +105,7 @@ const ethExtendedPlugin: IPlugin = {
             new AccountBalanceAdapter(dataSource, true));
         api.addModuleDef("module://aleth.io/account/details", accountDetailsModule(config));
         api.addModuleDef("module://aleth.io/account/balance", accountBalanceModule(config));
-        api.addModuleDef("module://aleth.io/account/summary", accountSummaryModule({ dataSource, ethSymbol}));
+        api.addModuleDef("module://aleth.io/account/summary", accountSummaryModule({dataSource, ethSymbol}));
         api.addModuleDef("module://aleth.io/account/contract", accountContractModule(dataSource));
 
         api.addPageDef("page://aleth.io/cm", cmPage);
@@ -103,7 +113,7 @@ const ethExtendedPlugin: IPlugin = {
         api.addContextDef("context://aleth.io/cm/parent", cmParentContext);
         api.addModuleDef("module://aleth.io/cm/list", cmListModule(dataSource));
         api.addModuleDef("module://aleth.io/cm/details", cmDetailsModule(ethSymbol));
-        api.addModuleDef("module://aleth.io/cm/summary", cmSummaryModule({ dataSource, ethSymbol }));
+        api.addModuleDef("module://aleth.io/cm/summary", cmSummaryModule({dataSource, ethSymbol}));
         api.addModuleDef("module://aleth.io/cm/payload", cmPayloadModule);
 
         api.addDataAdapter("adapter://aleth.io/search/v2", new SearchAdapter(dataSource.stores.search));

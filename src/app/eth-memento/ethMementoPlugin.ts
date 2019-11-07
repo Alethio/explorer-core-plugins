@@ -16,6 +16,7 @@ import { txAdvancedModule } from "app/shared/module/tx/txAdvanced/txAdvancedModu
 import { BlockBasicInfoAdapter } from "app/shared/adapter/block/BlockBasicInfoAdapter";
 import { txPayloadModule } from "app/shared/module/tx/txPayload/txPayloadModule";
 import { txSummaryModule } from "app/eth-memento/module/tx/txSummary/txSummaryModule";
+import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 
 const ethMementoPlugin: IPlugin = {
     init(configData: unknown, api, logger, publicPath) {
@@ -42,12 +43,22 @@ const ethMementoPlugin: IPlugin = {
         api.addModuleDef("module://aleth.io/block/logs-bloom", blockLogsBloomModule);
         api.addDataAdapter("adapter://aleth.io/block-range/summary", new BlockListAdapter(dataSource));
 
-        api.addContextDef("context://aleth.io/extended/tx/parentBlock", txParentBlockContext);
-        api.addDataAdapter("adapter://aleth.io/extended/tx/details", new TxDetailsAdapter(dataSource));
-        api.addModuleDef("module://aleth.io/tx/basic", txBasicModule(ethSymbol));
-        api.addModuleDef("module://aleth.io/tx/advanced", txAdvancedModule(ethSymbol));
-        api.addModuleDef("module://aleth.io/tx/summary", txSummaryModule({ dataSource, ethSymbol }));
-        api.addModuleDef("module://aleth.io/tx/payload", txPayloadModule);
+        api.addDataAdapter(AlethioAdapterType.TxDetailsMemento, new TxDetailsAdapter(dataSource));
+        api.addContextDef("context://aleth.io/memento/tx/parentBlock", txParentBlockContext({
+            txDetailsAdapterUri: AlethioAdapterType.TxDetailsMemento
+        }));
+        api.addModuleDef("module://aleth.io/tx/basic", txBasicModule({
+            txDetailsAdapterUri: AlethioAdapterType.TxDetailsMemento,
+            ethSymbol
+        }));
+        api.addModuleDef("module://aleth.io/tx/advanced", txAdvancedModule({
+            txDetailsAdapterUri: AlethioAdapterType.TxDetailsMemento,
+            ethSymbol
+        }));
+        api.addModuleDef("module://aleth.io/memento/tx/summary", txSummaryModule({ dataSource, ethSymbol }));
+        api.addModuleDef("module://aleth.io/tx/payload", txPayloadModule({
+            txDetailsAdapterUri: AlethioAdapterType.TxDetailsMemento
+        }));
 
     },
 

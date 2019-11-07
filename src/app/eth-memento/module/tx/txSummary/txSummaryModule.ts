@@ -12,7 +12,7 @@ export const txSummaryModule:
     contextType: txContextType,
 
     dataAdapters: [{
-        ref: AlethioAdapterType.TxDetailsExtended
+        ref: AlethioAdapterType.TxDetailsMemento
     }],
 
     getContentComponent: async () => import("./component/TxSummary").then(({ TxSummary }) => TxSummary),
@@ -21,7 +21,7 @@ export const txSummaryModule:
         let { asyncData, locale, logger, translation } = data;
 
         let { logEventsStore } = dataSource.stores;
-        let tx = asyncData.get(AlethioAdapterType.TxDetailsExtended)!.data as ITxDetails;
+        let tx = asyncData.get(AlethioAdapterType.TxDetailsMemento)!.data as ITxDetails;
 
         let props: ITxSummaryProps = {
             locale,

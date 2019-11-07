@@ -15,7 +15,7 @@ import { AccordionItemContentStatus } from "@alethio/ui/lib/control/accordion/Ac
 import { LayoutRow } from "@alethio/ui/lib/layout/content/LayoutRow";
 import { LayoutRowItem } from "@alethio/ui/lib/layout/content/LayoutRowItem";
 import { Label } from "@alethio/ui/lib/data/Label";
-import { LogEvents } from "./LogEvents";
+import { LogEvents } from "app/shared/module/tx/txSummary/component/LogEvents";
 import { ILogger } from "plugin-api/ILogger";
 import { LayoutSection } from "@alethio/ui/lib/layout/content/LayoutSection";
 import { LogEventsStore } from "app/eth-memento/data/logEvents/LogEventsStore";

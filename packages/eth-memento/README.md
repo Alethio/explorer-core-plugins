@@ -19,7 +19,7 @@ with the usage of the only module exported by this plugin.
 
 | Context URI | Generated context shape | Placed in context | Description | Implementation |
 | --- | --- | --- | --- | --- |
-| context://aleth.io/extended/tx/parentBlock | { txHash, blockNumber } | { txHash } | Adds the parent block to the current TX context | [txParentBlockContext](../../src/app/shared/context/txParentBlockContext.ts) |
+| context://aleth.io/memento/tx/parentBlock | { txHash, blockNumber } | { txHash } | Adds the parent block to the current TX context | [txParentBlockContext](../../src/app/shared/context/txParentBlockContext.ts) |
 
 ### Modules
 
@@ -42,4 +42,4 @@ with the usage of the only module exported by this plugin.
 | adapter://aleth.io/block/basic | { blockNumber } | [IBlockBasicInfo](../../src/app/shared/data/block/IBlockBasicInfo.ts) | Adapter for basic block data | [BlockBasicInfoAdapter](../../src/app/shared/adapter/block/BlockBasicInfoAdapter.ts) |
 | adapter://aleth.io/full/block/details | { blockNumber } | [IBlockDetails](../../src/app/shared/data/block/details/IBlockDetails.ts) | Provides detailed block data specific to the full explorer | [BlockDetailsAdapter](../../src/app/shared/adapter/block/BlockDetailsAdapter.ts) |
 | adapter://aleth.io/prices/latest | { blockNumber } | undefined | The price of ETH in USD at the latest block or undefined if disabled by configuration | [NullEthPriceAdapter](../../src/app/eth-memento/adapter/NullEthPriceAdapter.ts) |
-| adapter://aleth.io/extended/tx/details | { txHash } | [ITxDetails](../../src/app/shared/data/tx/details/ITxDetails.ts) | Transaction data fields | [TxDetailsAdapter](../../src/app/eth-memento/adapter/tx/TxDetailsAdapter.ts) |
+| adapter://aleth.io/memento/tx/details | { txHash } | [ITxDetails](../../src/app/shared/data/tx/details/ITxDetails.ts) | Transaction data fields | [TxDetailsAdapter](../../src/app/eth-memento/adapter/tx/TxDetailsAdapter.ts) |

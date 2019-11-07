@@ -22,10 +22,10 @@ import { LayoutRowItem } from "@alethio/ui/lib/layout/content/LayoutRowItem";
 import { Label } from "@alethio/ui/lib/data/Label";
 import { TokenTransferStore } from "app/eth-extended/data/token/transfer/TokenTransferStore";
 import { TxGraphStore } from "app/eth-extended/data/tx/graph/TxGraphStore";
-import { LogEvents } from "./LogEvents";
 import { LogEventsStore } from "app/eth-extended/data/logEvents/LogEventsStore";
 import { ILogger } from "plugin-api/ILogger";
 import { LayoutSection } from "@alethio/ui/lib/layout/content/LayoutSection";
+import { LogEvents } from "app/shared/module/tx/txSummary/component/LogEvents";
 
 interface ITxSummaryItemConfig extends IAccordionItemConfig {
     label: string;

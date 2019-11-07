@@ -20,8 +20,8 @@ import { LayoutRowItem } from "@alethio/ui/lib/layout/content/LayoutRowItem";
 import { Label } from "@alethio/ui/lib/data/Label";
 import { TokenTransferStore } from "app/eth-extended/data/token/transfer/TokenTransferStore";
 import { LogEventsStore } from "app/eth-extended/data/logEvents/LogEventsStore";
-import { LogEvents } from "app/eth-extended/module/tx/txSummary/component/LogEvents";
 import { ILogger } from "plugin-api/ILogger";
+import { LogEvents } from "app/shared/module/tx/txSummary/component/LogEvents";
 
 interface ICmSummaryItemConfig extends IAccordionItemConfig {
     label: string;
