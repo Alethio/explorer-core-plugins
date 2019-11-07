@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@alethio/explorer-ui/lib/styled-components";
 import { IDecodedPayload } from "app/shared/data/payload/IDecodedPayload";
-import { DecodedPayloadView } from "app/eth-extended/component/decodedPayload/DecodedPayloadView";
+import { DecodedPayloadView } from "app/shared/component/decodedPayload/DecodedPayloadView";
 import { ITranslation } from "plugin-api/ITranslation";
 
 interface IDecodedPayloadProps {

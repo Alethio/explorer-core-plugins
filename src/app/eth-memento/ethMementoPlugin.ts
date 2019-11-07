@@ -14,6 +14,8 @@ import { txBasicModule } from "app/shared/module/tx/txBasic/txBasicModule";
 import { TxDetailsAdapter } from "app/eth-memento/adapter/tx/TxDetailsAdapter";
 import { txAdvancedModule } from "app/shared/module/tx/txAdvanced/txAdvancedModule";
 import { BlockBasicInfoAdapter } from "app/shared/adapter/block/BlockBasicInfoAdapter";
+import { txPayloadModule } from "app/shared/module/tx/txPayload/txPayloadModule";
+import { txSummaryModule } from "app/eth-memento/module/tx/txSummary/txSummaryModule";
 
 const ethMementoPlugin: IPlugin = {
     init(configData: unknown, api, logger, publicPath) {
@@ -44,6 +46,8 @@ const ethMementoPlugin: IPlugin = {
         api.addDataAdapter("adapter://aleth.io/extended/tx/details", new TxDetailsAdapter(dataSource));
         api.addModuleDef("module://aleth.io/tx/basic", txBasicModule(ethSymbol));
         api.addModuleDef("module://aleth.io/tx/advanced", txAdvancedModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/tx/summary", txSummaryModule({ dataSource, ethSymbol }));
+        api.addModuleDef("module://aleth.io/tx/payload", txPayloadModule);
 
     },
 

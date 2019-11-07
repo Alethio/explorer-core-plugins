@@ -1,5 +1,5 @@
 import { ICache } from "app/util/cache/ICache";
-import { ILogEvent } from "../ILogEvent";
+import { ILogEvent } from "../../../../shared/data/logEvents/ILogEvent";
 import { LogEventsByCmApi } from "./LogEventsByCmApi";
 
 export class LogEventsByCmStore {

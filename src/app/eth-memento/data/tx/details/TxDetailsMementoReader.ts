@@ -6,7 +6,7 @@ import { ITxDetailsMemento } from "app/eth-memento/data/tx/details/ITxDetailsMem
 export class TxDetailsMementoReader {
     read(data: any) {
         let tx: ITxDetailsMemento = {
-            status: TxStatus.Consolidated,
+            status: TxStatus.Memento,
             hash: data["txHash"],
             from: data["from"],
             to: data["to"],

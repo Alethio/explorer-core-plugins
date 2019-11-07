@@ -23,7 +23,7 @@ export class TxPayload extends React.PureComponent<ITxPayloadProps> {
 
         return <>
             { txPayload ?
-                txDecodedPayload && tx.type === TxType.Call ?
+                txDecodedPayload && isFullTxDetails(tx) && tx.type === TxType.Call ?
                 <DecodedPayload data={txDecodedPayload} tr={tr} />
                 :
                 <LayoutRow>

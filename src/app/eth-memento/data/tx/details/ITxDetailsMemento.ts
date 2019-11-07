@@ -6,7 +6,7 @@ import { BigNumber } from "app/util/BigNumber";
  * Data for consolidated txs, coming from db / api
  */
 export interface ITxDetailsMemento extends ITxDetailsBase {
-    status: TxStatus.Consolidated;
+    status: TxStatus.Memento;
     gasUsed: BigNumber;
     cumulativeGasUsed: BigNumber;
 

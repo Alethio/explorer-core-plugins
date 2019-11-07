@@ -42,7 +42,7 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 | module://aleth.io/tx/basic | { txHash } | blockConfirmations | Transaction basic data fields | [txBasicModule](../../src/app/shared/module/tx/txBasic/txBasicModule.tsx) | N/A |
 | module://aleth.io/tx/advanced | { txHash } | N/A | Transaction advanced data fields | [txAdvancedModule](../../src/app/shared/module/tx/txAdvanced/txAdvancedModule.tsx) | N/A |
 | module://aleth.io/tx/summary | { txHash } | N/A | Accordion with contract messages, log events, token transfers etc. |[txSummaryModule](../../src/app/eth-extended/module/tx/txSummary/txSummaryModule.ts) | N/A |
-| module://aleth.io/tx/payload" | { txHash } | N/A | Decoded tx payload | [txPayloadModule](../../src/app/eth-extended/module/tx/txPayload/txPayloadModule.ts) | N/A |
+| module://aleth.io/tx/payload" | { txHash } | N/A | Decoded tx payload | [txPayloadModule](../../src/app/shared/module/tx/txPayload/txPayloadModule.ts) | N/A |
 | module://aleth.io/account/details | { accountHash } | N/A | Account data fields | [accountDetailsModule](../../src/app/eth-extended/module/account/accountDetails/accountDetailsModule.ts) | N/A |
 | module://aleth.io/account/balance | { accountHash } | N/A | Account balance chart | [accountBalanceModule](../../src/app/eth-extended/module/account/balance/accountBalanceModule.ts) | [IAccountBalanceModuleOptions](../../src/app/eth-extended/module/account/balance/IAccountBalanceModuleOptions.ts) |
 | module://aleth.io/account/summary | { accountHash } | N/A | Accordion with transactions, contract messages etc. | [accountSummaryModule](../../src/app/eth-extended/module/account/summary/accountSummaryModule.ts) | N/A |

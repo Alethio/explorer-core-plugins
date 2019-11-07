@@ -1,5 +1,5 @@
 import { HttpApi } from "app/shared/data/HttpApi";
-import { LogEventsReader } from "../LogEventsReader";
+import { LogEventsReader } from "../../../../shared/data/logEvents/LogEventsReader";
 
 export class LogEventsByCmApi {
     constructor(

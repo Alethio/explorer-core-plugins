@@ -5,6 +5,7 @@ import { MementoDataSource } from "app/eth-memento/MementoDataSource";
 import { TxLiteByAccountStoreFactory } from "app/eth-memento/data/tx/byAccount/TxLiteByAccountStoreFactory";
 import { BlockValueStoreFactory } from "app/shared/data/block/value/BlockValueStoreFactory";
 import { TxDetailsStoreFactory } from "app/eth-memento/data/tx/details/TxDetailsStoreFactory";
+import { LogEventsStoreFactory } from "app/eth-memento/data/logEvents/LogEventsStoreFactory";
 
 export class MementoDataSourceFactory {
     create(config: EthMementoPluginConfig, logger: ILogger) {
@@ -12,13 +13,15 @@ export class MementoDataSourceFactory {
         let blockValueStore = new BlockValueStoreFactory(config).create();
         let txByAccountStore = new TxLiteByAccountStoreFactory(config).create();
         let txDetailsStore = new TxDetailsStoreFactory(config).create();
+        let logEventsStore = new LogEventsStoreFactory(config).create();
 
         let mementoDataSource = new MementoDataSource(
             {
                 blockDetailsStore,
                 blockValueStore,
                 txDetailsStore,
-                txByAccountStore
+                txByAccountStore,
+                logEventsStore
             }
         );
 

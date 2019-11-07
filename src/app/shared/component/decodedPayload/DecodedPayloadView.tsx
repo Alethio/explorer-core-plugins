@@ -1,17 +1,13 @@
 import React from "react";
 import styled from "@alethio/explorer-ui/lib/styled-components";
-import { IDecodedLogEvent, ILogEventInput } from "app/eth-extended/data/logEvents/ILogEvent";
-import {
-    IdentationGuideLineIcon, IdentationLineWrapper
-} from "app/eth-extended/component/decodedPayload/IdentationLineWrapper";
-import { PayloadDataLine } from "app/eth-extended/component/decodedPayload/PayloadDataLine";
+import { IDecodedPayload, IDecodedInputPayload } from "app/shared/data/payload/IDecodedPayload";
+import { IdentationGuideLineIcon, IdentationLineWrapper } from "./IdentationLineWrapper";
+import { PayloadDataLine } from "app/shared/component/decodedPayload/PayloadDataLine";
+import { ITranslation } from "plugin-api/ITranslation";
 
-/*
-TODO: Refactor. This entire file is duplicate of DecodedPayloadView.
-Instead of two almost identical files we need a proper TreeView component.
-*/
-interface IDecodedLogEventViewProps {
-    data: IDecodedLogEvent;
+interface IDecodedPayloadViewProps {
+    data: IDecodedPayload;
+    translation: ITranslation;
 }
 export interface IDataLine {
     name: string;
@@ -30,40 +26,46 @@ const DataLineWrapper = styled.div`
     font-weight: 500;
 `;
 
-export class DecodedLogEventView extends React.PureComponent<IDecodedLogEventViewProps> {
+export class DecodedPayloadView extends React.PureComponent<IDecodedPayloadViewProps> {
 
-    private getTxInputData(data: IDecodedLogEvent) {
+    private getTxInputData(data: IDecodedPayload) {
         const lines: IDataLine[] = [];
 
-        if (data.event) {
+        if (data.method) {
             lines.push({
-                name: "event",
-                value: data.event,
+                name: this.props.translation.get("txView.content.decodedPayload.method.label"),
+                value: data.method,
                 identationIdx: 0,
                 identationLinePath: []
             });
         }
-        if (data.topic0) {
-            lines.push({
-                name: "topic0",
-                value: data.topic0,
-                identationIdx: 0,
-                identationLinePath: []
-            });
-        }
+        lines.push({
+            name: this.props.translation.get("txView.content.decodedPayload.methodId.label"),
+            value: data.methodID,
+            identationIdx: 0,
+            identationLinePath: []
+        });
         if (data.inputs) {
             lines.push({
-                name: "inputs",
+                name: this.props.translation.get("txView.content.decodedPayload.inputs.label"),
                 identationIdx: 0,
                 identationLinePath: []
             });
-            this.getLogEventsLines(data.inputs, lines, 1, []);
+            this.getPayloadLines(data.inputs, lines, 1, []);
+        }
+        if (data.outputs) {
+            lines.push({
+                name: this.props.translation.get("txView.content.decodedPayload.outputs.label"),
+                identationIdx: 0,
+                identationLinePath: []
+            });
+            this.getPayloadLines(data.outputs, lines, 1, []);
         }
         return lines;
     }
 
-    private getLogEventsLines(
-        inputs: ILogEventInput[], lines: IDataLine[], identationIdx: number, identation: number[]
+    private getPayloadLines(
+        inputs: IDecodedInputPayload[], lines: IDataLine[], identationIdx: number, identation: number[]
     ) {
         inputs.forEach((arg, idx) => {
             if (arg.value) {
@@ -91,7 +93,7 @@ export class DecodedLogEventView extends React.PureComponent<IDecodedLogEventVie
                     ...identation,
                     idx === inputs.length - 1 ? IdentationGuideLineIcon.Empty : IdentationGuideLineIcon.Vertical
                 ];
-                this.getLogEventsLines(
+                this.getPayloadLines(
                     arg.components, lines, identationIdx + 1, nextIdentation
                 );
             }

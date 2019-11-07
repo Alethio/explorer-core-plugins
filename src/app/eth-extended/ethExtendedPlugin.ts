@@ -19,7 +19,7 @@ import { cmListModule } from "./module/cm/cmList/cmListModule";
 import { cmDetailsModule } from "./module/cm/cmDetails/cmDetailsModule";
 import { cmSummaryModule } from "./module/cm/cmSummary/cmSummaryModule";
 import { cmPayloadModule } from "./module/cm/cmPayload/cmPayloadModule";
-import { txPayloadModule } from "./module/tx/txPayload/txPayloadModule";
+import { txPayloadModule } from "../shared/module/tx/txPayload/txPayloadModule";
 import { AccountDetailsAdapter } from "./adapter/account/AccountDetailsAdapter";
 import { AccountBalanceAdapter } from "./adapter/account/AccountBalanceAdapter";
 import { accountBalanceModule } from "./module/account/balance/accountBalanceModule";

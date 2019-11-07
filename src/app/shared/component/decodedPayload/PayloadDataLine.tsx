@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@alethio/explorer-ui/lib/styled-components";
-import { IDataLine } from "app/eth-extended/component/decodedPayload/DecodedPayloadView";
+import { IDataLine } from "app/shared/component/decodedPayload/DecodedPayloadView";
 
 const PayloadDataLineRoot = styled.div`
     padding: 10px 0px;

@@ -1,4 +1,4 @@
-import { LogEventsByTxStore } from "./byTx/LogEventsByTxStore";
+import { LogEventsByTxStore } from "../../../shared/data/logEvents/byTx/LogEventsByTxStore";
 import { LogEventsByCmStore } from "./byCm/LogEventsByCmStore";
 
 export class LogEventsStore {
