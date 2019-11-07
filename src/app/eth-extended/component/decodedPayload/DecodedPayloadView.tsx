@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@alethio/explorer-ui/lib/styled-components";
-import { IDecodedPayload, IDecodedInputPayload } from "app/eth-extended/data/payload/IDecodedPayload";
+import { IDecodedPayload, IDecodedInputPayload } from "app/shared/data/payload/IDecodedPayload";
 import { IdentationGuideLineIcon, IdentationLineWrapper } from "./IdentationLineWrapper";
 import { PayloadDataLine } from "app/eth-extended/component/decodedPayload/PayloadDataLine";
 import { ITranslation } from "plugin-api/ITranslation";

@@ -37,4 +37,11 @@ export class EthMementoPluginConfig {
     getBlockValueApiUrlMask() {
         return this.data.apiBasePath + "/block-range/%d/%d";
     }
+
+    /**
+     * URL for tx api endpoint (replace %s with tx hash)
+     */
+    getTxApiUrlMask() {
+        return this.data.apiBasePath + "/tx/%s";
+    }
 }

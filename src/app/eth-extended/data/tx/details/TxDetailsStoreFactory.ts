@@ -10,7 +10,7 @@ import { TxDetailsPartialReader } from "app/eth-extended/data/tx/details/TxDetai
 import { Deepstream } from "app/util/network/Deepstream";
 import { DsRpcApi } from "app/eth-extended/data/DsRpcApi";
 import { ILogger } from "plugin-api/ILogger";
-import { Decoder } from "app/eth-extended/data/payload/Decoder";
+import { Decoder } from "app/shared/data/payload/Decoder";
 import { EthExtendedPluginConfig } from "app/eth-extended/EthExtendedPluginConfig";
 
 const CACHE_SIZE = 100;

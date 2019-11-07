@@ -1,15 +1,14 @@
-import { AlethioDataSource } from "app/eth-extended/AlethioDataSource";
 import { IDataAdapter } from "plugin-api/IDataAdapter";
 import { NotFoundError } from "app/shared/data/NotFoundError";
 import { ITxDetails } from "app/shared/data/tx/details/ITxDetails";
-import { TxDataWatcher } from "./TxDataWatcher";
-import { ITxContext } from "../../../shared/context/ITxContext";
+import { ITxContext } from "app/shared/context/ITxContext";
 import { txContextType } from "app/shared/context/txContextType";
+import { MementoDataSource } from "app/eth-memento/MementoDataSource";
 
 export class TxDetailsAdapter implements IDataAdapter<ITxContext, ITxDetails> {
     contextType = txContextType;
 
-    constructor(private dataSource: AlethioDataSource) {
+    constructor(private dataSource: MementoDataSource) {
 
     }
 
@@ -22,10 +21,5 @@ export class TxDetailsAdapter implements IDataAdapter<ITxContext, ITxDetails> {
             }
             throw e;
         }
-    }
-
-    createWatcher(context: ITxContext, lastData: ITxDetails | undefined) {
-        return new TxDataWatcher(this.dataSource.stores.blockStateStore, this.dataSource.pendingTxWatcher,
-            context.txHash, lastData);
     }
 }

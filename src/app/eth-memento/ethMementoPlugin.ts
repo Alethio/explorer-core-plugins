@@ -9,6 +9,11 @@ import { blockAdvancedModule } from "app/shared/module/block/blockAdvanced/block
 import { blockLogsBloomModule } from "app/shared/module/block/blockLogsBloom/blockLogsBloomModule";
 import { BlockListAdapter } from "app/shared/adapter/block/BlockListAdapter";
 import { NullEthPriceAdapter } from "app/eth-memento/adapter/NullEthPriceAdapter";
+import { txParentBlockContext } from "app/shared/context/txParentBlockContext";
+import { txBasicModule } from "app/shared/module/tx/txBasic/txBasicModule";
+import { TxDetailsAdapter } from "app/eth-memento/adapter/tx/TxDetailsAdapter";
+import { txAdvancedModule } from "app/shared/module/tx/txAdvanced/txAdvancedModule";
+import { BlockBasicInfoAdapter } from "app/shared/adapter/block/BlockBasicInfoAdapter";
 
 const ethMementoPlugin: IPlugin = {
     init(configData: unknown, api, logger, publicPath) {
@@ -26,6 +31,7 @@ const ethMementoPlugin: IPlugin = {
             ethSymbol
         }));
 
+        api.addDataAdapter("adapter://aleth.io/block/basic", new BlockBasicInfoAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/full/block/details", new BlockDetailsAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/prices/latest", new NullEthPriceAdapter());
         api.addModuleDef("module://aleth.io/block/basic", blockBasicModule);
@@ -33,6 +39,12 @@ const ethMementoPlugin: IPlugin = {
         api.addModuleDef("module://aleth.io/block/advanced", blockAdvancedModule(ethSymbol));
         api.addModuleDef("module://aleth.io/block/logs-bloom", blockLogsBloomModule);
         api.addDataAdapter("adapter://aleth.io/block-range/summary", new BlockListAdapter(dataSource));
+
+        api.addContextDef("context://aleth.io/extended/tx/parentBlock", txParentBlockContext);
+        api.addDataAdapter("adapter://aleth.io/extended/tx/details", new TxDetailsAdapter(dataSource));
+        api.addModuleDef("module://aleth.io/tx/basic", txBasicModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/tx/advanced", txAdvancedModule(ethSymbol));
+
     },
 
     getAvailableLocales() {

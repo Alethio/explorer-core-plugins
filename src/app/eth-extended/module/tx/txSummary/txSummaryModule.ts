@@ -1,8 +1,8 @@
 import { IModuleDef } from "plugin-api/IModuleDef";
 import { ITxSummaryProps } from "./component/TxSummary";
 import { AlethioDataSource } from "../../../AlethioDataSource";
-import { ITxDetails } from "app/eth-extended/data/tx/details/ITxDetails";
-import { ITxContext } from "../../../../shared/context/ITxContext";
+import { ITxDetails } from "app/shared/data/tx/details/ITxDetails";
+import { ITxContext } from "app/shared/context/ITxContext";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { txContextType } from "app/shared/context/txContextType";
 

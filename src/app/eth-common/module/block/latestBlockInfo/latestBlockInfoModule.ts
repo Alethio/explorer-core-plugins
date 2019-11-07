@@ -1,6 +1,6 @@
 import { IModuleDef } from "plugin-api/IModuleDef";
 import { IBlockContext } from "app/shared/context/IBlockContext";
-import { AlethioAdapterType } from "../../../../shared/adapter/AlethioAdapterType";
+import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { LatestBlockInfo, ILatestBlockInfoProps } from "./component/LatestBlockInfo";
 import { IBlockBasicInfo } from "app/shared/data/block/IBlockBasicInfo";
 import { blockContextType } from "app/shared/context/blockContextType";

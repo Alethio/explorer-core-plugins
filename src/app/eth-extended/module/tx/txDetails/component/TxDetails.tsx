@@ -1,8 +1,8 @@
 import * as React from "react";
 import { ITranslation } from "plugin-api/ITranslation";
-import { ITxDetails } from "app/eth-extended/data/tx/details/ITxDetails";
-import { TxBasic } from "app/eth-extended/module/tx/txBasic/TxBasic";
-import { TxAdvanced } from "app/eth-extended/module/tx/txAdvanced/TxAdvanced";
+import { ITxDetails } from "app/shared/data/tx/details/ITxDetails";
+import { TxBasic } from "app/shared/module/tx/txBasic/TxBasic";
+import { TxAdvanced } from "app/shared/module/tx/txAdvanced/TxAdvanced";
 
 export interface ITxDetailsProps {
     txHash: string;

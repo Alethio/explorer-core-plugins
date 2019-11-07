@@ -4,7 +4,7 @@ import { ValueBox } from "@alethio/ui/lib/layout/content/box/ValueBox";
 import { StatusOkIcon } from "@alethio/ui/lib/icon/StatusOkIcon";
 import { TooltipRegular } from "@alethio/ui/lib/overlay/tooltip/TooltipRegular";
 import { StatusNotConfirmedIcon } from "@alethio/ui/lib/icon/StatusNotConfirmedIcon";
-import { ITxDetails } from "app/eth-extended/data/tx/details/ITxDetails";
+import { ITxDetails } from "app/shared/data/tx/details/ITxDetails";
 import { isPendingTxDetails } from "app/eth-extended/data/tx/details/isPendingTxDetails";
 import { ErrorIcon } from "@alethio/ui/lib/icon/ErrorIcon";
 import { isFullTxDetails } from "app/eth-extended/data/tx/details/isFullTxDetails";

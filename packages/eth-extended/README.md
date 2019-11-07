@@ -26,7 +26,7 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 
 | Context URI | Generated context shape | Placed in context | Description | Implementation |
 | --- | --- | --- | --- | --- |
-| context://aleth.io/extended/tx/parentBlock | { txHash, blockNumber } | { txHash } | Adds the parent block to the current TX context | [txParentBlockContext](../../src/app/eth-extended/context/txParentBlockContext.ts) |
+| context://aleth.io/extended/tx/parentBlock | { txHash, blockNumber } | { txHash } | Adds the parent block to the current TX context | [txParentBlockContext](../../src/app/shared/context/txParentBlockContext.ts) |
 | context://aleth.io/extended/tx/parentBlock?optional | { txHash, blockNumber? } | { txHash } | Adds the parent block to the current TX context, if it exists (not a pending TX) | [txParentBlockOptionalContext](../../src/app/eth-extended/context/txParentBlockOptionalContext.ts) |
 | context://aleth.io/cm/parent | { txHash, validationIndex, parentValidationIndex} |  { txHash, validationIndex } | Adds the parent contract message or TX to the current context | [cmParentContext](../../src/app/eth-extended/context/cmParentContext.ts) |
 
@@ -39,8 +39,8 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 | module://aleth.io/block/advanced | { blockNumber } | extraData | Block advanced data fields |[blockAdvancedModule](../../src/app/shared/module/block/blockAdvanced/blockAdvancedModule.tsx) | N/A |
 | module://aleth.io/block/logs-bloom | { blockNumber } | N/A | Block logs bloom |[blockLogsBloomModule](../../src/app/shared/module/block/blockLogsBloom/blockLogsBloomModule.tsx) | N/A |
 | module://aleth.io/uncle/details | { uncleHash } | N/A | Uncle data fields | [uncleDetailsModule](../../src/app/shared/module/uncle/uncleDetails/uncleDetailsModule.ts) | N/A |
-| module://aleth.io/tx/basic | { txHash } | blockConfirmations | Transaction basic data fields | [txBasicModule](../../src/app/eth-extended/module/tx/txBasic/txBasicModule.tsx) | N/A |
-| module://aleth.io/tx/advanced | { txHash } | N/A | Transaction advanced data fields | [txAdvancedModule](../../src/app/eth-extended/module/tx/txAdvanced/txAdvancedModule.tsx) | N/A |
+| module://aleth.io/tx/basic | { txHash } | blockConfirmations | Transaction basic data fields | [txBasicModule](../../src/app/shared/module/tx/txBasic/txBasicModule.tsx) | N/A |
+| module://aleth.io/tx/advanced | { txHash } | N/A | Transaction advanced data fields | [txAdvancedModule](../../src/app/shared/module/tx/txAdvanced/txAdvancedModule.tsx) | N/A |
 | module://aleth.io/tx/summary | { txHash } | N/A | Accordion with contract messages, log events, token transfers etc. |[txSummaryModule](../../src/app/eth-extended/module/tx/txSummary/txSummaryModule.ts) | N/A |
 | module://aleth.io/tx/payload" | { txHash } | N/A | Decoded tx payload | [txPayloadModule](../../src/app/eth-extended/module/tx/txPayload/txPayloadModule.ts) | N/A |
 | module://aleth.io/account/details | { accountHash } | N/A | Account data fields | [accountDetailsModule](../../src/app/eth-extended/module/account/accountDetails/accountDetailsModule.ts) | N/A |
@@ -65,7 +65,7 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 | adapter://aleth.io/block-range/summary | { rangeStart, rangeEnd, blockNumber } | Array<[IBlockTxCount](../../src/app/shared/data/block/value/IBlockTxCount.ts) \| undefined>| TX counts per block for a range of blocks | [BlockListAdapter](../../src/app/shared/adapter/block/BlockListAdapter.ts) |
 | adapter://aleth.io/block/latestNo | {} | number | Returns the latest block number on the chain | [LatestBlockNumberAdapter](../../src/app/shared/adapter/block/LatestBlockNumberAdapter.ts) |
 | adapter://aleth.io/extended/uncle/details | { uncleHash } | [IUncleDetails](../../src/app/eth-extended/data/uncle/IUncleDetails.ts) | Uncle data fields | [UncleDetailsAdapter](../../src/app/eth-extended/adapter/uncle/UncleDetailsAdapter.ts) |
-| adapter://aleth.io/extended/tx/details | { txHash } | [ITxDetails](../../src/app/eth-extended/data/tx/details/ITxDetails.ts) | Transaction data fields | [TxDetailsAdapter](../../src/app/eth-extended/adapter/tx/TxDetailsAdapter.ts) |
+| adapter://aleth.io/extended/tx/details | { txHash } | [ITxDetails](../../src/app/shared/data/tx/details/ITxDetails.ts) | Transaction data fields | [TxDetailsAdapter](../../src/app/eth-extended/adapter/tx/TxDetailsAdapter.ts) |
 | adapter://aleth.io/extended/account/details | { accountHash } | [IAccountDetails](../../src/app/eth-extended/data/account/IAccountDetails.ts) | Aggregated account data | [AccountDetailsAdapter](../../src/app/eth-extended/adapter/account/AccountDetailsAdapter.ts) |
 | adapter://aleth.io/extended/account/balance?latest | { accountHash } | [AccountBalance](../../src/app/eth-extended/data/account/balance/AccountBalance.ts) | Account balance for the latest available block | [AccountBalanceAdapter](../../src/app/eth-extended/adapter/account/AccountBalanceAdapter.ts) |
 | adapter://aleth.io/extended/account/balance?historical | { accountHash } | [AccountBalance](../../src/app/eth-extended/data/account/balance/AccountBalance.ts) | Detailed account balance for the last 30 days | [ AccountBalanceAdapter](../../src/app/eth-extended/adapter/account/AccountBalanceAdapter.ts) |

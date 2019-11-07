@@ -1,12 +1,18 @@
 import { IModuleDef } from "plugin-api/IModuleDef";
-import { ITxAdvancedProps, TxAdvanced } from "./TxAdvanced";
+import { ITxBasicProps, TxBasic } from "./TxBasic";
 import { ITxContext } from "app/shared/context/ITxContext";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
-import { ITxDetails } from "app/eth-extended/data/tx/details/ITxDetails";
+import { ITxDetails } from "app/shared/data/tx/details/ITxDetails";
 import { txContextType } from "app/shared/context/txContextType";
 
-export const txAdvancedModule: (ethSymbol: string) => IModuleDef<ITxAdvancedProps, ITxContext> = (ethSymbol) => ({
+enum SlotType {
+    BlockConfirmations = "blockConfirmations"
+}
+
+export const txBasicModule: (ethSymbol: string) => IModuleDef<ITxBasicProps, ITxContext, SlotType> =
+(ethSymbol) => ({
     contextType: txContextType,
+    slotNames: Object.values(SlotType),
 
     dataAdapters: [{
         ref: AlethioAdapterType.TxDetailsExtended
@@ -15,24 +21,25 @@ export const txAdvancedModule: (ethSymbol: string) => IModuleDef<ITxAdvancedProp
         optional: true
     }],
 
-    getContentComponent: async () => TxAdvanced,
+    getContentComponent: async () => TxBasic,
 
     getContentProps(data) {
-        let { asyncData, context, translation, locale } = data;
+        let { asyncData, context, translation, locale, slots } = data;
 
         let txDetails = asyncData.get(AlethioAdapterType.TxDetailsExtended)!.data as ITxDetails;
         let latestEthPrice = asyncData.get(AlethioAdapterType.EthPrices)!.data as number | undefined;
 
-        let props: ITxAdvancedProps = {
+        let props: ITxBasicProps = {
             txHash: context.txHash,
             txDetails,
             latestEthPrice,
             locale,
             ethSymbol,
-            translation
+            translation,
+            blockConfirmationsSlot: slots && slots[SlotType.BlockConfirmations]
         };
         return props;
     },
 
-    getHelpComponent: () => ({ translation }) => translation.get("txView.content.advanced.help") as any
+    getHelpComponent: () => ({ translation }) => translation.get("txView.content.basic.help") as any
 });

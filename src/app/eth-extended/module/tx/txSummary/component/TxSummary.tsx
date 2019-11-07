@@ -4,7 +4,7 @@ import { observer } from "mobx-react";
 import { ITheme } from "@alethio/explorer-ui/lib/ITheme";
 import { ThemeContext } from "plugin-api/ThemeContext";
 import { ITranslation } from "plugin-api/ITranslation";
-import { ITxDetails } from "app/eth-extended/data/tx/details/ITxDetails";
+import { ITxDetails } from "app/shared/data/tx/details/ITxDetails";
 import { isFullTxDetails } from "app/eth-extended/data/tx/details/isFullTxDetails";
 import { NotAvailableBox } from "app/shared/component/NotAvailableBox";
 import { IAccordionItemConfig } from "@alethio/ui/lib/control/accordion/IAccordionItemConfig";

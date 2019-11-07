@@ -32,7 +32,7 @@ import { BlockAvgTxTimeInPoolAdapter } from "./adapter/block/BlockAvgTxTimeInPoo
 import { unclePage } from "./page/uncle/unclePage";
 import { uncleDetailsModule } from "app/shared/module/uncle/uncleDetails/uncleDetailsModule";
 import { blockTxsModule } from "../shared/module/block/blockTxs/blockTxsModule";
-import { txParentBlockContext } from "./context/txParentBlockContext";
+import { txParentBlockContext } from "../shared/context/txParentBlockContext";
 import { txParentBlockOptionalContext } from "./context/txParentBlockOptionalContext";
 import { txDetailsModule } from "./module/tx/txDetails/txDetailsModule";
 import { BlockBasicInfoAdapter } from "app/shared/adapter/block/BlockBasicInfoAdapter";
@@ -43,8 +43,8 @@ import { EthExtendedPluginConfig } from "./EthExtendedPluginConfig";
 import { blockBasicModule } from "app/shared/module/block/blockBasic/blockBasicModule";
 import { blockAdvancedModule } from "app/shared/module/block/blockAdvanced/blockAdvancedModule";
 import { blockLogsBloomModule } from "app/shared/module/block/blockLogsBloom/blockLogsBloomModule";
-import { txBasicModule } from "app/eth-extended/module/tx/txBasic/txBasicModule";
-import { txAdvancedModule } from "app/eth-extended/module/tx/txAdvanced/txAdvancedModule";
+import { txBasicModule } from "app/shared/module/tx/txBasic/txBasicModule";
+import { txAdvancedModule } from "app/shared/module/tx/txAdvanced/txAdvancedModule";
 
 const ethExtendedPlugin: IPlugin = {
     init(configData: unknown, api, logger, publicPath) {
