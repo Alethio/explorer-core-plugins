@@ -16,7 +16,6 @@ export class TxDetailsMementoReader {
             gasUsed: new BigNumber(data["txGasUsed"]),
             gasPrice: new BigNumber(data["txGasPrice"]),
             cumulativeGasUsed: new BigNumber(data["cumulativeGasUsed"]),
-            msgStatus: data["msgStatus"],
             error: Boolean(data["msgError"]) ? data["msgErrorString"] : void 0,
             payload: data["msgPayload"] || void 0,
             block: {
