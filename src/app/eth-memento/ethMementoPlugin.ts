@@ -21,6 +21,10 @@ import { unclePage } from "app/shared/page/uncle/unclePage";
 import { UncleDetailsAdapter } from "app/shared/adapter/uncle/UncleDetailsAdapter";
 import { uncleDetailsModule } from "app/shared/module/uncle/uncleDetails/uncleDetailsModule";
 import { uncleByHashContextType } from "app/eth-extended/context/uncleByHashContextType";
+import { LatestBlockNumberAdapter } from "app/shared/adapter/block/LatestBlockNumberAdapter";
+import { dashboardPage } from "app/eth-lite/page/dashboardPage";
+import { BlockConfirmationsAdapter } from "app/shared/adapter/block/BlockConfirmationsAdapter";
+import { SearchAdapter } from "app/shared/adapter/SearchAdapter";
 
 const ethMementoPlugin: IPlugin = {
     init(configData: unknown, api, logger, publicPath) {
@@ -33,15 +37,17 @@ const ethMementoPlugin: IPlugin = {
 
         api.addDataSource("source://aleth.io/memento/api", dataSource);
 
-        api.addModuleDef("module://aleth.io/memento/account/txs", accountTxsModule({
-            store: dataSource.stores.txByAccountStore,
-            ethSymbol
-        }));
+        api.addPageDef("page://aleth.io/dashboard", dashboardPage);
+        api.addDataAdapter("adapter://aleth.io/search/v2", new SearchAdapter(dataSource.stores.search));
 
+        api.addDataAdapter("adapter://aleth.io/block/latestNo",
+            new LatestBlockNumberAdapter(dataSource.stores.blockStateStore));
         api.addDataAdapter("adapter://aleth.io/block/basic", new BlockBasicInfoAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/full/block/details", new BlockDetailsAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/prices/latest", new NullEthPriceAdapter());
         api.addDataAdapter("adapter://aleth.io/block-range/summary", new BlockListAdapter(dataSource));
+        api.addDataAdapter("adapter://aleth.io/block/confirmations",
+            new BlockConfirmationsAdapter(dataSource.stores.blockStateStore));
         api.addModuleDef("module://aleth.io/memento/block/basic", blockBasicModule);
         api.addModuleDef("module://aleth.io/memento/block/txs", blockTxsModule(ethSymbol));
         api.addModuleDef("module://aleth.io/memento/block/advanced", blockAdvancedModule(ethSymbol));
@@ -73,6 +79,10 @@ const ethMementoPlugin: IPlugin = {
             txDetailsAdapterUri: AlethioAdapterType.TxDetailsMemento
         }));
 
+        api.addModuleDef("module://aleth.io/memento/account/txs", accountTxsModule({
+            store: dataSource.stores.txByAccountStore,
+            ethSymbol
+        }));
     },
 
     getAvailableLocales() {
