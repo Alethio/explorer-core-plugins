@@ -10,7 +10,7 @@ export class LatestBlockNumberApi {
 
     }
 
-    async fetch() {
+    async getLatestBlock() {
         let data = await this.httpApi.fetch(
             this.endpointUrlMask.replace("%d", "latest")
         );

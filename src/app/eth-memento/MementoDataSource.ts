@@ -6,8 +6,8 @@ import { TxDetailsStore } from "app/eth-memento/data/tx/details/TxDetailsStore";
 import { LogEventsStore } from "app/eth-memento/data/logEvents/LogEventsStore";
 import { UncleDetailsStore } from "app/shared/data/uncle/UncleDetailsStore";
 import { BlockStateStore } from "app/shared/data/BlockStateStore";
-import { LastBlockWatcher } from "app/eth-memento/data/watcher/LastBlockWatcher";
 import { Search } from "app/eth-memento/data/search/Search";
+import { LastBlockWatcher } from "app/shared/data/watcher/LastBlockWatcher";
 
 interface IMementoDataStores {
     blockStateStore: BlockStateStore;

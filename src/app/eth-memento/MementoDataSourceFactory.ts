@@ -9,8 +9,8 @@ import { LogEventsStoreFactory } from "app/eth-memento/data/logEvents/LogEventsS
 import { UncleDetailsStoreFactory } from "app/shared/data/uncle/UncleDetailsStoreFactory";
 import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { LatestBlockNumberApiFactory } from "app/eth-memento/data/block/latest/LatestBlockNumberApiFactory";
-import { LastBlockWatcher } from "app/eth-memento/data/watcher/LastBlockWatcher";
 import { SearchFactory } from "app/eth-memento/data/search/SearchFactory";
+import { LastBlockWatcher } from "app/shared/data/watcher/LastBlockWatcher";
 
 export class MementoDataSourceFactory {
     create(config: EthMementoPluginConfig, logger: ILogger) {
