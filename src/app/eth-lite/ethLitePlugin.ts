@@ -1,5 +1,5 @@
 import { IPlugin } from "plugin-api";
-import { dashboardPage } from "app/eth-lite/page/dashboardPage";
+import { dashboardPage } from "app/shared/page/dashboard/dashboardPage";
 import { Web3DataSourceFactory } from "app/eth-lite/Web3DataSourceFactory";
 import { SearchAdapter } from "app/shared/adapter/SearchAdapter";
 import { LatestBlockNumberAdapter } from "app/shared/adapter/block/LatestBlockNumberAdapter";

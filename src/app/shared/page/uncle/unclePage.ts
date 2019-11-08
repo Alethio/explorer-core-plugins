@@ -1,7 +1,7 @@
 import { IPageDef } from "plugin-api/IPageDef";
 import { UnclePageSlotType } from "app/shared/page/uncle/UnclePageSlotType";
 import { UnclePageTemplate } from "app/shared/page/uncle/component/UnclePageTemplate";
-import { uncleByHashContextType } from "app/eth-extended/context/uncleByHashContextType";
+import { uncleByHashContextType } from "app/shared/context/uncleByHashContextType";
 import { IUncleByHashContext } from "app/eth-extended/context/IUncleByHashContext";
 
 export const unclePage: IPageDef<UnclePageSlotType, IUncleByHashContext> = {

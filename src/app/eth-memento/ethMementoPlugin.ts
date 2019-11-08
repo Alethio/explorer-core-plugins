@@ -20,9 +20,9 @@ import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { unclePage } from "app/shared/page/uncle/unclePage";
 import { UncleDetailsAdapter } from "app/shared/adapter/uncle/UncleDetailsAdapter";
 import { uncleDetailsModule } from "app/shared/module/uncle/uncleDetails/uncleDetailsModule";
-import { uncleByHashContextType } from "app/eth-extended/context/uncleByHashContextType";
+import { uncleByHashContextType } from "app/shared/context/uncleByHashContextType";
 import { LatestBlockNumberAdapter } from "app/shared/adapter/block/LatestBlockNumberAdapter";
-import { dashboardPage } from "app/eth-lite/page/dashboardPage";
+import { dashboardPage } from "app/shared/page/dashboard/dashboardPage";
 import { BlockConfirmationsAdapter } from "app/shared/adapter/block/BlockConfirmationsAdapter";
 import { SearchAdapter } from "app/shared/adapter/SearchAdapter";
 

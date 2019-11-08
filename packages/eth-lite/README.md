@@ -18,7 +18,7 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 
 | Page URI | Created context shape | Module slots | Description | Implementation |
 | --- | --- | --- | --- | --- |
-| page://aleth.io/dashboard | {} | content | Main dashboard page | [dashboardPage](../../src/app/eth-lite/page/dashboardPage.ts) |
+| page://aleth.io/dashboard | {} | content | Main dashboard page | [dashboardPage](../../src/app/shared/page/dashboard/dashboardPage.ts) |
 | page://aleth.io/uncle | { blockNumber, uncleIndex } | content | Uncle details page | [unclePage](../../src/app/eth-lite/page/unclePage.tsx) |
 
 ### Context

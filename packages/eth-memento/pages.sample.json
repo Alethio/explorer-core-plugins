@@ -70,8 +70,37 @@
         "def": "page://aleth.io/account",
         "children": {
             "bottom": [
-                { "def": "module://aleth.io/memento/account/txs" },
-                { "def": "module://aleth.io/lite/account/contract" }
+                { "def": "module://aleth.io/memento/account/txs" }
+            ]
+        }
+    }, {
+        "def": "page://aleth.io/dashboard",
+        "children": {
+            "content": [
+                { "def": "module://aleth.io/search" },
+                {
+                    "def": "context://aleth.io/dashboard/latestBlockRange",
+                    "children": [
+                        {
+                            "def": "module://aleth.io/dashboard/charts",
+                            "children": {
+                                "content": [{
+                                    "def": "module://aleth.io/dashboard/blocksChart",
+                                    "children": {
+                                        "children": [
+                                            {
+                                                "def": "context://aleth.io/block/latest",
+                                                "children": [
+                                                    { "def": "module://aleth.io/dashboard/latestBlockInfo" }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }]
+                            }
+                        }
+                    ]
+                }
             ]
         }
     }]
