@@ -51,7 +51,7 @@ const ethMementoPlugin: IPlugin = {
         api.addDataAdapter("adapter://aleth.io/full/uncle/details", new UncleDetailsAdapter(dataSource));
         api.addModuleDef("module://aleth.io/memento/uncle/details",
             uncleDetailsModule({
-                uncleDetailsAdapterUri: AlethioAdapterType.UncleDetailsExtended,
+                uncleDetailsAdapterUri: AlethioAdapterType.UncleDetailsFull,
                 contextType: uncleByHashContextType,
                 ethSymbol
             }));

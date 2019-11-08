@@ -12,7 +12,7 @@ export const blockBasicModule: IModuleDef<IBlockBasicProps, IBlockContext, Block
 
     dataAdapters: [
         {
-            ref: AlethioAdapterType.BlockDetailsExtended
+            ref: AlethioAdapterType.BlockDetailsFull
         }
     ],
 
@@ -23,7 +23,7 @@ export const blockBasicModule: IModuleDef<IBlockBasicProps, IBlockContext, Block
     getContentProps(data) {
         let { asyncData, locale, translation, slots } = data;
 
-        let blockDetails = asyncData.get(AlethioAdapterType.BlockDetailsExtended)!.data as IBlockDetails;
+        let blockDetails = asyncData.get(AlethioAdapterType.BlockDetailsFull)!.data as IBlockDetails;
 
         return {
             blockDetails,

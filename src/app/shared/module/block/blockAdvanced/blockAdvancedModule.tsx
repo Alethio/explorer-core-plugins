@@ -13,7 +13,7 @@ IModuleDef<IBlockAdvancedProps, IBlockContext, BlockAdvancedSlotType> = (ethSymb
 
     dataAdapters: [
         {
-            ref: AlethioAdapterType.BlockDetailsExtended
+            ref: AlethioAdapterType.BlockDetailsFull
         }
     ],
 
@@ -24,7 +24,7 @@ IModuleDef<IBlockAdvancedProps, IBlockContext, BlockAdvancedSlotType> = (ethSymb
     getContentProps(data) {
         let { asyncData, locale, translation, slots } = data;
 
-        let blockDetails = asyncData.get(AlethioAdapterType.BlockDetailsExtended)!.data as IBlockDetails;
+        let blockDetails = asyncData.get(AlethioAdapterType.BlockDetailsFull)!.data as IBlockDetails;
 
         return {
             blockDetails,
