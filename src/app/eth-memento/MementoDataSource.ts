@@ -4,6 +4,7 @@ import { TxLiteByAccountStore } from "app/eth-memento/data/tx/byAccount/TxLiteBy
 import { BlockValueStore } from "app/shared/data/block/value/BlockValueStore";
 import { TxDetailsStore } from "app/eth-memento/data/tx/details/TxDetailsStore";
 import { LogEventsStore } from "app/eth-memento/data/logEvents/LogEventsStore";
+import { UncleDetailsStore } from "app/shared/data/uncle/UncleDetailsStore";
 
 interface IMementoDataStores {
     blockDetailsStore: BlockDetailsStore;
@@ -11,6 +12,7 @@ interface IMementoDataStores {
     txDetailsStore: TxDetailsStore;
     txByAccountStore: TxLiteByAccountStore;
     logEventsStore: LogEventsStore;
+    uncleDetailsStore: UncleDetailsStore;
 }
 
 export class MementoDataSource implements IDataSource {

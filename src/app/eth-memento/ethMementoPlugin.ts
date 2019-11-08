@@ -17,6 +17,10 @@ import { BlockBasicInfoAdapter } from "app/shared/adapter/block/BlockBasicInfoAd
 import { txPayloadModule } from "app/shared/module/tx/txPayload/txPayloadModule";
 import { txSummaryModule } from "app/eth-memento/module/tx/txSummary/txSummaryModule";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
+import { unclePage } from "app/shared/page/uncle/unclePage";
+import { UncleDetailsAdapter } from "app/shared/adapter/uncle/UncleDetailsAdapter";
+import { uncleDetailsModule } from "app/shared/module/uncle/uncleDetails/uncleDetailsModule";
+import { uncleByHashContextType } from "app/eth-extended/context/uncleByHashContextType";
 
 const ethMementoPlugin: IPlugin = {
     init(configData: unknown, api, logger, publicPath) {
@@ -42,6 +46,15 @@ const ethMementoPlugin: IPlugin = {
         api.addModuleDef("module://aleth.io/memento/block/txs", blockTxsModule(ethSymbol));
         api.addModuleDef("module://aleth.io/memento/block/advanced", blockAdvancedModule(ethSymbol));
         api.addModuleDef("module://aleth.io/memento/block/logs-bloom", blockLogsBloomModule);
+
+        api.addPageDef("page://aleth.io/uncle", unclePage);
+        api.addDataAdapter("adapter://aleth.io/full/uncle/details", new UncleDetailsAdapter(dataSource));
+        api.addModuleDef("module://aleth.io/memento/uncle/details",
+            uncleDetailsModule({
+                uncleDetailsAdapterUri: AlethioAdapterType.UncleDetailsFull,
+                contextType: uncleByHashContextType,
+                ethSymbol
+            }));
 
         api.addDataAdapter(AlethioAdapterType.TxDetailsMemento, new TxDetailsAdapter(dataSource));
         api.addContextDef("context://aleth.io/memento/tx/parentBlock", txParentBlockContext({

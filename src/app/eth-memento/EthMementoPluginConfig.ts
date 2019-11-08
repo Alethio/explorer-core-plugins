@@ -51,4 +51,11 @@ export class EthMementoPluginConfig {
     getTxLogEventsApiUrlMask() {
         return this.data.apiBasePath + "/tx/%s/log-entries";
     }
+
+    /**
+     * URL for uncle api endpoint (replace %s with uncleHash)
+     */
+    getUncleApiUrlMask() {
+        return this.data.apiBasePath + "/uncle/%s";
+    }
 }

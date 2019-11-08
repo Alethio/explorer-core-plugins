@@ -8,7 +8,7 @@ import { TokenTransferStore } from "app/eth-extended/data/token/transfer/TokenTr
 import { CmLiteStore } from "app/eth-extended/data/contractMsg/lite/CmLiteStore";
 import { CmDetailsStore } from "app/eth-extended/data/contractMsg/details/CmDetailsStore";
 import { PricesStore } from "app/eth-extended/data/prices/PricesStore";
-import { UncleDetailsStore } from "app/eth-extended/data/uncle/UncleDetailsStore";
+import { UncleDetailsStore } from "app/shared/data/uncle/UncleDetailsStore";
 import { AccountDetailsStore } from "app/eth-extended/data/account/details/AccountDetailsStore";
 import { AccountBalanceStore } from "app/eth-extended/data/account/balance/AccountBalanceStore";
 import { ContractDetailsStore } from "app/eth-extended/data/contract/ContractDetailsStore";

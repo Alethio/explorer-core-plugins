@@ -2,7 +2,7 @@ export enum AlethioAdapterType {
     BlockBasicInfo = "adapter://aleth.io/block/basic",
 
     BlockDetailsLite = "adapter://aleth.io/lite/block/details",
-    BlockDetailsExtended = "adapter://aleth.io/full/block/details",
+    BlockDetailsFull = "adapter://aleth.io/full/block/details",
 
     EthPrices = "adapter://aleth.io/prices/latest",
     BlockConfirmations = "adapter://aleth.io/block/confirmations",
@@ -10,7 +10,7 @@ export enum AlethioAdapterType {
     LatestBlockNumber = "adapter://aleth.io/block/latestNo",
 
     UncleDetailsLite = "adapter://aleth.io/lite/uncle/details",
-    UncleDetailsExtended = "adapter://aleth.io/extended/uncle/details",
+    UncleDetailsFull = "adapter://aleth.io/full/uncle/details",
 
     TxDetailsExtended = "adapter://aleth.io/extended/tx/details",
     TxDetailsMemento = "adapter://aleth.io/memento/tx/details",

@@ -9,7 +9,7 @@ import { SearchAdapter } from "../shared/adapter/SearchAdapter";
 import { PendingPoolInfoAdapter } from "./adapter/PendingPoolInfoAdapter";
 import { PropagationInfoAdapter } from "./adapter/PropagationInfoAdapter";
 import { EthNodesInfoAdapter } from "./adapter/EthNodesInfoAdapter";
-import { UncleDetailsAdapter } from "./adapter/uncle/UncleDetailsAdapter";
+import { UncleDetailsAdapter } from "../shared/adapter/uncle/UncleDetailsAdapter";
 import { TxDetailsAdapter } from "./adapter/tx/TxDetailsAdapter";
 import { txSummaryModule } from "./module/tx/txSummary/txSummaryModule";
 import { cmParentContext } from "./context/cmParentContext";
@@ -29,7 +29,7 @@ import { accountDetailsModule } from "./module/account/accountDetails/accountDet
 import { avgTimeInPoolChartModule } from "./module/dashboard/charts/avgTimeInPoolChartModule";
 import { propagationChartModule } from "./module/dashboard/charts/propagationChartModule";
 import { BlockAvgTxTimeInPoolAdapter } from "./adapter/block/BlockAvgTxTimeInPoolAdapter";
-import { unclePage } from "./page/uncle/unclePage";
+import { unclePage } from "../shared/page/uncle/unclePage";
 import { uncleDetailsModule } from "app/shared/module/uncle/uncleDetails/uncleDetailsModule";
 import { blockTxsModule } from "../shared/module/block/blockTxs/blockTxsModule";
 import { txParentBlockContext } from "../shared/context/txParentBlockContext";
@@ -71,10 +71,10 @@ const ethExtendedPlugin: IPlugin = {
         api.addModuleDef("module://aleth.io/block/logs-bloom", blockLogsBloomModule);
 
         api.addPageDef("page://aleth.io/uncle", unclePage);
-        api.addDataAdapter("adapter://aleth.io/extended/uncle/details", new UncleDetailsAdapter(dataSource));
+        api.addDataAdapter("adapter://aleth.io/full/uncle/details", new UncleDetailsAdapter(dataSource));
         api.addModuleDef("module://aleth.io/uncle/details",
             uncleDetailsModule({
-                uncleDetailsAdapterUri: AlethioAdapterType.UncleDetailsExtended,
+                uncleDetailsAdapterUri: AlethioAdapterType.UncleDetailsFull,
                 contextType: uncleByHashContextType,
                 ethSymbol
             }));

@@ -11,7 +11,7 @@ export const blockLogsBloomModule: IModuleDef<IBlockLogsBloomProps, IBlockContex
 
     dataAdapters: [
         {
-            ref: AlethioAdapterType.BlockDetailsExtended
+            ref: AlethioAdapterType.BlockDetailsFull
         }
     ],
 
@@ -22,7 +22,7 @@ export const blockLogsBloomModule: IModuleDef<IBlockLogsBloomProps, IBlockContex
     getContentProps(data) {
         let { asyncData, locale, translation } = data;
 
-        let blockDetails = asyncData.get(AlethioAdapterType.BlockDetailsExtended)!.data as IBlockDetails;
+        let blockDetails = asyncData.get(AlethioAdapterType.BlockDetailsFull)!.data as IBlockDetails;
 
         return {
             blockDetails,

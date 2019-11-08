@@ -61,6 +61,13 @@
     "blockView.content.advanced.help": "此处展示了挖出该区块的矿工信息及其相关数据，包括耗时、燃料消耗、难度值和所获区块奖励金额。",
     "blockView.content.logsBloom.help": "此处的矩阵总结了区块中的所有交易信息，并突出了所可能包含的日志信息。<br />关于该指标，您可以前往以下链接了解更多——<a href=\"https://ethon.consensys.net/prop-blocklogsbloom.html\" rel=\"noopener noreferrer\">以太坊本体论：区块的Bloom日志</a>",
 
+    "uncleView.sidebar.logo": "叔块",
+    "uncleView.sidebar.title": "叔区块页",
+    "uncleView.content.uncleNumber.label": "叔块",
+    "uncleView.content.noData.text": "无数据。 <br /> 试一下其他叔块吧！",
+    "uncleView.content.position.label": "位置",
+    "uncleView.content.includedBy.label": "包含于",
+
     "txView.content.noData.text": "无数据 <br /> 试一下其他交易吧！",
     "txView.content.txValue.label": "金额",
     "txView.content.txStatus.ok": "消息发送成功",

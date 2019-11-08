@@ -8,7 +8,7 @@ import { LogEventsStoreFactory } from "app/eth-extended/data/logEvents/LogEvents
 import { CmLiteStoreFactory } from "app/eth-extended/data/contractMsg/lite/CmLiteStoreFactory";
 import { CmDetailsStoreFactory } from "app/eth-extended/data/contractMsg/details/CmDetailsStoreFactory";
 import { PricesStoreFactory } from "app/eth-extended/data/prices/PricesStoreFactory";
-import { UncleDetailsStoreFactory } from "app/eth-extended/data/uncle/UncleDetailsStoreFactory";
+import { UncleDetailsStoreFactory } from "app/shared/data/uncle/UncleDetailsStoreFactory";
 import { TxPendingCountsStoreFactory } from "./data/account/pendingTxsCount/TxPendingCountsStoreFactory";
 import { AccountDetailsStoreFactory } from "./data/account/details/AccountDetailsStoreFactory";
 import { AccountBalanceStoreFactory } from "./data/account/balance/AccountBalanceStoreFactory";

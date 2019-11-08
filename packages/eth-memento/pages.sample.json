@@ -28,6 +28,14 @@
             }]
         }
     }, {
+        "def": "page://aleth.io/uncle",
+        "children": {
+            "content": [{
+                "def": "module://aleth.io/memento/uncle/details",
+                "pageCritical": true
+            }]
+        }
+    }, {
         "def": "page://aleth.io/tx",
         "children": {
             "sidebar": [{
