@@ -65,4 +65,18 @@ export class EthMementoPluginConfig {
     getSearchApiUrlMask() {
         return this.data.apiBasePath + "/search/%s";
     }
+
+    /**
+     * URL for account code api endpoint (replace %s with account address)
+     */
+    getAccountCodeApiUrlMask() {
+        return this.data.apiBasePath + "/account/%s/code";
+    }
+
+    /**
+     * URL for account balance api endpoint (replace %s with account address)
+     */
+    getAccountBalanceApiUrlMask() {
+        return this.data.apiBasePath + "/account/%s/balance";
+    }
 }

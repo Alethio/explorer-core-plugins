@@ -8,6 +8,8 @@ import { UncleDetailsStore } from "app/shared/data/uncle/UncleDetailsStore";
 import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { Search } from "app/eth-memento/data/search/Search";
 import { LastBlockWatcher } from "app/shared/data/watcher/LastBlockWatcher";
+import { AccountDetailsApi } from "app/eth-memento/data/account/AccountDetailsApi";
+import { AccountBalanceApi } from "app/eth-memento/data/account/AccountBalanceApi";
 
 interface IMementoDataStores {
     blockStateStore: BlockStateStore;
@@ -17,6 +19,8 @@ interface IMementoDataStores {
     txByAccountStore: TxLiteByAccountStore;
     logEventsStore: LogEventsStore;
     uncleDetailsStore: UncleDetailsStore;
+    accountDetailsApi: AccountDetailsApi;
+    accountBalanceApi: AccountBalanceApi;
     search: Search;
 }
 

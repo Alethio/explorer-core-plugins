@@ -110,5 +110,16 @@
     "accountView.content.accountSummary.label": "Summary",
     "accountView.content.accountSummary.minedTransactions.label": "Transactions",
     "accountView.content.accountSummary.transactions.blockNumber.label": "Block #",
-    "accountView.content.accountSummary.transactions.blockTime.label": "Block Time"
+    "accountView.content.accountSummary.transactions.blockTime.label": "Block Time",
+    "accountView.content.accountHash.label": "Address",
+    "accountView.content.accountType.label": "Type",
+    "accountView.type.External": "External Account",
+    "accountView.type.Contract": "Contract Account",
+    "accountView.content.balance.label": "Balance",
+    "accountView.contract.info.label": "Contract Info",
+    "accountView.contract.noData.text": "It seems there is no data to display.",
+    "accountView.contract.sourceCode.copyCode.label": "Copy code",
+    "accountView.contract.accountCode.label": "Account Code",
+    "accountView.contract.accountCode.switch.byteCode.label": "Switch to byte code",
+    "accountView.contract.accountCode.switch.opCode.label": "Switch to op code"
 }

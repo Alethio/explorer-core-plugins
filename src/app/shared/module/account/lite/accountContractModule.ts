@@ -1,7 +1,7 @@
 import { IModuleDef } from "plugin-api/IModuleDef";
 import { IAccountContext } from "app/shared/context/IAccountContext";
 import { IAccountDetails } from "app/eth-lite/data/account/IAccountDetails";
-import { Contract, IContractProps } from "app/eth-lite/module/account/component/Contract";
+import { Contract, IContractProps } from "app/shared/module/account/lite/component/Contract";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { accountContextType } from "app/shared/context/accountContextType";
 

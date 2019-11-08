@@ -41,6 +41,8 @@ with the usage of the only module exported by this plugin.
 | module://aleth.io/memento/tx/summary | { txHash } | N/A | Accordion with log events |[txSummaryModule](../../src/app/eth-memento/module/tx/txSummary/txSummaryModule.ts) | N/A |
 | module://aleth.io/memento/tx/payload" | { txHash } | N/A | Decoded tx payload | [txPayloadModule](../../src/app/shared/module/tx/txPayload/txPayloadModule.ts) | N/A |
 | module://aleth.io/memento/account/txs | { accountHash } | N/A | Accordion with transactions | [accountTxsModule](../../src/app/eth-memento/module/account/accountTxsModule.ts) |
+| module://aleth.io/memento/account/details | { accountHash } | N/A | Basic account data | [accountDetailsModule](../../src/app/shared/module/account/lite/accountDetailsModule.ts) |
+| module://aleth.io/memento/account/contract | { accountHash } | N/A | Contract data (creation code etc.) | [accountContractModule](../../src/app/shared/module/account/lite/accountContractModule.ts) |
 
 ### Data Adapters
 
@@ -55,3 +57,5 @@ with the usage of the only module exported by this plugin.
 | adapter://aleth.io/block/latestNo | {} | number | Returns the latest block number on the chain | [LatestBlockNumberAdapter](../../src/app/shared/adapter/block/LatestBlockNumberAdapter.ts) |
 | adapter://aleth.io/block-range/summary | { rangeStart, rangeEnd, blockNumber } | Array<[IBlockTxCount](../../src/app/shared/data/block/value/IBlockTxCount.ts) \| undefined>| TX counts per block for a range of blocks | [BlockListAdapter](../../src/app/shared/adapter/block/BlockListAdapter.ts) |
 | adapter://aleth.io/block/confirmations | { blockNumber } | [IBlockConfirmations](../../src/app/shared/adapter/block/BlockConfirmationsAdapter.ts) | Info about number of confirmations for a given block | [BlockConfirmationsAdapter](../../src/app/shared/adapter/block/BlockConfirmationsAdapter.ts) |
+| adapter://aleth.io/lite/account/details | { accountHash } | [IAccountDetails](../../src/app/eth-lite/data/account/IAccountDetails.ts) | Basic account data | [AccountDetailsAdapter](../../src/app/shared/adapter/account/lite/AccountDetailsAdapter.ts) |
+| adapter://aleth.io/lite/account/balance | { accountHash } | BigNumber | Total account balance in ETH |[AccountBalanceAdapter](../../src/app/shared/adapter/account/lite/AccountBalanceAdapter.ts) |

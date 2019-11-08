@@ -5,11 +5,12 @@ import { accountContextType } from "app/shared/context/accountContextType";
 import { IAccountContext } from "app/shared/context/IAccountContext";
 import { Web3DataSource } from "app/eth-lite/Web3DataSource";
 import { BigNumber } from "app/util/BigNumber";
+import { MementoDataSource } from "app/eth-memento/MementoDataSource";
 
 export class AccountBalanceAdapter implements IDataAdapter<IAccountContext, BigNumber> {
     contextType = accountContextType;
 
-    constructor(private dataSource: Web3DataSource) {
+    constructor(private dataSource: Web3DataSource | MementoDataSource) {
 
     }
 

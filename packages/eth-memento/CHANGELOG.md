@@ -1,4 +1,4 @@
-# unreleased
+# v1.1.0
 - added modules
     - `module://aleth.io/memento/block/basic`
     - `module://aleth.io/memento/block/txs`
@@ -9,6 +9,8 @@
     - `module://aleth.io/memento/tx/summary`
     - `module://aleth.io/memento/tx/payload`
     - `module://aleth.io/memento/uncle/details`
+    - `module://aleth.io/memento/account/details`
+    - `module://aleth.io/memento/account/contract`
 
 - added adapters
     - `adapter://aleth.io/block/basic`
@@ -20,6 +22,8 @@
     - `adapter://aleth.io/block/latestNo`
     - `adapter://aleth.io/block/confirmations`
     - `adapter://aleth.io/full/uncle/details`
+    - `adapter://aleth.io/lite/account/balance`
+    - `adapter://aleth.io/lite/account/details`
 
 - added context
     - `context://aleth.io/memento/tx/parentBlock`
@@ -27,7 +31,6 @@
 - added pages
     - `page://aleth.io/dashboard`
     - `page://aleth.io/uncle`
-    
 
 # v1.0.1
 

@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+var MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 var createStyledComponentsTransformer = require("typescript-plugin-styled-components").default;
 var { generateManifest } = require("plugin-api/build/generateManifest");
 
@@ -19,6 +20,14 @@ function getConfig(isProduction) {
             tsconfig: path.resolve(__dirname, "../..", "tsconfig.webpack.json"),
             tslint: path.resolve(__dirname, "../..", isProduction ? "tslint.prod.json" : "tslint.json"),
             async: false
+        }),
+        // Only include needed monaco-editor languages/features in bundle
+        // TODO: make separate build for monaco-editor in library mode
+        new MonacoWebpackPlugin({
+            // See https://github.com/Microsoft/monaco-editor-webpack-plugin for available options
+            output: "vs",
+            languages: ["solidity", "json"],
+            features: ["contextmenu", "clipboard", "find", "folding"]
         }),
         // These are preprocessor constants which are replaced inline (that's why the extra quotes)
         new webpack.DefinePlugin({
@@ -76,6 +85,7 @@ function getConfig(isProduction) {
             rules: [
                 {
                     test: /\.jsx?$/,
+                    exclude: /monaco-editor|web3|xhr2-cookies|rlp/,
                     enforce: "pre",
                     loader: "source-map-loader"
                 },
@@ -94,6 +104,11 @@ function getConfig(isProduction) {
                         limit: 8192,
                         outputPath: "img/"
                     }
+                },
+                // Needed for monaco-editor
+                {
+                    test: /\.css$/,
+                    use: ['style-loader', 'css-loader']
                 }
             ]
         },
