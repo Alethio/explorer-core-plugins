@@ -34,6 +34,10 @@
     "general.grid.footer.loadMore.label": "Load More",
     "general.grid.footer.norowsavailable.label": "These are not the droids you are looking for",
 
+    "dashboardView.title": "Ethereum Lite Explorer",
+    "dashboardView.subTitle": "An open source Ethereum block explorer. Available on ",
+    "dashboardView.github": "GitHub",
+
     "blockView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different block.",
     "blockView.content.dataNotLoaded.text": "Data is still being processed. Please be patient",
     "blockView.content.blockNumber.label": "Block",

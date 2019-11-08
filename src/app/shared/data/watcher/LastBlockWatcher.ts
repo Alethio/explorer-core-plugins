@@ -1,12 +1,13 @@
 import { Web3EthApi } from "app/eth-lite/data/Web3EthApi";
 import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { ILogger } from "plugin-api/ILogger";
+import { LatestBlockNumberApi } from "app/eth-memento/data/block/latest/LatestBlockNumberApi";
 
 export class LastBlockWatcher {
     private timeoutId: number | undefined;
 
     constructor(
-        private api: Web3EthApi,
+        private api: Web3EthApi | LatestBlockNumberApi,
         private store: BlockStateStore,
         private logger: ILogger
     ) {

@@ -1,6 +1,6 @@
 import { IDataSource } from "plugin-api/IDataSource";
 import { Search } from "app/eth-lite/data/search/Search";
-import { LastBlockWatcher } from "app/eth-lite/data/watcher/LastBlockWatcher";
+import { LastBlockWatcher } from "app/shared/data/watcher/LastBlockWatcher";
 import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { BlockValueStore } from "app/shared/data/block/value/BlockValueStore";
 import { BlockDetailsStore } from "app/eth-lite/data/block/details/BlockDetailsStore";

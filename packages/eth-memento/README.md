@@ -19,6 +19,7 @@ with the usage of the only module exported by this plugin.
 | Page URI | Created context shape | Module slots | Description | Implementation |
 | --- | --- | --- | --- | --- |
 | page://aleth.io/uncle | { uncleHash } | content | Uncle details page | [unclePage](../../src/app/shared/page/uncle/unclePage.ts) |
+| page://aleth.io/dashboard | {} | content | Main dashboard page | [dashboardPage](../../src/app/shared/page/dashboard/dashboardPage.ts) |
 
 ### Context
 
@@ -50,3 +51,7 @@ with the usage of the only module exported by this plugin.
 | adapter://aleth.io/full/uncle/details | { uncleHash } | [IUncleDetails](../../src/app/shared/data/uncle/IUncleDetails.ts) | Uncle data fields | [UncleDetailsAdapter](../../src/app/shared/adapter/uncle/UncleDetailsAdapter.ts) |
 | adapter://aleth.io/prices/latest | { blockNumber } | undefined | The price of ETH in USD at the latest block or undefined if disabled by configuration | [NullEthPriceAdapter](../../src/app/eth-memento/adapter/NullEthPriceAdapter.ts) |
 | adapter://aleth.io/memento/tx/details | { txHash } | [ITxDetails](../../src/app/shared/data/tx/details/ITxDetails.ts) | Transaction data fields | [TxDetailsAdapter](../../src/app/eth-memento/adapter/tx/TxDetailsAdapter.ts) |
+| adapter://aleth.io/search/v2 | {} | [ISearch](../../src/app/shared/data/search/ISearch.ts) | Returns a search provider | [SearchAdapter](../../src/app/shared/adapter/SearchAdapter.ts) |
+| adapter://aleth.io/block/latestNo | {} | number | Returns the latest block number on the chain | [LatestBlockNumberAdapter](../../src/app/shared/adapter/block/LatestBlockNumberAdapter.ts) |
+| adapter://aleth.io/block-range/summary | { rangeStart, rangeEnd, blockNumber } | Array<[IBlockTxCount](../../src/app/shared/data/block/value/IBlockTxCount.ts) \| undefined>| TX counts per block for a range of blocks | [BlockListAdapter](../../src/app/shared/adapter/block/BlockListAdapter.ts) |
+| adapter://aleth.io/block/confirmations | { blockNumber } | [IBlockConfirmations](../../src/app/shared/adapter/block/BlockConfirmationsAdapter.ts) | Info about number of confirmations for a given block | [BlockConfirmationsAdapter](../../src/app/shared/adapter/block/BlockConfirmationsAdapter.ts) |

@@ -38,7 +38,7 @@ import { txDetailsModule } from "./module/tx/txDetails/txDetailsModule";
 import { BlockBasicInfoAdapter } from "app/shared/adapter/block/BlockBasicInfoAdapter";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { dashboardPage } from "./page/dashboard/dashboardPage";
-import { uncleByHashContextType } from "./context/uncleByHashContextType";
+import { uncleByHashContextType } from "../shared/context/uncleByHashContextType";
 import { EthExtendedPluginConfig } from "./EthExtendedPluginConfig";
 import { blockBasicModule } from "app/shared/module/block/blockBasic/blockBasicModule";
 import { blockAdvancedModule } from "app/shared/module/block/blockAdvanced/blockAdvancedModule";

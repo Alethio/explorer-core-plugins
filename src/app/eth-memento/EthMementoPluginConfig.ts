@@ -58,4 +58,11 @@ export class EthMementoPluginConfig {
     getUncleApiUrlMask() {
         return this.data.apiBasePath + "/uncle/%s";
     }
+
+    /**
+     * URL for search api endpoint (replace %s with 64 characters hash)
+     */
+    getSearchApiUrlMask() {
+        return this.data.apiBasePath + "/search/%s";
+    }
 }

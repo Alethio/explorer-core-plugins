@@ -3,7 +3,7 @@ import { EthLitePluginConfig } from "app/eth-lite/EthLitePluginConfig";
 import { Web3EthApi } from "app/eth-lite/data/Web3EthApi";
 import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { SearchFactory } from "app/eth-lite/data/search/SearchFactory";
-import { LastBlockWatcher } from "app/eth-lite/data/watcher/LastBlockWatcher";
+import { LastBlockWatcher } from "app/shared/data/watcher/LastBlockWatcher";
 import { ILogger } from "plugin-api/ILogger";
 import { BlockValueStoreFactory } from "app/eth-lite/data/block/value/BlockValueStoreFactory";
 import { BlockDetailsStoreFactory } from "app/eth-lite/data/block/details/BlockDetailsStoreFactory";

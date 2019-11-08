@@ -3,7 +3,7 @@ import { IUncleDetails } from "app/shared/data/uncle/IUncleDetails";
 import { NotFoundError } from "app/shared/data/NotFoundError";
 import { AlethioDataSource } from "app/eth-extended/AlethioDataSource";
 import { IUncleByHashContext } from "app/eth-extended/context/IUncleByHashContext";
-import { uncleByHashContextType } from "app/eth-extended/context/uncleByHashContextType";
+import { uncleByHashContextType } from "app/shared/context/uncleByHashContextType";
 import { MementoDataSource } from "app/eth-memento/MementoDataSource";
 
 export class UncleDetailsAdapter implements IDataAdapter<IUncleByHashContext, IUncleDetails> {
