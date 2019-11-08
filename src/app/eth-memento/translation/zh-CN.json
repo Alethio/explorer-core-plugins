@@ -109,5 +109,16 @@
     "accountView.content.accountSummary.label": "内容概览",
     "accountView.content.accountSummary.minedTransactions.label": "历史交易",
     "accountView.content.accountSummary.transactions.blockNumber.label": "区块高度#",
-    "accountView.content.accountSummary.transactions.blockTime.label": "区块时间戳"
+    "accountView.content.accountSummary.transactions.blockTime.label": "区块时间戳",
+    "accountView.content.accountHash.label": "地址",
+    "accountView.content.accountType.label": "类型",
+    "accountView.type.External": "个人帐户",
+    "accountView.type.Contract": "合约账户",
+    "accountView.content.balance.label": "余额明细",
+    "accountView.contract.info.label": "合约信息",
+    "accountView.contract.noData.text": "无数据",
+    "accountView.contract.sourceCode.copyCode.label": "复制代码",
+    "accountView.contract.accountCode.label": "账户创建代码",
+    "accountView.contract.accountCode.switch.byteCode.label": "切换到字节模式",
+    "accountView.contract.accountCode.switch.opCode.label": "切换到操作码模式"
 }

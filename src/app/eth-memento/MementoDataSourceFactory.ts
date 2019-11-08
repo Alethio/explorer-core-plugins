@@ -11,6 +11,8 @@ import { BlockStateStore } from "app/shared/data/BlockStateStore";
 import { LatestBlockNumberApiFactory } from "app/eth-memento/data/block/latest/LatestBlockNumberApiFactory";
 import { SearchFactory } from "app/eth-memento/data/search/SearchFactory";
 import { LastBlockWatcher } from "app/shared/data/watcher/LastBlockWatcher";
+import { AccountBalanceApiFactory } from "app/eth-memento/data/account/AccountBalanceApiFactory";
+import { AccountDetailsApiFactory } from "app/eth-memento/data/account/AccountDetailsApiFactory";
 
 export class MementoDataSourceFactory {
     create(config: EthMementoPluginConfig, logger: ILogger) {
@@ -28,6 +30,9 @@ export class MementoDataSourceFactory {
 
         let search = new SearchFactory(config).create(blockStateStore);
 
+        let accountBalanceApi = new AccountBalanceApiFactory(config).create();
+        let accountDetailsApi = new AccountDetailsApiFactory(config).create();
+
         let mementoDataSource = new MementoDataSource(
             lastBlockWatcher,
             {
@@ -38,7 +43,9 @@ export class MementoDataSourceFactory {
                 txByAccountStore,
                 logEventsStore,
                 uncleDetailsStore,
-                search
+                search,
+                accountBalanceApi,
+                accountDetailsApi
             }
         );
 

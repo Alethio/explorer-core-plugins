@@ -5,11 +5,12 @@ import { accountContextType } from "app/shared/context/accountContextType";
 import { IAccountContext } from "app/shared/context/IAccountContext";
 import { IAccountDetails } from "app/eth-lite/data/account/IAccountDetails";
 import { Web3DataSource } from "app/eth-lite/Web3DataSource";
+import { MementoDataSource } from "app/eth-memento/MementoDataSource";
 
 export class AccountDetailsAdapter implements IDataAdapter<IAccountContext, IAccountDetails> {
     contextType = accountContextType;
 
-    constructor(private dataSource: Web3DataSource) {
+    constructor(private dataSource: Web3DataSource | MementoDataSource) {
 
     }
 

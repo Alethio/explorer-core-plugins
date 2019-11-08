@@ -25,6 +25,10 @@ import { LatestBlockNumberAdapter } from "app/shared/adapter/block/LatestBlockNu
 import { dashboardPage } from "app/shared/page/dashboard/dashboardPage";
 import { BlockConfirmationsAdapter } from "app/shared/adapter/block/BlockConfirmationsAdapter";
 import { SearchAdapter } from "app/shared/adapter/SearchAdapter";
+import { AccountDetailsAdapter } from "app/shared/adapter/account/lite/AccountDetailsAdapter";
+import { AccountBalanceAdapter } from "app/shared/adapter/account/lite/AccountBalanceAdapter";
+import { accountDetailsModule } from "app/shared/module/account/lite/accountDetailsModule";
+import { accountContractModule } from "app/shared/module/account/lite/accountContractModule";
 
 const ethMementoPlugin: IPlugin = {
     init(configData: unknown, api, logger, publicPath) {
@@ -79,6 +83,10 @@ const ethMementoPlugin: IPlugin = {
             txDetailsAdapterUri: AlethioAdapterType.TxDetailsMemento
         }));
 
+        api.addDataAdapter("adapter://aleth.io/lite/account/details", new AccountDetailsAdapter(dataSource));
+        api.addDataAdapter("adapter://aleth.io/lite/account/balance", new AccountBalanceAdapter(dataSource));
+        api.addModuleDef("module://aleth.io/memento/account/details", accountDetailsModule(ethSymbol));
+        api.addModuleDef("module://aleth.io/memento/account/contract", accountContractModule);
         api.addModuleDef("module://aleth.io/memento/account/txs", accountTxsModule({
             store: dataSource.stores.txByAccountStore,
             ethSymbol

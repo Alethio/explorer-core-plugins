@@ -15,10 +15,10 @@ import { txParentBlockContext } from "app/eth-lite/context/txParentBlockContext"
 import { TxDetailsAdapter } from "app/eth-lite/adapter/tx/TxDetailsAdapter";
 import { TxReceiptAdapter } from "app/eth-lite/adapter/tx/TxReceiptAdapter";
 import { txDetailsModule } from "app/eth-lite/module/tx/txDetails/txDetailsModule";
-import { AccountDetailsAdapter } from "app/eth-lite/adapter/account/AccountDetailsAdapter";
-import { AccountBalanceAdapter } from "app/eth-lite/adapter/account/AccountBalanceAdapter";
-import { accountDetailsModule } from "app/eth-lite/module/account/accountDetailsModule";
-import { accountContractModule } from "app/eth-lite/module/account/accountContractModule";
+import { AccountDetailsAdapter } from "app/shared/adapter/account/lite/AccountDetailsAdapter";
+import { AccountBalanceAdapter } from "app/shared/adapter/account/lite/AccountBalanceAdapter";
+import { accountDetailsModule } from "app/shared/module/account/lite/accountDetailsModule";
+import { accountContractModule } from "app/shared/module/account/lite/accountContractModule";
 import { BlockBasicInfoAdapter } from "app/shared/adapter/block/BlockBasicInfoAdapter";
 import { AlethioAdapterType } from "app/shared/adapter/AlethioAdapterType";
 import { uncleByIndexContextType } from "app/eth-lite/context/uncleByIndexContextType";

@@ -35,8 +35,8 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 | module://aleth.io/lite/block/txs | { blockNumber } | N/A | Transactions in given block, in two visualizations (grid and heat map) | [blockTxsModule](../../src/app/eth-lite/module/block/blockTxs/blockTxsModule.ts) |
 | module://aleth.io/lite/uncle/details | { blockNumber, uncleIndex } | N/A | Uncle data fields | [uncleDetailsModule](../../src/app/shared/module/uncle/uncleDetails/uncleDetailsModule.ts) |
 | module://aleth.io/lite/tx/details | { txHash } | blockConfirmations | Transaction data fields | [txDetailsModule](../../src/app/eth-lite/module/tx/txDetails/txDetailsModule.ts) |
-| module://aleth.io/lite/account/details | { accountHash } | N/A | Basic account data | [accountDetailsModule](../../src/app/eth-lite/module/account/accountDetailsModule.ts) |
-| module://aleth.io/lite/account/contract | { accountHash } | N/A | Contract data (creation code etc.) | [accountContractModule](../../src/app/eth-lite/module/account/accountContractModule.ts) |
+| module://aleth.io/lite/account/details | { accountHash } | N/A | Basic account data | [accountDetailsModule](../../src/app/shared/module/account/lite/accountDetailsModule.ts) |
+| module://aleth.io/lite/account/contract | { accountHash } | N/A | Contract data (creation code etc.) | [accountContractModule](../../src/app/shared/module/account/lite/accountContractModule.ts) |
 
 ### Data Adapters
 
@@ -51,6 +51,6 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 | adapter://aleth.io/lite/uncle/details | { blockNumber, uncleIndex } | [IUncleDetails](../../src/app/eth-lite/data/uncle/IUncleDetails.ts) | Uncle data fields | [UncleDetailsAdapter](../../src/app/eth-lite/adapter/uncle/UncleDetailsAdapter.ts) |
 | adapter://aleth.io/lite/tx/details | { txHash } | [ITxDetails](../../src/app/eth-lite/data/tx/details/ITxDetails.ts) | Transaction data fields | [TxDetailsAdapter](../../src/app/eth-lite/adapter/tx/TxDetailsAdapter.ts) |
 | adapter://aleth.io/lite/tx/receipt | { txHash } | [ITxReceipt](../../src/app/eth-lite/data/tx/receipt/ITxReceipt.ts) | Tx receipt data | [TxReceiptAdapter](../../src/app/eth-lite/adapter/tx/TxReceiptAdapter.ts) |
-| adapter://aleth.io/lite/account/details | { accountHash } | [IAccountDetails](../../src/app/eth-lite/data/account/IAccountDetails.ts) | Basic account data | [AccountDetailsAdapter](../../src/app/eth-lite/adapter/account/AccountDetailsAdapter.ts) |
-| adapter://aleth.io/lite/account/balance | { accountHash } | BigNumber | Total account balance in ETH |[AccountBalanceAdapter](../../src/app/eth-lite/adapter/account/AccountBalanceAdapter.ts) |
+| adapter://aleth.io/lite/account/details | { accountHash } | [IAccountDetails](../../src/app/eth-lite/data/account/IAccountDetails.ts) | Basic account data | [AccountDetailsAdapter](../../src/app/shared/adapter/account/lite/AccountDetailsAdapter.ts) |
+| adapter://aleth.io/lite/account/balance | { accountHash } | BigNumber | Total account balance in ETH |[AccountBalanceAdapter](../../src/app/shared/adapter/account/lite/AccountBalanceAdapter.ts) |
 
