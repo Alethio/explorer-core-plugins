@@ -1,4 +1,4 @@
-# v1.1.0
+# unreleased
 - added modules
     - `module://aleth.io/memento/block/basic`
     - `module://aleth.io/memento/block/txs`

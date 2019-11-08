@@ -85,7 +85,7 @@ function getConfig(isProduction) {
             rules: [
                 {
                     test: /\.jsx?$/,
-                    exclude: /monaco-editor|web3|xhr2-cookies|rlp/,
+                    exclude: /monaco-editor|web3|xhr2-cookies/,
                     enforce: "pre",
                     loader: "source-map-loader"
                 },
