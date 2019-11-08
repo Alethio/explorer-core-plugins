@@ -61,6 +61,13 @@
     "blockView.content.advanced.help": "See details about the miner who processed this block: duration, gas cost, difficulty and reward value.",
     "blockView.content.logsBloom.help": "This is a matrix view of all transactions from this block. Highlighted transactions indicate the presence of a log. Find out more about logs bloom <a href=\"https://ethon.consensys.net/prop-blocklogsbloom.html\" rel=\"noopener noreferrer\">here</a>.",
 
+    "uncleView.sidebar.logo": "Un",
+    "uncleView.sidebar.title": "Uncle page",
+    "uncleView.content.uncleNumber.label": "Uncle",
+    "uncleView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different uncle.",
+    "uncleView.content.position.label": "Position",
+    "uncleView.content.includedBy.label": "Included by",
+
     "txView.content.noData.text": "It seems there is no data to display. <br /> Try searching for a different transaction.",
     "txView.content.txValue.label": "Value",
     "txView.content.txStatus.ok": "Message was successful",

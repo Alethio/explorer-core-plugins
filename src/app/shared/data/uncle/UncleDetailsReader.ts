@@ -1,4 +1,4 @@
-import { IUncleDetails } from "app/eth-extended/data/uncle/IUncleDetails";
+import { IUncleDetails } from "app/shared/data/uncle/IUncleDetails";
 import { BigNumber } from "app/util/BigNumber";
 
 // tslint:disable:no-string-literal
@@ -16,7 +16,7 @@ export class UncleDetailsReader {
             sha3uncles: data["sha3Uncles"],
             beneficiaryAddress: data["hasBeneficiary"],
             beneficiaryName: data["hasBeneficiaryAlias"],
-            beneficiaryReward: new BigNumber(data["uncleBeneficiaryReward"]),
+            beneficiaryReward: data["uncleBeneficiaryReward"] ? new BigNumber(data["uncleBeneficiaryReward"]) : void 0,
             gasLimit: new BigNumber(data["blockGasLimit"]),
             difficulty: new BigNumber(data["blockDifficulty"]),
             extraData: String(data["blockExtraData"]),

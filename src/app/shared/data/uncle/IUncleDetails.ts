@@ -13,7 +13,9 @@ export interface IUncleDetails {
     sha3uncles?: string;
     beneficiaryAddress: string;
     beneficiaryName?: string;
-    beneficiaryReward: BigNumber;
+
+    /** block beneficiary reward not available on memento */
+    beneficiaryReward?: BigNumber;
     gasLimit: BigNumber;
     difficulty: BigNumber;
     extraData?: string;

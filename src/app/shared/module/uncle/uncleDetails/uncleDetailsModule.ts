@@ -1,6 +1,6 @@
 import { IModuleDef } from "plugin-api/IModuleDef";
 import { IUncleDetailsProps, UncleDetails } from "./UncleDetails";
-import { IUncleDetails as IUncleDetailsExtended } from "app/eth-extended/data/uncle/IUncleDetails";
+import { IUncleDetails as IUncleDetailsExtended } from "app/shared/data/uncle/IUncleDetails";
 import { IUncleByHashContext } from "app/eth-extended/context/IUncleByHashContext";
 import { IUncleByBlockContext } from "app/eth-lite/context/IUncleByBlockContext";
 import { IUncleDetails as IUncleDetailsLite } from "app/eth-lite/data/uncle/IUncleDetails";

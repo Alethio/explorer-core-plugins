@@ -18,7 +18,7 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 
 | Page URI | Created context shape | Module slots | Description | Implementation |
 | --- | --- | --- | --- | --- |
-| page://aleth.io/uncle | { uncleHash } | content | Uncle details page | [unclePage](../../src/app/eth-extended/page/uncle/unclePage.ts) |
+| page://aleth.io/uncle | { uncleHash } | content | Uncle details page | [unclePage](../../src/app/shared/page/uncle/unclePage.ts) |
 | page://aleth.io/cm | { txHash, validationIndex } | sidebar, content | Contract Message page | [cmPage](../../src/app/eth-extended/page/cm/cmPage.tsx) |
 | page://aleth.io/dashboard | {} | content | Main dashboard page | [dashboardPage](../../src/app/eth-extended/page/dashboard/dashboardPage.ts) |
 
@@ -64,7 +64,7 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 | adapter://aleth.io/block/confirmations | { blockNumber } | [IBlockConfirmations](../../src/app/shared/adapter/block/BlockConfirmationsAdapter.ts) | Info about number of confirmations for a given block | [BlockConfirmationsAdapter](../../src/app/shared/adapter/block/BlockConfirmationsAdapter.ts) |
 | adapter://aleth.io/block-range/summary | { rangeStart, rangeEnd, blockNumber } | Array<[IBlockTxCount](../../src/app/shared/data/block/value/IBlockTxCount.ts) \| undefined>| TX counts per block for a range of blocks | [BlockListAdapter](../../src/app/shared/adapter/block/BlockListAdapter.ts) |
 | adapter://aleth.io/block/latestNo | {} | number | Returns the latest block number on the chain | [LatestBlockNumberAdapter](../../src/app/shared/adapter/block/LatestBlockNumberAdapter.ts) |
-| adapter://aleth.io/extended/uncle/details | { uncleHash } | [IUncleDetails](../../src/app/eth-extended/data/uncle/IUncleDetails.ts) | Uncle data fields | [UncleDetailsAdapter](../../src/app/eth-extended/adapter/uncle/UncleDetailsAdapter.ts) |
+| adapter://aleth.io/full/uncle/details | { uncleHash } | [IUncleDetails](../../src/app/shared/data/uncle/IUncleDetails.ts) | Uncle data fields | [UncleDetailsAdapter](../../src/app/shared/adapter/uncle/UncleDetailsAdapter.ts) |
 | adapter://aleth.io/extended/tx/details | { txHash } | [ITxDetails](../../src/app/shared/data/tx/details/ITxDetails.ts) | Transaction data fields | [TxDetailsAdapter](../../src/app/eth-extended/adapter/tx/TxDetailsAdapter.ts) |
 | adapter://aleth.io/extended/account/details | { accountHash } | [IAccountDetails](../../src/app/eth-extended/data/account/IAccountDetails.ts) | Aggregated account data | [AccountDetailsAdapter](../../src/app/eth-extended/adapter/account/AccountDetailsAdapter.ts) |
 | adapter://aleth.io/extended/account/balance?latest | { accountHash } | [AccountBalance](../../src/app/eth-extended/data/account/balance/AccountBalance.ts) | Account balance for the latest available block | [AccountBalanceAdapter](../../src/app/eth-extended/adapter/account/AccountBalanceAdapter.ts) |

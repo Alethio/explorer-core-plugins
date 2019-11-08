@@ -1,5 +1,5 @@
 import { HttpApi } from "app/shared/data/HttpApi";
-import { UncleDetailsReader } from "app/eth-extended/data/uncle/UncleDetailsReader";
+import { UncleDetailsReader } from "app/shared/data/uncle/UncleDetailsReader";
 import { NotFoundError } from "app/shared/data/NotFoundError";
 
 export class UncleDetailsApi {

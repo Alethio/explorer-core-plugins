@@ -1,14 +1,15 @@
 import { IDataAdapter } from "plugin-api/IDataAdapter";
-import { IUncleDetails } from "app/eth-extended/data/uncle/IUncleDetails";
+import { IUncleDetails } from "app/shared/data/uncle/IUncleDetails";
 import { NotFoundError } from "app/shared/data/NotFoundError";
-import { AlethioDataSource } from "../../AlethioDataSource";
-import { IUncleByHashContext } from "../../context/IUncleByHashContext";
+import { AlethioDataSource } from "app/eth-extended/AlethioDataSource";
+import { IUncleByHashContext } from "app/eth-extended/context/IUncleByHashContext";
 import { uncleByHashContextType } from "app/eth-extended/context/uncleByHashContextType";
+import { MementoDataSource } from "app/eth-memento/MementoDataSource";
 
 export class UncleDetailsAdapter implements IDataAdapter<IUncleByHashContext, IUncleDetails> {
     contextType = uncleByHashContextType;
 
-    constructor(private dataSource: AlethioDataSource) {
+    constructor(private dataSource: AlethioDataSource | MementoDataSource) {
 
     }
 

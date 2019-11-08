@@ -16,7 +16,7 @@ import { AddressHashBox } from "@alethio/explorer-ui/lib/box/account/AddressHash
 import { MinerLabelBox } from "@alethio/explorer-ui/lib/box/account/MinerLabelBox";
 import { Link } from "plugin-api/component/Link";
 import { ITranslation } from "plugin-api/ITranslation";
-import { IUncleDetails as IUncleDetailsExtended } from "app/eth-extended/data/uncle/IUncleDetails";
+import { IUncleDetails as IUncleDetailsExtended } from "app/shared/data/uncle/IUncleDetails";
 import { IUncleDetails as IUncleDetailsLite } from "app/eth-lite/data/uncle/IUncleDetails";
 
 export interface IUncleDetailsProps {
@@ -29,6 +29,7 @@ export interface IUncleDetailsProps {
 export class UncleDetails extends React.PureComponent<IUncleDetailsProps> {
     render() {
         let { translation: tr, uncleDetails: uncle, locale, ethSymbol } = this.props;
+        const uncleReward = (uncle as IUncleDetailsExtended).beneficiaryReward;
 
         return <>
             <LayoutRow minWidth={900}>
@@ -88,10 +89,10 @@ export class UncleDetails extends React.PureComponent<IUncleDetailsProps> {
                         <MinerLabelBox>{(uncle as IUncleDetailsExtended).beneficiaryName}</MinerLabelBox>
                     </Link>
                     : null }
-                    { (uncle as IUncleDetailsExtended).beneficiaryReward ?
+                    { uncleReward ?
                     <>
                     <Label arrow>{tr.get("blockView.content.beneficiary.reward.label")}</Label>
-                    <EthValueBox wei={(uncle as IUncleDetailsExtended).beneficiaryReward} locale={locale}
+                    <EthValueBox wei={uncleReward} locale={locale}
                         symbol={ethSymbol} />
                     </>
                     : null }

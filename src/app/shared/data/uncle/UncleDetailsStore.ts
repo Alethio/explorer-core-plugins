@@ -1,6 +1,6 @@
 import { ICache } from "app/util/cache/ICache";
-import { IUncleDetails } from "app/eth-extended/data/uncle/IUncleDetails";
-import { UncleDetailsApi } from "app/eth-extended/data/uncle/UncleDetailsApi";
+import { IUncleDetails } from "app/shared/data/uncle/IUncleDetails";
+import { UncleDetailsApi } from "app/shared/data/uncle/UncleDetailsApi";
 
 export class UncleDetailsStore {
     constructor(
