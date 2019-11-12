@@ -1,4 +1,5 @@
-# unreleased
+# v1.1.0
+
 - added modules
     - `module://aleth.io/memento/block/basic`
     - `module://aleth.io/memento/block/txs`
@@ -27,7 +28,7 @@
 
 - added context
     - `context://aleth.io/memento/tx/parentBlock`
-    
+
 - added pages
     - `page://aleth.io/dashboard`
     - `page://aleth.io/uncle`

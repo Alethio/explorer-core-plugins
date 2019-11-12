@@ -1,4 +1,5 @@
-# unreleased
+# v5.0.0
+
 - **Breaking change** Removed deprecated `module://aleth.io/block/details` & `adapter://aleth.io/block/details`
 - **Breaking change** Renamed `adapter://aleth.io/extended/block/details` to `adapter://aleth.io/full/block/details`
 - **Breaking change** Renamed `adapter://aleth.io/extended/uncle/details` to `adapter://aleth.io/full/uncle/details`

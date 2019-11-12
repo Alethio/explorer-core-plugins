@@ -1,4 +1,5 @@
-# unreleased
+# v4.0.0
+
 - **Breaking change** Removed deprecated `module://aleth.io/block/details` & `adapter://aleth.io/block/details`
 
 # v3.0.0
