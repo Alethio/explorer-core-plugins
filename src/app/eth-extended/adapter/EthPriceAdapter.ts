@@ -1,8 +1,9 @@
-import { AlethioDataSource } from "app/eth-extended/AlethioDataSource";
 import { IDataAdapter } from "plugin-api/IDataAdapter";
 import { ILogger } from "plugin-api/ILogger";
 import { EthPriceWatcher } from "app/eth-extended/adapter/watcher/EthPriceWatcher";
 import { blockContextType } from "app/shared/context/blockContextType";
+import { PricesStore } from "app/eth-extended/data/prices/PricesStore";
+import { BlockStateStore } from "app/shared/data/BlockStateStore";
 
 export interface IEthPriceContext {
     blockNumber: number;
@@ -11,20 +12,14 @@ export interface IEthPriceContext {
 export class EthPriceAdapter implements IDataAdapter<IEthPriceContext, number> {
     contextType = blockContextType;
 
-    constructor(private dataSource: AlethioDataSource, private logger: ILogger) {
+    constructor(private pricesStore: PricesStore, private blockStateStore: BlockStateStore, private logger: ILogger) {
 
     }
 
     async load(context: IEthPriceContext) {
-        let { blockStateStore, pricesStore } = this.dataSource.stores;
+        let latest = this.blockStateStore.getLatest();
 
-        if (!pricesStore) {
-            return void 0;
-        }
-
-        let latest = blockStateStore.getLatest();
-
-        let pricesResult = await pricesStore.fetch([ latest, context.blockNumber ]);
+        let pricesResult = await this.pricesStore.fetch([ latest, context.blockNumber ]);
 
         // TODO: try/catch should be at framework level
         try {
@@ -36,6 +31,6 @@ export class EthPriceAdapter implements IDataAdapter<IEthPriceContext, number> {
     }
 
     createWatcher(context: IEthPriceContext) {
-        return new EthPriceWatcher(this.dataSource.stores.blockStateStore, 10);
+        return new EthPriceWatcher(this.blockStateStore, 10);
     }
 }

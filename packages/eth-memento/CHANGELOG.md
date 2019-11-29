@@ -1,3 +1,7 @@
+# Unreleased
+
+- **Breaking change** Increase minimum @alethio/cms version to 1.0.0-beta.8. Remove prices adapter stub.
+
 # v1.1.0
 
 - added modules
