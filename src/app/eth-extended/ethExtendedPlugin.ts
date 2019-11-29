@@ -59,7 +59,10 @@ const ethExtendedPlugin: IPlugin = {
 
         api.addDataAdapter("adapter://aleth.io/block/basic", new BlockBasicInfoAdapter(dataSource));
         api.addDataAdapter("adapter://aleth.io/full/block/details", new BlockDetailsAdapter(dataSource));
-        api.addDataAdapter("adapter://aleth.io/prices/latest", new EthPriceAdapter(dataSource, logger));
+        if (dataSource.stores.pricesStore) {
+            api.addDataAdapter("adapter://aleth.io/prices/latest", new EthPriceAdapter(
+                dataSource.stores.pricesStore, dataSource.stores.blockStateStore, logger));
+        }
         api.addDataAdapter("adapter://aleth.io/block/confirmations",
             new BlockConfirmationsAdapter(dataSource.stores.blockStateStore));
         api.addDataAdapter("adapter://aleth.io/block-range/summary", new BlockListAdapter(dataSource));
