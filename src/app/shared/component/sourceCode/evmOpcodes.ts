@@ -48,6 +48,7 @@ export const evmOpcodes: Record<string, string> = {
     "43": "NUMBER",
     "44": "DIFFICULTY",
     "45": "GASLIMIT",
+    "46": "CHAINID",
     "50": "POP",
     "51": "MLOAD",
     "52": "MSTORE",
