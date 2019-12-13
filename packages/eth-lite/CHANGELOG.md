@@ -1,3 +1,7 @@
+# Unreleased
+
+- Make dashboardPage subtitle more customizable when overriding translations
+
 # v4.0.0
 
 - **Breaking change** Removed deprecated `module://aleth.io/block/details` & `adapter://aleth.io/block/details`
