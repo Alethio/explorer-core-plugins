@@ -1,4 +1,4 @@
-# Unreleased
+# v4.1.0
 
 - Make dashboardPage subtitle more customizable when overriding translations
 

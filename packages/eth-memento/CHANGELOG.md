@@ -1,4 +1,4 @@
-# Unreleased
+# v2.0.0
 
 - **Breaking change** Increase minimum @alethio/cms version to 1.0.0-beta.8. Remove prices adapter stub.
 - Make dashboardPage subtitle more customizable when overriding translations
