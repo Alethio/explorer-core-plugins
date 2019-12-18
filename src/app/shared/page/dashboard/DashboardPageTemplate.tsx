@@ -36,17 +36,21 @@ export class DashboardPageTemplate extends React.Component<IDashboardPageTemplat
     render() {
         let { translation: tr, slots } = this.props;
 
+        let [preGitHubLink, postGitHubLink] = tr.get("dashboardView.subTitle").split("{gitHubLink}");
+        let hasGitHubLink = !!postGitHubLink;
+
         return (
             <Container>
                 <Content>
                     <DashboardContentCenter>
                         <Title>{ tr.get("dashboardView.title") }</Title>
-                        <SubTitle>{ tr.get("dashboardView.subTitle") }
+                        <SubTitle><span dangerouslySetInnerHTML={{__html: preGitHubLink }} />
+                            {hasGitHubLink && <>
                             <GithubLink href="https://github.com/Alethio/ethereum-lite-explorer"
                                 target="_blank"
-                            >
-                                {tr.get("dashboardView.github")}
-                            </GithubLink>
+                            >GitHub</GithubLink>
+                            <span dangerouslySetInnerHTML={{__html: postGitHubLink }} />
+                            </> }
                         </SubTitle>
                         <ModuleWrapper>
                         { slots[DashboardPageSlotType.Content] }
