@@ -1,6 +1,7 @@
-# Unreleased
+# v6.0.0
 
 - **Breaking change** Increase minimum @alethio/cms version to 1.0.0-beta.8. Define prices adapter only when prices are enabled.
+- Fix queries in contract read section when contract ABI doesn't provide named outputs.
 
 # v5.0.0
 
