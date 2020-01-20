@@ -94,7 +94,7 @@ export class TxAdvanced extends React.PureComponent<ITxAdvancedProps> {
                     </LayoutRowItem>
                 </LayoutRow>
                 : null }
-                { isFullTxDetails(tx) || isMementoTxDetails(tx) && tx.error ?
+                { (isFullTxDetails(tx) || isMementoTxDetails(tx)) && tx.error ?
                 <LayoutRow>
                     <LayoutRowItem>
                         <Label>{tr.get("txView.content.error.label")}</Label>
