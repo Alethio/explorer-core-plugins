@@ -27,7 +27,8 @@ export const blockTxsModule: (ethSymbol: string) => IModuleDef<IBlockTxsProps, I
         let { asyncData, locale, translation, uiStateContainer } = data;
 
         let blockDetails = asyncData.get(AlethioAdapterType.BlockDetailsFull)!.data as IBlockDetails;
-        let latestEthPrice = asyncData.get(AlethioAdapterType.EthPrices)!.data as number | undefined;
+        let latestEthPrice = asyncData.get(AlethioAdapterType.EthPrices) &&
+            asyncData.get(AlethioAdapterType.EthPrices)!.data as number | undefined;
 
         let props: IBlockTxsProps = {
             txs: blockDetails.transactions,

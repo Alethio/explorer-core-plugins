@@ -23,7 +23,8 @@ export const accountDetailsModule: (ethSymbol: string) => IModuleDef<IAccountDet
         let { asyncData, context, locale, translation, logger } = data;
 
         let accountDetails = asyncData.get(AlethioAdapterType.AccountDetailsLite)!.data as IAccountDetails;
-        let accountBalance = asyncData.get("adapter://aleth.io/lite/account/balance") as IAsyncData<BigNumber>;
+        let accountBalance = asyncData.get("adapter://aleth.io/lite/account/balance") as (
+            IAsyncData<BigNumber> | undefined);
 
         let props: IAccountDetailsProps = {
             accountHash: context.accountHash,

@@ -45,7 +45,8 @@ export const accountSummaryModule: (options: {
         let { locale, translation, logger, asyncData } = data;
 
         let accountDetails = asyncData.get(AlethioAdapterType.AccountDetailsExtended)!.data as IAccountDetails;
-        let pendingTxsCounts = asyncData.get("pendingTxsCount")!.data as number | undefined;
+        let pendingTxsCounts = asyncData.get("pendingTxsCount") &&
+            asyncData.get("pendingTxsCount")!.data as number | undefined;
         let { cmLiteStore, txLiteByAccountStore } = dataSource.stores;
         let txCounts: ITxCounts = {
             in: accountDetails.countTxIn,

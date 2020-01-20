@@ -24,7 +24,8 @@ export const txAdvancedModule: (options: {
         let { asyncData, context, translation, locale } = data;
 
         let txDetails = asyncData.get(txDetailsAdapterUri)!.data as ITxDetails;
-        let latestEthPrice = asyncData.get(AlethioAdapterType.EthPrices)!.data as number | undefined;
+        let latestEthPrice = asyncData.get(AlethioAdapterType.EthPrices) &&
+            asyncData.get(AlethioAdapterType.EthPrices)!.data as number | undefined;
 
         let props: ITxAdvancedProps = {
             txHash: context.txHash,

@@ -27,7 +27,8 @@ export const cmDetailsModule: (ethSymbol: string) => IModuleDef<ICmDetailsProps,
         let { asyncData, context, translation, locale, slots } = data;
 
         let cmDetails = asyncData.get("adapter://aleth.io/cm/details")!.data as ICmDetails;
-        let latestEthPrice = asyncData.get(AlethioAdapterType.EthPrices)!.data as number | undefined;
+        let latestEthPrice = asyncData.get(AlethioAdapterType.EthPrices) &&
+            asyncData.get(AlethioAdapterType.EthPrices)!.data as number | undefined;
 
         let props: ICmDetailsProps = {
             txHash: context.txHash,
