@@ -27,7 +27,8 @@ export const txDetailsModule: (ethSymbol: string) => IModuleDef<ITxDetailsProps,
         let { asyncData, context, translation, locale, slots } = data;
 
         let txDetails = asyncData.get(AlethioAdapterType.TxDetailsExtended)!.data as ITxDetails;
-        let latestEthPrice = asyncData.get(AlethioAdapterType.EthPrices)!.data as number | undefined;
+        let latestEthPrice = asyncData.get(AlethioAdapterType.EthPrices) &&
+            asyncData.get(AlethioAdapterType.EthPrices)!.data as number | undefined;
 
         let props: ITxDetailsProps = {
             txHash: context.txHash,

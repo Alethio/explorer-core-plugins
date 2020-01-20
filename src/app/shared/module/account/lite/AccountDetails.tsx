@@ -18,7 +18,7 @@ import { observer } from "mobx-react";
 export interface IAccountDetailsProps {
     accountHash: string;
     accountDetails: IAccountDetails;
-    accountBalance: IAsyncData<BigNumber>;
+    accountBalance: IAsyncData<BigNumber> | undefined;
     translation: ITranslation;
     locale: string;
     ethSymbol: string;
@@ -44,6 +44,7 @@ export class AccountDetails extends React.Component<IAccountDetailsProps> {
                     <QrCodeBox value={"0x" + this.props.accountHash} logger={this.props.logger} />
                 </LayoutRowItem>
             </LayoutRow>
+            { balance &&
             <LayoutRow>
                 <LayoutRowItem>
                     <Label>{tr.get("accountView.content.balance.label")}</Label>
@@ -52,7 +53,7 @@ export class AccountDetails extends React.Component<IAccountDetailsProps> {
                     :
                     <NotAvailableBox translation={tr} /> }
                 </LayoutRowItem>
-            </LayoutRow>
+            </LayoutRow> }
         </>;
     }
 }

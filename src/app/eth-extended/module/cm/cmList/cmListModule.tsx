@@ -31,7 +31,7 @@ export const cmListModule: (dataSource: AlethioDataSource) => IModuleDef<ICmSide
     getContentProps(data) {
         let { context, asyncData, translation, sidebarVisible } = data;
 
-        let contractMsgs = asyncData.get("cmList")!.data as ICmLite[] | undefined;
+        let contractMsgs = asyncData.get("cmList") && asyncData.get("cmList")!.data as ICmLite[] | undefined;
 
         let props: ICmSidebarProps = {
             txHash: context.txHash,

@@ -31,7 +31,8 @@ export const txDetailsModule: (ethSymbol: string) => IModuleDef<ITxDetailsProps,
         let { asyncData, context, translation, locale, slots } = data;
 
         let txDetails = asyncData.get(AlethioAdapterType.TxDetailsLite)!.data as ITxDetails;
-        let txReceipt = asyncData.get("adapter://aleth.io/lite/tx/receipt")!.data as ITxReceipt | undefined;
+        let txReceipt = asyncData.get("adapter://aleth.io/lite/tx/receipt") &&
+            asyncData.get("adapter://aleth.io/lite/tx/receipt")!.data as ITxReceipt | undefined;
         let blockBasicInfo = asyncData.get(AlethioAdapterType.BlockBasicInfo)!.data as IBlockBasicInfo;
 
         let props: ITxDetailsProps = {
