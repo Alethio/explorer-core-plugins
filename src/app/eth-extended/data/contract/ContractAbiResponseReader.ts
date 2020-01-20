@@ -13,11 +13,11 @@ export class ContractAbiResponseReader {
             return results;
         }
 
-        results = abiFn.outputs.map((output) => {
+        results = abiFn.outputs.map((output, idx) => {
             return {
                 name: output.name,
                 type: output.type,
-                value: String(response[output.name])
+                value: String(response[output.name || idx])
             };
         });
         return results;
