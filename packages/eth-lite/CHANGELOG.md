@@ -1,3 +1,7 @@
+# v4.1.1
+
+- Fix errors caused by some optional adapters being undefined
+
 # v4.1.0
 
 - Make dashboardPage subtitle more customizable when overriding translations

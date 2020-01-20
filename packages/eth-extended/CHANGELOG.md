@@ -1,3 +1,8 @@
+# v6.0.1
+
+- Fix errors caused by some optional adapters being undefined
+- Fix transaction details falsely showing an empty error message
+
 # v6.0.0
 
 - **Breaking change** Increase minimum @alethio/cms version to 1.0.0-beta.8. Define prices adapter only when prices are enabled.
