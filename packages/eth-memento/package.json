@@ -2,7 +2,7 @@
     "name": "@alethio/explorer-plugin-eth-memento",
     "publisher": "aleth.io",
     "pluginName": "eth-memento",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Alethio Explorer core plugin that fetches data via Memento",
     "author": "Mircea Ulmeanu <mircea.ulmeanu@consensys.net>",
     "license": "MIT",
