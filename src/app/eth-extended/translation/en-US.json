@@ -32,6 +32,8 @@
     "general.loadingText": "Data is being loaded.<br />Please be patient, it won't be long now ;)",
     "general.noData.text": "It seems there is no data to display.",
 
+    "general.reorgNotice": "A reorg event occured on the chain. Click {link}here{/link} to refresh the data.",
+
     "general.tx.type.Call": "CallTX",
     "general.tx.type.Value": "ValueTX",
     "general.tx.type.Create": "CreateTX",

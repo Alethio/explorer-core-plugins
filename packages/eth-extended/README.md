@@ -53,6 +53,7 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 | module://aleth.io/dashboard/avgTimeInPoolChart | { rangeStart, rangeEnd } | N/A | Chart showing average time spent in pool for Txs that were included in each block | [avgTimeInPoolChartModule](../../src/app/eth-extended/module/dashboard/charts/avgTimeInPoolChartModule.ts) | N/A |
 | module://aleth.io/dashboard/propagationChart | {} | N/A | Chart showing mined block propagation statistics | [propagationChartModule](../../src/app/eth-extended/module/dashboard/charts/propagationChartModule.ts) | N/A |
 | module://aleth.io/cm/payload | { txHash, validationIndex } | N/A | Decoded contract message payload | [cmPayloadModule](../../src\app/eth-extended/module/cm/cmPayload/cmPayloadModule.ts) | N/A |
+| module://aleth.io/reorg-banner | { blockNumber } | N/A | Show a notification banner when reorg events occur. Should be placed on every page that depends on the given context blockNumber | [reorgBannerModule.tsx](../../src/app/eth-extended/module/reorgBannerModule.tsx) | N/A |
 
 ### Data Adapters
 
