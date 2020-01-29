@@ -28,7 +28,7 @@ Refer to [pages.sample.json](pages.sample.json) for a `pages` structure example.
 | --- | --- | --- | --- | --- |
 | context://aleth.io/extended/tx/parentBlock | { txHash, blockNumber } | { txHash } | Adds the parent block to the current TX context | [txParentBlockContext](../../src/app/shared/context/txParentBlockContext.ts) |
 | context://aleth.io/extended/tx/parentBlock?optional | { txHash, blockNumber? } | { txHash } | Adds the parent block to the current TX context, if it exists (not a pending TX) | [txParentBlockOptionalContext](../../src/app/eth-extended/context/txParentBlockOptionalContext.ts) |
-| context://aleth.io/cm/parent | { txHash, validationIndex, parentValidationIndex} |  { txHash, validationIndex } | Adds the parent contract message or TX to the current context | [cmParentContext](../../src/app/eth-extended/context/cmParentContext.ts) |
+| context://aleth.io/cm/parent | { txHash, validationIndex, parentValidationIndex, blockNumber } |  { txHash, validationIndex } | Adds the parent contract message or TX to the current context | [cmParentContext](../../src/app/eth-extended/context/cmParentContext.ts) |
 
 ### Modules
 
