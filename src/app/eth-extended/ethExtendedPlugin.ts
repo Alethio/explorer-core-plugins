@@ -45,6 +45,7 @@ import { blockAdvancedModule } from "app/shared/module/block/blockAdvanced/block
 import { blockLogsBloomModule } from "app/shared/module/block/blockLogsBloom/blockLogsBloomModule";
 import { txBasicModule } from "app/shared/module/tx/txBasic/txBasicModule";
 import { txAdvancedModule } from "app/shared/module/tx/txAdvanced/txAdvancedModule";
+import { reorgBannerModule } from "app/eth-extended/module/reorgBannerModule";
 
 const ethExtendedPlugin: IPlugin = {
     init(configData: unknown, api, logger, publicPath) {
@@ -129,6 +130,8 @@ const ethExtendedPlugin: IPlugin = {
         api.addModuleDef("module://aleth.io/dashboard/avgTimeInPoolChart", avgTimeInPoolChartModule(ethSymbol));
         api.addModuleDef("module://aleth.io/dashboard/propagationChart",
             propagationChartModule(config.getEthstatsUrl()));
+
+        api.addModuleDef("module://aleth.io/reorg-banner", reorgBannerModule(dataSource.stores.reorgedBlocksStore));
     },
 
     getAvailableLocales() {

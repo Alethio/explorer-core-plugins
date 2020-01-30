@@ -22,6 +22,8 @@
                 "def": "module://aleth.io/block/advanced"
             }, {
                 "def": "module://aleth.io/block/logs-bloom"
+            }, {
+                "def": "module://aleth.io/reorg-banner"
             }]
         }
     }, {
@@ -39,6 +41,8 @@
                 "def": "context://aleth.io/extended/tx/parentBlock?optional",
                 "children": [{
                     "def": "module://aleth.io/tx/list"
+                }, {
+                    "def": "module://aleth.io/reorg-banner"
                 }]
             }],
             "content": [{
@@ -70,6 +74,8 @@
                 "def": "context://aleth.io/cm/parent",
                 "children": [{
                     "def": "module://aleth.io/cm/list"
+                }, {
+                    "def": "module://aleth.io/reorg-banner"
                 }]
             }],
             "content": [{

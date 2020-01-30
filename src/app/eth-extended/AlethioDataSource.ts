@@ -25,6 +25,7 @@ import { Web3Factory } from "app/eth-extended/Web3Factory";
 import { ContractWeb3Api } from "app/eth-extended/data/contract/ContractWeb3Api";
 import { IDataSource } from "plugin-api/IDataSource";
 import { EthStatsStore } from "app/eth-extended/data/ethStats/EthStatsStore";
+import { ReorgedBlocksStore } from "app/eth-extended/data/block/ReorgedBlocksStore";
 
 interface IAlethioDataStores {
     pendingPoolStore: PendingPoolStore;
@@ -46,6 +47,7 @@ interface IAlethioDataStores {
     txGraphStore: TxGraphStore;
     logEventsStore: LogEventsStore;
     blockStateStore: BlockStateStore;
+    reorgedBlocksStore: ReorgedBlocksStore;
     search: Search;
 }
 
@@ -69,7 +71,7 @@ export class AlethioDataSource implements IDataSource {
 
     private async initDeepstream() {
         let { logger, deepstream } = this;
-        let { blockStateStore } = this.stores;
+        let { blockStateStore, reorgedBlocksStore } = this.stores;
 
         deepstream.onError.subscribe((error) => {
             logger.error("Deepstream error: " + JSON.stringify(error));
@@ -89,6 +91,11 @@ export class AlethioDataSource implements IDataSource {
         deepstream.subscribeToRecord<{ number: number; }>("db/v2/lastBlock", (data) => {
             logger.info(`New latest block received: #${data.number}`);
             blockStateStore.setLatest(data.number);
+        }).catch(e => logger.error(e));
+
+        deepstream.subscribeToEvent<{ number: number; }>("reorged", (data) => {
+            logger.info(`Chain reorg detected at block #${data.number}`);
+            reorgedBlocksStore.addBlock(data.number);
         }).catch(e => logger.error(e));
     }
 }

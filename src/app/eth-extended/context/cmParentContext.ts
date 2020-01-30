@@ -14,12 +14,13 @@ export const cmParentContext: IContextDef<ICmPageContext, ICmParentContext> = {
     }],
 
     create(parentCtx, parentData) {
-        let txDetails = parentData.get("adapter://aleth.io/cm/details")!.data as ICmDetails;
+        let cmDetails = parentData.get("adapter://aleth.io/cm/details")!.data as ICmDetails;
 
         let ctx: ICmParentContext = {
             txHash: parentCtx.txHash,
-            parentValidationIndex: txDetails.parentTxValidationIndex,
-            validationIndex: parentCtx.validationIndex
+            parentValidationIndex: cmDetails.parentTxValidationIndex,
+            validationIndex: parentCtx.validationIndex,
+            blockNumber: cmDetails.block.id
         };
         return ctx;
     }
