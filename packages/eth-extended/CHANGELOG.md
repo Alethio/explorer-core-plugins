@@ -1,3 +1,7 @@
+# v6.1.0
+
+- Added module that shows a notification banner when a chain reorg occurs, prompting the user to refresh the page
+
 # v6.0.1
 
 - Fix errors caused by some optional adapters being undefined
