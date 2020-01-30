@@ -32,7 +32,7 @@
     "general.loadingText": "正在加载数据…<br />请耐心等待，马上就好喔！^^",
     "general.noData.text": "似乎没有您要找的数据><",
 
-    "general.reorgNotice": "A reorg event occured on the chain. Click {link}here{/link} to refresh the data.",
+    "general.reorgNotice": "区块主链中发生了重组，请点击{link}此处{/link}刷新区块数据。",
 
     "general.tx.type.Call": "消息型交易",
     "general.tx.type.Value": "金额型交易",
