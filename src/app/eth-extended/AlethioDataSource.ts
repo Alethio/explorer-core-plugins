@@ -25,7 +25,7 @@ import { Web3Factory } from "app/eth-extended/Web3Factory";
 import { ContractWeb3Api } from "app/eth-extended/data/contract/ContractWeb3Api";
 import { IDataSource } from "plugin-api/IDataSource";
 import { EthStatsStore } from "app/eth-extended/data/ethStats/EthStatsStore";
-import { ReorgedBlocksStore } from "app/shared/data/ReorgedBlocksStore";
+import { ReorgedBlocksStore } from "app/eth-extended/data/block/ReorgedBlocksStore";
 
 interface IAlethioDataStores {
     pendingPoolStore: PendingPoolStore;

@@ -26,7 +26,7 @@ import { PricesStore } from "app/eth-extended/data/prices/PricesStore";
 import { PendingPoolStoreFactory } from "app/eth-extended/module/dashboard/charts/data/PendingPoolStoreFactory";
 import { EthStatsStoreFactory } from "app/eth-extended/data/ethStats/EthStatsStoreFactory";
 import { BlockTxTimeInPoolStoreFactory } from "app/eth-extended/data/block/txTimeInPool/BlockTxTimeInPoolStoreFactory";
-import { ReorgedBlocksStore } from "app/shared/data/ReorgedBlocksStore";
+import { ReorgedBlocksStore } from "app/eth-extended/data/block/ReorgedBlocksStore";
 
 export class AlethioDataSourceFactory {
     create(config: EthExtendedPluginConfig, logger: ILogger) {
