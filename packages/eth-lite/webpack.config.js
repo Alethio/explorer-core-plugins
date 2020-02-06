@@ -117,7 +117,7 @@ function getConfig(isProduction) {
             },
             modules: [
                 sourceRoot,
-                nodeModulesPath
+                "node_modules"
             ],
             extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js']
         },

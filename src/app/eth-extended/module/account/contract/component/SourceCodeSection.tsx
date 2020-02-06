@@ -4,7 +4,7 @@ import { CopyIcon } from "@alethio/ui/lib/icon/CopyIcon";
 import { ITranslation } from "plugin-api/ITranslation";
 import { FloatingActionBar } from "@alethio/ui/lib/overlay/FloatingActionBar";
 import { Button } from "@alethio/ui/lib/control/Button";
-import { ExternalLink } from "plugin-api/component/ExternalLink";
+import { Link } from "plugin-api/component/Link";
 import { IContractDataSource, SourceType } from "../../../../data/contract/dataSource/ContractDataSource";
 import { Clipboard } from "@puzzl/browser/lib/Clipboard";
 
@@ -34,9 +34,9 @@ export class SourceCodeSection extends React.Component<ISourceCodeSectionProps> 
             disclaimer = (
                 <Disclaimer>
                     {disclaimerPre}
-                    <ExternalLink href={this.props.dataSource.getUrl(this.props.contractAddress)}>
+                    <Link to={this.props.dataSource.getUrl(this.props.contractAddress)}>
                         {disclaimerTextLink}
-                    </ExternalLink>
+                    </Link>
                     {disclaimerPost}
                 </Disclaimer>
             );

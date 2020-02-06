@@ -6,7 +6,7 @@ import { ToolbarIconButton } from "@alethio/ui/lib/layout/toolbar/ToolbarIconBut
 import { SearchInline } from "./SearchInline";
 import { SearchInlineStore } from "../SearchInlineStore";
 import { SearchIcon } from "@alethio/ui/lib/icon/SearchIcon";
-import { MenuItem } from "plugin-api/component/topbar/MenuItem";
+import { MobileMenuItem } from "@alethio/ui/lib/layout/topbar/MobileMenuItem";
 import { SearchInlineWrapper } from "./SearchInlineWrapper";
 import { ISearch } from "app/shared/data/search/ISearch";
 import { ILogger } from "plugin-api/ILogger";
@@ -29,7 +29,7 @@ export class SearchMenu extends React.Component<ISearchMenuProps> {
         let { translation: tr } = this.props;
 
         return <>
-            <MenuItem title={this.props.translation.get("toolbar.search.label")} sticky>
+            <MobileMenuItem title={this.props.translation.get("toolbar.search.label")} sticky>
                 {(requestClose) => {
                     this.requestClose = requestClose;
                     return <ToolbarIconButton
@@ -39,7 +39,7 @@ export class SearchMenu extends React.Component<ISearchMenuProps> {
                         }}
                     />;
                 }}
-            </MenuItem>
+            </MobileMenuItem>
             { this.searchOpen ?
             <SearchInlineWrapper>
                 <SearchInline
