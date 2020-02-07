@@ -1,4 +1,4 @@
-# Unreleased
+# v6.1.1
 
 - Add compatibility with @alethio/cms v1.0.0-beta.10
 
