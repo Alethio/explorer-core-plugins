@@ -1,6 +1,6 @@
 # Unreleased
 
-- **Breaking change** Update to plugin-api@1.0.0-beta.7 (@alethio/cms@1.0.0-beta.10)
+- Add compatibility with @alethio/cms v1.0.0-beta.10
 
 # v2.0.1
 
