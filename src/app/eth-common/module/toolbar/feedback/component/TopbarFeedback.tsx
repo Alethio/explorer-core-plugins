@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ITranslation } from "plugin-api/ITranslation";
 import { Feedback } from "./Feedback";
-import { MenuItem } from "plugin-api/component/topbar/MenuItem";
+import { MobileMenuItem } from "@alethio/ui/lib/layout/topbar/MobileMenuItem";
 
 export interface ITopbarFeedbackProps {
     translation: ITranslation;
@@ -10,9 +10,9 @@ export interface ITopbarFeedbackProps {
 export class TopbarFeedback extends React.Component<ITopbarFeedbackProps> {
     render() {
         return (
-            <MenuItem title={this.props.translation.get("toolbar.feedback.label")}>
+            <MobileMenuItem title={this.props.translation.get("toolbar.feedback.label")}>
                 <Feedback translation={this.props.translation} />
-            </MenuItem>
+            </MobileMenuItem>
         );
     }
 }

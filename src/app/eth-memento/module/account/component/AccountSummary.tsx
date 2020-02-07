@@ -21,6 +21,7 @@ import { CursorInfinitePaginatedView } from "../pagination/CursorInfinitePaginat
 import { ILogger } from "plugin-api/ILogger";
 import styled from "@alethio/explorer-ui/lib/styled-components";
 import { CursorPaginatedView } from "app/shared/data/pagination/CursorPaginatedView";
+import { ITheme } from "@alethio/explorer-ui/lib/ITheme";
 
 const GridRoot = styled.div`
     max-width: 100vw;
@@ -104,7 +105,7 @@ export class AccountSummary extends React.Component<IAccountSummaryProps> {
 
         return (
             <ThemeContext.Consumer>
-                {(theme) =>
+                {(theme: ITheme) =>
                     <AccordionContentFrame
                         arrowPosition={arrowPosition}
                         backgroundColor={theme.colors.gridEvenRowBg}

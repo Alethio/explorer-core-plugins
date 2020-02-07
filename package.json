@@ -42,7 +42,7 @@
     "mocha": "^6.1.4",
     "monaco-editor-webpack-plugin": "github:mikegreiling/monaco-editor-webpack-plugin#mg-fix-public-path",
     "nyc": "^14.1.1",
-    "plugin-api": "npm:@alethio/cms-plugin-api@^1.0.0-beta.6",
+    "plugin-api": "npm:@alethio/cms-plugin-api@^1.0.0-beta.7",
     "rimraf": "^2.6.2",
     "source-map-loader": "^0.2.3",
     "source-map-support": "^0.4.14",
@@ -65,7 +65,7 @@
   },
   "dependencies": {
     "@alethio/explorer-ui": "^1.0.0-beta.2",
-    "@alethio/ui": "^1.0.1",
+    "@alethio/ui": "^1.1.0",
     "@puzzl/browser": "^1.0.0-beta.1",
     "@puzzl/core": "^1.0.0-beta.1",
     "bignumber.js": "^8.0.1",

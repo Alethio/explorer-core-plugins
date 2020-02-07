@@ -27,6 +27,7 @@ import { ILogger } from "plugin-api/ILogger";
 import styled from "@alethio/explorer-ui/lib/styled-components";
 import { CmLiteByAccountStore } from "app/eth-extended/data/contractMsg/lite/byAccount/CmLiteByAccountStore";
 import { ITxCounts } from "app/eth-extended/module/account/summary/ITxCounts";
+import { ITheme } from "@alethio/explorer-ui/lib/ITheme";
 
 const GridRoot = styled.div`
     max-width: 100vw;
@@ -116,7 +117,7 @@ export class AccountSummary extends React.Component<IAccountSummaryProps> {
 
         return (
             <ThemeContext.Consumer>
-                {(theme) =>
+                {(theme: ITheme) =>
                     <AccordionContentFrame
                         arrowPosition={arrowPosition}
                         backgroundColor={theme.colors.gridEvenRowBg}

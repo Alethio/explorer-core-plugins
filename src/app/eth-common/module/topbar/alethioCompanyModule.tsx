@@ -1,8 +1,8 @@
 import React from "react";
 import { IModuleDef } from "plugin-api/IModuleDef";
-import { MenuItem } from "plugin-api/component/topbar/MenuItem";
+import { MobileMenuItem } from "@alethio/ui/lib/layout/topbar/MobileMenuItem";
 import { ITranslation } from "plugin-api/ITranslation";
-import { ExternalLink } from "plugin-api/component/ExternalLink";
+import { Link } from "plugin-api/component/Link";
 import { ToolbarIconButton } from "@alethio/ui/lib/layout/toolbar/ToolbarIconButton";
 import { BriefcaseIcon } from "@alethio/ui/lib/icon/BriefcaseIcon";
 
@@ -15,11 +15,11 @@ export const alethioCompanyModule: (alethioCompanyUrl: string) => IModuleDef<IAl
     contextType: {},
     dataAdapters: [],
     getContentComponent: async () => (props) => (
-        <MenuItem title={props.translation.get("toolbar.company.label")}>
-            <ExternalLink href={alethioCompanyUrl} rel="noopener noreferrer">
+        <MobileMenuItem title={props.translation.get("toolbar.company.label")}>
+            <Link to={alethioCompanyUrl}>
                 <ToolbarIconButton Icon={BriefcaseIcon} />
-            </ExternalLink>
-        </MenuItem>
+            </Link>
+        </MobileMenuItem>
     ),
     getContentProps : data => data
 });

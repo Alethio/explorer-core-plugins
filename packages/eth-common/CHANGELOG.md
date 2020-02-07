@@ -1,3 +1,7 @@
+# Unreleased
+
+- **Breaking change** Update to plugin-api@1.0.0-beta.7 (@alethio/cms@1.0.0-beta.10). This is breaking change because the plugin will no longer work with older cms versions.
+
 # v3.0.0
 
 - **Breaking change** Rework account page layout to use a regular sidebar

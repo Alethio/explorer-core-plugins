@@ -1,3 +1,7 @@
+# Unreleased
+
+- Add compatibility with @alethio/cms v1.0.0-beta.10
+
 # v2.0.1
 
 - Fix errors caused by some optional adapters being undefined

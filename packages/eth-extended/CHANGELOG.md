@@ -1,3 +1,7 @@
+# Unreleased
+
+- Add compatibility with @alethio/cms v1.0.0-beta.10
+
 # v6.1.0
 
 - Added module that shows a notification banner when a chain reorg occurs, prompting the user to refresh the page
