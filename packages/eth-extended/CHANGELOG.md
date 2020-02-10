@@ -1,3 +1,7 @@
+# v6.1.3
+
+- Fix transaction highlight selector on block page in cases where contract message count is 0
+
 # v6.1.2
 
 - Fix gas value indicator for contract messages when gas limit is 0

@@ -12,7 +12,7 @@ export class HighlightFieldsFull extends HighlightFields<ITxLiteFull, HighlightF
         }, {
             key: HighlightFieldKey.ContractMessageCount,
             getLabel: t => t.get("blockView.content.transactionsHighlight.contractMessageCount.label"),
-            getData: tx => tx.contractMsgCount
+            getData: tx => tx.contractMsgCount!
         }, {
             key: HighlightFieldKey.GasUsed,
             getLabel: t => t.get("general.gasUsed"),
@@ -28,7 +28,7 @@ export class HighlightFieldsFull extends HighlightFields<ITxLiteFull, HighlightF
         }, {
             key: HighlightFieldKey.ContractCreationCount,
             getLabel: t => t.get("blockView.content.transactionsHighlight.contractCreationCount.label"),
-            getData: tx => tx.contractCreationCount
+            getData: tx => tx.contractCreationCount!
         }];
         this.setSelectedField(HighlightFieldKey.Value);
     }

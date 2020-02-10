@@ -22,8 +22,8 @@ export class BlockDetailsReader {
             sha3uncles: data["sha3Uncles"],
             beneficiaryAddress: data["hasBeneficiary"],
             beneficiaryName: data["hasBeneficiaryAlias"] || void 0,
-            beneficiaryReward: data["blockBeneficiaryReward"] &&
-                new BigNumber(data["blockBeneficiaryReward"]) || void 0,
+            beneficiaryReward: data["blockBeneficiaryReward"] !== void 0 ?
+                new BigNumber(data["blockBeneficiaryReward"]) : void 0,
             mineTime: Number(data["blockTime"]) || void 0,
             gasLimit: new BigNumber(data["blockGasLimit"]),
             gasUsed: new BigNumber(data["blockGasUsed"]),
@@ -43,13 +43,13 @@ export class BlockDetailsReader {
                         hash: txHash,
                         from: txData["from"],
                         to: txData["to"],
-                        contractCreationCount: txData["createContractMsgsTriggered"] &&
+                        contractCreationCount: txData["createContractMsgsTriggered"] !== void 0 ?
                             Number(txData["createContractMsgsTriggered"]) + (
                             // If this is a CreateTX, we should also consider itself as a source of contract creations
                             type === TxType.Create ? 1 : 0
-                        ) || void 0,
-                        contractMsgCount: txData["totalContractMsgsTriggered"] &&
-                            Number(txData["totalContractMsgsTriggered"]) || void 0,
+                        ) : void 0,
+                        contractMsgCount: txData["totalContractMsgsTriggered"] !== void 0 ?
+                            Number(txData["totalContractMsgsTriggered"]) : void 0,
                         gasLimit: new BigNumber(txData["msgGasLimit"]),
                         gasPrice: new BigNumber(txData["txGasPrice"]),
                         gasUsed: new BigNumber(txData["txGasUsed"]),
