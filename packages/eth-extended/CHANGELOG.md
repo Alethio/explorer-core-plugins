@@ -1,3 +1,7 @@
+# v6.1.2
+
+- Fix gas value indicator for contract messages when gas limit is 0
+
 # v6.1.1
 
 - Add compatibility with @alethio/cms v1.0.0-beta.10
