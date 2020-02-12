@@ -16,7 +16,7 @@ export class AccountCodeRenderer {
     async render(accountCodeLoader: () => Promise<string>, translation: ITranslation) {
         let [accountCode, monaco] = await Promise.all([
             accountCodeLoader(),
-            import("monaco-editor/esm/vs/editor/editor.api"),
+            import("monaco-editor/esm/vs/editor/editor.api").then(x => x),
             this.sourceCodeAsyncRenderer.load()
         ]);
 
