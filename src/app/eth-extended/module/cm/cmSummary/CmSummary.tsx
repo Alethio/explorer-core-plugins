@@ -6,7 +6,7 @@ import { ThemeContext } from "plugin-api/ThemeContext";
 import { ITranslation } from "plugin-api/ITranslation";
 import { NotAvailableBox } from "app/shared/component/NotAvailableBox";
 import { IAccordionItemConfig } from "@alethio/ui/lib/control/accordion/IAccordionItemConfig";
-import { Expander } from "@alethio/ui/lib/control/expander/Expander";
+import { ExpanderAccordion } from "@alethio/ui/lib/control/expander/ExpanderAccordion";
 import { TokenTransfersGrid } from "app/eth-extended/module/tx/txSummary/component/TokenTransfersGrid";
 import { CmGrid } from "app/eth-extended/module/tx/txSummary/component/CmGrid";
 import { AccordionVertical, IAccordionVerticalProps } from "@alethio/ui/lib/control/accordion/AccordionVertical";
@@ -78,7 +78,7 @@ export class CmSummary extends React.Component<ICmSummaryProps> {
 
     private renderExpander: IAccordionVerticalProps<ICmSummaryItemConfig>["renderExpander"] =
     ({config, isOpen, onClick, isFullWidth}) => {
-        return <Expander
+        return <ExpanderAccordion
             label={config.label}
             value={config.value}
             open={isOpen}

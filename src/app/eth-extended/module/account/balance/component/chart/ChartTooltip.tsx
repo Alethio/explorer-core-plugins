@@ -43,8 +43,6 @@ class $ChartTooltip extends React.Component<IChartTooltipProps> {
 
         return <Popover
             offset={this.props.arrow ? 5 : 0}
-            noArrow={!this.props.arrow}
-            nonInteractive={true}
             placement={this.props.placement}
             noFlip
             visible
@@ -56,10 +54,11 @@ class $ChartTooltip extends React.Component<IChartTooltipProps> {
                 clientWidth: 0
             }}
             content={this.props.children(payload)}
-            backgroundColor={colors.accountBalanceChartOverlayBg}
-            borderColor={colors.accountBalanceChartOverlayBorder}
             style={{
-                borderRadius: "3px"
+                borderRadius: "3px",
+                pointerEvents: "none",
+                backgroundColor: colors.accountBalanceChartOverlayBg,
+                borderColor: colors.accountBalanceChartOverlayBorder
             }}
         >
             <div />

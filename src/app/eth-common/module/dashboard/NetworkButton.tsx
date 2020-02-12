@@ -50,7 +50,6 @@ export class NetworkButton extends React.Component<INetworkButtonProps> {
                         background: disabled ? theme.colors.base.bg.main : theme.colors.base.bg.alt,
                         text: theme.colors.base.primary.color
                     })}
-                    variant="big"
                 >
                     <ContentWrapper>
                         <NetworkLabel>{ children }</NetworkLabel>

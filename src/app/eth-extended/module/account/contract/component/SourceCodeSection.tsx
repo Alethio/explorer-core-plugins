@@ -51,7 +51,7 @@ export class SourceCodeSection extends React.Component<ISourceCodeSectionProps> 
                 </FloatingActionBar>
                 : null }
                 <FloatingActionBar>
-                    <Button floating Icon={CopyIcon} onClick={this.handleCopyCode}>{
+                    <Button elevation="high" colors="primary" Icon={CopyIcon} onClick={this.handleCopyCode}>{
                         tr.get("accountView.contract.sourceCode.copyCode.label")
                     }</Button>
                 </FloatingActionBar>

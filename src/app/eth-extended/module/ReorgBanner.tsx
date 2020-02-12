@@ -27,7 +27,7 @@ const ReorgBannerRoot = styled.div`
 
     display: flex;
 
-    @media ${props => props.theme.mediaQueries.breakPoints.lessThan620px} {
+    @media ${props => props.theme.media.xs} {
         top: 100px;
         width: 90%;
     }

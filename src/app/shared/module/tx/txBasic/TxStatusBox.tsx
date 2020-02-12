@@ -2,7 +2,7 @@ import * as React from "react";
 import { ITranslation } from "plugin-api/ITranslation";
 import { ValueBox } from "@alethio/ui/lib/layout/content/box/ValueBox";
 import { StatusOkIcon } from "@alethio/ui/lib/icon/StatusOkIcon";
-import { TooltipRegular } from "@alethio/ui/lib/overlay/tooltip/TooltipRegular";
+import { Tooltip } from "@alethio/ui/lib/overlay/tooltip/Tooltip";
 import { StatusNotConfirmedIcon } from "@alethio/ui/lib/icon/StatusNotConfirmedIcon";
 import { ITxDetails } from "app/shared/data/tx/details/ITxDetails";
 import { isPendingTxDetails } from "app/eth-extended/data/tx/details/isPendingTxDetails";
@@ -25,7 +25,7 @@ export class TxStatusBox extends React.Component<ITxStatusBoxProps> {
         }
 
         return (
-            <TooltipRegular placement="right" content={
+            <Tooltip placement="right" content={
                 !isPendingTxDetails(tx) ?
                     (tx.error ?
                         translation.get("txView.content.txStatus.error") :
@@ -38,7 +38,7 @@ export class TxStatusBox extends React.Component<ITxStatusBoxProps> {
                         (tx.error ? ErrorIcon : StatusOkIcon) :
                         StatusNotConfirmedIcon }
                     />
-            </TooltipRegular>
+            </Tooltip>
         );
     }
 }

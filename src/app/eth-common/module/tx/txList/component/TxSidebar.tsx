@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SidebarColumns } from "@alethio/ui/lib/layout/sidebar/SidebarColumns";
+import { SidebarColumns } from "@alethio/explorer-ui/lib/layout/sidebar/SidebarColumns";
 import { minMaxLogScale } from "app/helper/minMaxLogScale";
 import { ThemeContext } from "plugin-api/ThemeContext";
 import { ITranslation } from "plugin-api/ITranslation";

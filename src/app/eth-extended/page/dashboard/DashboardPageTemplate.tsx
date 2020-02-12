@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Container } from "@alethio/ui/lib/layout/Container";
-import { Content } from "@alethio/ui/lib/layout/Content";
+import { Container } from "@alethio/explorer-ui/lib/layout/Container";
+import { Content } from "@alethio/explorer-ui/lib/layout/Content";
 import { IPageTemplateProps } from "plugin-api/IPageDef";
 import styled from "@alethio/explorer-ui/lib/styled-components";
 import { DashboardPageSlotType } from "./dashboardPage";

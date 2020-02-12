@@ -2,7 +2,7 @@ import * as React from "react";
 import { IGridFieldRenderer } from "@alethio/ui/lib/control/grid/state/IGridFieldRenderer";
 import { ITranslation } from "plugin-api/ITranslation";
 import styled from "@alethio/explorer-ui/lib/styled-components";
-import { TooltipRegular } from "@alethio/ui/lib/overlay/tooltip/TooltipRegular";
+import { Tooltip } from "@alethio/ui/lib/overlay/tooltip/Tooltip";
 import { ICmLite } from "app/eth-extended/data/contractMsg/lite/ICmLite";
 import { CmTypeRenderer } from "app/eth-extended/component/grid/cm/CmTypeRenderer";
 import { ErrorSmallIcon } from "@alethio/ui/lib/icon/ErrorSmallIcon";
@@ -26,13 +26,13 @@ export class CmTypeExtraRenderer implements IGridFieldRenderer<ICmLite> {
     render(f: ICmLite) {
         return <div style={{ position: "relative" }}>
             { f.error ? <ErrorWrapper>
-                <TooltipRegular placement="left" content={
+                <Tooltip placement="left" content={
                     typeof f.error === "string" ?
                         f.error :
                         this.translation.get("txView.content.txStatus.error")
                 }>
                     <ErrorSmallIcon size={24} />
-                </TooltipRegular>
+                </Tooltip>
             </ErrorWrapper> : null }
             {this.cmTypeRenderer.render(f)}
         </div>;

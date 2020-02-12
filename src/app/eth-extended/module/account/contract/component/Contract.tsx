@@ -6,7 +6,7 @@ import { isContractAccountDetails } from "app/eth-extended/data/account/details/
 import { ContractDetailsStore } from "app/eth-extended/data/contract/ContractDetailsStore";
 import { ContractWeb3Api } from "app/eth-extended/data/contract/ContractWeb3Api";
 import { ILogger } from "plugin-api/ILogger";
-import { ResponsiveContainer, MinimumWidth } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
+import { ResponsiveContainer } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
 
 export interface IContractProps {
     locale: string;
@@ -27,7 +27,7 @@ export class Contract extends React.PureComponent<IContractProps> {
         let account = this.props.accountDetails;
 
         return isContractAccountDetails(account) ?
-            <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForFullView}}>
+            <ResponsiveContainer behavior="hide" mediaQuery={theme => theme.media.mAndBelow}>
                 <ContractDetails
                     accountDetails={account}
                     contractDetailsStore={this.props.contractDetailsStore}

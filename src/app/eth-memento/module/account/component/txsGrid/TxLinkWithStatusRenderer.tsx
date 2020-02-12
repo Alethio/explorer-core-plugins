@@ -2,7 +2,7 @@ import * as React from "react";
 import { IGridFieldRenderer } from "@alethio/ui/lib/control/grid/state/IGridFieldRenderer";
 import { ITranslation } from "plugin-api/ITranslation";
 import { ITxLiteByAccount } from "app/eth-memento/data/tx/byAccount/ITxLiteByAccount";
-import { TooltipRegular } from "@alethio/ui/lib/overlay/tooltip/TooltipRegular";
+import { Tooltip } from "@alethio/ui/lib/overlay/tooltip/Tooltip";
 import { ErrorSmallIcon } from "@alethio/ui/lib/icon/ErrorSmallIcon";
 import { TxLinkRenderer } from "@alethio/explorer-ui/lib/grid/dataRenderer/tx/TxLinkRenderer";
 import styled from "@alethio/explorer-ui/lib/styled-components";
@@ -25,9 +25,9 @@ export class TxLinkWithStatusRenderer implements IGridFieldRenderer<ITxLiteByAcc
         return <div style={{ position: "relative" }}>
             { f.success === false ?
             <IconWrapper>
-                <TooltipRegular placement="left" content={this.translation.get("txView.content.txStatus.error")}>
+                <Tooltip placement="left" content={this.translation.get("txView.content.txStatus.error")}>
                     <ErrorSmallIcon size={24} />
-                </TooltipRegular>
+                </Tooltip>
             </IconWrapper>
             : null }
             { this.txLinkRendererBase.render(f) }

@@ -193,7 +193,7 @@ export class ReadContractSection extends React.Component<IReadContractSectionPro
                     })
                 }
                 <FloatingActionBar>
-                    <Button floating Icon={SwitchIcon} onClick={this.resetForm}>{
+                    <Button elevation="high" colors="primary" Icon={SwitchIcon} onClick={this.resetForm}>{
                         tr.get("accountView.contract.read.reset.label")
                     }</Button>
                 </FloatingActionBar>

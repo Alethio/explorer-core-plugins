@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ChartSection } from "./ChartSection";
 import { ContentBottomSection } from "./ContentBottomSection";
-import { ResponsiveContainer, MinimumWidth } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
+import { ResponsiveContainer } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
 import { AccountBalance } from "app/eth-extended/data/account/balance/AccountBalance";
 import { ITranslation } from "plugin-api/ITranslation";
 import { Spacer } from "@alethio/ui/lib/layout/Spacer";
@@ -38,7 +38,7 @@ export class Balance extends React.Component<IBalanceProps> {
                 usdPricesEnabled={usdPricesEnabled}
             />
             <ContentBottomSection>
-                <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForStandardView}}>
+                <ResponsiveContainer behavior="hide" mediaQuery={theme => theme.media.sAndBelow}>
                     <Spacer height="58px" />
                 </ResponsiveContainer>
                 { !isFreshAccount ?

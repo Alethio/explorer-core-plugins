@@ -2,7 +2,7 @@ import * as React from "react";
 import { ITranslation } from "plugin-api/ITranslation";
 import { ValueBox } from "@alethio/ui/lib/layout/content/box/ValueBox";
 import { StatusOkIcon } from "@alethio/ui/lib/icon/StatusOkIcon";
-import { TooltipRegular } from "@alethio/ui/lib/overlay/tooltip/TooltipRegular";
+import { Tooltip } from "@alethio/ui/lib/overlay/tooltip/Tooltip";
 import { ErrorIcon } from "@alethio/ui/lib/icon/ErrorIcon";
 import { ITxReceipt } from "app/eth-lite/data/tx/receipt/ITxReceipt";
 
@@ -17,7 +17,7 @@ export class TxStatusBox extends React.Component<ITxStatusBoxProps> {
         let translation = this.props.translation;
 
         return (
-            <TooltipRegular placement="right" content={
+            <Tooltip placement="right" content={
                 !status ?
                     translation.get("txView.content.txStatus.error") :
                     translation.get("txView.content.txStatus.ok")
@@ -26,7 +26,7 @@ export class TxStatusBox extends React.Component<ITxStatusBoxProps> {
                     colors={!status ? "error" : "highlight"}
                     Icon={!status ? ErrorIcon : StatusOkIcon}
                     />
-            </TooltipRegular>
+            </Tooltip>
         );
     }
 }

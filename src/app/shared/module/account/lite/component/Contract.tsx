@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ResponsiveContainer, MinimumWidth } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
+import { ResponsiveContainer } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
 import { ITranslation } from "plugin-api/ITranslation";
 import { ILogger } from "plugin-api/ILogger";
 import { IAccountDetails } from "app/eth-lite/data/account/IAccountDetails";
@@ -20,7 +20,7 @@ export class Contract extends React.PureComponent<IContractProps> {
         let account = this.props.accountDetails;
 
         return account.accountCode ?
-            <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForFullView}}>
+            <ResponsiveContainer behavior="hide" mediaQuery={theme => theme.media.mAndBelow}>
                 <ContractDetails
                     accountCode={account.accountCode}
                     translation={tr}

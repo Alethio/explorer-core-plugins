@@ -32,10 +32,10 @@ export class ConstructorArgsSection extends React.Component<IConstructorArgsSect
                 <div key={2}>{byteCodeElement}</div>
                 }
                 <FloatingActionBar>
-                    <Button floating Icon={CopyIcon} onClick={this.handleCopyCode}>{
+                    <Button colors="primary" elevation="high" Icon={CopyIcon} onClick={this.handleCopyCode}>{
                         tr.get("accountView.contract.sourceCode.copyCode.label")
                     }</Button>
-                    <Button floating Icon={SwitchIcon} onClick={this.toggleDecodedArgs}>{
+                    <Button colors="primary" elevation="high" Icon={SwitchIcon} onClick={this.toggleDecodedArgs}>{
                         this.showDecodedArgs ?
                             tr.get("accountView.contract.arguments.switch.byteCode.label") :
                             tr.get("accountView.contract.arguments.switch.decodedArgs.label")

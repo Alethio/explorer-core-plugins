@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ValueBox } from "@alethio/ui/lib/layout/content/box/ValueBox";
-import { TooltipRegular } from "@alethio/ui/lib/overlay/tooltip/TooltipRegular";
+import { Tooltip } from "@alethio/ui/lib/overlay/tooltip/Tooltip";
 import { ITranslation } from "plugin-api/ITranslation";
 import { SpinnerRegular } from "@alethio/ui/lib/fx/SpinnerRegular";
 import emojiTurtle from "assets/emojiTurtle.png";
@@ -20,7 +20,7 @@ export class NotAvailableBox extends React.Component<INotAvailableBoxProps> {
 
         return (
             <ValueBox>
-                <TooltipRegular content={
+                <Tooltip content={
                     <>
                         {tr.get("blockView.content.dataNotLoaded.text")}
                         <span style={{ marginLeft: 3 }}>
@@ -29,7 +29,7 @@ export class NotAvailableBox extends React.Component<INotAvailableBoxProps> {
                     </>
                 }>
                     <SpinnerRegular />
-                </TooltipRegular>
+                </Tooltip>
             </ValueBox>
         );
     }

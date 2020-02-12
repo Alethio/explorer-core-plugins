@@ -16,12 +16,12 @@ export const SearchBox = styled.input`
     outline: none;
 
     ::placeholder {
-        color: ${props => props.theme.colors.toolbarIcon};
+        color: ${props => props.theme.colors.input.placeholder};
         opacity: 1; /* Firefox */
     }
 
     ::-ms-input-placeholder {
-        color: ${props => props.theme.colors.toolbarIcon};
+        color: ${props => props.theme.colors.input.placeholder};
     }
 
     ::-ms-clear {

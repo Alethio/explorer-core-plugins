@@ -1,9 +1,9 @@
 import * as React from "react";
-import { Container } from "@alethio/ui/lib/layout/Container";
-import { Sidebar } from "@alethio/ui/lib/layout/sidebar/Sidebar";
-import { Content } from "@alethio/ui/lib/layout/Content";
-import { SidebarPageTitle } from "@alethio/ui/lib/layout/sidebar/SidebarPageTitle";
-import { LogoContainer } from "@alethio/ui/lib/layout/sidebar/LogoContainer";
+import { Container } from "@alethio/explorer-ui/lib/layout/Container";
+import { Sidebar } from "@alethio/explorer-ui/lib/layout/sidebar/Sidebar";
+import { Content } from "@alethio/explorer-ui/lib/layout/Content";
+import { SidebarPageTitle } from "@alethio/explorer-ui/lib/layout/sidebar/SidebarPageTitle";
+import { LogoContainer } from "@alethio/explorer-ui/lib/layout/sidebar/LogoContainer";
 import { IPageTemplateProps } from "plugin-api/IPageDef";
 import { UnclePageSlotType } from "../UnclePageSlotType";
 import { Logo } from "./Logo";

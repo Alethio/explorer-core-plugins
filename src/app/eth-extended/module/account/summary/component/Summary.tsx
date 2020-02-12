@@ -4,7 +4,7 @@ import { LayoutRowItem } from "@alethio/ui/lib/layout/content/LayoutRowItem";
 import { Label } from "@alethio/ui/lib/data/Label";
 import { ITranslation } from "plugin-api/ITranslation";
 import { ITxCounts } from "../ITxCounts";
-import { TooltipRegular } from "@alethio/ui/lib/overlay/tooltip/TooltipRegular";
+import { Tooltip } from "@alethio/ui/lib/overlay/tooltip/Tooltip";
 import { MessageSummaryCountBox } from "./MessageSummaryCountBox";
 import { MsgCountInIcon } from "@alethio/ui/lib/icon/MsgCountInIcon";
 import { MsgCountOutIcon } from "@alethio/ui/lib/icon/MsgCountOutIcon";
@@ -45,26 +45,26 @@ export class Summary extends React.Component<ISummaryProps> {
                         <Label>{tr.get("accountView.content.messageSummary.label")}</Label>
                         { txCounts ?
                             <>
-                                <TooltipRegular
+                                <Tooltip
                                     content={tr.get("accountView.content.messageSummary.incoming.tooltip")}
                                 >
                                     <MessageSummaryCountBox
                                         icon={<MsgCountInIcon />} count={txCounts.in} locale={locale} />
-                                </TooltipRegular>
-                                <TooltipRegular
+                                </Tooltip>
+                                <Tooltip
                                     content={tr.get("accountView.content.messageSummary.outgoing.tooltip")}
                                 >
                                     <MessageSummaryCountBox
                                         icon={<MsgCountOutIcon />} count={txCounts.out} locale={locale} />
-                                </TooltipRegular>
-                                <TooltipRegular
+                                </Tooltip>
+                                <Tooltip
                                     content={tr.get("accountView.content.messageSummary.pending.tooltip")}
                                 >
                                     <MessageSummaryCountBox
                                         icon={<MsgCountPendingIcon />} count={txCounts.pending}
                                         locale={locale}
                                     />
-                                </TooltipRegular>
+                                </Tooltip>
                             </>
                         : <NotAvailableBox translation={tr} /> }
                     </LayoutRowItem>
