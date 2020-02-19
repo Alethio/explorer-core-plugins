@@ -1,4 +1,4 @@
-import { HighlightFields } from "@alethio/explorer-ui/lib/blockTxs/txHighlight/HighlightFields";
+import { HighlightFields } from "app/shared/module/block/blockTxs/txHighlight/HighlightFields";
 import { HighlightFieldKey } from "./HighlightFieldKey";
 import { ITxDetails } from "app/eth-lite/data/tx/details/ITxDetails";
 
