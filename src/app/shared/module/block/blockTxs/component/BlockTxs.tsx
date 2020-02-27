@@ -6,7 +6,7 @@ import { Label } from "@alethio/ui/lib/data/Label";
 import { Spacer } from "@alethio/ui/lib/layout/Spacer";
 import { TxCountBox } from "@alethio/explorer-ui/lib/box/block/TxCountBox";
 import { ITranslation } from "plugin-api/ITranslation";
-import { TxHighlightSelector } from "@alethio/explorer-ui/lib/blockTxs/txHighlight/TxHighlightSelector";
+import { TxHighlightSelector } from "app/shared/module/block/blockTxs/txHighlight/TxHighlightSelector";
 import { ViewSelectorBox } from "@alethio/explorer-ui/lib/blockTxs/ViewSelectorBox";
 import {
     BlockTxsStateFactory as ExtendedBlockTxsStateFactory

@@ -1,10 +1,10 @@
 import * as React from "react";
-import { Sidebar } from "@alethio/ui/lib/layout/sidebar/Sidebar";
 import { Spacer } from "@alethio/ui/lib/layout/Spacer";
-import { LogoContainer } from "@alethio/ui/lib/layout/sidebar/LogoContainer";
-import { SidebarPageTitle } from "@alethio/ui/lib/layout/sidebar/SidebarPageTitle";
-import { Container } from "@alethio/ui/lib/layout/Container";
-import { Content } from "@alethio/ui/lib/layout/Content";
+import { LogoContainer } from "@alethio/explorer-ui/lib/layout/sidebar/LogoContainer";
+import { SidebarPageTitle } from "@alethio/explorer-ui/lib/layout/sidebar/SidebarPageTitle";
+import { Container } from "@alethio/explorer-ui/lib/layout/Container";
+import { Sidebar } from "@alethio/explorer-ui/lib/layout/sidebar/Sidebar";
+import { Content } from "@alethio/explorer-ui/lib/layout/Content";
 import { IPageTemplateProps } from "plugin-api/IPageDef";
 import { Logo } from "./Logo";
 import { BlockPageSlotType } from "../BlockPageSlotType";

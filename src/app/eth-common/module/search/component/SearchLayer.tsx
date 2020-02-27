@@ -45,9 +45,9 @@ const Content = styled.div`
 `;
 
 const SearchIconContainer = styled.div`
-    color: ${props => props.theme.colors.toolbarIcon};
+    color: ${props => props.theme.colors.input.placeholder};
 
-    @media ${props => props.theme.mediaQueries.breakPoints.smallerThanStandardView} {
+    @media ${props => props.theme.media.sAndBelow} {
         display: none;
     }
 `;
@@ -57,7 +57,7 @@ const SearchBoxContainer = styled.div`
     margin-right: 24px;
     flex-grow: 1;
 
-    @media ${props => props.theme.mediaQueries.breakPoints.smallerThanStandardView} {
+    @media ${props => props.theme.media.sAndBelow} {
         margin-left: 0;
     }
 `;

@@ -14,7 +14,7 @@ export class SourceCodeAsyncRenderer {
         this.codeFontFamily = "Roboto Mono";
 
         let [monaco] = await Promise.all([
-            import("monaco-editor/esm/vs/editor/editor.api"),
+            import("monaco-editor/esm/vs/editor/editor.api").then(x => x),
             (new FontFaceObserver(this.codeFontFamily)).load().catch(e => this.codeFontFamily = void 0)
         ]);
         this.monaco = monaco;

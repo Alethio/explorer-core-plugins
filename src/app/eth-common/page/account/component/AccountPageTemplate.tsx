@@ -3,9 +3,9 @@ import { IPageTemplateProps } from "plugin-api/IPageDef";
 import { AccountPageSlotType } from "../AccountPageSlotType";
 import { IdenticonWrapper } from "./IdenticonWrapper";
 import { Spacer } from "@alethio/ui/lib/layout/Spacer";
-import { Container } from "@alethio/ui/lib/layout/Container";
-import { Sidebar } from "@alethio/ui/lib/layout/sidebar/Sidebar";
-import { Content } from "@alethio/ui/lib/layout/Content";
+import { Container } from "@alethio/explorer-ui/lib/layout/Container";
+import { Sidebar } from "@alethio/explorer-ui/lib/layout/sidebar/Sidebar";
+import { Content } from "@alethio/explorer-ui/lib/layout/Content";
 import styled from "@alethio/ui/lib/styled-components";
 
 const SidebarTop = styled.div`

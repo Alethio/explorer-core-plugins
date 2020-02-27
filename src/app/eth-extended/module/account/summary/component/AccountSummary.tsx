@@ -2,7 +2,7 @@ import * as React from "react";
 import { ITranslation } from "plugin-api/ITranslation";
 import { NotAvailableBox } from "app/shared/component/NotAvailableBox";
 import { IAccordionItemConfig } from "@alethio/ui/lib/control/accordion/IAccordionItemConfig";
-import { Expander } from "@alethio/ui/lib/control/expander/Expander";
+import { ExpanderAccordion } from "@alethio/ui/lib/control/expander/ExpanderAccordion";
 import { observable } from "mobx";
 import { observer, Observer } from "mobx-react";
 import { AccordionVertical, IAccordionVerticalProps } from "@alethio/ui/lib/control/accordion/AccordionVertical";
@@ -93,7 +93,7 @@ export class AccountSummary extends React.Component<IAccountSummaryProps> {
 
     private renderExpander: IAccordionVerticalProps<IAccountSummaryItemConfig>["renderExpander"] =
     ({config, isOpen, onClick, onResize, isFullWidth}) => {
-        return <Expander
+        return <ExpanderAccordion
             label={config.label}
             value={config.value()}
             open={isOpen}

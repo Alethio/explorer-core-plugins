@@ -3,7 +3,7 @@ import { Label } from "@alethio/ui/lib/data/Label";
 import { LayoutRowItem } from "@alethio/ui/lib/layout/content/LayoutRowItem";
 import { ValueBox } from "@alethio/ui/lib/layout/content/box/ValueBox";
 import { ArrowForwardIcon } from "@alethio/ui/lib/icon/ArrowForwardIcon";
-import { ResponsiveContainer, MinimumWidth } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
+import { ResponsiveContainer } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
 import { ITranslation } from "plugin-api/ITranslation";
 import { ActiveNodesBox } from "app/eth-extended/module/dashboard/charts/component/ActiveNodesBox";
 import { IPropagationChartItem } from "app/eth-extended/module/dashboard/charts/data/IPropagationChartItem";
@@ -43,7 +43,7 @@ export class Propagation extends React.Component<IPropagationProps> {
     render() {
         let { translation: tr, locale } = this.props;
 
-        return <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForFullView}}>
+        return <ResponsiveContainer behavior="hide" mediaQuery={theme => theme.media.mAndBelow}>
             <DashboardLabel>
                 <Label>{ tr.get("dashboardView.propagationChart.title.label") }</Label>
             </DashboardLabel>

@@ -8,9 +8,9 @@ import { ITokenAggregatedBalance } from "app/eth-extended/data/account/balance/I
 import { ITotalBalance } from "app/eth-extended/data/account/balance/ITotalBalance";
 import { IBalanceAreaChartSmallPayload } from "./chart/IBalanceAreaChartSmallPayload";
 import { LayoutBoxItem } from "@alethio/ui/lib/layout/content/LayoutBoxItem";
-import { Expander } from "@alethio/ui/lib/control/expander/Expander";
+import { ExpanderAccordion } from "@alethio/ui/lib/control/expander/ExpanderAccordion";
 import { ITranslation } from "plugin-api/ITranslation";
-import { ResponsiveContainer, MinimumWidth } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
+import { ResponsiveContainer } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
 
 interface IAllTokensBalanceDetailsProps {
     tokenAggregatedBalance: ITokenAggregatedBalance[];
@@ -34,7 +34,7 @@ export class AllTokensBalanceDetails extends React.PureComponent<IAllTokensBalan
         return (
             <>
                 <LayoutBoxItem>
-                    <Expander
+                    <ExpanderAccordion
                         label={tr.get("accountView.content.tokens.label")}
                         value={this.props.totalTokenTypes}
                         open={this.props.expanded}
@@ -44,7 +44,7 @@ export class AllTokensBalanceDetails extends React.PureComponent<IAllTokensBalan
                 </LayoutBoxItem>
                 { usdPricesEnabled ?
                 <>
-                <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForFullView}}>
+                <ResponsiveContainer behavior="hide" mediaQuery={theme => theme.media.mAndBelow}>
                     <LayoutBoxItem>
                         <ValueBox>
                             <BalancePieChart percentage={percentFraction * 100} clockwise />
@@ -56,7 +56,7 @@ export class AllTokensBalanceDetails extends React.PureComponent<IAllTokensBalan
                         style: "percent", minimumFractionDigits: 0, maximumFractionDigits: 2})
                     }</ValueBox>
                 </LayoutBoxItem>
-                <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForFullView}}>
+                <ResponsiveContainer behavior="hide" mediaQuery={theme => theme.media.mAndBelow}>
                     <LayoutBoxItem>
                         <ValueBox>
                             <BalanceAreaChartSmall data={this.getChartData()} />

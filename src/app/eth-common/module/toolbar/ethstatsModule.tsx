@@ -2,7 +2,7 @@ import React from "react";
 import { IModuleDef } from "plugin-api/IModuleDef";
 import { ToolbarItem } from "@alethio/ui/lib/layout/toolbar/ToolbarItem";
 import { ITranslation } from "plugin-api/ITranslation";
-import { ResponsiveContainer, MinimumWidth } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
+import { ResponsiveContainer } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
 import { Link } from "plugin-api/component/Link";
 import { ProductIconButton } from "@alethio/ui/lib/layout/toolbar/ProductIconButton";
 import { EthStatsIcon } from "@alethio/ui/lib/icon/EthStatsIcon";
@@ -15,7 +15,7 @@ export const ethstatsModule: (ethstatsUrl: string) => IModuleDef<INetstatsProps,
     contextType: {},
     dataAdapters: [],
     getContentComponent: async () => (props) => (
-        <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForFullView}}>
+        <ResponsiveContainer behavior="hide" mediaQuery={theme => theme.media.mAndBelow}>
             <ToolbarItem title={props.translation.get("toolbar.ethstats.label")}>
                 <Link to={ethstatsUrl}>
                     <ProductIconButton Icon={EthStatsIcon} />

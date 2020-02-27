@@ -4,7 +4,7 @@ import { ITranslation } from "plugin-api/ITranslation";
 import { ITxLiteByAccountMined } from "app/eth-extended/data/tx/lite/byAccount/mined/ITxLiteByAccountMined";
 import { TxTypeRenderer } from "app/eth-extended/module/account/summary/component/txsGrid/TxTypeRenderer";
 import styled from "@alethio/explorer-ui/lib/styled-components";
-import { TooltipRegular } from "@alethio/ui/lib/overlay/tooltip/TooltipRegular";
+import { Tooltip } from "@alethio/ui/lib/overlay/tooltip/Tooltip";
 import { ErrorSmallIcon } from "@alethio/ui/lib/icon/ErrorSmallIcon";
 
 const IconWrapper = styled.div`
@@ -27,13 +27,13 @@ export class TxTypeExtraRenderer implements IGridFieldRenderer<ITxLiteByAccountM
         return <div style={{ position: "relative" }}>
             { f.error ?
             <IconWrapper>
-                <TooltipRegular placement="left" content={
+                <Tooltip placement="left" content={
                     typeof f.error === "string" ?
                         f.error :
                         this.translation.get("txView.content.txStatus.error")
                 }>
                     <ErrorSmallIcon size={24} />
-                </TooltipRegular>
+                </Tooltip>
             </IconWrapper>
             : null }
             {this.txTypeRenderer.render(f)}

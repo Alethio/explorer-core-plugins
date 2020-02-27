@@ -19,7 +19,7 @@ import { ResponsiveContainer } from "@alethio/ui/lib/layout/responsive/Responsiv
 import { IAsyncData } from "plugin-api/IAsyncData";
 
 const BalanceSectionRoot = styled<{accountHasTokens: boolean}, "div">("div")`
-    @media ${props => props.theme.mediaQueries.breakPoints.smallerThanStandardView} {
+    @media ${props => props.theme.media.sAndBelow} {
         display: ${(props) => props.accountHasTokens ? "block" : "none"};
     }
 `;
@@ -32,7 +32,7 @@ const BalanceSectionGrid = styled<IBalanceSectionGridProps, "div">("div")`
     display: grid;
     grid-template-columns: repeat(${ props => props.usdPricesEnabled ? 5 : 1 }, auto);
 
-    @media ${props => props.theme.mediaQueries.breakPoints.smallerThanStandardView} {
+    @media ${props => props.theme.media.sAndBelow} {
         grid-template-columns: repeat(3, auto);
     }
 `;
@@ -64,7 +64,7 @@ export class BalanceSection extends React.Component<IBalanceSectionProps> {
                 {/* The value 540 is the same value as the hide of the row first label when
                 `ignoreFirstLabel` is used. TODO: Replace this with the future implementation of Layout
                 that will move labels and info on separate lines when viewport is too small */}
-                <ResponsiveContainer behavior="show" forScreenWidth={{lowerThan: 540}}>
+                <ResponsiveContainer behavior="show" mediaQuery={theme => theme.media.xs}>
                     <LayoutRow>
                         <LayoutRowItem>
                             <Label>{tr.get("accountView.content.balance.label")}</Label>

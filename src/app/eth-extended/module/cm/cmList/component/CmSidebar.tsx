@@ -1,6 +1,6 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { SidebarColumns } from "@alethio/ui/lib/layout/sidebar/SidebarColumns";
+import { SidebarColumns } from "@alethio/explorer-ui/lib/layout/sidebar/SidebarColumns";
 import { ITranslation } from "plugin-api/ITranslation";
 import { ThemeContext } from "plugin-api/ThemeContext";
 import { minMaxLogScale } from "app/helper/minMaxLogScale";

@@ -32,10 +32,10 @@ export class CreationCodeSection extends React.Component<ICreationCodeSectionPro
                 <div key={2}>{byteCodeElement}</div>
                 }
                 <FloatingActionBar>
-                    <Button floating Icon={CopyIcon} onClick={this.handleCopyCode}>{
+                    <Button elevation="high" colors="primary" Icon={CopyIcon} onClick={this.handleCopyCode}>{
                         tr.get("accountView.contract.sourceCode.copyCode.label")
                     }</Button>
-                    <Button floating Icon={SwitchIcon} onClick={this.toggleOpCode}>{
+                    <Button elevation="high" colors="primary" Icon={SwitchIcon} onClick={this.toggleOpCode}>{
                         this.showOpCode ?
                             tr.get("accountView.contract.accountCode.switch.byteCode.label") :
                             tr.get("accountView.contract.accountCode.switch.opCode.label")

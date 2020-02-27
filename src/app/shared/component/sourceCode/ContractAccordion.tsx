@@ -2,7 +2,7 @@ import * as React from "react";
 import {
     AccordionHorizontal, IAccordionHorizontalProps
 } from "@alethio/ui/lib/control/accordion/AccordionHorizontal";
-import { Expander } from "@alethio/ui/lib/control/expander/Expander";
+import { ExpanderAccordion } from "@alethio/ui/lib/control/expander/ExpanderAccordion";
 import { IAccordionItemConfig } from "@alethio/ui/lib/control/accordion/IAccordionItemConfig";
 import { AccordionContentFrame } from "@alethio/ui/lib/control/accordion/AccordionContentFrame";
 import { ScrollIntoView } from "@alethio/ui/lib/util/react/ScrollIntoView";
@@ -25,7 +25,7 @@ const ExpanderWrapper = styled.div`
 `;
 
 const AccordionFrameWrapper = styled.div`
-    margin-bottom: -${({theme}) => theme.spacing.contentBottom}px;
+    border-bottom: ${({theme}) => theme.colors.accordionBorder} solid 1px;
     /** For FloatingActionBar's */
     position: relative;
 `;
@@ -65,7 +65,7 @@ export class ContractAccordion extends React.PureComponent<IContractAccordionPro
 
     private renderExpander: IAccordionHorizontalProps<IContractAccordionItemConfig>["renderExpander"] =
     ({config, isOpen, onClick}) => {
-        return <ExpanderWrapper><Expander
+        return <ExpanderWrapper><ExpanderAccordion
             label={config.label}
             value={config.value}
             disabled={config.disabled}

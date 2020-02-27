@@ -4,7 +4,7 @@ let monacoEnvPatched = false;
 
 export interface ISourceCodeProps {
     monaco: typeof import("monaco-editor/esm/vs/editor/editor.api");
-    options: import("monaco-editor/esm/vs/editor/editor.api").editor.IEditorConstructionOptions;
+    options: import("monaco-editor/esm/vs/editor/editor.api").editor.IStandaloneEditorConstructionOptions;
     height?: number | string;
 }
 

@@ -7,7 +7,7 @@ import { ITranslation } from "plugin-api/ITranslation";
 import { ITxDetails } from "app/shared/data/tx/details/ITxDetails";
 import { NotAvailableBox } from "app/shared/component/NotAvailableBox";
 import { IAccordionItemConfig } from "@alethio/ui/lib/control/accordion/IAccordionItemConfig";
-import { Expander } from "@alethio/ui/lib/control/expander/Expander";
+import { ExpanderAccordion } from "@alethio/ui/lib/control/expander/ExpanderAccordion";
 import { AccordionVertical, IAccordionVerticalProps } from "@alethio/ui/lib/control/accordion/AccordionVertical";
 import { AccordionItem } from "@alethio/ui/lib/control/accordion/AccordionItem";
 import { AccordionContentFrame } from "@alethio/ui/lib/control/accordion/AccordionContentFrame";
@@ -89,7 +89,7 @@ export class TxSummary extends React.Component<ITxSummaryProps> {
 
     private renderExpander: IAccordionVerticalProps<ITxSummaryItemConfig>["renderExpander"] =
     ({config, isOpen, onClick, isFullWidth}) => {
-        return <Expander
+        return <ExpanderAccordion
             label={config.label}
             value={config.value}
             open={isOpen}

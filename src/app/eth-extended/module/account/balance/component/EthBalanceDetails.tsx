@@ -9,7 +9,7 @@ import { BalanceAreaChartSmall } from "./chart/BalanceAreaChartSmall";
 import { IAccountBalanceData } from "app/eth-extended/data/account/balance/IAccountBalanceDataSet";
 import { IBalanceAreaChartSmallPayload } from "./chart/IBalanceAreaChartSmallPayload";
 import { LayoutBoxItem } from "@alethio/ui/lib/layout/content/LayoutBoxItem";
-import { ResponsiveContainer, MinimumWidth } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
+import { ResponsiveContainer } from "@alethio/ui/lib/layout/responsive/ResponsiveContainer";
 
 interface IEthBalanceDetailsProps {
     ethBalance: IAccountBalanceData;
@@ -34,7 +34,7 @@ export class EthBalanceDetails extends React.PureComponent<IEthBalanceDetailsPro
                 </LayoutBoxItem>
                 { usdPricesEnabled ?
                 <>
-                <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForFullView}}>
+                <ResponsiveContainer behavior="hide" mediaQuery={theme => theme.media.mAndBelow}>
                     <LayoutBoxItem>
                         <ValueBox>
                             <BalancePieChart percentage={percentFraction * 100} />
@@ -46,7 +46,7 @@ export class EthBalanceDetails extends React.PureComponent<IEthBalanceDetailsPro
                         style: "percent", minimumFractionDigits: 0, maximumFractionDigits: 2})
                     }</ValueBox>
                 </LayoutBoxItem>
-                <ResponsiveContainer behavior="hide" forScreenWidth={{lowerThan: MinimumWidth.ForFullView}}>
+                <ResponsiveContainer behavior="hide" mediaQuery={theme => theme.media.mAndBelow}>
                     <LayoutBoxItem>
                         <ValueBox>
                             <BalanceAreaChartSmall data={this.getChartData()} />

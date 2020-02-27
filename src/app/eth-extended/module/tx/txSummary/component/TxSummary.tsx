@@ -8,7 +8,7 @@ import { ITxDetails } from "app/shared/data/tx/details/ITxDetails";
 import { isFullTxDetails } from "app/eth-extended/data/tx/details/isFullTxDetails";
 import { NotAvailableBox } from "app/shared/component/NotAvailableBox";
 import { IAccordionItemConfig } from "@alethio/ui/lib/control/accordion/IAccordionItemConfig";
-import { Expander } from "@alethio/ui/lib/control/expander/Expander";
+import { ExpanderAccordion } from "@alethio/ui/lib/control/expander/ExpanderAccordion";
 import { TokenTransfersGrid } from "./TokenTransfersGrid";
 import { CmGrid } from "./CmGrid";
 import { AccordionVertical, IAccordionVerticalProps } from "@alethio/ui/lib/control/accordion/AccordionVertical";
@@ -102,7 +102,7 @@ export class TxSummary extends React.Component<ITxSummaryProps> {
 
     private renderExpander: IAccordionVerticalProps<ITxSummaryItemConfig>["renderExpander"] =
     ({config, isOpen, onClick, isFullWidth}) => {
-        return <Expander
+        return <ExpanderAccordion
             label={config.label}
             value={config.value}
             open={isOpen}

@@ -5,7 +5,7 @@ import { Label } from "@alethio/ui/lib/data/Label";
 import { HashValueBox } from "@alethio/ui/lib/data/box/HashValueBox";
 import { LayoutSection } from "@alethio/ui/lib/layout/content/LayoutSection";
 import { ErrorIcon } from "@alethio/ui/lib/icon/ErrorIcon";
-import { TooltipRegular } from "@alethio/ui/lib/overlay/tooltip/TooltipRegular";
+import { Tooltip } from "@alethio/ui/lib/overlay/tooltip/Tooltip";
 import { BlockNumberBox } from "@alethio/explorer-ui/lib/box/block/BlockNumberBox";
 import { TimeElapsedBox } from "app/shared/component/TimeElapsedBox";
 import { BlockHashBox } from "@alethio/explorer-ui/lib/box/block/BlockHashBox";
@@ -57,13 +57,13 @@ export class BlockBasic extends React.PureComponent<IBlockBasicProps> {
                 <LayoutRowItem>
                     <Label>{tr.get("general.hash")}</Label>
                     { block.inconsistentWarning ?
-                        <TooltipRegular content={
+                        <Tooltip content={
                             <div style={{width: 450, textAlign: "center"}}>
                                 { tr.get("blockView.content.inconsistentWarning.text") }
                             </div>
                         }>
                             <ErrorIcon />
-                        </TooltipRegular>
+                        </Tooltip>
                     : null}
                     <BlockHashBox>{block.hash}</BlockHashBox>
                 </LayoutRowItem>

@@ -28,7 +28,7 @@ export class TxTooltipContent extends React.Component<ITxTooltipContentProps> {
                     <Label arrow disabled={tx.value.isZero()}>{translation.get("txTooltip.value.label")}</Label>
                 </div>
                 <div style={{display: "flex"}}>
-                    <EthValueBox variant="smallThin" wei={tx.value} locale={this.props.locale} symbol={ethSymbol} />
+                    <EthValueBox variant="small" wei={tx.value} locale={this.props.locale} symbol={ethSymbol} />
                 </div>
             </TxTooltipContentWrapper>
         );
