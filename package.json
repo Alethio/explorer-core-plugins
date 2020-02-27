@@ -7,7 +7,7 @@
   "scripts": {
     "build": "npm run clean && npm run build-js-prod && npm run check-prod-bundle-size",
     "build-dev": "npm run clean && npm run build-js-dev",
-    "check-prod-bundle-size": "bundlesize -f \"packages/*/dist/index.js\" -s 450kB -c none",
+    "check-prod-bundle-size": "bundlesize -f \"packages/*/dist/index.js\" -s 500kB -c none",
     "watch": "webpack-runner --config=./webpack.config.dev.js --watch",
     "clean": "rimraf ./packages/*/dist",
     "build-js-prod": "webpack --config=./webpack.config.prod.js",
