@@ -13,7 +13,7 @@ export class SelectGraph extends React.Component<ISelectGraphProps> {
         return (
             <Select value={this.props.fields.getSelectedField().key}
                 onSelect={this.onCheckboxChange}>
-                {() => this.props.fields.getFields().map((f) => {
+                {this.props.fields.getFields().map((f) => {
                     return (
                         <Option
                             key={f.key}
