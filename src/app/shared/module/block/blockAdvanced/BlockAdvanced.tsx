@@ -3,7 +3,6 @@ import { LayoutRow } from "@alethio/ui/lib/layout/content/LayoutRow";
 import { LayoutRowItem } from "@alethio/ui/lib/layout/content/LayoutRowItem";
 import { Label } from "@alethio/ui/lib/data/Label";
 import { ValueBox } from "@alethio/ui/lib/layout/content/box/ValueBox";
-import { EthValueBox } from "@alethio/ui/lib/data/box/EthValueBox";
 import { NumberBox } from "@alethio/ui/lib/data/box/NumberBox";
 import { GasUsedValueBox } from "@alethio/ui/lib/data/box/GasUsedValueBox";
 import { DifficultyBox } from "@alethio/ui/lib/data/box/DifficultyBox";
@@ -18,9 +17,13 @@ import { Link } from "plugin-api/component/Link";
 import { ITranslation } from "plugin-api/ITranslation";
 import { IBlockDetails } from "app/shared/data/block/details/IBlockDetails";
 import { BlockAdvancedSlotType } from "./BlockAdvancedSlotType";
+import { ITheme } from "@alethio/explorer-ui/lib/ITheme";
+import { EthValue } from "@alethio/ui/lib/data/EthValue";
+import { weiToEth } from "app/util/wei";
 
 export interface IBlockAdvancedProps {
     blockDetails: IBlockDetails;
+    latestEthPrice: number | undefined;
     translation: ITranslation;
     locale: string;
     ethSymbol: string;
@@ -69,13 +72,33 @@ export class BlockAdvanced extends React.PureComponent<IBlockAdvancedProps> {
                     </Link>
                     : null }
                     { block.mineTime ?
-                    <TimeInPoolBox seconds={block.mineTime} colors="secondary"
-                        translation={tr.get("blockView.content.beneficiary.mineTime")} />
+                    <TimeInPoolBox seconds={block.mineTime} colors={(theme: ITheme) => ({
+                        background: theme.colors.base.bg.alt,
+                        text: theme.colors.base.secondary.color,
+                        border: theme.colors.base.secondary.color
+                    })}
+                        translation={(block.beneficiaryName ? block.beneficiaryName + " " : "")
+                            + tr.get("blockView.content.beneficiary.mineTime")}
+                         />
                     : null }
                     { block.beneficiaryReward ?
                     <>
-                    <Label arrow>{tr.get("blockView.content.beneficiary.reward.label")}</Label>
-                    <EthValueBox wei={block.beneficiaryReward} locale={locale} symbol={ethSymbol} />
+                    <Label>{tr.get("blockView.content.beneficiary.reward.label")}</Label>
+                    <ValueBox
+                    colors={(theme: ITheme) => ({
+                        background: theme.colors.txTypeValue,
+                        text: theme.colors.blockBoxText
+                    })} variant="normal">
+                    <EthValue wei={block.beneficiaryReward} locale={this.props.locale}
+                        decimals={4} showSymbol={true} symbol={ethSymbol} />
+                    { this.props.latestEthPrice ?
+                    <> =
+                    {" " +
+                    this.formatUsd(weiToEth(block.beneficiaryReward).multipliedBy(this.props.latestEthPrice).toNumber(),
+                        this.props.locale)}
+                    </>
+                    : null }
+                </ValueBox>
                     </>
                     : null }
                 </LayoutRowItem>
@@ -121,5 +144,12 @@ export class BlockAdvanced extends React.PureComponent<IBlockAdvancedProps> {
             </LayoutRow>
             : null }
         </LayoutSection>;
+    }
+    private formatUsd(value: number, locale?: string) {
+        return value.toLocaleString(locale, {
+            currency: "USD",
+            currencyDisplay: "symbol",
+            style: "currency"
+        });
     }
 }

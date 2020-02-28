@@ -25,9 +25,12 @@ IModuleDef<IBlockAdvancedProps, IBlockContext, BlockAdvancedSlotType> = (ethSymb
         let { asyncData, locale, translation, slots } = data;
 
         let blockDetails = asyncData.get(AlethioAdapterType.BlockDetailsFull)!.data as IBlockDetails;
+        let latestEthPrice = asyncData.get(AlethioAdapterType.EthPrices) &&
+            asyncData.get(AlethioAdapterType.EthPrices)!.data as number | undefined;
 
         return {
             blockDetails,
+            latestEthPrice,
             translation,
             locale,
             ethSymbol,

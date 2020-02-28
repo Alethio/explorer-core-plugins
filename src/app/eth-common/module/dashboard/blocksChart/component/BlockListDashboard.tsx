@@ -2,11 +2,12 @@ import * as React from "react";
 import { computed, observable } from "mobx";
 import { observer } from "mobx-react";
 import { ITranslation } from "plugin-api/ITranslation";
-import { BlockNumberBox } from "@alethio/explorer-ui/lib/box/block/BlockNumberBox";
-import { TxCountBox } from "@alethio/explorer-ui/lib/box/block/TxCountBox";
+import { ValueBox } from "@alethio/ui/lib/layout/content/box/ValueBox";
+import { ITheme } from "@alethio/explorer-ui/lib/ITheme";
 import { BarChart } from "@alethio/explorer-ui/lib/dashboard/BarChart";
 import { ILatestBlockRangeContext } from "../../../../../shared/context/ILatestBlockRangeContext";
 import { IBlockTxCount } from "app/shared/data/block/value/IBlockTxCount";
+import styled from "@alethio/explorer-ui/lib/styled-components";
 
 const MAX_BLOCKS_SHOWN_COUNT = 50;
 
@@ -16,6 +17,10 @@ interface IBlockListDashboardProps {
     translation: ITranslation;
 }
 
+const TransactionCount = styled.span`
+    color: ${props => props.theme.colors.blockListItem};
+    padding-left: 8px;
+`;
 /**
  * TODO: Deduplication: This file is almost identical with AvgTimeInPoolChart.tsx
  * If posible, export and share logic between those two and BlockListAside.tsx
@@ -57,13 +62,19 @@ export class BlockListDashboard extends React.Component<IBlockListDashboardProps
                     };
                 })}
                 tooltipThunk={(d) => <div style={{padding: 8, display: "flex"}}>
-                    <BlockNumberBox variant="small" noLink>{d.key as number}</BlockNumberBox>
-                    { d.value !== void 0 ?
-                    <TxCountBox variant="small">
-                        {this.props.translation.get("blockView.content.blockSummary.txs.label")
+                    <ValueBox
+                        colors={(theme: ITheme) => ({
+                            background: theme.colors.blockColorCode,
+                            text: theme.colors.blockBoxText
+                        })} variant="small">
+                        # { d.key as number }
+                        { d.value !== void 0 ?
+                            <TransactionCount>
+                                {this.props.translation.get("blockView.content.blockSummary.txs.label")
                             .replace(/%d/, "" + d.value)}
-                    </TxCountBox>
-                    : null }
+                            </TransactionCount>
+                        : null }
+                    </ValueBox>
                 </div>}
                 linkThunk={(d) => `page://aleth.io/block?blockNumber=${d.key}`}
             />

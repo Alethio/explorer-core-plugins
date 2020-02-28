@@ -51,6 +51,7 @@
     "blockView.content.transactions.label": "Transactions",
     "blockView.content.transactionsHighlight.label": "Highlight",
     "blockView.content.transactionsHighlight.value.label": "Value",
+    "blockView.content.transactionsStyle.label": "Style",
     "txTooltip.value.label": "Value",
 
     "uncleView.sidebar.logo": "Un",
