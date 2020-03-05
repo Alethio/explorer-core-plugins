@@ -72,7 +72,7 @@ export class BlockTxs extends React.Component<IBlockTxsProps> {
                     <TxHighlightSelector fields={txsHighlightFields} translation={tr} />
                     <Label>{tr.get("blockView.content.transactionsStyle.label")}</Label>
                     <ViewSelectorBox txsViewMode={txsViewMode} />
-                    <Label>{tr.get("Tip: top 20 % TXs are highlighted")}</Label>
+                    <Label>{tr.get("blockView.content.transactionsViewTip.label")}</Label>
                 </LayoutRowItem>
                 : null }
             </LayoutRow>

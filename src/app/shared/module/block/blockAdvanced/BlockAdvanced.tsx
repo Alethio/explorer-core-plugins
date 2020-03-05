@@ -18,8 +18,7 @@ import { ITranslation } from "plugin-api/ITranslation";
 import { IBlockDetails } from "app/shared/data/block/details/IBlockDetails";
 import { BlockAdvancedSlotType } from "./BlockAdvancedSlotType";
 import { ITheme } from "@alethio/explorer-ui/lib/ITheme";
-import { EthValue } from "@alethio/ui/lib/data/EthValue";
-import { weiToEth } from "app/util/wei";
+import { EthUsdValueBox } from "@alethio/explorer-ui/lib/box/block/EthUsdValueBox";
 
 export interface IBlockAdvancedProps {
     blockDetails: IBlockDetails;
@@ -84,21 +83,17 @@ export class BlockAdvanced extends React.PureComponent<IBlockAdvancedProps> {
                     { block.beneficiaryReward ?
                     <>
                     <Label>{tr.get("blockView.content.beneficiary.reward.label")}</Label>
-                    <ValueBox
-                    colors={(theme: ITheme) => ({
-                        background: theme.colors.txTypeValue,
-                        text: theme.colors.blockBoxText
-                    })} variant="normal">
-                    <EthValue wei={block.beneficiaryReward} locale={this.props.locale}
-                        decimals={4} showSymbol={true} symbol={ethSymbol} />
-                    { this.props.latestEthPrice ?
-                    <> =
-                    {" " +
-                    this.formatUsd(weiToEth(block.beneficiaryReward).multipliedBy(this.props.latestEthPrice).toNumber(),
-                        this.props.locale)}
-                    </>
-                    : null }
-                </ValueBox>
+                    <EthUsdValueBox
+                        locale={this.props.locale}
+                        symbol={ethSymbol}
+                        decimals={4}
+                        wei={block.beneficiaryReward}
+                        latestEthPrice={this.props.latestEthPrice}
+                        colors={(theme: ITheme) => ({
+                            background: theme.colors.txTypeValue,
+                            text: theme.colors.blockBoxText
+                        })}
+                    />
                     </>
                     : null }
                 </LayoutRowItem>
@@ -144,12 +139,5 @@ export class BlockAdvanced extends React.PureComponent<IBlockAdvancedProps> {
             </LayoutRow>
             : null }
         </LayoutSection>;
-    }
-    private formatUsd(value: number, locale?: string) {
-        return value.toLocaleString(locale, {
-            currency: "USD",
-            currencyDisplay: "symbol",
-            style: "currency"
-        });
     }
 }
