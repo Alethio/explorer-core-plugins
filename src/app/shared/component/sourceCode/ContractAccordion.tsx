@@ -25,7 +25,7 @@ const ExpanderWrapper = styled.div`
 `;
 
 const AccordionFrameWrapper = styled.div`
-    border-bottom: ${({theme}) => theme.colors.accordionBorder} solid 1px;
+    border-bottom: ${({theme}) => theme.colors.accordion.content.border} solid 1px;
     /** For FloatingActionBar's */
     position: relative;
 `;

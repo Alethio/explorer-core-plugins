@@ -51,6 +51,8 @@
     "blockView.content.transactions.label": "交易数",
     "blockView.content.transactionsHighlight.label": "交易概览（大小按指标呈现）",
     "blockView.content.transactionsHighlight.value.label": "金额",
+    "blockView.content.transactionsStyle.label": "交易类型",
+    "blockView.content.transactionsViewTip.label": "小贴士：区块中按所选指标前20%的交易图标被放大了。",
     "txTooltip.value.label": "金额",
 
     "uncleView.sidebar.logo": "叔块",

@@ -18,6 +18,7 @@ const LogoInner = styled.div`
     font-weight: 700;
     text-align: center;
     padding: 18px 0;
+    border-radius: 4px;
 `;
 
 export const Logo: React.StatelessComponent<{}> = ({ children }) => (

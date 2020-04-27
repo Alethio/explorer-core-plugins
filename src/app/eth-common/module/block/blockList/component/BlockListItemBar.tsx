@@ -16,6 +16,7 @@ const BlockListItemBarRoot = styled<IBlockListItemBarProps, "div">("div")`
         props.theme.colors.blockColorCode :
         props.theme.colors.blockListItem
     )};
+    border-radius: 2px;
     background-color: ${props => (
         props.active ?
         props.theme.colors.blockColorCode :
@@ -25,6 +26,7 @@ const BlockListItemBarRoot = styled<IBlockListItemBarProps, "div">("div")`
     ${props => !props.disabled && !props.active ? css`
     ${BlockListItemRoot}:hover & {
         border: 2px solid ${props.theme.colors.blockColorCode};
+        border-radius: 2px;
         background-color: transparent;
     }
     ` : ``}

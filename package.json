@@ -64,8 +64,8 @@
     "webpack-runner": "^3.1.0"
   },
   "dependencies": {
-    "@alethio/explorer-ui": "^2.0.0-dev.0",
-    "@alethio/ui": "^2.0.0-dev.11",
+    "@alethio/explorer-ui": "github:Alethio/explorer-ui",
+    "@alethio/ui": "^2.0.0-dev.13",
     "@puzzl/browser": "^1.0.0-beta.1",
     "@puzzl/core": "^1.0.0-beta.1",
     "bignumber.js": "^8.0.1",

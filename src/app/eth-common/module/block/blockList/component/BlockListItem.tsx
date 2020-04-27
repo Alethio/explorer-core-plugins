@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled from "@alethio/explorer-ui/lib/styled-components";
 import { Tooltip } from "@alethio/ui/lib/overlay/tooltip/Tooltip";
-import { BlockNumberBox } from "@alethio/explorer-ui/lib/box/block/BlockNumberBox";
-import { TxCountBox } from "@alethio/explorer-ui/lib/box/block/TxCountBox";
+import { ValueBox } from "@alethio/ui/lib/layout/content/box/ValueBox";
+import { ITheme } from "@alethio/explorer-ui/lib/ITheme";
 import { Link } from "plugin-api/component/Link";
 import { ITranslation } from "plugin-api/ITranslation";
 import { BlockListItemBar } from "./BlockListItemBar";
@@ -34,6 +34,11 @@ const BlockListItemBarWrapper = styled<IWrapperProps, "div">("div")`
     min-width: 8px;
 `;
 
+const TransactionCount = styled.span`
+    color: ${props => props.theme.colors.blockListItem};
+    padding-left: 8px;
+`;
+
 interface IBlockListItemProps {
     blockNumber: number;
     transactionCount: number | undefined;
@@ -59,13 +64,19 @@ export class BlockListItem extends React.PureComponent<IBlockListItemProps> {
                     referenceElement={() => this.barEl}
                     content={
                         <div style={{padding: 8, display: "flex"}}>
-                            <BlockNumberBox variant="small" noLink>{blockNumber}</BlockNumberBox>
-                            { transactionCount !== void 0 ?
-                            <TxCountBox variant="small">
-                                {tr.get("blockView.content.blockSummary.txs.label")
-                                    .replace(/%d/, "" + transactionCount)}
-                            </TxCountBox>
-                            : null }
+                            <ValueBox
+                                colors={(theme: ITheme) => ({
+                                    background: theme.colors.blockColorCode,
+                                    text: theme.colors.blockBoxText
+                                })} variant="small">
+                                # { blockNumber }
+                                { transactionCount !== void 0 ?
+                                    <TransactionCount>
+                                        {tr.get("blockView.content.blockSummary.txs.label")
+                                            .replace(/%d/, "" + transactionCount)}
+                                    </TransactionCount>
+                                : null }
+                            </ValueBox>
                         </div>
                     }
                 >

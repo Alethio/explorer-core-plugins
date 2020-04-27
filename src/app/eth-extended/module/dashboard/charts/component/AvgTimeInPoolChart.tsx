@@ -4,11 +4,12 @@ import { computed, observable } from "mobx";
 import { RelativeTimeFormatter } from "@alethio/ui/lib/util/time/RelativeTimeFormatter";
 import { ITranslation } from "plugin-api/ITranslation";
 import { getRelativeTimeTranslations } from "app/helper/getRelativeTimeTranslations";
-import { BlockNumberBox } from "@alethio/explorer-ui/lib/box/block/BlockNumberBox";
-import { TxCountBox } from "@alethio/explorer-ui/lib/box/block/TxCountBox";
+import { ValueBox } from "@alethio/ui/lib/layout/content/box/ValueBox";
+import { ITheme } from "@alethio/explorer-ui/lib/ITheme";
 import { BarChart } from "@alethio/explorer-ui/lib/dashboard/BarChart";
 import { ILatestBlockRangeContext } from "../../../../../shared/context/ILatestBlockRangeContext";
 import { IBlockTxTimeInPool } from "app/eth-extended/data/block/txTimeInPool/IBlockTxTimeInPool";
+import styled from "@alethio/explorer-ui/lib/styled-components";
 
 const MAX_BLOCKS_SHOWN_COUNT = 50;
 
@@ -18,6 +19,10 @@ interface IAvgTimeInPoolChartProps {
     translation: ITranslation;
 }
 
+const TransactionCount = styled.span`
+    color: ${props => props.theme.colors.blockListItem};
+    padding-left: 8px;
+`;
 /**
  * TODO: Deduplication: This file is almost identical with BlockListDashboard.tsx.
  * If posible, export and share logic between those two and BlockListAside.tsx
@@ -59,13 +64,19 @@ export class AvgTimeInPoolChart extends React.Component<IAvgTimeInPoolChartProps
                     };
                 })}
                 tooltipThunk={(d) => <div style={{padding: 8, display: "flex"}}>
-                    <BlockNumberBox variant="small" noLink>{d.key as number}</BlockNumberBox>
-                    { d.value !== void 0 ?
-                    <TxCountBox variant="small">
-                        {this.props.translation.get("dashboardView.pendingChart.tooltip.txs.label")
+                    <ValueBox
+                        colors={(theme: ITheme) => ({
+                            background: theme.colors.blockColorCode,
+                            text: theme.colors.blockBoxText
+                        })} variant="small">
+                        # {d.key as number }
+                        { d.value !== void 0 ?
+                            <TransactionCount>
+                                {this.props.translation.get("dashboardView.pendingChart.tooltip.txs.label")
                             .replace(/%d/, this.formatInterval(d.value * 1000))}
-                    </TxCountBox>
-                    : null }
+                            </TransactionCount>
+                        : null }
+                    </ValueBox>
                 </div>}
                 linkThunk={(d) => `page://aleth.io/block?blockNumber=${d.key}`}
             />
