@@ -4,6 +4,14 @@ export interface IConfigData {
      * user:pass@host...
      */
     nodeUrl: string;
+    /**
+     * An URI pointing to a data adapter that returns an AuthStore instance
+     *
+     * This is used to allow custom RPC node authentication methods to be defined by 3rd party plugins
+     *
+     * See the IAuthStore interface definition
+     */
+    authStoreUri?: string;
     /** Customizable ETH symbol (e.g. GöETH) */
     ethSymbol?: string;
 }
@@ -22,5 +30,9 @@ export class EthLitePluginConfig {
 
     getEthSymbol() {
         return this.data.ethSymbol || "ETH";
+    }
+
+    getAuthStoreUri() {
+        return this.data.authStoreUri;
     }
 }

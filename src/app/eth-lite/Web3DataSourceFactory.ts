@@ -36,6 +36,7 @@ export class Web3DataSourceFactory {
 
         return new Web3DataSource(
             config,
+            logger,
             lastBlockWatcher,
             web3EthApi,
             {
