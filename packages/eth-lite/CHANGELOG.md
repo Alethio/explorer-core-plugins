@@ -1,3 +1,7 @@
+# 4.2.0
+
+- Support custom auth methods for JSON-RPC nodes
+
 # v4.1.1
 
 - Fix errors caused by some optional adapters being undefined
